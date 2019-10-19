@@ -23,7 +23,7 @@ import br.com.igrejadecristo.folhetodigital.entidades.Membro;
 import br.com.igrejadecristo.folhetodigital.services.MembroService;
 
 @RestController
-@RequestMapping(value="/membro")
+@RequestMapping(value="/membros")
 public class MembroController {
 
 	@Autowired

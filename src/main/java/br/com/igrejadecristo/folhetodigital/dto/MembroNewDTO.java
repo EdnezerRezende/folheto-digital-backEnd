@@ -8,6 +8,7 @@ import javax.validation.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
 
+import br.com.igrejadecristo.folhetodigital.entidades.Igreja;
 import br.com.igrejadecristo.folhetodigital.services.validation.MembroInsert;
 
 @MembroInsert
@@ -50,6 +51,8 @@ public class MembroNewDTO  implements Serializable {
 	private String telefone3;
 	
 	private Integer cidadeId;
+	
+	private Igreja igreja;
 
 	public MembroNewDTO() {
 		super();
@@ -157,6 +160,14 @@ public class MembroNewDTO  implements Serializable {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public Igreja getIgreja() {
+		return igreja;
+	}
+
+	public void setIgreja(Igreja igreja) {
+		this.igreja = igreja;
 	}
 	
 }
