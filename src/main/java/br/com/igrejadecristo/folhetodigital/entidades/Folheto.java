@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Folheto {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
 	@JsonFormat(pattern="dd/MM/yyyy HH:mm")
@@ -46,20 +46,20 @@ public class Folheto {
 		this.id = id;
 	}
 
-	public Igreja getIgreja() {
-		return igreja;
-	}
-
-	public void setIgreja(Igreja igreja) {
-		this.igreja = igreja;
-	}
-
 	public LocalDate getDataPublicado() {
 		return dataPublicado;
 	}
 
 	public void setDataPublicado(LocalDate dataPublicado) {
 		this.dataPublicado = dataPublicado;
+	}
+	
+	public Igreja getIgreja() {
+		return igreja;
+	}
+
+	public void setIgreja(Igreja igreja) {
+		this.igreja = igreja;
 	}
 
 	@Override

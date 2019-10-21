@@ -1,11 +1,11 @@
 package br.com.igrejadecristo.folhetodigital.dto;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-import br.com.igrejadecristo.folhetodigital.entidades.Folheto;
+import br.com.igrejadecristo.folhetodigital.entidades.EnderecoIgreja;
 import br.com.igrejadecristo.folhetodigital.entidades.Igreja;
+import br.com.igrejadecristo.folhetodigital.entidades.Membro;
 
 public class IgrejaDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -13,24 +13,28 @@ public class IgrejaDTO implements Serializable {
 	private Integer id;
 	
 	private String nome;
-
-	private List<Folheto> folhetos = new ArrayList<Folheto>();
 	
+	private EnderecoIgreja endereco;
+	
+	private List<Membro> membros;
+
 	public IgrejaDTO() {
 	}
 
-	public IgrejaDTO(Integer id, String nome, List<Folheto> folhetos) {
+	public IgrejaDTO(Integer id, String nome, List<Membro> membros, EnderecoIgreja endereco) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.folhetos = folhetos;
+		this.membros = membros;
+		this.endereco = endereco;
 	}
 	
 	public IgrejaDTO(Igreja igreja) {
 		super();
 		this.id = igreja.getId();
 		this.nome = igreja.getNome();
-		this.folhetos = igreja.getFolhetos();
+		this.membros = igreja.getMembros();
+		this.endereco = igreja.getEndereco();
 	}
 
 	public Integer getId() {
@@ -49,13 +53,20 @@ public class IgrejaDTO implements Serializable {
 		this.nome = nome;
 	}
 
-	public List<Folheto> getFolhetos() {
-		return folhetos;
+	public List<Membro> getMembros() {
+		return membros;
 	}
 
-	public void setFolhetos(List<Folheto> folhetos) {
-		this.folhetos = folhetos;
+	public void setMembros(List<Membro> membros) {
+		this.membros = membros;
 	}
-	
+
+	public EnderecoIgreja getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(EnderecoIgreja endereco) {
+		this.endereco = endereco;
+	}
 	
 }

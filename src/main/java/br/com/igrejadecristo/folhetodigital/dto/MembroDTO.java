@@ -7,7 +7,6 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
-import br.com.igrejadecristo.folhetodigital.entidades.Igreja;
 import br.com.igrejadecristo.folhetodigital.entidades.Membro;
 import br.com.igrejadecristo.folhetodigital.services.validation.MembroUpdate;
 
@@ -25,8 +24,6 @@ public class MembroDTO  implements Serializable {
 	@Email(message="E-mail inválido")
 	private String email;
 	
-	private Igreja igreja;
-	
 	public MembroDTO() {
 		super();
 	}
@@ -35,7 +32,6 @@ public class MembroDTO  implements Serializable {
 		this.id = obj.getId();
 		this.nome = obj.getNome();
 		this.email = obj.getEmail();
-		this.igreja = obj.getIgreja();
 	}
 
 	public String getNome() {
@@ -62,12 +58,5 @@ public class MembroDTO  implements Serializable {
 		this.id = id;
 	}
 
-	public Igreja getIgreja() {
-		return igreja;
-	}
-
-	public void setIgreja(Igreja igreja) {
-		this.igreja = igreja;
-	}
 
 }

@@ -10,7 +10,7 @@ public class FolhetoDTO implements Serializable {
 	private Integer id;
 	
 	private String dataPublicacao;
-
+	
 	public FolhetoDTO() {
 		super();
 	}
@@ -43,6 +43,5 @@ public class FolhetoDTO implements Serializable {
 		this.dataPublicacao = dataPublicacao;
 	}
 
-	
-	
+
 }

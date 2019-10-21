@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.igrejadecristo.folhetodigital.entidades.Cidade;
-import br.com.igrejadecristo.folhetodigital.entidades.Endereco;
+import br.com.igrejadecristo.folhetodigital.entidades.EnderecoIgreja;
+import br.com.igrejadecristo.folhetodigital.entidades.EnderecoMembro;
 import br.com.igrejadecristo.folhetodigital.entidades.Estado;
 import br.com.igrejadecristo.folhetodigital.entidades.Folheto;
 import br.com.igrejadecristo.folhetodigital.entidades.Igreja;
@@ -44,14 +45,14 @@ public class DBService {
 	public void instantiateTestDatabase() throws ParseException{
 		Estado brasilia = new Estado(null, "Brasília");
 		
-		Cidade cidadeIgreja = new Cidade(null, "Taguatinha", brasilia);
-		
+		Cidade cidadeIgreja = new Cidade(null, "Taguatinha Sul", brasilia);
 		
 		Igreja igreja1 = new Igreja(null, "Primeira Igreja de Cristo","22782170000108");
-		igrejaRepository.saveAll(Arrays.asList(igreja1));
-		igrejaRepository.flush();
-		Membro membro1 = new Membro(null, "Teste", "teste@gmail.com", "12345678978","1234");
-		Membro membro2 = new Membro(null, "Teste 2", "teste2@gmail.com", "78945612378","4321");
+		EnderecoIgreja enderecoIgreja = new EnderecoIgreja(null, "QSB 10/11 A.E. 09", "", "", "", "72015600", igreja1, cidadeIgreja);
+		igreja1.setEndereco(enderecoIgreja);
+
+		Membro membro1 = new Membro(null, "Teste", "teste@gmail.com", "12345678978","1234", igreja1);
+		Membro membro2 = new Membro(null, "Teste 2", "teste2@gmail.com", "78945612378","4321", igreja1);
 		membro1.addPerfil(Perfil.ADMIN);
 		membro2.addPerfil(Perfil.PASTOR);
 		
@@ -65,13 +66,15 @@ public class DBService {
 		membro1.getTelefones().addAll(Arrays.asList("27363323", "93838393"));
 		membro2.getTelefones().addAll(Arrays.asList("93883321", "34252625"));
 		
-		Endereco e1 = new Endereco(null, "Rua Flores", "300", "Apto 303", "Jardim", "38220834", membro1, c1);
-		Endereco e2 = new Endereco(null, "Avenida Matos", "105", "Sala 800", "Centro", "38777012", membro1, c2);
-		Endereco e3 = new Endereco(null, "Avenida Floriano", "2106", null, "Centro", "281777012", membro2, c2);
-		Endereco e4 = new Endereco(null, "Avenida Floriano", "2244", null, "Centro", "281777012", membro2, c2);
+		EnderecoMembro e1 = new EnderecoMembro(null, "Rua Flores", "300", "Apto 303", "Jardim", "38220834", membro1, c1);
+		EnderecoMembro e2 = new EnderecoMembro(null, "Avenida Matos", "105", "Sala 800", "Centro", "38777012", membro1, c2);
+		EnderecoMembro e3 = new EnderecoMembro(null, "Avenida Floriano", "2106", null, "Centro", "281777012", membro2, c2);
+		EnderecoMembro e4 = new EnderecoMembro(null, "Avenida Floriano", "2244", null, "Centro", "281777012", membro2, c2);
 		
 		estadoRepository.saveAll(Arrays.asList(est1, est2, brasilia));
 		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3, cidadeIgreja));
+		
+		igrejaRepository.saveAll(Arrays.asList(igreja1));
 		
 		membro1.getEnderecos().addAll(Arrays.asList(e1, e2));
 		membro2.getEnderecos().addAll(Arrays.asList(e3, e4));

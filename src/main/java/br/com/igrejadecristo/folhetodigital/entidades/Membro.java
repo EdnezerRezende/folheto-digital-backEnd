@@ -27,7 +27,7 @@ import br.com.igrejadecristo.folhetodigital.entidades.enums.Perfil;
 public class Membro {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
 	private String nome;
@@ -45,12 +45,12 @@ public class Membro {
 	private Set<Integer> perfis = new HashSet<>();
 	
 	@OneToMany(mappedBy = "membro", cascade=CascadeType.ALL)
-    private List<Endereco> enderecos = new ArrayList<>();
+    private List<EnderecoMembro> enderecos = new ArrayList<>();
 	
-//    @JsonIgnore
-//    @ManyToOne
-//    @JoinColumn(name="igreja_id")
-//    private Igreja igreja;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name="igreja_id")
+    private Igreja igreja;
 
 	@ElementCollection
     @CollectionTable(name = "TELEFONE")
@@ -61,7 +61,7 @@ public class Membro {
 	}
 	
 	public Membro(Integer id, String nome, String email, String cpf, String senha
-//			, Igreja igreja
+			, Igreja igreja
 			) {
 		super();
 		this.id = id;
@@ -69,7 +69,7 @@ public class Membro {
 		this.email = email;
 		this.cpf = cpf;
 		this.senha = senha;
-//		this.igreja = igreja;
+		this.igreja = igreja;
 		addPerfil(Perfil.MEMBRO);
 	}
 
@@ -122,11 +122,11 @@ public class Membro {
 		this.senha = senha;
 	}
 
-	public List<Endereco> getEnderecos() {
+	public List<EnderecoMembro> getEnderecos() {
 		return enderecos;
 	}
 
-	public void setEnderecos(List<Endereco> enderecos) {
+	public void setEnderecos(List<EnderecoMembro> enderecos) {
 		this.enderecos = enderecos;
 	}
 
@@ -138,13 +138,13 @@ public class Membro {
 		this.telefones = telefones;
 	}
 	
-//	public Igreja getIgreja() {
-//		return igreja;
-//	}
-//
-//	public void setIgreja(Igreja igreja) {
-//		this.igreja = igreja;
-//	}
+	public Igreja getIgreja() {
+		return igreja;
+	}
+
+	public void setIgreja(Igreja igreja) {
+		this.igreja = igreja;
+	}
 
 	@Override
 	public int hashCode() {

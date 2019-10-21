@@ -70,9 +70,9 @@ public class MembroController {
 	}
 	
 //	@PreAuthorize("hasAnyRole('ADMIN')")
-	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<List<MembroDTO>> findAll() {
-		List<Membro> list = membroService.findAll();
+	@RequestMapping(value="/igreja/{idIgreja}", method=RequestMethod.GET)
+	public ResponseEntity<List<MembroDTO>> findAll(@PathVariable Integer idIgreja) {
+		List<Membro> list = membroService.findAll(idIgreja);
 		List<MembroDTO> listDto = list.stream().map(obj -> new MembroDTO(obj)).collect(Collectors.toList());  
 		return ResponseEntity.ok().body(listDto);
 	}

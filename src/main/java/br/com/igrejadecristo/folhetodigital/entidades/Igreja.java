@@ -1,31 +1,36 @@
 package br.com.igrejadecristo.folhetodigital.entidades;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Igreja {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
 	private String nome;
 	
 	private String cnpj;
+	
+	@OneToMany(mappedBy = "igreja", cascade=CascadeType.ALL)
+    private List<Membro> membros = new ArrayList<>();
 
-//    private Endereco endereco;
+	@OneToOne(mappedBy = "igreja", cascade=CascadeType.ALL)
+    private EnderecoIgreja endereco;
 
-	@ElementCollection
-    @CollectionTable(name = "TELEFONE")
-    private Set<String> telefones = new HashSet<>();
+//	@ElementCollection
+//    @CollectionTable(name = "TELEFONE")
+//    private Set<String> telefones = new HashSet<>();
 
 	
 	public Igreja() {
@@ -34,21 +39,11 @@ public class Igreja {
 	
 	public Igreja(Integer id, String nome, 
 			String cnpj
-//			,Endereco endereco
 			) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.cnpj = cnpj;
-//		this.endereco = endereco;
-	}
-	
-	public Set<String> getTelefones() {
-		return telefones;
-	}
-
-	public void setTelefones(Set<String> telefones) {
-		this.telefones = telefones;
 	}
 	
 	public Integer getId() {
@@ -75,13 +70,23 @@ public class Igreja {
 		this.cnpj = cnpj;
 	}
 
-//	public Endereco getEndereco() {
-//		return endereco;
-//	}
-//
-//	public void setEndereco(Endereco endereco) {
-//		this.endereco = endereco;
-//	}
+	public List<Membro> getMembros() {
+		return membros;
+	}
+
+	public void setMembros(List<Membro> membros) {
+		this.membros = membros;
+	}
+	
+	
+	
+	public EnderecoIgreja getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(EnderecoIgreja endereco) {
+		this.endereco = endereco;
+	}
 
 	@Override
 	public int hashCode() {
@@ -90,6 +95,8 @@ public class Igreja {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
