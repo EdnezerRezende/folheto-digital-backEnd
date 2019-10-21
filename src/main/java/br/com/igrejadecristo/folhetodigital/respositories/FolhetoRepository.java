@@ -12,5 +12,5 @@ import br.com.igrejadecristo.folhetodigital.entidades.Folheto;
 @Repository
 public interface FolhetoRepository extends JpaRepository<Folheto, Integer>{
 	@Transactional(readOnly=true)
-	public List<Folheto> findAllByOrderByNome();
+	public List<Folheto> findAllByOrderByDataPublicado();
 }

@@ -46,11 +46,12 @@ public class DBService {
 		
 		Cidade cidadeIgreja = new Cidade(null, "Taguatinha", brasilia);
 		
-		Endereco enderecoIgreja = new Endereco(null, "Rua Flores", "300", "Apto 303", "Jardim", "38220834", null, cidadeIgreja);
 		
-		Igreja igreja1 = new Igreja(null, "Primeira Igreja de Cristo","22782170000108", enderecoIgreja);
-		Membro membro1 = new Membro(null, "Teste", "teste@gmail.com", "12345678978","1234",igreja1 );
-		Membro membro2 = new Membro(null, "Teste 2", "teste2@gmail.com", "78945612378","4321",igreja1);
+		Igreja igreja1 = new Igreja(null, "Primeira Igreja de Cristo","22782170000108");
+		igrejaRepository.saveAll(Arrays.asList(igreja1));
+		igrejaRepository.flush();
+		Membro membro1 = new Membro(null, "Teste", "teste@gmail.com", "12345678978","1234");
+		Membro membro2 = new Membro(null, "Teste 2", "teste2@gmail.com", "78945612378","4321");
 		membro1.addPerfil(Perfil.ADMIN);
 		membro2.addPerfil(Perfil.PASTOR);
 		
@@ -69,14 +70,13 @@ public class DBService {
 		Endereco e3 = new Endereco(null, "Avenida Floriano", "2106", null, "Centro", "281777012", membro2, c2);
 		Endereco e4 = new Endereco(null, "Avenida Floriano", "2244", null, "Centro", "281777012", membro2, c2);
 		
-		estadoRepository.saveAll(Arrays.asList(est1, est2));
-		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
+		estadoRepository.saveAll(Arrays.asList(est1, est2, brasilia));
+		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3, cidadeIgreja));
 		
 		membro1.getEnderecos().addAll(Arrays.asList(e1, e2));
 		membro2.getEnderecos().addAll(Arrays.asList(e3, e4));
-		
+
 		membroRepository.saveAll(Arrays.asList(membro1,membro2));
-		igrejaRepository.saveAll(Arrays.asList(igreja1));
 		
 		Folheto folheto1 = new Folheto(null, LocalDate.now(), igreja1);
 		folhetoRepository.saveAll(Arrays.asList(folheto1));

@@ -15,7 +15,7 @@ public class FolhetoService {
 	private FolhetoRepository folhetoDao;
 	
 	public List<Folheto> buscarTodos() {
-		return folhetoDao.findAllByOrderByNome();
+		return folhetoDao.findAllByOrderByDataPublicado();
 	}
 	
 	

@@ -1,18 +1,14 @@
 package br.com.igrejadecristo.folhetodigital.entidades;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Igreja {
@@ -25,28 +21,26 @@ public class Igreja {
 	
 	private String cnpj;
 
-	@OneToMany(mappedBy = "igreja", cascade=CascadeType.ALL)
-    private List<Membro> membros = new ArrayList<>();
-	
-    private Endereco endereco;
+//    private Endereco endereco;
 
 	@ElementCollection
     @CollectionTable(name = "TELEFONE")
     private Set<String> telefones = new HashSet<>();
 
-	@OneToMany(mappedBy = "igreja", cascade=CascadeType.ALL)
-    private List<Folheto> folhetos = new ArrayList<>();
 	
 	public Igreja() {
 		super();
 	}
 	
-	public Igreja(Integer id, String nome, String cnpj, Endereco endereco) {
+	public Igreja(Integer id, String nome, 
+			String cnpj
+//			,Endereco endereco
+			) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.cnpj = cnpj;
-		this.endereco = endereco;
+//		this.endereco = endereco;
 	}
 	
 	public Set<String> getTelefones() {
@@ -81,29 +75,13 @@ public class Igreja {
 		this.cnpj = cnpj;
 	}
 
-	public List<Membro> getMembros() {
-		return membros;
-	}
-
-	public void setMembros(List<Membro> membros) {
-		this.membros = membros;
-	}
-
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
-
-	public List<Folheto> getFolhetos() {
-		return folhetos;
-	}
-
-	public void setFolhetos(List<Folheto> folhetos) {
-		this.folhetos = folhetos;
-	}
+//	public Endereco getEndereco() {
+//		return endereco;
+//	}
+//
+//	public void setEndereco(Endereco endereco) {
+//		this.endereco = endereco;
+//	}
 
 	@Override
 	public int hashCode() {

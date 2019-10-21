@@ -47,10 +47,10 @@ public class Membro {
 	@OneToMany(mappedBy = "membro", cascade=CascadeType.ALL)
     private List<Endereco> enderecos = new ArrayList<>();
 	
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name="igreja_id")
-    private Igreja igreja;
+//    @JsonIgnore
+//    @ManyToOne
+//    @JoinColumn(name="igreja_id")
+//    private Igreja igreja;
 
 	@ElementCollection
     @CollectionTable(name = "TELEFONE")
@@ -60,14 +60,16 @@ public class Membro {
 		addPerfil(Perfil.MEMBRO);
 	}
 	
-	public Membro(Integer id, String nome, String email, String cpf, String senha, Igreja igreja) {
+	public Membro(Integer id, String nome, String email, String cpf, String senha
+//			, Igreja igreja
+			) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
 		this.senha = senha;
-		this.igreja = igreja;
+//		this.igreja = igreja;
 		addPerfil(Perfil.MEMBRO);
 	}
 
@@ -136,13 +138,13 @@ public class Membro {
 		this.telefones = telefones;
 	}
 	
-	public Igreja getIgreja() {
-		return igreja;
-	}
-
-	public void setIgreja(Igreja igreja) {
-		this.igreja = igreja;
-	}
+//	public Igreja getIgreja() {
+//		return igreja;
+//	}
+//
+//	public void setIgreja(Igreja igreja) {
+//		this.igreja = igreja;
+//	}
 
 	@Override
 	public int hashCode() {
