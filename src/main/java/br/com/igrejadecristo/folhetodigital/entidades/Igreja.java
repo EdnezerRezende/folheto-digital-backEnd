@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Igreja {
 
@@ -24,6 +26,10 @@ public class Igreja {
 	
 	@OneToMany(mappedBy = "igreja", cascade=CascadeType.ALL)
     private List<Membro> membros = new ArrayList<>();
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "igreja", cascade=CascadeType.ALL)
+    private List<PequenoGrupo> pgs = new ArrayList<>();
 
 	@OneToOne(mappedBy = "igreja", cascade=CascadeType.ALL)
     private EnderecoIgreja endereco;

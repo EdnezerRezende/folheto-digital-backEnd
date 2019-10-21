@@ -1,8 +1,10 @@
 package br.com.igrejadecristo.folhetodigital.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 import br.com.igrejadecristo.folhetodigital.entidades.Folheto;
+import br.com.igrejadecristo.folhetodigital.entidades.PequenoGrupo;
 
 public class FolhetoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -12,6 +14,8 @@ public class FolhetoDTO implements Serializable {
 	private String dataPublicacao;
 	
 	private String mensagem;
+	
+	private List<PequenoGrupo> pgs;
 	
 	public FolhetoDTO() {
 		super();
@@ -29,6 +33,7 @@ public class FolhetoDTO implements Serializable {
 		this.id = folheto.getId();
 		this.dataPublicacao = folheto.getDataPublicado().toString();
 		this.mensagem = folheto.getMensagem().getMensagem();
+		this.pgs.addAll(folheto.getPg());
 	}
 
 	public Integer getId() {
@@ -55,5 +60,12 @@ public class FolhetoDTO implements Serializable {
 		this.mensagem = mensagem;
 	}
 
+	public List<PequenoGrupo> getPgs() {
+		return pgs;
+	}
+
+	public void setPgs(List<PequenoGrupo> pgs) {
+		this.pgs = pgs;
+	}
 
 }

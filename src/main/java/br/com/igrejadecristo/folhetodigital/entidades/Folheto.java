@@ -1,12 +1,15 @@
 package br.com.igrejadecristo.folhetodigital.entidades;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -31,6 +34,10 @@ public class Folheto {
     @JoinColumn(name="mensagem_id")
     private Mensagem mensagem;
 
+    @ManyToMany
+    @JoinColumn(name="pequenogrupo_id")
+    private List<PequenoGrupo> pg = new ArrayList<>();
+    
 	public Folheto() {
 		super();
 	}
@@ -72,6 +79,14 @@ public class Folheto {
 
 	public void setMensagem(Mensagem mensagem) {
 		this.mensagem = mensagem;
+	}
+
+	public List<PequenoGrupo> getPg() {
+		return pg;
+	}
+
+	public void setPg(List<PequenoGrupo> pg) {
+		this.pg = pg;
 	}
 
 	@Override
