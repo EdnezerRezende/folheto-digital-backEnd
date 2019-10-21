@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.igrejadecristo.folhetodigital.entidades.Folheto;
 import br.com.igrejadecristo.folhetodigital.respositories.FolhetoRepository;
+import br.com.igrejadecristo.folhetodigital.respositories.MensagemRepository;
 
 @Service
 public class FolhetoService {
@@ -14,8 +15,16 @@ public class FolhetoService {
 	@Autowired
 	private FolhetoRepository folhetoDao;
 	
+	@Autowired
+	private MensagemRepository mensagemDao;
+	
+	
 	public List<Folheto> buscarTodos() {
-		return folhetoDao.findAllByOrderByDataPublicado();
+		List<Folheto> folhetos = folhetoDao.findAllByOrderByDataPublicado();
+		folhetos.stream().forEach(obj -> {
+			obj.setMensagem(mensagemDao.findByFolhetosId(obj.getId()));
+		});
+		return folhetos;
 	}
 	
 	

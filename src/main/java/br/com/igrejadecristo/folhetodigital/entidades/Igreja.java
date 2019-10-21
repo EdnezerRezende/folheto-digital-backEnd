@@ -15,7 +15,7 @@ import javax.persistence.OneToOne;
 public class Igreja {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	private String nome;

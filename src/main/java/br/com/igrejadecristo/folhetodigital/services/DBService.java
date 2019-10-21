@@ -14,12 +14,14 @@ import br.com.igrejadecristo.folhetodigital.entidades.Estado;
 import br.com.igrejadecristo.folhetodigital.entidades.Folheto;
 import br.com.igrejadecristo.folhetodigital.entidades.Igreja;
 import br.com.igrejadecristo.folhetodigital.entidades.Membro;
+import br.com.igrejadecristo.folhetodigital.entidades.Mensagem;
 import br.com.igrejadecristo.folhetodigital.entidades.enums.Perfil;
 import br.com.igrejadecristo.folhetodigital.respositories.CidadeRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.EstadoRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.FolhetoRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.IgrejaRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.MembroRepository;
+import br.com.igrejadecristo.folhetodigital.respositories.MensagemRepository;
 
 @Service
 public class DBService {
@@ -41,6 +43,9 @@ public class DBService {
 
 	@Autowired
 	private FolhetoRepository folhetoRepository;
+	
+	@Autowired
+	private MensagemRepository mensagemRepository;
 	
 	public void instantiateTestDatabase() throws ParseException{
 		Estado brasilia = new Estado(null, "Brasília");
@@ -84,5 +89,10 @@ public class DBService {
 		Folheto folheto1 = new Folheto(null, LocalDate.now(), igreja1);
 		folhetoRepository.saveAll(Arrays.asList(folheto1));
 		
+		Mensagem mensagem1 = new Mensagem(null, 
+				"Costa Neto é pastor de uma das maiores igrejas de Fortaleza, a Comunidade Cristã Videira. "
+				+ "Para se ter uma ideia, por final de semana, a igreja conta com o trabalho "
+				+ "de cerca de 2.500 voluntários.", "Pra Renata Cabral", LocalDate.now(),folheto1 );
+		mensagemRepository.save(mensagem1);
 	}
 }

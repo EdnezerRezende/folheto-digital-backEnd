@@ -1,45 +1,49 @@
 package br.com.igrejadecristo.folhetodigital.entidades;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Folheto {
+public class Mensagem {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+    
+	private String mensagem;
+	
+	private String autor;
 	
 	@JsonFormat(pattern="dd/MM/yyyy HH:mm")
-	private LocalDate dataPublicado;
+	private LocalDate dataCriado;
 	
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name="igreja_id")
-    private Igreja igreja;
-    
-    @ManyToOne
-    @JoinColumn(name="mensagem_id")
-    private Mensagem mensagem;
+	@JsonIgnore
+	@OneToMany
+    @JoinColumn(name="folheto")
+    private List<Folheto> folhetos = new ArrayList<>();
 
-	public Folheto() {
+	public Mensagem() {
 		super();
 	}
 	
-	public Folheto(Integer id, LocalDate dataPublicado, Igreja igreja) {
+	public Mensagem(Integer id, String mensagem, String autor, LocalDate dataCriado, Folheto folheto ) {
 		super();
 		this.id = id;
-		this.dataPublicado = dataPublicado;
-		this.igreja = igreja;
+		this.mensagem = mensagem;
+		this.autor = autor;
+		this.dataCriado = dataCriado;
+		this.folhetos.add(folheto);
 	}
 
 	public Integer getId() {
@@ -50,28 +54,28 @@ public class Folheto {
 		this.id = id;
 	}
 
-	public LocalDate getDataPublicado() {
-		return dataPublicado;
-	}
-
-	public void setDataPublicado(LocalDate dataPublicado) {
-		this.dataPublicado = dataPublicado;
-	}
-	
-	public Igreja getIgreja() {
-		return igreja;
-	}
-
-	public void setIgreja(Igreja igreja) {
-		this.igreja = igreja;
-	}
-
-	public Mensagem getMensagem() {
+	public String getMensagem() {
 		return mensagem;
 	}
 
-	public void setMensagem(Mensagem mensagem) {
+	public void setMensagem(String mensagem) {
 		this.mensagem = mensagem;
+	}
+
+	public String getAutor() {
+		return autor;
+	}
+
+	public void setAutor(String autor) {
+		this.autor = autor;
+	}
+
+	public List<Folheto> getFolhetos() {
+		return folhetos;
+	}
+
+	public void setFolhetos(List<Folheto> folhetos) {
+		this.folhetos = folhetos;
 	}
 
 	@Override
@@ -90,7 +94,7 @@ public class Folheto {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Folheto other = (Folheto) obj;
+		Mensagem other = (Mensagem) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

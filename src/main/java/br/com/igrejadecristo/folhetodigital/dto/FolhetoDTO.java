@@ -11,20 +11,24 @@ public class FolhetoDTO implements Serializable {
 	
 	private String dataPublicacao;
 	
+	private String mensagem;
+	
 	public FolhetoDTO() {
 		super();
 	}
 
-	public FolhetoDTO(Integer id, String dataPublicacao) {
+	public FolhetoDTO(Integer id, String dataPublicacao, String mensagem) {
 		super();
 		this.id = id;
 		this.dataPublicacao = dataPublicacao;
+		this.mensagem = mensagem;
 	}
 	
 	public FolhetoDTO(Folheto folheto) {
 		super();
 		this.id = folheto.getId();
 		this.dataPublicacao = folheto.getDataPublicado().toString();
+		this.mensagem = folheto.getMensagem().getMensagem();
 	}
 
 	public Integer getId() {
@@ -41,6 +45,14 @@ public class FolhetoDTO implements Serializable {
 
 	public void setDataPublicacao(String dataPublicacao) {
 		this.dataPublicacao = dataPublicacao;
+	}
+
+	public String getMensagem() {
+		return mensagem;
+	}
+
+	public void setMensagem(String mensagem) {
+		this.mensagem = mensagem;
 	}
 
 

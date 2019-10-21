@@ -27,7 +27,7 @@ import br.com.igrejadecristo.folhetodigital.entidades.enums.Perfil;
 public class Membro {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	private String nome;
