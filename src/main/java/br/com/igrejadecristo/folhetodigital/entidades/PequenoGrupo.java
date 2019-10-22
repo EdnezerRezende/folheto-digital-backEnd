@@ -3,7 +3,6 @@ package br.com.igrejadecristo.folhetodigital.entidades;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,7 +25,8 @@ public class PequenoGrupo {
 	
 	private String lider;
 	
-	@OneToOne(mappedBy = "pequenogrupo", cascade=CascadeType.ALL)
+	@OneToOne
+	@JoinColumn(name="pequenogrupo")
 	private EnderecoPG endereco;
 	
 	@JsonIgnore
@@ -43,11 +43,12 @@ public class PequenoGrupo {
 		super();
 	}
 	
-	public PequenoGrupo(Integer id, String responsavelCasa, String lider, Folheto folheto ) {
+	public PequenoGrupo(Integer id, String responsavelCasa, String lider, Folheto folheto, Igreja igreja ) {
 		super();
 		this.id = id;
 		this.responsavelCasa = responsavelCasa;
 		this.lider = lider;
+		this.igreja = igreja;
 		this.folhetos.add(folheto);
 	}
 

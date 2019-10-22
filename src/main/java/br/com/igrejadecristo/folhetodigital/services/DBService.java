@@ -19,6 +19,7 @@ import br.com.igrejadecristo.folhetodigital.entidades.Mensagem;
 import br.com.igrejadecristo.folhetodigital.entidades.PequenoGrupo;
 import br.com.igrejadecristo.folhetodigital.entidades.enums.Perfil;
 import br.com.igrejadecristo.folhetodigital.respositories.CidadeRepository;
+import br.com.igrejadecristo.folhetodigital.respositories.EnderecoPGRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.EstadoRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.FolhetoRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.IgrejaRepository;
@@ -52,6 +53,9 @@ public class DBService {
 	
 	@Autowired
 	private PequenoGrupoRepository pgRepository;
+	
+	@Autowired
+	private EnderecoPGRepository enderecoPgRepository;
 	
 	public void instantiateTestDatabase() throws ParseException{
 		Estado brasilia = new Estado(null, "Brasília");
@@ -101,11 +105,12 @@ public class DBService {
 				+ "de cerca de 2.500 voluntários.", "Pra Renata Cabral", LocalDate.now(),folheto1 );
 		mensagemRepository.save(mensagem1);
 		
-		PequenoGrupo pg1 = new PequenoGrupo(null, "Casa da maria Helena","Iolanda",folheto1);
-		EnderecoPG endPg = new EnderecoPG(null, "CSB 03", "Lote 5", "Apto 1201", "Ed. São José", "1234567", pg1, cidadeIgreja);
-		pg1.setEndereco(endPg);
-		
+		PequenoGrupo pg1 = new PequenoGrupo(null, "Casa da maria Helena","Iolanda",folheto1, igreja1);
 		pgRepository.saveAll(Arrays.asList(pg1));
+		EnderecoPG endPg = new EnderecoPG(null, "CSB 03", "Lote 5", "Apto 1201", "Ed. São José", "1234567", pg1, cidadeIgreja);
+		enderecoPgRepository.save(endPg);
+		pg1.setEndereco(endPg);
+		pgRepository.save(pg1);
 		
 	}
 }
