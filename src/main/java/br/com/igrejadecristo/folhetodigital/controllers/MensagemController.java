@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,7 +22,7 @@ public class MensagemController {
 	@Autowired
 	private MensagemService mensagemService;
 	
-	
+	@CrossOrigin
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<MensagemDTO>> findAll() {
 		List<Mensagem> list = mensagemService.buscarTodos();
@@ -29,6 +30,7 @@ public class MensagemController {
 		return ResponseEntity.ok().body(listDto);
 	}
 	
+	@CrossOrigin
 	@RequestMapping(value="/folheto/{idFolheto}", method = RequestMethod.GET)
 	public ResponseEntity<MensagemDTO> findIdFolheto(@PathVariable Integer idFolheto) {
 		mensagemService.buscarPorFolheto(idFolheto);
