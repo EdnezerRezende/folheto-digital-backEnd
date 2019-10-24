@@ -28,6 +28,8 @@ public class Mensagem {
 	@JsonFormat(pattern="dd/MM/yyyy HH:mm")
 	private LocalDate dataCriado;
 	
+	private String titulo;
+	
 	@JsonIgnore
 	@OneToMany
     @JoinColumn(name="folheto")
@@ -37,13 +39,14 @@ public class Mensagem {
 		super();
 	}
 	
-	public Mensagem(Integer id, String mensagem, String autor, LocalDate dataCriado, Folheto folheto ) {
+	public Mensagem(Integer id, String mensagem, String autor, LocalDate dataCriado, Folheto folheto, String titulo ) {
 		super();
 		this.id = id;
 		this.mensagem = mensagem;
 		this.autor = autor;
 		this.dataCriado = dataCriado;
 		this.folhetos.add(folheto);
+		this.titulo = titulo;
 	}
 
 	public Integer getId() {
@@ -76,6 +79,22 @@ public class Mensagem {
 
 	public void setFolhetos(List<Folheto> folhetos) {
 		this.folhetos = folhetos;
+	}
+	
+	public LocalDate getDataCriado() {
+		return dataCriado;
+	}
+
+	public void setDataCriado(LocalDate dataCriado) {
+		this.dataCriado = dataCriado;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	@Override

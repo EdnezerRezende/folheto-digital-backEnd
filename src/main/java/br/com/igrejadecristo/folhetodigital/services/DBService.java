@@ -102,15 +102,31 @@ public class DBService {
 		Mensagem mensagem1 = new Mensagem(null, 
 				"Costa Neto é pastor de uma das maiores igrejas de Fortaleza, a Comunidade Cristã Videira. "
 				+ "Para se ter uma ideia, por final de semana, a igreja conta com o trabalho "
-				+ "de cerca de 2.500 voluntários.", "Pra Renata Cabral", LocalDate.now(),folheto1 );
-		mensagemRepository.save(mensagem1);
+				+ "de cerca de 2.500 voluntários.", "Pra Renata Cabral", LocalDate.now(),folheto1,"O Nosso papel: Amar e servir");
+		
+		Mensagem mensagem2 = new Mensagem(null, 
+				"Apenas mais uma mensagem para cadastrar no banco como exemplo "
+				+ "Não deve ser considerado, apenas a título de exemplo ", 
+				"Teste de nova", LocalDate.now(),folheto1,"Mensagem de Teste, Exemplo");
+		
+		mensagemRepository.saveAll(Arrays.asList(mensagem1, mensagem2));
 		
 		PequenoGrupo pg1 = new PequenoGrupo(null, "Casa da maria Helena","Iolanda",folheto1, igreja1);
-		pgRepository.saveAll(Arrays.asList(pg1));
+		PequenoGrupo pg2 = new PequenoGrupo(null, "Casa da Cleide e Paulo","Moisés",folheto1, igreja1);
+		PequenoGrupo pg3 = new PequenoGrupo(null, "Casa da Helena e Pedro","Pr. Euflávio",folheto1, igreja1);
+		
+		pgRepository.saveAll(Arrays.asList(pg1, pg2, pg3));
+		
 		EnderecoPG endPg = new EnderecoPG(null, "CSB 03", "Lote 5", "Apto 1201", "Ed. São José", "1234567", pg1, cidadeIgreja);
-		enderecoPgRepository.save(endPg);
+		EnderecoPG endPg2 = new EnderecoPG(null, "SMT Conjunto 2", "Lote 5C", "", "", "", pg2, cidadeIgreja);
+		EnderecoPG endPg3 = new EnderecoPG(null, "Quadra 101, conjunto 12", "casa 5", "", "", "", pg3, cidadeIgreja);
+		
+		enderecoPgRepository.saveAll(Arrays.asList(endPg, endPg2, endPg3));
+		
 		pg1.setEndereco(endPg);
-		pgRepository.save(pg1);
+		pg2.setEndereco(endPg2);
+		pg3.setEndereco(endPg3);
+		pgRepository.saveAll(Arrays.asList(pg1, pg2, pg3));
 		
 	}
 }

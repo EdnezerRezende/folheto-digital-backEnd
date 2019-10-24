@@ -34,11 +34,16 @@ public class MensagemService {
 		return dto;
 	}
 	
+	public MensagemDTO buscarPorMensagem(Integer idMensagem) {
+		Mensagem mensagem = mensagemDao.findById(idMensagem).get();
+		return new MensagemDTO(mensagem);
+	}
+	
 	@Transactional
 	public Mensagem salvarMensagem(MensagemNewDTO dto) {
 		Folheto folhetim = folhetoDao.findById(dto.getId()).get();
 		
-		Mensagem mensagem = new Mensagem(null, dto.getMensagem(), dto.getAutor(), LocalDate.now(), folhetim);
+		Mensagem mensagem = new Mensagem(null, dto.getMensagem(), dto.getAutor(), LocalDate.now(), folhetim, dto.getTitulo());
 		return mensagemDao.save(mensagem);
 	}
 }

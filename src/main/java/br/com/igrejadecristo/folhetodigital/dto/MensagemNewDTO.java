@@ -15,16 +15,19 @@ public class MensagemNewDTO implements Serializable {
 	
 	private Integer idFolheto;
 	
+	private String titulo;
+	
 	public MensagemNewDTO() {
 		super();
 	}
 
-	public MensagemNewDTO(Integer id, String mensagem, String autor, Integer idFolheto) {
+	public MensagemNewDTO(Integer id, String mensagem, String autor, Integer idFolheto, String titulo) {
 		super();
 		this.id = id;
 		this.mensagem = mensagem;
 		this.autor = autor;
 		this.idFolheto = idFolheto;
+		this.titulo = titulo;
 	}
 	
 	public MensagemNewDTO(Mensagem mensagem) {
@@ -65,4 +68,13 @@ public class MensagemNewDTO implements Serializable {
 	public void setIdFolheto(Integer idFolheto) {
 		this.idFolheto = idFolheto;
 	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+	
 }

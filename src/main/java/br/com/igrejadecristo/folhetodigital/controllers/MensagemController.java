@@ -36,8 +36,13 @@ public class MensagemController {
 	@CrossOrigin
 	@RequestMapping(value="/folheto/{idFolheto}", method = RequestMethod.GET)
 	public ResponseEntity<MensagemDTO> findIdFolheto(@PathVariable Integer idFolheto) {
-		mensagemService.buscarPorFolheto(idFolheto);
 		return ResponseEntity.ok().body(mensagemService.buscarPorFolheto(idFolheto));
+	}
+	
+	@CrossOrigin
+	@RequestMapping(value="/{idMensagem}", method = RequestMethod.GET)
+	public ResponseEntity<MensagemDTO> findIdMensagem(@PathVariable Integer idMensagem) {
+		return ResponseEntity.ok().body(mensagemService.buscarPorFolheto(idMensagem));
 	}
 	
 	@CrossOrigin
