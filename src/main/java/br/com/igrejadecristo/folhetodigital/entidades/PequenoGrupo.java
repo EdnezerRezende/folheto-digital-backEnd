@@ -1,14 +1,10 @@
 package br.com.igrejadecristo.folhetodigital.entidades;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -30,11 +26,6 @@ public class PequenoGrupo {
 	private EnderecoPG endereco;
 	
 	@JsonIgnore
-	@ManyToMany
-    @JoinColumn(name="pequenogrupo")
-    private List<Folheto> folhetos = new ArrayList<>();
-	
-	@JsonIgnore
     @ManyToOne
     @JoinColumn(name="igreja_id")
     private Igreja igreja;
@@ -43,13 +34,12 @@ public class PequenoGrupo {
 		super();
 	}
 	
-	public PequenoGrupo(Integer id, String responsavelCasa, String lider, Folheto folheto, Igreja igreja ) {
+	public PequenoGrupo(Integer id, String responsavelCasa, String lider,  Igreja igreja ) {
 		super();
 		this.id = id;
 		this.responsavelCasa = responsavelCasa;
 		this.lider = lider;
 		this.igreja = igreja;
-		this.folhetos.add(folheto);
 	}
 
 	public Integer getId() {
@@ -84,14 +74,6 @@ public class PequenoGrupo {
 		this.endereco = endereco;
 	}
 
-	public List<Folheto> getFolhetos() {
-		return folhetos;
-	}
-
-	public void setFolhetos(List<Folheto> folhetos) {
-		this.folhetos = folhetos;
-	}
-	
 	public Igreja getIgreja() {
 		return igreja;
 	}

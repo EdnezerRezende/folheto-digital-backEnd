@@ -10,9 +10,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.igrejadecristo.folhetodigital.dto.MensagemDTO;
 import br.com.igrejadecristo.folhetodigital.dto.MensagemNewDTO;
-import br.com.igrejadecristo.folhetodigital.entidades.Folheto;
 import br.com.igrejadecristo.folhetodigital.entidades.Mensagem;
-import br.com.igrejadecristo.folhetodigital.respositories.FolhetoRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.MensagemRepository;
 
 @Service
@@ -21,17 +19,9 @@ public class MensagemService {
 	@Autowired
 	private MensagemRepository mensagemDao;
 	
-	@Autowired
-	private FolhetoRepository folhetoDao;
-	
 	public List<Mensagem> buscarTodos() {
-		return mensagemDao.findAllByOrderByDataCriado();
-	}
-	
-	public MensagemDTO buscarPorFolheto(Integer idFolheto) {
-		Mensagem mensagem = mensagemDao.findByFolhetosId(idFolheto);
-		MensagemDTO dto = new MensagemDTO(mensagem);
-		return dto;
+		List<Mensagem> mensagens = mensagemDao.findAllByOrderByDataCriado();
+		return mensagens;
 	}
 	
 	public MensagemDTO buscarPorMensagem(Integer idMensagem) {
@@ -41,9 +31,10 @@ public class MensagemService {
 	
 	@Transactional
 	public Mensagem salvarMensagem(MensagemNewDTO dto) {
-		Folheto folhetim = folhetoDao.findById(dto.getId()).get();
 		
-		Mensagem mensagem = new Mensagem(null, dto.getMensagem(), dto.getAutor(), LocalDate.now(), folhetim, dto.getTitulo());
+		Mensagem mensagem = new Mensagem(null,
+				dto.getMensagem(), 
+				dto.getAutor(), LocalDate.now(),  dto.getTitulo());
 		return mensagemDao.save(mensagem);
 	}
 }

@@ -1,18 +1,14 @@
 package br.com.igrejadecristo.folhetodigital.entidades;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Mensagem {
@@ -29,23 +25,17 @@ public class Mensagem {
 	private LocalDate dataCriado;
 	
 	private String titulo;
-	
-	@JsonIgnore
-	@OneToMany
-    @JoinColumn(name="folheto")
-    private List<Folheto> folhetos = new ArrayList<>();
 
 	public Mensagem() {
 		super();
 	}
 	
-	public Mensagem(Integer id, String mensagem, String autor, LocalDate dataCriado, Folheto folheto, String titulo ) {
+	public Mensagem(Integer id, String mensagem, String autor, LocalDate dataCriado, String titulo ) {
 		super();
 		this.id = id;
 		this.mensagem = mensagem;
 		this.autor = autor;
 		this.dataCriado = dataCriado;
-		this.folhetos.add(folheto);
 		this.titulo = titulo;
 	}
 
@@ -57,6 +47,7 @@ public class Mensagem {
 		this.id = id;
 	}
 
+	@Column(name = "MENSAGEM", columnDefinition = "VARCHAR(1500)") 
 	public String getMensagem() {
 		return mensagem;
 	}
@@ -73,14 +64,6 @@ public class Mensagem {
 		this.autor = autor;
 	}
 
-	public List<Folheto> getFolhetos() {
-		return folhetos;
-	}
-
-	public void setFolhetos(List<Folheto> folhetos) {
-		this.folhetos = folhetos;
-	}
-	
 	public LocalDate getDataCriado() {
 		return dataCriado;
 	}

@@ -12,7 +12,6 @@ import br.com.igrejadecristo.folhetodigital.entidades.EnderecoIgreja;
 import br.com.igrejadecristo.folhetodigital.entidades.EnderecoMembro;
 import br.com.igrejadecristo.folhetodigital.entidades.EnderecoPG;
 import br.com.igrejadecristo.folhetodigital.entidades.Estado;
-import br.com.igrejadecristo.folhetodigital.entidades.Folheto;
 import br.com.igrejadecristo.folhetodigital.entidades.Igreja;
 import br.com.igrejadecristo.folhetodigital.entidades.Membro;
 import br.com.igrejadecristo.folhetodigital.entidades.Mensagem;
@@ -21,7 +20,6 @@ import br.com.igrejadecristo.folhetodigital.entidades.enums.Perfil;
 import br.com.igrejadecristo.folhetodigital.respositories.CidadeRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.EnderecoPGRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.EstadoRepository;
-import br.com.igrejadecristo.folhetodigital.respositories.FolhetoRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.IgrejaRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.MembroRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.MensagemRepository;
@@ -44,9 +42,6 @@ public class DBService {
 	
 	@Autowired
 	private IgrejaRepository igrejaRepository;
-
-	@Autowired
-	private FolhetoRepository folhetoRepository;
 	
 	@Autowired
 	private MensagemRepository mensagemRepository;
@@ -96,24 +91,21 @@ public class DBService {
 
 		membroRepository.saveAll(Arrays.asList(membro1,membro2));
 		
-		Folheto folheto1 = new Folheto(null, LocalDate.now(), igreja1);
-		folhetoRepository.saveAll(Arrays.asList(folheto1));
-		
 		Mensagem mensagem1 = new Mensagem(null, 
 				"Costa Neto é pastor de uma das maiores igrejas de Fortaleza, a Comunidade Cristã Videira. "
 				+ "Para se ter uma ideia, por final de semana, a igreja conta com o trabalho "
-				+ "de cerca de 2.500 voluntários.", "Pra Renata Cabral", LocalDate.now(),folheto1,"O Nosso papel: Amar e servir");
+				+ "de cerca de 2.500 voluntários.", "Pra Renata Cabral", LocalDate.now(),"O Nosso papel: Amar e servir");
 		
 		Mensagem mensagem2 = new Mensagem(null, 
 				"Apenas mais uma mensagem para cadastrar no banco como exemplo "
 				+ "Não deve ser considerado, apenas a título de exemplo ", 
-				"Teste de nova", LocalDate.now(),folheto1,"Mensagem de Teste, Exemplo");
+				"Teste de nova", LocalDate.now(),"Mensagem de Teste, Exemplo");
 		
 		mensagemRepository.saveAll(Arrays.asList(mensagem1, mensagem2));
 		
-		PequenoGrupo pg1 = new PequenoGrupo(null, "Casa da maria Helena","Iolanda",folheto1, igreja1);
-		PequenoGrupo pg2 = new PequenoGrupo(null, "Casa da Cleide e Paulo","Moisés",folheto1, igreja1);
-		PequenoGrupo pg3 = new PequenoGrupo(null, "Casa da Helena e Pedro","Pr. Euflávio",folheto1, igreja1);
+		PequenoGrupo pg1 = new PequenoGrupo(null, "Casa da maria Helena","Iolanda", igreja1);
+		PequenoGrupo pg2 = new PequenoGrupo(null, "Casa da Cleide e Paulo","Moisés", igreja1);
+		PequenoGrupo pg3 = new PequenoGrupo(null, "Casa da Helena e Pedro","Pr. Euflávio", igreja1);
 		
 		pgRepository.saveAll(Arrays.asList(pg1, pg2, pg3));
 		

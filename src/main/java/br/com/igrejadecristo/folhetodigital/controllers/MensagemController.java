@@ -4,10 +4,12 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,20 +36,8 @@ public class MensagemController {
 	}
 	
 	@CrossOrigin
-	@RequestMapping(value="/folheto/{idFolheto}", method = RequestMethod.GET)
-	public ResponseEntity<MensagemDTO> findIdFolheto(@PathVariable Integer idFolheto) {
-		return ResponseEntity.ok().body(mensagemService.buscarPorFolheto(idFolheto));
-	}
-	
-	@CrossOrigin
-	@RequestMapping(value="/{idMensagem}", method = RequestMethod.GET)
-	public ResponseEntity<MensagemDTO> findIdMensagem(@PathVariable Integer idMensagem) {
-		return ResponseEntity.ok().body(mensagemService.buscarPorFolheto(idMensagem));
-	}
-	
-	@CrossOrigin
-	@RequestMapping(value="/folheto", method = RequestMethod.POST)
-	public ResponseEntity<Void> saveIdFolheto(@PathVariable MensagemNewDTO dto) {
+	@RequestMapping( method = RequestMethod.POST)
+	public ResponseEntity<Void> saveMensagem(@Valid @RequestBody MensagemNewDTO dto) {
 		Mensagem obj = mensagemService.salvarMensagem(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();

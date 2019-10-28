@@ -14,6 +14,4 @@ public interface MensagemRepository extends JpaRepository<Mensagem, Integer>{
 	@Transactional(readOnly=true)
 	public List<Mensagem> findAllByOrderByDataCriado();
 	
-	@Transactional(readOnly=true)
-	public Mensagem findByFolhetosId(Integer idFolheto);
 }
