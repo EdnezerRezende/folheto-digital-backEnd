@@ -1,5 +1,7 @@
 package br.com.igrejadecristo.folhetodigital.entidades;
 
+import java.time.LocalTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -29,17 +32,26 @@ public class PequenoGrupo {
     @ManyToOne
     @JoinColumn(name="igreja_id")
     private Igreja igreja;
+	
+	private String diaSemanaAtividade;
+	
+	@JsonFormat(pattern="HH:mm")
+	private LocalTime horaAtividade;
 
 	public PequenoGrupo() {
 		super();
 	}
 	
-	public PequenoGrupo(Integer id, String responsavelCasa, String lider,  Igreja igreja ) {
+	public PequenoGrupo(Integer id, String responsavelCasa, String lider,  Igreja igreja, 
+			String diaSemanaAtividade, 
+			LocalTime horaAtividade) {
 		super();
 		this.id = id;
 		this.responsavelCasa = responsavelCasa;
 		this.lider = lider;
 		this.igreja = igreja;
+		this.diaSemanaAtividade = diaSemanaAtividade;
+		this.horaAtividade = horaAtividade;
 	}
 
 	public Integer getId() {
@@ -80,6 +92,22 @@ public class PequenoGrupo {
 
 	public void setIgreja(Igreja igreja) {
 		this.igreja = igreja;
+	}
+	
+	public String getDiaSemanaAtividade() {
+		return diaSemanaAtividade;
+	}
+
+	public void setDiaSemanaAtividade(String diaSemanaAtividade) {
+		this.diaSemanaAtividade = diaSemanaAtividade;
+	}
+
+	public LocalTime getHoraAtividade() {
+		return horaAtividade;
+	}
+
+	public void setHoraAtividade(LocalTime horaAtividade) {
+		this.horaAtividade = horaAtividade;
 	}
 
 	@Override

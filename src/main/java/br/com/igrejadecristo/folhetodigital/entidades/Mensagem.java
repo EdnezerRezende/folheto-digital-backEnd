@@ -2,11 +2,14 @@ package br.com.igrejadecristo.folhetodigital.entidades;
 
 import java.time.LocalDate;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -17,6 +20,8 @@ public class Mensagem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
     
+	@Lob @Basic(fetch=FetchType.LAZY)
+    @Column(name="TEXTO")
 	private String mensagem;
 	
 	private String autor;

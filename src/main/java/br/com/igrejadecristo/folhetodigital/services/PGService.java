@@ -15,7 +15,7 @@ public class PGService {
 	private PequenoGrupoRepository pgDao;
 	
 	public List<PequenoGrupo> buscarTodos() {
-		return pgDao.findAll();
+		return pgDao.findAllByOrderByDiaSemanaAtividade();
 	}
 	
 	public List<PequenoGrupo> buscarPorIgreja(Integer idIgreja) {

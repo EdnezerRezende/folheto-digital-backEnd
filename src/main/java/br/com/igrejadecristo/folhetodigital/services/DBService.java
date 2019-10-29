@@ -2,6 +2,7 @@ package br.com.igrejadecristo.folhetodigital.services;
 
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,9 +104,9 @@ public class DBService {
 		
 		mensagemRepository.saveAll(Arrays.asList(mensagem1, mensagem2));
 		
-		PequenoGrupo pg1 = new PequenoGrupo(null, "Casa da maria Helena","Iolanda", igreja1);
-		PequenoGrupo pg2 = new PequenoGrupo(null, "Casa da Cleide e Paulo","Moisés", igreja1);
-		PequenoGrupo pg3 = new PequenoGrupo(null, "Casa da Helena e Pedro","Pr. Euflávio", igreja1);
+		PequenoGrupo pg1 = new PequenoGrupo(null, "Casa da maria Helena","Iolanda", igreja1, "Quinta-Feira", LocalTime.of(19,30));
+		PequenoGrupo pg2 = new PequenoGrupo(null, "Casa da Cleide e Paulo","Moisés", igreja1, "Quarta-Feira", LocalTime.of(20,00));
+		PequenoGrupo pg3 = new PequenoGrupo(null, "Casa da Helena e Pedro","Pr. Euflávio", igreja1, "Quarta-Feira", LocalTime.of(20,00));
 		
 		pgRepository.saveAll(Arrays.asList(pg1, pg2, pg3));
 		
