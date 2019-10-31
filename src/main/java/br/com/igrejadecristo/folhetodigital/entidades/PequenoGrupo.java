@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -26,11 +29,13 @@ public class PequenoGrupo {
 	
 	@OneToOne
 	@JoinColumn(name="pequenogrupo")
+	@Cascade(value = CascadeType.DELETE)
 	private EnderecoPG endereco;
 	
 	@JsonIgnore
     @ManyToOne
     @JoinColumn(name="igreja_id")
+	@Cascade(value = CascadeType.DETACH)
     private Igreja igreja;
 	
 	private String diaSemanaAtividade;

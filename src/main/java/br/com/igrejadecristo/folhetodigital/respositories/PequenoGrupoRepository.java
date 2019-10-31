@@ -17,4 +17,7 @@ public interface PequenoGrupoRepository extends JpaRepository<PequenoGrupo, Inte
 	
 	@Transactional(readOnly=true)
 	public List<PequenoGrupo> findAllByOrderByDiaSemanaAtividade();
+	
+	@Transactional(readOnly=true)
+	public Boolean existsByLiderAndResponsavelCasaAndDiaSemanaAtividadeAndHoraAtividade(String lider, String responsavel, String dia, String hora);
 }
