@@ -31,10 +31,22 @@ public class MensagemService {
 	
 	@Transactional
 	public Mensagem salvarMensagem(MensagemNewDTO dto) {
+		if (dto.getId() != null) {
+			Boolean existeMensagem = mensagemDao.existsById(dto.getId());
+			if (!existeMensagem) {
+				throw new RuntimeException("Ocorreu um erro, mensagem não existe no sistema!");
+			}
+		}
 		
-		Mensagem mensagem = new Mensagem(null,
+		Mensagem mensagem = new Mensagem(dto.getId(),
 				dto.getMensagem(), 
 				dto.getAutor(), LocalDate.now(),  dto.getTitulo());
 		return mensagemDao.save(mensagem);
+	}
+	
+	@Transactional
+	public void deletarMensagem(Integer idMensagem) {
+		
+		mensagemDao.deleteById(idMensagem);
 	}
 }
