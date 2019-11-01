@@ -1,6 +1,6 @@
 package br.com.igrejadecristo.folhetodigital.entidades;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -27,7 +27,7 @@ public class Mensagem {
 	private String autor;
 	
 	@JsonFormat(pattern="dd/MM/yyyy HH:mm")
-	private LocalDate dataCriado;
+	private LocalDateTime dataCriado;
 	
 	private String titulo;
 
@@ -35,7 +35,7 @@ public class Mensagem {
 		super();
 	}
 	
-	public Mensagem(Integer id, String mensagem, String autor, LocalDate dataCriado, String titulo ) {
+	public Mensagem(Integer id, String mensagem, String autor, LocalDateTime dataCriado, String titulo ) {
 		super();
 		this.id = id;
 		this.mensagem = mensagem;
@@ -69,11 +69,11 @@ public class Mensagem {
 		this.autor = autor;
 	}
 
-	public LocalDate getDataCriado() {
+	public LocalDateTime getDataCriado() {
 		return dataCriado;
 	}
 
-	public void setDataCriado(LocalDate dataCriado) {
+	public void setDataCriado(LocalDateTime dataCriado) {
 		this.dataCriado = dataCriado;
 	}
 

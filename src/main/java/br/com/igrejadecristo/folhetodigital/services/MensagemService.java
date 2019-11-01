@@ -1,6 +1,6 @@
 package br.com.igrejadecristo.folhetodigital.services;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -40,7 +40,7 @@ public class MensagemService {
 		
 		Mensagem mensagem = new Mensagem(dto.getId(),
 				dto.getMensagem(), 
-				dto.getAutor(), LocalDate.now(),  dto.getTitulo());
+				dto.getAutor(), LocalDateTime.now(),  dto.getTitulo());
 		return mensagemDao.save(mensagem);
 	}
 	
