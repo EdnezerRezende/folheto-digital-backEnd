@@ -19,5 +19,5 @@ public interface AgendaEventoRepository extends JpaRepository<AgendaEvento, Inte
 	public List<AgendaEvento> findAllByOrderByDiaSemanaAtividade();
 	
 	@Transactional(readOnly=true)
-	public Boolean existsByTitulo(String titulo);
+	public Boolean existsByTituloAndDiaSemanaAtividade(String titulo, String dia);
 }

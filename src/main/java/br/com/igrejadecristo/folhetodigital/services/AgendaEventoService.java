@@ -37,10 +37,10 @@ public class AgendaEventoService {
 		Boolean existe = false;
 
 		if (dto.getId() == null) {
-			existe = agendaEventoDao.existsByTitulo(dto.getTitulo());
+			existe = agendaEventoDao.existsByTituloAndDiaSemanaAtividade(dto.getTitulo(), dto.getDiaSemanaAtividade());
 
 			if (existe) {
-				throw new RuntimeException("Ocorreu um erro, já existe Agenda/Evento com esse título no sistema!");
+				throw new RuntimeException("Ocorreu um erro, já existe Agenda/Evento com esse título e dia da semana no sistema!");
 			}
 		}
 
