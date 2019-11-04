@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.igrejadecristo.folhetodigital.entidades.AgendaEvento;
 import br.com.igrejadecristo.folhetodigital.entidades.Cidade;
+import br.com.igrejadecristo.folhetodigital.entidades.Devocional;
 import br.com.igrejadecristo.folhetodigital.entidades.EnderecoIgreja;
 import br.com.igrejadecristo.folhetodigital.entidades.EnderecoMembro;
 import br.com.igrejadecristo.folhetodigital.entidades.EnderecoPG;
@@ -22,6 +23,7 @@ import br.com.igrejadecristo.folhetodigital.entidades.PequenoGrupo;
 import br.com.igrejadecristo.folhetodigital.entidades.enums.Perfil;
 import br.com.igrejadecristo.folhetodigital.respositories.AgendaEventoRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.CidadeRepository;
+import br.com.igrejadecristo.folhetodigital.respositories.DevocionalRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.EnderecoPGRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.EstadoRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.IgrejaRepository;
@@ -58,6 +60,9 @@ public class DBService {
 
 	@Autowired
 	private AgendaEventoRepository agendaEventoRepository;
+	
+	@Autowired
+	private DevocionalRepository devocionalRepository;
 
 	public void instantiateTestDatabase() throws ParseException {
 		Estado brasilia = new Estado(null, "Brasília");
@@ -148,6 +153,10 @@ public class DBService {
 				LocalDate.of(2019, 10, 25), LocalDate.of(2019, 10, 27));
 		
 		agendaEventoRepository.saveAll(Arrays.asList(agenda, agenda1, evento1));
+		
+		Devocional devocional1 = new Devocional(null, "Lucas 16:1-15",igreja1, "Examinar", LocalDate.now() );
+		Devocional devocional2 = new Devocional(null, "Apocalipse 1:5-10",igreja1, "Examinar", LocalDate.now() );
+		devocionalRepository.saveAll(Arrays.asList(devocional1, devocional2));
 		
 	}
 }

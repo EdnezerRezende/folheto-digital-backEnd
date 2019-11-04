@@ -1,7 +1,6 @@
 package br.com.igrejadecristo.folhetodigital.dto;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 import javax.validation.constraints.NotEmpty;
 
