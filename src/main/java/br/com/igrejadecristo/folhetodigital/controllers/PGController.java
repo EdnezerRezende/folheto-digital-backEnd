@@ -57,9 +57,10 @@ public class PGController {
 	}
 
 	@CrossOrigin
-	@RequestMapping(value="/picture", method=RequestMethod.POST)
-	public ResponseEntity<Void> uploadProfilePicture(@RequestParam(name="file") MultipartFile file) {
-		URI uri = pgService.uploadProfilePicture(file);
+	@RequestMapping(value="/picture/{idPg}", method=RequestMethod.POST)
+	public ResponseEntity<Void> uploadProfilePicture(@RequestParam(name="file") MultipartFile file,
+			@PathVariable Integer idPg) {
+		URI uri = pgService.uploadProfilePicture(file, idPg);
 		return ResponseEntity.created(uri).build();
 	}
 }

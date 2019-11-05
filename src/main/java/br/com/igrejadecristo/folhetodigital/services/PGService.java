@@ -33,7 +33,7 @@ public class PGService {
 	@Autowired
 	private S3Service s3Service;
 	
-	@Value("${img.prefix.client.profile}")
+	@Value("${img.prefix.pg.profile}")
 	private String prefix;
 	
 	@Value("${img.profile.size}")
@@ -77,7 +77,7 @@ public class PGService {
 		pgDao.deleteById(id);
 	}
 	
-	public URI uploadProfilePicture(MultipartFile multipartFile) {
+	public URI uploadProfilePicture(MultipartFile multipartFile, Integer idPg) {
 //		UserSS user = UserService.authenticated();
 //		if (user == null) {
 //			throw new AuthorizationException("Acesso negado");
@@ -87,7 +87,7 @@ public class PGService {
 		jpgImage = imageService.cropSquare(jpgImage);
 		jpgImage = imageService.resize(jpgImage, size);
 		
-		String fileName = prefix + ".jpg";
+		String fileName = prefix + idPg + ".jpg";
 		
 		return s3Service.uploadFile(imageService.getInputStream(jpgImage, "jpg"), fileName, "image");
 	}
