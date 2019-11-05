@@ -1,12 +1,16 @@
 package br.com.igrejadecristo.folhetodigital.services;
 
+import java.awt.image.BufferedImage;
+import java.net.URI;
 import java.time.LocalTime;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.com.igrejadecristo.folhetodigital.dto.PgNewDTO;
 import br.com.igrejadecristo.folhetodigital.entidades.Igreja;
@@ -22,6 +26,18 @@ public class PGService {
 	
 	@Autowired
 	private IgrejaRepository igrejaDao;
+	
+	@Autowired
+	private ImageService imageService;
+	
+	@Autowired
+	private S3Service s3Service;
+	
+	@Value("${img.prefix.client.profile}")
+	private String prefix;
+	
+	@Value("${img.profile.size}")
+	private Integer size;
 	
 	public List<PequenoGrupo> buscarTodos() {
 		return pgDao.findAllByOrderByDiaSemanaAtividade();
@@ -59,5 +75,20 @@ public class PGService {
 	
 	public void deletar(Integer id) {
 		pgDao.deleteById(id);
+	}
+	
+	public URI uploadProfilePicture(MultipartFile multipartFile) {
+//		UserSS user = UserService.authenticated();
+//		if (user == null) {
+//			throw new AuthorizationException("Acesso negado");
+//		}
+		
+		BufferedImage jpgImage = imageService.getJpgImageFromFile(multipartFile);
+		jpgImage = imageService.cropSquare(jpgImage);
+		jpgImage = imageService.resize(jpgImage, size);
+		
+		String fileName = prefix + ".jpg";
+		
+		return s3Service.uploadFile(imageService.getInputStream(jpgImage, "jpg"), fileName, "image");
 	}
 }
