@@ -45,7 +45,8 @@ public class DevocionalService {
 
 		Igreja igreja = igrejaDao.findById(Integer.parseInt(dto.getIdIgreja())).get();
 
-		Devocional agenda = new Devocional(dto.getId(), dto.getReferencia(), igreja, dto.getDescricao() , LocalDate.parse(dto.getDataCriacao()));
+		Devocional agenda = new Devocional(dto.getId(), dto.getReferencia(), igreja, dto.getDescricao() ,
+				dto.getDataCriacao() != null ? LocalDate.parse(dto.getDataCriacao()):LocalDate.now());
 
 		return devocionalDao.save(agenda);
 	}
