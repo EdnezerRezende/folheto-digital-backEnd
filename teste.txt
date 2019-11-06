@@ -1,0 +1,2 @@
+User name,Password,Access key ID,Secret access key,Console login link
+igreja-cristo-user,,AKIASLNJVCWDLS5UJHNT,FCpTPPegF378ULIw5rrydLDvzqRW1rlsmNeens4+,https://161953944966.signin.aws.amazon.com/console

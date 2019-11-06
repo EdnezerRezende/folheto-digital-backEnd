@@ -63,4 +63,5 @@ public class PGController {
 		URI uri = pgService.uploadProfilePicture(file, idPg);
 		return ResponseEntity.created(uri).build();
 	}
+	
 }
