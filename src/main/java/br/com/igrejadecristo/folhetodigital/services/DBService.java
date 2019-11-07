@@ -154,7 +154,7 @@ public class DBService {
 		
 		agendaEventoRepository.saveAll(Arrays.asList(agenda, agenda1, evento1));
 		
-		Devocional devocional1 = new Devocional(null, "Lucas 16:1-15",igreja1, "Examinar", LocalDate.now() );
+		Devocional devocional1 = new Devocional(null, "Lucas 16:1-15",igreja1, "Examinar as escrituras para adquirir sabedoria", LocalDate.now() );
 		Devocional devocional2 = new Devocional(null, "Apocalipse 1:5-10",igreja1, "Examinar", LocalDate.now() );
 		devocionalRepository.saveAll(Arrays.asList(devocional1, devocional2));
 		
