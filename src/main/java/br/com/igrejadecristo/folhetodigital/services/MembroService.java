@@ -10,6 +10,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.igrejadecristo.folhetodigital.dto.MembroDTO;
@@ -31,6 +32,9 @@ public class MembroService {
 	
 	@Autowired
 	private EnderecoRepository enderecoRepository;
+	
+	@Autowired
+	private BCryptPasswordEncoder pe;
 	
 	public Membro buscar(Integer id) {
 //		UserSS user = UserService.authenticated();
@@ -99,7 +103,7 @@ public class MembroService {
 	
 	public Membro fromDTO(MembroNewDTO objDto) {
 		Igreja igreja = new Igreja(objDto.getIgrejaId(),null, null );
-		Membro cli = new Membro(null, objDto.getNome(), objDto.getEmail(),objDto.getCpf(), objDto.getSenha(), igreja);
+		Membro cli = new Membro(null, objDto.getNome(), objDto.getEmail(),objDto.getCpf(), pe.encode(objDto.getSenha()), igreja);
 		Cidade cid = new Cidade(objDto.getCidadeId(), null, null);
 		EnderecoMembro end = new EnderecoMembro(null, objDto.getLogradouro(), objDto.getNumero(), objDto.getComplemento(), objDto.getBairro(), objDto.getCep(), cli, cid);
 		cli.getEnderecos().add(end);

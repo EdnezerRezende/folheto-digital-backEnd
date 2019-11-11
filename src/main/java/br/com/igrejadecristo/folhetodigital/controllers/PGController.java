@@ -7,7 +7,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,19 +27,16 @@ public class PGController {
 	@Autowired
 	private PGService pgService;
 	
-	@CrossOrigin
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<PequenoGrupo>> findAll() {
 		return ResponseEntity.ok().body(pgService.buscarTodos());
 	}
 	
-	@CrossOrigin
 	@RequestMapping(value="/igreja/{idIgreja}", method = RequestMethod.GET)
 	public ResponseEntity<List<PequenoGrupo>> findPorIgreja(@PathVariable Integer idIgreja) {
 		return ResponseEntity.ok().body(pgService.buscarPorIgreja(idIgreja));
 	}
 	
-	@CrossOrigin
 	@RequestMapping( method = RequestMethod.POST)
 	public ResponseEntity<Void> save(@Valid @RequestBody PgNewDTO dto) {
 		PequenoGrupo obj = pgService.salvar(dto);
@@ -49,14 +45,12 @@ public class PGController {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@CrossOrigin
 	@RequestMapping(path="/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		pgService.deletar(id);
 		return ResponseEntity.noContent().build();
 	}
 
-	@CrossOrigin
 	@RequestMapping(value="/picture/{idPg}", method=RequestMethod.POST)
 	public ResponseEntity<Void> uploadProfilePicture(@RequestParam(name="file") MultipartFile file,
 			@PathVariable Integer idPg) {

@@ -8,7 +8,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +27,6 @@ public class MensagemController {
 	@Autowired
 	private MensagemService mensagemService;
 	
-	@CrossOrigin
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<MensagemDTO>> findAll() {
 		List<Mensagem> list = mensagemService.buscarTodos();
@@ -36,7 +34,6 @@ public class MensagemController {
 		return ResponseEntity.ok().body(listDto);
 	}
 	
-	@CrossOrigin
 	@RequestMapping( method = RequestMethod.POST)
 	public ResponseEntity<Void> saveMensagem(@Valid @RequestBody MensagemNewDTO dto) {
 		Mensagem obj = mensagemService.salvarMensagem(dto);
@@ -45,7 +42,6 @@ public class MensagemController {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@CrossOrigin
 	@RequestMapping(path="/{idMensagem}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> deletaMensagem(@PathVariable Integer idMensagem) {
 		mensagemService.deletarMensagem(idMensagem);

@@ -7,6 +7,7 @@ import java.time.LocalTime;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.igrejadecristo.folhetodigital.entidades.AgendaEvento;
@@ -63,6 +64,9 @@ public class DBService {
 	
 	@Autowired
 	private DevocionalRepository devocionalRepository;
+	
+	@Autowired
+	private BCryptPasswordEncoder pe;
 
 	public void instantiateTestDatabase() throws ParseException {
 		Estado brasilia = new Estado(null, "Brasília");
@@ -74,8 +78,8 @@ public class DBService {
 				cidadeIgreja);
 		igreja1.setEndereco(enderecoIgreja);
 
-		Membro membro1 = new Membro(null, "Teste", "teste@gmail.com", "12345678978", "1234", igreja1);
-		Membro membro2 = new Membro(null, "Teste 2", "teste2@gmail.com", "78945612378", "4321", igreja1);
+		Membro membro1 = new Membro(null, "Teste", "teste@gmail.com", "12345678978", pe.encode("1234"), igreja1);
+		Membro membro2 = new Membro(null, "Teste 2", "teste2@gmail.com", "78945612378", pe.encode("4321"), igreja1);
 		membro1.addPerfil(Perfil.ADMIN);
 		membro2.addPerfil(Perfil.PASTOR);
 
