@@ -12,7 +12,7 @@
 	<groupId>br.com.igrejadecristo</groupId>
 	<artifactId>folheto-geral</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>folheto-geral</name>
 	<description>Sistema para visualização de programações e mensagens da Primeira Igreja de Cristo</description>
 

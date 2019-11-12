@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -Dspring.profiles.active=prod $JAVA_OPTS -jar target/folheto-geral-0.0.1-SNAPSHOT.war
+web: java -Dserver.port=$PORT -Dspring.profiles.active=prod $JAVA_OPTS -jar target/folheto-geral-0.0.1-SNAPSHOT.jar
