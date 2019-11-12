@@ -24,7 +24,7 @@ public class DevocionalService {
 	private IgrejaRepository igrejaDao;
 
 	public List<Devocional> buscarTodos() {
-		return devocionalDao.findAllByOrderByDataCriacao();
+		return devocionalDao.findAllByOrderByDataCriacaoDesc();
 	}
 
 	public List<Devocional> buscarPorIgreja(Integer idIgreja) {

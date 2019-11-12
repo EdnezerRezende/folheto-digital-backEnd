@@ -81,7 +81,7 @@ public class DBService {
 		Membro membro1 = new Membro(null, "Teste", "teste@gmail.com", "12345678978", pe.encode("1234"), igreja1);
 		Membro membro2 = new Membro(null, "Teste 2", "teste2@gmail.com", "78945612378", pe.encode("4321"), igreja1);
 		membro1.addPerfil(Perfil.ADMIN);
-		membro2.addPerfil(Perfil.PASTOR);
+		membro2.addPerfil(Perfil.LIDER);
 
 		Estado est1 = new Estado(null, "Minas Gerais");
 		Estado est2 = new Estado(null, "São Paulo");
