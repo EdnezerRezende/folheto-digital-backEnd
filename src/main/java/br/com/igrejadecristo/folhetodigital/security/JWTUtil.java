@@ -1,9 +1,13 @@
 package br.com.igrejadecristo.folhetodigital.security;
 
 
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
@@ -19,9 +23,13 @@ public class JWTUtil {
 	@Value("${jwt.expiration}")
 	private Long expiration;
 	
-	public String generateToken(String username) {
+	public String generateToken(String username,Collection<? extends GrantedAuthority> perfis) {
+		final Map<String, Object> tokenData = new HashMap<>();
+		tokenData.put("perfis", perfis);
+		tokenData.put("email", username);
 		return Jwts.builder()
 				.setSubject(username)
+//				.setClaims(tokenData)
 				.setExpiration(new Date(System.currentTimeMillis() + expiration))
 				.signWith(SignatureAlgorithm.HS512, secret.getBytes())
 				.compact();
