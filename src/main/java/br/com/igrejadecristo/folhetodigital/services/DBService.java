@@ -35,9 +35,6 @@ import br.com.igrejadecristo.folhetodigital.respositories.PequenoGrupoRepository
 @Service
 public class DBService {
 
-//	@Autowired
-//	private BCryptPasswordEncoder pe;
-
 	@Autowired
 	public MembroRepository membroRepository;
 
@@ -78,8 +75,9 @@ public class DBService {
 				cidadeIgreja);
 		igreja1.setEndereco(enderecoIgreja);
 
-		Membro membro1 = new Membro(null, "Teste", "teste@gmail.com", "12345678978", pe.encode("1234"), igreja1);
-		Membro membro2 = new Membro(null, "Teste 2", "teste2@gmail.com", "78945612378", pe.encode("4321"), igreja1);
+		Membro membro1 = new Membro(null, "Teste", "admin@gmail.com", "12345678978", pe.encode("1234"), igreja1);
+		Membro membro3 = new Membro(null, "Teste1", "membro@gmail.com", "37668105026", pe.encode("1234"), igreja1);
+		Membro membro2 = new Membro(null, "Teste 2", "lider@gmail.com", "78945612378", pe.encode("4321"), igreja1);
 		membro1.addPerfil(Perfil.ADMIN);
 		membro2.addPerfil(Perfil.LIDER);
 
@@ -92,7 +90,8 @@ public class DBService {
 
 		membro1.getTelefones().addAll(Arrays.asList("27363323", "93838393"));
 		membro2.getTelefones().addAll(Arrays.asList("93883321", "34252625"));
-
+		membro3.getTelefones().addAll(Arrays.asList("45645789", "55688977"));
+		
 		EnderecoMembro e1 = new EnderecoMembro(null, "Rua Flores", "300", "Apto 303", "Jardim", "38220834", membro1,
 				c1);
 		EnderecoMembro e2 = new EnderecoMembro(null, "Avenida Matos", "105", "Sala 800", "Centro", "38777012", membro1,
@@ -101,7 +100,9 @@ public class DBService {
 				c2);
 		EnderecoMembro e4 = new EnderecoMembro(null, "Avenida Floriano", "2244", null, "Centro", "281777012", membro2,
 				c2);
-
+		EnderecoMembro e5 = new EnderecoMembro(null, "Avenida Floriano", "2244", null, "Centro", "281777012", membro3,
+				c2);
+		
 		estadoRepository.saveAll(Arrays.asList(est1, est2, brasilia));
 		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3, cidadeIgreja));
 
@@ -109,8 +110,9 @@ public class DBService {
 
 		membro1.getEnderecos().addAll(Arrays.asList(e1, e2));
 		membro2.getEnderecos().addAll(Arrays.asList(e3, e4));
+		membro3.getEnderecos().addAll(Arrays.asList(e5));
 
-		membroRepository.saveAll(Arrays.asList(membro1, membro2));
+		membroRepository.saveAll(Arrays.asList(membro1, membro2, membro3));
 
 		Mensagem mensagem1 = new Mensagem(null,
 				"Costa Neto é pastor de uma das maiores igrejas de Fortaleza, a Comunidade Cristã Videira. "
