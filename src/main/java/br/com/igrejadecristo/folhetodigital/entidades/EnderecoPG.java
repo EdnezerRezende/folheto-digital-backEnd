@@ -8,11 +8,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Endereco implements Serializable{
+public class EnderecoPG implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -27,16 +28,16 @@ public class Endereco implements Serializable{
     private String cep;
     
     @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name="membro_id")
-    private Membro membro;
+    @OneToOne
+    @JoinColumn(name="pequenogrupo_id")
+    private PequenoGrupo pg;
 
     @ManyToOne
     @JoinColumn(name="cidade_id")
     private Cidade cidade;
 
-	public Endereco(Integer id, String logradouro, String numero, String complemento, String bairro, String cep,
-			Membro membro,
+	public EnderecoPG(Integer id, String logradouro, String numero, String complemento, String bairro, String cep,
+			PequenoGrupo pg,
 			Cidade cidade) {
 		super();
 		this.id = id;
@@ -45,11 +46,11 @@ public class Endereco implements Serializable{
 		this.complemento = complemento;
 		this.bairro = bairro;
 		this.cep = cep;
-		this.membro = membro;
+		this.pg = pg;
 		this.cidade = cidade;
 	}
 
-	public Endereco() {
+	public EnderecoPG() {
 		super();
 	}
 
@@ -101,12 +102,12 @@ public class Endereco implements Serializable{
 		this.cep = cep;
 	}
 
-	public Membro getMembro() {
-		return membro;
+	public PequenoGrupo getPg() {
+		return pg;
 	}
 
-	public void setMembro(Membro membro) {
-		this.membro = membro;
+	public void setPg(PequenoGrupo pg) {
+		this.pg = pg;
 	}
 
 	public Cidade getCidade() {
@@ -133,7 +134,7 @@ public class Endereco implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Endereco other = (Endereco) obj;
+		EnderecoPG other = (EnderecoPG) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

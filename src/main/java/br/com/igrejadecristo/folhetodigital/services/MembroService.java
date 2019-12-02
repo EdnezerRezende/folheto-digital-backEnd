@@ -10,12 +10,14 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.igrejadecristo.folhetodigital.dto.MembroDTO;
 import br.com.igrejadecristo.folhetodigital.dto.MembroNewDTO;
 import br.com.igrejadecristo.folhetodigital.entidades.Cidade;
-import br.com.igrejadecristo.folhetodigital.entidades.Endereco;
+import br.com.igrejadecristo.folhetodigital.entidades.EnderecoMembro;
+import br.com.igrejadecristo.folhetodigital.entidades.Igreja;
 import br.com.igrejadecristo.folhetodigital.entidades.Membro;
 import br.com.igrejadecristo.folhetodigital.respositories.EnderecoRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.MembroRepository;
@@ -30,6 +32,9 @@ public class MembroService {
 	
 	@Autowired
 	private EnderecoRepository enderecoRepository;
+	
+	@Autowired
+	private BCryptPasswordEncoder pe;
 	
 	public Membro buscar(Integer id) {
 //		UserSS user = UserService.authenticated();
@@ -68,8 +73,9 @@ public class MembroService {
 		}
 	}
 	
-	public List<Membro> findAll() {
-		return membroDao.findAll();
+	public List<Membro> findAll(Integer idIgreja) {
+		
+		return membroDao.findByIgrejaId(idIgreja);
 	}
 	
 	public Membro findByEmail(String email) {
@@ -92,13 +98,14 @@ public class MembroService {
 	}
 	
 	public Membro fromDTO(MembroDTO objDto) {
-		return new Membro(objDto.getId(), objDto.getNome(), objDto.getEmail(),null, null);
+		return new Membro(objDto.getId(), objDto.getNome(), objDto.getEmail(),null, null, null);
 	}
 	
 	public Membro fromDTO(MembroNewDTO objDto) {
-		Membro cli = new Membro(null, objDto.getNome(), objDto.getEmail(),objDto.getCpf(), objDto.getSenha() );
+		Igreja igreja = new Igreja(objDto.getIgrejaId(),null, null );
+		Membro cli = new Membro(null, objDto.getNome(), objDto.getEmail(),objDto.getCpf(), pe.encode(objDto.getSenha()), igreja);
 		Cidade cid = new Cidade(objDto.getCidadeId(), null, null);
-		Endereco end = new Endereco(null, objDto.getLogradouro(), objDto.getNumero(), objDto.getComplemento(), objDto.getBairro(), objDto.getCep(), cli, cid);
+		EnderecoMembro end = new EnderecoMembro(null, objDto.getLogradouro(), objDto.getNumero(), objDto.getComplemento(), objDto.getBairro(), objDto.getCep(), cli, cid);
 		cli.getEnderecos().add(end);
 		cli.getTelefones().add(objDto.getTelefone1());
 		if (objDto.getTelefone2()!=null) {

@@ -50,6 +50,8 @@ public class MembroNewDTO  implements Serializable {
 	private String telefone3;
 	
 	private Integer cidadeId;
+	
+	private Integer igrejaId;
 
 	public MembroNewDTO() {
 		super();
@@ -158,5 +160,13 @@ public class MembroNewDTO  implements Serializable {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	
+
+	public Integer getIgrejaId() {
+		return igrejaId;
+	}
+
+	public void setIgrejaId(Integer igrejaId) {
+		this.igrejaId = igrejaId;
+	}
+
 }

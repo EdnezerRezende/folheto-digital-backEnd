@@ -15,6 +15,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -43,7 +45,12 @@ public class Membro {
 	private Set<Integer> perfis = new HashSet<>();
 	
 	@OneToMany(mappedBy = "membro", cascade=CascadeType.ALL)
-    private List<Endereco> enderecos = new ArrayList<>();
+    private List<EnderecoMembro> enderecos = new ArrayList<>();
+	
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name="igreja_id")
+    private Igreja igreja;
 
 	@ElementCollection
     @CollectionTable(name = "TELEFONE")
@@ -53,13 +60,16 @@ public class Membro {
 		addPerfil(Perfil.MEMBRO);
 	}
 	
-	public Membro(Integer id, String nome, String email, String cpf, String senha) {
+	public Membro(Integer id, String nome, String email, String cpf, String senha
+			, Igreja igreja
+			) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
 		this.senha = senha;
+		this.igreja = igreja;
 		addPerfil(Perfil.MEMBRO);
 	}
 
@@ -112,11 +122,11 @@ public class Membro {
 		this.senha = senha;
 	}
 
-	public List<Endereco> getEnderecos() {
+	public List<EnderecoMembro> getEnderecos() {
 		return enderecos;
 	}
 
-	public void setEnderecos(List<Endereco> enderecos) {
+	public void setEnderecos(List<EnderecoMembro> enderecos) {
 		this.enderecos = enderecos;
 	}
 
@@ -128,6 +138,14 @@ public class Membro {
 		this.telefones = telefones;
 	}
 	
+	public Igreja getIgreja() {
+		return igreja;
+	}
+
+	public void setIgreja(Igreja igreja) {
+		this.igreja = igreja;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

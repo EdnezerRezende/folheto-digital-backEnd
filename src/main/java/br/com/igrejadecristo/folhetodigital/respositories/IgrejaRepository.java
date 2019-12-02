@@ -7,14 +7,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.igrejadecristo.folhetodigital.entidades.Membro;
+import br.com.igrejadecristo.folhetodigital.entidades.Igreja;
 
 @Repository
-public interface MembroRepository extends JpaRepository<Membro, Integer>{
-
+public interface IgrejaRepository extends JpaRepository<Igreja, Integer>{
 	@Transactional(readOnly=true)
-	public Membro findByEmail(String email);
-	
-	@Transactional(readOnly=true)
-	public List<Membro> findByIgrejaId(Integer idIgreja);
+	public List<Igreja> findAllByOrderByNome();
 }

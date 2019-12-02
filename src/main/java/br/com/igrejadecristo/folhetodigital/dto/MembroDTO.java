@@ -58,5 +58,5 @@ public class MembroDTO  implements Serializable {
 		this.id = id;
 	}
 
-	
+
 }
