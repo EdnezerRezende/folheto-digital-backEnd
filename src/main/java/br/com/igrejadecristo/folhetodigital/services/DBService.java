@@ -70,10 +70,24 @@ public class DBService {
 
 		Cidade cidadeIgreja = new Cidade(null, "Taguatinha Sul", brasilia);
 
-		Igreja igreja1 = new Igreja(null, "Primeira Igreja de Cristo", "22782170000108");
+		Igreja igreja1 = new Igreja(null, "Primeira Igreja de Cristo", "22782170000108", "cristeltagsul@bol.com.br");
+		igreja1.getTelefones().addAll(Arrays.asList("6135631865", "6135635788"));
+		
 		EnderecoIgreja enderecoIgreja = new EnderecoIgreja(null, "QSB 10/11 A.E. 09", "", "", "", "72015600", igreja1,
 				cidadeIgreja);
 		igreja1.setEndereco(enderecoIgreja);
+		
+		Estado est1 = new Estado(null, "Minas Gerais");
+		Estado est2 = new Estado(null, "São Paulo");
+
+		Cidade c1 = new Cidade(null, "Uberlândia", est1);
+		Cidade c2 = new Cidade(null, "São Paulo", est2);
+		Cidade c3 = new Cidade(null, "Campinas", est2);
+		
+		estadoRepository.saveAll(Arrays.asList(est1, est2, brasilia));
+		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3, cidadeIgreja));
+
+		igrejaRepository.saveAll(Arrays.asList(igreja1));
 
 		Membro membro1 = new Membro(null, "Teste", "admin@gmail.com", "12345678978", pe.encode("1234"), igreja1);
 		Membro membro3 = new Membro(null, "Teste1", "membro@gmail.com", "37668105026", pe.encode("1234"), igreja1);
@@ -81,16 +95,9 @@ public class DBService {
 		membro1.addPerfil(Perfil.ADMIN);
 		membro2.addPerfil(Perfil.LIDER);
 
-		Estado est1 = new Estado(null, "Minas Gerais");
-		Estado est2 = new Estado(null, "São Paulo");
-
-		Cidade c1 = new Cidade(null, "Uberlândia", est1);
-		Cidade c2 = new Cidade(null, "São Paulo", est2);
-		Cidade c3 = new Cidade(null, "Campinas", est2);
-
-		membro1.getTelefones().addAll(Arrays.asList("27363323", "93838393"));
-		membro2.getTelefones().addAll(Arrays.asList("93883321", "34252625"));
-		membro3.getTelefones().addAll(Arrays.asList("45645789", "55688977"));
+		membro1.getTelefones().addAll(Arrays.asList("6127363323", "6193838393"));
+		membro2.getTelefones().addAll(Arrays.asList("6193883321", "6134252625"));
+		membro3.getTelefones().addAll(Arrays.asList("6145645789", "6155688977"));
 		
 		EnderecoMembro e1 = new EnderecoMembro(null, "Rua Flores", "300", "Apto 303", "Jardim", "38220834", membro1,
 				c1);
@@ -102,11 +109,6 @@ public class DBService {
 				c2);
 		EnderecoMembro e5 = new EnderecoMembro(null, "Avenida Floriano", "2244", null, "Centro", "281777012", membro3,
 				c2);
-		
-		estadoRepository.saveAll(Arrays.asList(est1, est2, brasilia));
-		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3, cidadeIgreja));
-
-		igrejaRepository.saveAll(Arrays.asList(igreja1));
 
 		membro1.getEnderecos().addAll(Arrays.asList(e1, e2));
 		membro2.getEnderecos().addAll(Arrays.asList(e3, e4));

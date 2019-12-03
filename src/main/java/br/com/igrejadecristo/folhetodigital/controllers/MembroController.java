@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.igrejadecristo.folhetodigital.dto.MembroDTO;
+import br.com.igrejadecristo.folhetodigital.dto.MembroInfoDTO;
 import br.com.igrejadecristo.folhetodigital.dto.MembroNewDTO;
 import br.com.igrejadecristo.folhetodigital.entidades.Membro;
 import br.com.igrejadecristo.folhetodigital.services.MembroService;
@@ -40,8 +41,8 @@ public class MembroController {
 
 	@PreAuthorize("hasAnyRole('ADMIN','MEMBRO')") 
 	@RequestMapping(value="/email", method=RequestMethod.GET)
-	public ResponseEntity<Membro> find(@RequestParam(value="value") String email) {
-		Membro obj = membroService.findByEmail(email);
+	public ResponseEntity<MembroInfoDTO> find(@RequestParam(value="value") String email) {
+		MembroInfoDTO obj = membroService.findByEmail(email);
 		return ResponseEntity.ok().body(obj);
 	}
 	
