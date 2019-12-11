@@ -45,13 +45,16 @@ public class Igreja {
 	@OneToMany(mappedBy = "igreja", cascade=CascadeType.ALL)
     private List<Devocional> Devocionais = new ArrayList<>();
 	
+	@JsonIgnore
+	@OneToMany(mappedBy = "igreja", cascade=CascadeType.ALL)
+    private List<OfertaServico> servicos = new ArrayList<>();
+	
 	@OneToOne(mappedBy = "igreja", cascade=CascadeType.ALL)
     private EnderecoIgreja endereco;
 
 	@ElementCollection
     @CollectionTable(name = "TELEFONEIGREJA")
     private Set<String> telefones = new HashSet<>();
-
 	
 	public Igreja() {
 		super();
@@ -121,6 +124,38 @@ public class Igreja {
 
 	public void setEndereco(EnderecoIgreja endereco) {
 		this.endereco = endereco;
+	}
+	
+	public List<PequenoGrupo> getPgs() {
+		return pgs;
+	}
+
+	public void setPgs(List<PequenoGrupo> pgs) {
+		this.pgs = pgs;
+	}
+
+	public List<AgendaEvento> getAgendas() {
+		return agendas;
+	}
+
+	public void setAgendas(List<AgendaEvento> agendas) {
+		this.agendas = agendas;
+	}
+
+	public List<Devocional> getDevocionais() {
+		return Devocionais;
+	}
+
+	public void setDevocionais(List<Devocional> devocionais) {
+		Devocionais = devocionais;
+	}
+
+	public List<OfertaServico> getServicos() {
+		return servicos;
+	}
+
+	public void setServicos(List<OfertaServico> servicos) {
+		this.servicos = servicos;
 	}
 
 	@Override

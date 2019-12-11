@@ -20,6 +20,7 @@ import br.com.igrejadecristo.folhetodigital.entidades.Estado;
 import br.com.igrejadecristo.folhetodigital.entidades.Igreja;
 import br.com.igrejadecristo.folhetodigital.entidades.Membro;
 import br.com.igrejadecristo.folhetodigital.entidades.Mensagem;
+import br.com.igrejadecristo.folhetodigital.entidades.OfertaServico;
 import br.com.igrejadecristo.folhetodigital.entidades.PequenoGrupo;
 import br.com.igrejadecristo.folhetodigital.entidades.enums.Perfil;
 import br.com.igrejadecristo.folhetodigital.respositories.AgendaEventoRepository;
@@ -30,6 +31,7 @@ import br.com.igrejadecristo.folhetodigital.respositories.EstadoRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.IgrejaRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.MembroRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.MensagemRepository;
+import br.com.igrejadecristo.folhetodigital.respositories.OfertaServicoRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.PequenoGrupoRepository;
 
 @Service
@@ -61,6 +63,9 @@ public class DBService {
 	
 	@Autowired
 	private DevocionalRepository devocionalRepository;
+	
+	@Autowired
+	private OfertaServicoRepository ofertaServicoRepository;
 	
 	@Autowired
 	private BCryptPasswordEncoder pe;
@@ -165,6 +170,18 @@ public class DBService {
 		Devocional devocional1 = new Devocional(null, "Lucas 16:1-15",igreja1, "Examinar as escrituras para adquirir sabedoria", LocalDate.now() );
 		Devocional devocional2 = new Devocional(null, "Apocalipse 1:5-10",igreja1, "Examinar", LocalDate.now() );
 		devocionalRepository.saveAll(Arrays.asList(devocional1, devocional2));
+		
+		
+		OfertaServico oferta1 = new OfertaServico(null,"Academia Maestro", igreja1, "Escola de música. Aprenda a tocar suas canções favoritas!",null,null,null,"Taguatinga Sul",LocalDate.now());
+		oferta1.getTelefones().addAll(Arrays.asList("981471968"));
+		OfertaServico oferta2 = new OfertaServico(null,"Fique bela com a Pra Maria", igreja1, "Avon. Demilus. Natura. Produtos a pronta-entrega",null,null,null,"Taguatinga Sul",LocalDate.now());
+		oferta2.getTelefones().addAll(Arrays.asList("982912987"));
+		OfertaServico oferta3 = new OfertaServico(null,"Miter Top Team - Escola de Lutas", igreja1, "Judô, Jiu Jitsu, Taekwondo, Karatê, Muay Thai, Boxe, MMA, Defesa pessoal, Miter Fight Training",null,null,null,null,LocalDate.now());
+		oferta3.getTelefones().addAll(Arrays.asList("39733030", "999638966"));
+		OfertaServico oferta4 = new OfertaServico(null,"Paulo e Saulo Corretora de Seguros", igreja1, "Plano de Seguro / Seguro Auto Paulo Chaveiro","paulochaveiro@gmail.com",null,null,null,LocalDate.now());
+		oferta4.getTelefones().addAll(Arrays.asList("986178886"));
+		
+		ofertaServicoRepository.saveAll(Arrays.asList(oferta1,oferta2,oferta3, oferta4));
 		
 	}
 }
