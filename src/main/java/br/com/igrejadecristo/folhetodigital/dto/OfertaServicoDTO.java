@@ -8,7 +8,7 @@ import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class OfertaServicoNewDTO implements Serializable {
+public class OfertaServicoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
@@ -35,11 +35,11 @@ public class OfertaServicoNewDTO implements Serializable {
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private String dataCriacao;
 	
-	public OfertaServicoNewDTO() {
+	public OfertaServicoDTO() {
 		super();
 	}
 
-	public OfertaServicoNewDTO(Integer id, @NotEmpty(message = "Preenchimento obrigatório") String nome,
+	public OfertaServicoDTO(Integer id, @NotEmpty(message = "Preenchimento obrigatório") String nome,
 			@NotEmpty(message = "Preenchimento obrigatório") String idIgreja,
 			@NotEmpty(message = "Preenchimento obrigatório") String descricao,
 			Set<String> telefones,

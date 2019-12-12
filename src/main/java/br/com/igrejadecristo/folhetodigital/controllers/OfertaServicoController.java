@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.igrejadecristo.folhetodigital.dto.OfertaServicoDTO;
 import br.com.igrejadecristo.folhetodigital.dto.OfertaServicoNewDTO;
 import br.com.igrejadecristo.folhetodigital.entidades.OfertaServico;
 import br.com.igrejadecristo.folhetodigital.services.OfertaServicoService;
@@ -28,7 +29,7 @@ public class OfertaServicoController {
 	
 	@PreAuthorize("hasAnyRole('ADMIN','MEMBRO')") 
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<List<OfertaServico>> findAll() {
+	public ResponseEntity<List<OfertaServicoDTO>> findAll() {
 		return ResponseEntity.ok().body(ofertaServicoService.buscarTodos());
 	}
 	

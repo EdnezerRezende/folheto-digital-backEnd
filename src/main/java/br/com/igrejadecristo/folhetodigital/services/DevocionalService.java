@@ -1,6 +1,7 @@
 package br.com.igrejadecristo.folhetodigital.services;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -45,8 +46,10 @@ public class DevocionalService {
 
 		Igreja igreja = igrejaDao.findById(Integer.parseInt(dto.getIdIgreja())).get();
 
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		
 		Devocional agenda = new Devocional(dto.getId(), dto.getReferencia(), igreja, dto.getDescricao() ,
-				dto.getDataCriacao() != null ? LocalDate.parse(dto.getDataCriacao()):LocalDate.now());
+				dto.getDataCriacao() != null ? LocalDate.parse(dto.getDataCriacao(), formatter):LocalDate.now());
 
 		return devocionalDao.save(agenda);
 	}

@@ -2,6 +2,7 @@ package br.com.igrejadecristo.folhetodigital.services;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -46,8 +47,10 @@ public class AgendaEventoService {
 
 		Igreja igreja = igrejaDao.findById(Integer.parseInt(dto.getIdIgreja())).get();
 
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		
 		AgendaEvento agenda = new AgendaEvento(dto.getId(), dto.getTitulo(), igreja, dto.getDiaSemanaAtividade(),
-				LocalTime.parse(dto.getHoraAtividade()), dto.getIsEvento(), dto.getDescricao(), LocalDate.parse(dto.getDataInicio()), LocalDate.parse(dto.getDataFim()) );
+				LocalTime.parse(dto.getHoraAtividade()), dto.getIsEvento(), dto.getDescricao(), LocalDate.parse(dto.getDataInicio(), formatter), LocalDate.parse(dto.getDataFim(), formatter) );
 
 		return agendaEventoDao.save(agenda);
 	}
