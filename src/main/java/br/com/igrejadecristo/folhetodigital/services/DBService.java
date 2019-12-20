@@ -99,9 +99,10 @@ public class DBService {
 
 		igrejaRepository.saveAll(Arrays.asList(igreja1));
 
-		Membro membro1 = new Membro(null, "Teste", "admin@gmail.com", "12345678978", pe.encode("1234"), igreja1);
-		Membro membro3 = new Membro(null, "Teste1", "membro@gmail.com", "37668105026", pe.encode("1234"), igreja1);
-		Membro membro2 = new Membro(null, "Teste 2", "lider@gmail.com", "78945612378", pe.encode("4321"), igreja1);
+		LocalDate dataNascimento = LocalDate.now();
+		Membro membro1 = new Membro(null, "Teste", "admin@gmail.com", "12345678978", pe.encode("1234"), igreja1, dataNascimento.minusDays(3));
+		Membro membro3 = new Membro(null, "Teste1", "membro@gmail.com", "37668105026", pe.encode("1234"), igreja1, dataNascimento.plusDays(2));
+		Membro membro2 = new Membro(null, "Teste 2", "lider@gmail.com", "78945612378", pe.encode("1234"), igreja1, dataNascimento);
 		membro1.addPerfil(Perfil.ADMIN);
 		membro2.addPerfil(Perfil.LIDER);
 

@@ -1,5 +1,6 @@
 package br.com.igrejadecristo.folhetodigital.entidades;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -19,6 +20,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.igrejadecristo.folhetodigital.entidades.enums.Perfil;
@@ -36,6 +38,9 @@ public class Membro {
 	private String email;
 	
 	private String cpf;
+	
+	@JsonFormat(pattern="dd/MM/yyyy")
+	private LocalDate dataNascimento;
 	
 	@JsonIgnore
 	private String senha;
@@ -61,7 +66,7 @@ public class Membro {
 	}
 	
 	public Membro(Integer id, String nome, String email, String cpf, String senha
-			, Igreja igreja
+			, Igreja igreja, LocalDate dataNascimento
 			) {
 		super();
 		this.id = id;
@@ -70,6 +75,7 @@ public class Membro {
 		this.cpf = cpf;
 		this.senha = senha;
 		this.igreja = igreja;
+		this.dataNascimento = dataNascimento;
 		addPerfil(Perfil.MEMBRO);
 	}
 
@@ -144,6 +150,14 @@ public class Membro {
 
 	public void setIgreja(Igreja igreja) {
 		this.igreja = igreja;
+	}
+
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
 	@Override

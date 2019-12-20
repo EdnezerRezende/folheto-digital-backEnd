@@ -52,6 +52,8 @@ public class MembroNewDTO  implements Serializable {
 	private Integer cidadeId;
 	
 	private Integer igrejaId;
+	
+	private String dataNascimento;
 
 	public MembroNewDTO() {
 		super();
@@ -167,6 +169,14 @@ public class MembroNewDTO  implements Serializable {
 
 	public void setIgrejaId(Integer igrejaId) {
 		this.igrejaId = igrejaId;
+	}
+
+	public String getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(String dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
 }

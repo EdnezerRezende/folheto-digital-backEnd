@@ -92,4 +92,12 @@ public class MembroController {
 		Page<MembroDTO> listDto = list.map(obj -> new MembroDTO(obj));  
 		return ResponseEntity.ok().body(listDto);
 	}	
+	
+	@PreAuthorize("hasAnyRole('MEMBRO')") 
+	@RequestMapping(value="/aniversariantes/{idIgreja}", method=RequestMethod.GET)
+	public ResponseEntity<List<MembroDTO>> buscarTodosAniversariantes(@PathVariable Integer idIgreja) {
+		List<Membro> list = membroService.findAllMembrosByDataNascimento(idIgreja);
+		List<MembroDTO> listDto = list.stream().map(obj -> new MembroDTO(obj)).collect(Collectors.toList());  
+		return ResponseEntity.ok().body(listDto);
+	}
 }

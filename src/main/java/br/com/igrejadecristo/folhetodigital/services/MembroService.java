@@ -1,5 +1,7 @@
 package br.com.igrejadecristo.folhetodigital.services;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -104,13 +106,17 @@ public class MembroService {
 	}
 
 	public Membro fromDTO(MembroDTO objDto) {
-		return new Membro(objDto.getId(), objDto.getNome(), objDto.getEmail(), null, null, null);
+		return new Membro(objDto.getId(), objDto.getNome(), objDto.getEmail(), null, null, null, null);
 	}
 
 	public Membro fromDTO(MembroNewDTO objDto) {
 		Igreja igreja = new Igreja(objDto.getIgrejaId(), null, null, null);
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate dataNascimento = LocalDate.parse(objDto.getDataNascimento(),formatter);
+		
 		Membro cli = new Membro(null, objDto.getNome(), objDto.getEmail(), objDto.getCpf(),
-				pe.encode(objDto.getSenha()), igreja);
+				pe.encode(objDto.getSenha()), igreja, dataNascimento);
 		Cidade cid = new Cidade(objDto.getCidadeId(), null, null);
 		EnderecoMembro end = new EnderecoMembro(null, objDto.getLogradouro(), objDto.getNumero(),
 				objDto.getComplemento(), objDto.getBairro(), objDto.getCep(), cli, cid);
@@ -128,6 +134,13 @@ public class MembroService {
 	private void updateData(Membro newObj, Membro obj) {
 		newObj.setNome(obj.getNome());
 		newObj.setEmail(obj.getEmail());
+	}
+	
+	public List<Membro> findAllMembrosByDataNascimento(Integer idIgreja){
+		LocalDate dataInicial = LocalDate.now().minusWeeks(1);
+		LocalDate dataFinal = LocalDate.now();
+		List<Membro> membros = membroDao.buscaMembrosPorDataInicioEFim(dataInicial, dataFinal);
+		return membros;
 	}
 
 }
