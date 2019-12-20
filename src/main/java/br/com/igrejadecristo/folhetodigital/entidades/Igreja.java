@@ -49,6 +49,14 @@ public class Igreja {
 	@OneToMany(mappedBy = "igreja", cascade=CascadeType.ALL)
     private List<OfertaServico> servicos = new ArrayList<>();
 	
+	@JsonIgnore
+	@OneToMany(mappedBy = "igreja", cascade=CascadeType.ALL)
+    private List<Mensagem> mensagens = new ArrayList<>();
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "igreja", cascade=CascadeType.ALL)
+    private List<Missao> missoes = new ArrayList<>();
+	
 	@OneToOne(mappedBy = "igreja", cascade=CascadeType.ALL)
     private EnderecoIgreja endereco;
 

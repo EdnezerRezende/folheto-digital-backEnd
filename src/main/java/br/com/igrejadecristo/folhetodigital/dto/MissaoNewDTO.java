@@ -6,9 +6,9 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
-import br.com.igrejadecristo.folhetodigital.entidades.Mensagem;
+import br.com.igrejadecristo.folhetodigital.entidades.Missao;
 
-public class MensagemNewDTO implements Serializable {
+public class MissaoNewDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
@@ -24,11 +24,11 @@ public class MensagemNewDTO implements Serializable {
 	
 	private Integer igrejaId;
 	
-	public MensagemNewDTO() {
+	public MissaoNewDTO() {
 		super();
 	}
 
-	public MensagemNewDTO(Integer id, String mensagem, String autor,  String titulo) {
+	public MissaoNewDTO(Integer id, String mensagem, String autor,  String titulo) {
 		super();
 		this.id = id;
 		this.mensagem = mensagem;
@@ -36,12 +36,12 @@ public class MensagemNewDTO implements Serializable {
 		this.titulo = titulo;
 	}
 	
-	public MensagemNewDTO(Mensagem mensagem) {
+	public MissaoNewDTO(Missao missao) {
 		super();
-		this.id = mensagem.getId();
-		this.mensagem = mensagem.getMensagem();
-		this.autor = mensagem.getAutor();
-		this.titulo = mensagem.getTitulo();
+		this.id = missao.getId();
+		this.mensagem = missao.getMensagem();
+		this.autor = missao.getAutor();
+		this.titulo = missao.getTitulo();
 	}
 
 	public Integer getId() {
