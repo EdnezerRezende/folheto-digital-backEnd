@@ -47,7 +47,6 @@ public class MembroController {
 	}
 	
 
-	@PreAuthorize("hasAnyRole('ADMIN','LIDER')") 
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody MembroNewDTO objDto) {
 		Membro obj = membroService.fromDTO(objDto);
@@ -57,7 +56,6 @@ public class MembroController {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@PreAuthorize("hasAnyRole('ADMIN','LIDER')") 
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody MembroDTO objDto, @PathVariable Integer id) {
 		Membro obj = membroService.fromDTO(objDto);

@@ -23,7 +23,6 @@ public class IgrejaController {
 	@Autowired
 	private IgrejaService igrejaService;
 	
-	@PreAuthorize("hasAnyRole('ADMIN','LIDER','PASTOR')") 
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<IgrejaDTO>> findAll() {
 		List<Igreja> list = igrejaService.buscarTodos();

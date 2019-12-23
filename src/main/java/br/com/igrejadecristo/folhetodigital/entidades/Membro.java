@@ -49,7 +49,7 @@ public class Membro {
 	@CollectionTable(name="PERFIS")
 	private Set<Integer> perfis = new HashSet<>();
 	
-	@OneToMany(mappedBy = "membro", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "membro", cascade=CascadeType.PERSIST)
     private List<EnderecoMembro> enderecos = new ArrayList<>();
 	
     @JsonIgnore

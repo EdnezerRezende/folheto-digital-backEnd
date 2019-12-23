@@ -29,7 +29,6 @@ public class EstadoController {
 	@Autowired
 	private CidadeService cidadeService;
 	
-	@PreAuthorize("hasAnyRole('ADMIN','MEMBRO')") 
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<EstadoDTO>> findAll() {
 		List<Estado> list = estadoService.buscarTodos();
@@ -37,7 +36,6 @@ public class EstadoController {
 		return ResponseEntity.ok().body(listDto);
 	}
 	
-	@PreAuthorize("hasAnyRole('ADMIN','MEMBRO')") 
 	@RequestMapping(value="/{estadoId}/cidades", method = RequestMethod.GET)
 	public ResponseEntity<List<CidadeDTO>> findAll(@PathVariable Integer estadoId) {
 		List<Cidade> list = cidadeService.findByEstado(estadoId);
