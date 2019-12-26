@@ -2,6 +2,7 @@ package br.com.igrejadecristo.folhetodigital.services;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -16,6 +17,8 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import br.com.igrejadecristo.folhetodigital.dto.MembroAlteraDadosDTO;
+import br.com.igrejadecristo.folhetodigital.dto.MembroAlteraPerfilDTO;
 import br.com.igrejadecristo.folhetodigital.dto.MembroDTO;
 import br.com.igrejadecristo.folhetodigital.dto.MembroInfoDTO;
 import br.com.igrejadecristo.folhetodigital.dto.MembroNewDTO;
@@ -61,10 +64,36 @@ public class MembroService {
 		return obj;
 	}
 
-	public Membro update(Membro obj) {
+	public Membro update(MembroAlteraPerfilDTO obj) {
 		Membro newObj = buscar(obj.getId());
 		updateData(newObj, obj);
+		if (!newObj.getPerfis().contains(Perfil.MEMBRO)) {
+			newObj.addPerfil(Perfil.MEMBRO);
+		}
 		return membroDao.save(newObj);
+	}
+
+	@Transactional
+	public Membro updateDados(MembroAlteraDadosDTO obj, Integer id) {
+		Membro newObj = buscar(id);
+		
+		List<EnderecoMembro> enderecos = enderecoRepository.findAllByMembroId(id);
+		List<EnderecoMembro> enderecosTemp = new ArrayList<>();
+		enderecos.forEach(endereco -> {
+			if(endereco.getId() == obj.getEnderecos().get(0).getId()) {
+				endereco = obj.getEnderecos().get(0);
+			}
+			enderecosTemp.add(endereco);
+		});
+		enderecosTemp.get(0).setMembro(newObj);
+
+		updateDados(newObj, obj);
+		
+		newObj = membroDao.save(newObj);
+		
+		enderecoRepository.save(enderecosTemp.get(0));
+		
+		return newObj;
 	}
 
 	public void delete(Integer id) {
@@ -82,21 +111,19 @@ public class MembroService {
 	}
 
 	public MembroInfoDTO findByEmail(String email) {
-		
+
 		Membro obj = membroDao.findByEmail(email);
 		if (obj == null) {
-			throw new ObjectNotFoundException(
-					"Objeto não encontrado! Tipo: " + Membro.class.getName());
+			throw new ObjectNotFoundException("Objeto não encontrado! Tipo: " + Membro.class.getName());
 		}
-		
+
 		String telefone = obj.getTelefones().size() > 0 ? obj.getTelefones().stream().findFirst().get() : null;
-		
+
 		List<Perfil> perfis = obj.getPerfis().stream().collect(Collectors.toList());
-		
-		MembroInfoDTO dto = new MembroInfoDTO(obj.getNome(), obj.getEmail(), obj.getCpf(),
-				telefone , obj.getIgreja().getId(),
-				perfis);
-		
+
+		MembroInfoDTO dto = new MembroInfoDTO(obj.getNome(), obj.getEmail(), obj.getCpf(), telefone,
+				obj.getIgreja().getId(), perfis);
+
 		return dto;
 	}
 
@@ -111,10 +138,10 @@ public class MembroService {
 
 	public Membro fromDTO(MembroNewDTO objDto) {
 		Igreja igreja = new Igreja(objDto.getIgrejaId(), null, null, null);
-		
+
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		LocalDate dataNascimento = LocalDate.parse(objDto.getDataNascimento(),formatter);
-		
+		LocalDate dataNascimento = LocalDate.parse(objDto.getDataNascimento(), formatter);
+
 		Membro cli = new Membro(null, objDto.getNome(), objDto.getEmail(), objDto.getCpf(),
 				pe.encode(objDto.getSenha()), igreja, dataNascimento);
 		Cidade cid = new Cidade(objDto.getCidadeId(), null, null);
@@ -128,12 +155,16 @@ public class MembroService {
 		return cli;
 	}
 
-	private void updateData(Membro newObj, Membro obj) {
-		newObj.setNome(obj.getNome());
-		newObj.setEmail(obj.getEmail());
+	private void updateData(Membro newObj, MembroAlteraPerfilDTO obj) {
+		newObj.setPerfis(obj.getPerfis());
 	}
-	
-	public List<Membro> findAllMembrosByDataNascimento(Integer idIgreja){
+
+	private void updateDados(Membro newObj, MembroAlteraDadosDTO obj) {
+		newObj.setEmail(obj.getEmail());
+		newObj.setTelefones(obj.getTelefones());
+	}
+
+	public List<Membro> findAllMembrosByDataNascimento(Integer idIgreja) {
 		LocalDate dataInicial = LocalDate.now().minusWeeks(1);
 		LocalDate dataFinal = LocalDate.now();
 		List<Membro> membros = membroDao.buscaMembrosPorDataInicioEFim(dataInicial, dataFinal);

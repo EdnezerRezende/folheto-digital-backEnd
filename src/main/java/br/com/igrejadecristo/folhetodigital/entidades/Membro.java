@@ -87,7 +87,14 @@ public class Membro {
 		perfis.add(perfil.getCod());
 	}
 
-	
+	public void setPerfis(Set<Perfil> perfis) {
+		Set<Integer> listaPerfil = new HashSet<>();
+		perfis.forEach(perfil -> {
+			listaPerfil.add(perfil.getCod());
+		});
+		this.perfis = listaPerfil;
+	}
+
 	public Integer getId() {
 		return id;
 	}

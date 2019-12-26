@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.igrejadecristo.folhetodigital.dto.MembroAlteraDadosDTO;
+import br.com.igrejadecristo.folhetodigital.dto.MembroAlteraPerfilDTO;
 import br.com.igrejadecristo.folhetodigital.dto.MembroDTO;
 import br.com.igrejadecristo.folhetodigital.dto.MembroInfoDTO;
 import br.com.igrejadecristo.folhetodigital.dto.MembroNewDTO;
@@ -56,11 +58,15 @@ public class MembroController {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@RequestMapping(value="/perfil", method=RequestMethod.PUT)
+	public ResponseEntity<Void> updatePerfil(@RequestBody MembroAlteraPerfilDTO objDto) {
+		membroService.update(objDto);
+		return ResponseEntity.noContent().build();
+	}
+	
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> update(@Valid @RequestBody MembroDTO objDto, @PathVariable Integer id) {
-		Membro obj = membroService.fromDTO(objDto);
-		obj.setId(id);
-		obj = membroService.update(obj);
+	public ResponseEntity<Void> updateMembro(@RequestBody MembroAlteraDadosDTO objDto,@PathVariable Integer id) {
+		membroService.updateDados(objDto, id);
 		return ResponseEntity.noContent().build();
 	}
 	
