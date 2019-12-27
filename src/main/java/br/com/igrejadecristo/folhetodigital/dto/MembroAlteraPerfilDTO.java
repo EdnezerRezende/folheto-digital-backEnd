@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Set;
 
 import br.com.igrejadecristo.folhetodigital.entidades.enums.Perfil;
-import br.com.igrejadecristo.folhetodigital.services.validation.MembroUpdate;
 
 public class MembroAlteraPerfilDTO  implements Serializable {
 	private static final long serialVersionUID = 1L;

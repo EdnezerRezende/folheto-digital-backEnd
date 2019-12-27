@@ -44,12 +44,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/igrejas/**",
 			"/membros/**",
 			"/mensagens/**",
-			"/pgs/**"
+			"/pgs/**",
+			"/emails/**"
 	};
 
 	private static final String[] PUBLIC_MATCHERS_POST = {
 			"/auth/forgot/**",
-			"/membros/**"
+			"/membros/**",
+			"/emails/**"
 	};
 
 	@Override
