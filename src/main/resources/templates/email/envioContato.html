@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:remove="all">Order Confirmation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<h1>
+			Membro: <span th:text="${membro.nome}"> </span>
+		</h1>
+		<p>
+			Telefone: <span
+				th:text="${membro.telefone}"></span>
+		</p>
+		<p>
+			Assunto: <span
+				th:text="${membro.mensagem}"></span>
+		</p>
+		
+	</div>
+</body>
+</html>

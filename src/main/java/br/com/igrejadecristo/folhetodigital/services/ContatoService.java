@@ -12,6 +12,6 @@ public class ContatoService {
 	private EmailService emailService;
 	
 	public void enviarContato(ContatoDTO contato) {
-		emailService.sendContato(contato);
+		emailService.sendContatoHtml(contato);
 	}
 }
