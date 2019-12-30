@@ -1,5 +1,6 @@
 package br.com.igrejadecristo.folhetodigital.services;
 
+import java.net.URI;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.com.igrejadecristo.folhetodigital.dto.MembroAlteraDadosDTO;
 import br.com.igrejadecristo.folhetodigital.dto.MembroAlteraPerfilDTO;
@@ -43,6 +45,9 @@ public class MembroService {
 
 	@Autowired
 	private BCryptPasswordEncoder pe;
+	
+	@Autowired
+	private S3Service s3Service;
 
 	public Membro buscar(Integer id) {
 //		UserSS user = UserService.authenticated();
@@ -169,6 +174,12 @@ public class MembroService {
 		LocalDate dataFinal = LocalDate.now();
 		List<Membro> membros = membroDao.buscaMembrosPorDataInicioEFim(dataInicial, dataFinal);
 		return membros;
+	}
+	
+	public URI uploadProfilePicture(MultipartFile multipartFile) {
+		
+		return s3Service.uploadFile(multipartFile);
+		
 	}
 
 }
