@@ -106,9 +106,10 @@ public class MembroController {
 		return ResponseEntity.ok().body(listDto);
 	}
 	
-	@RequestMapping(value="/picture", method=RequestMethod.POST)
-	public ResponseEntity<Void> uploadProfilePicture(@RequestParam(name="file") MultipartFile file) {
-		URI uri = membroService.uploadProfilePicture(file);
+	@RequestMapping(value="/picture/${idMembro}", method=RequestMethod.POST)
+	public ResponseEntity<Void> uploadProfilePicture(@RequestParam(name="file") MultipartFile file,
+			@PathVariable Integer idMembro) {
+		URI uri = membroService.uploadProfilePicture(file, idMembro);
 		return ResponseEntity.created(uri).build();
 	}
 }
