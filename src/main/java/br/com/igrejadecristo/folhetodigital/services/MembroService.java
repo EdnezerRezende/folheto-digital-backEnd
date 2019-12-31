@@ -138,7 +138,7 @@ public class MembroService {
 		List<Perfil> perfis = obj.getPerfis().stream().collect(Collectors.toList());
 
 		MembroInfoDTO dto = new MembroInfoDTO(obj.getNome(), obj.getEmail(), obj.getCpf(), telefone,
-				obj.getIgreja().getId(), perfis);
+				obj.getIgreja().getId(), perfis, obj.getId());
 
 		return dto;
 	}

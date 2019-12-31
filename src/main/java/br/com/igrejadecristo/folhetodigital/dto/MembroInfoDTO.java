@@ -8,6 +8,8 @@ import br.com.igrejadecristo.folhetodigital.entidades.enums.Perfil;
 public class MembroInfoDTO  implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	private Integer id;
+	
 	private String nome;
 	
 	private String email;
@@ -25,8 +27,9 @@ public class MembroInfoDTO  implements Serializable {
 	}
 
 	public MembroInfoDTO(String nome, String email, String cpf, String telefone1, Integer igrejaId,
-			List<Perfil> perfis) {
+			List<Perfil> perfis, Integer id) {
 		super();
+		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
@@ -84,5 +87,20 @@ public class MembroInfoDTO  implements Serializable {
 		this.perfis = perfis;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 
 }
