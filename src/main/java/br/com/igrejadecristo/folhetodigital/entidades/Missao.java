@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Mensagem {
+public class Missao {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,12 +42,12 @@ public class Mensagem {
     @JoinColumn(name="igreja_id")
 	@Cascade(value = CascadeType.DETACH)
     private Igreja igreja;
-	
-	public Mensagem() {
+
+	public Missao() {
 		super();
 	}
 	
-	public Mensagem(Integer id, String mensagem, String autor, LocalDateTime dataCriado, String titulo, Igreja igreja ) {
+	public Missao(Integer id, String mensagem, String autor, LocalDateTime dataCriado, String titulo, Igreja igreja ) {
 		super();
 		this.id = id;
 		this.mensagem = mensagem;
@@ -122,7 +122,7 @@ public class Mensagem {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Mensagem other = (Mensagem) obj;
+		Missao other = (Missao) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

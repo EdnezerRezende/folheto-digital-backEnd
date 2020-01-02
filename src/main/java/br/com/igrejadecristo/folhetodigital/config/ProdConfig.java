@@ -8,14 +8,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import br.com.igrejadecristo.folhetodigital.services.DBService;
+import br.com.igrejadecristo.folhetodigital.services.DBServiceProd;
+import br.com.igrejadecristo.folhetodigital.services.EmailService;
+import br.com.igrejadecristo.folhetodigital.services.SmtpEmailService;
 
 @Configuration
 @Profile("prod")
 public class ProdConfig {
-
+	
 	@Autowired
-	private DBService dbService;
+	private DBServiceProd dbServiceProd;
 	
 	@Value("${spring.jpa.hibernate.ddl-auto}")
 	private String strategy;
@@ -26,7 +28,13 @@ public class ProdConfig {
 			return false;
 		}
 		
-		dbService.instantiateTestDatabase();
+		dbServiceProd.instantiateTestDatabase();
 		return true;
 	}
+	
+	@Bean
+	public EmailService emailService() {
+		return new SmtpEmailService();
+	}
+	
 }

@@ -43,15 +43,15 @@ public class MembroNewDTO  implements Serializable {
 	private String cep;
 	
 	@NotEmpty(message="Preenchimento obrigatório")
-	private String telefone1;
+	private String telefone;
 
-	private String telefone2;
-	
-	private String telefone3;
+	private String celular;
 	
 	private Integer cidadeId;
 	
 	private Integer igrejaId;
+	
+	private String dataNascimento;
 
 	public MembroNewDTO() {
 		super();
@@ -113,30 +113,22 @@ public class MembroNewDTO  implements Serializable {
 		this.cep = cep;
 	}
 
-	public String getTelefone1() {
-		return telefone1;
+	public String getTelefone() {
+		return telefone;
 	}
 
-	public void setTelefone1(String telefone1) {
-		this.telefone1 = telefone1;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
-	public String getTelefone2() {
-		return telefone2;
+	public String getCelular() {
+		return celular;
 	}
 
-	public void setTelefone2(String telefone2) {
-		this.telefone2 = telefone2;
+	public void setCelular(String celular) {
+		this.celular = celular;
 	}
 
-	public String getTelefone3() {
-		return telefone3;
-	}
-
-	public void setTelefone3(String telefone3) {
-		this.telefone3 = telefone3;
-	}
-	
 	public Integer getCidadeId() {
 		return cidadeId;
 	}
@@ -167,6 +159,14 @@ public class MembroNewDTO  implements Serializable {
 
 	public void setIgrejaId(Integer igrejaId) {
 		this.igrejaId = igrejaId;
+	}
+
+	public String getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(String dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
 }

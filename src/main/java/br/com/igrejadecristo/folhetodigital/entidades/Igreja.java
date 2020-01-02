@@ -1,9 +1,13 @@
 package br.com.igrejadecristo.folhetodigital.entidades;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,6 +28,8 @@ public class Igreja {
 	
 	private String cnpj;
 	
+	private String email;
+	
 	@OneToMany(mappedBy = "igreja", cascade=CascadeType.ALL)
     private List<Membro> membros = new ArrayList<>();
 	
@@ -39,25 +45,37 @@ public class Igreja {
 	@OneToMany(mappedBy = "igreja", cascade=CascadeType.ALL)
     private List<Devocional> Devocionais = new ArrayList<>();
 	
+	@JsonIgnore
+	@OneToMany(mappedBy = "igreja", cascade=CascadeType.ALL)
+    private List<OfertaServico> servicos = new ArrayList<>();
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "igreja", cascade=CascadeType.ALL)
+    private List<Mensagem> mensagens = new ArrayList<>();
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "igreja", cascade=CascadeType.ALL)
+    private List<Missao> missoes = new ArrayList<>();
+	
 	@OneToOne(mappedBy = "igreja", cascade=CascadeType.ALL)
     private EnderecoIgreja endereco;
 
-//	@ElementCollection
-//    @CollectionTable(name = "TELEFONE")
-//    private Set<String> telefones = new HashSet<>();
-
+	@ElementCollection
+    @CollectionTable(name = "TELEFONEIGREJA")
+    private Set<String> telefones = new HashSet<>();
 	
 	public Igreja() {
 		super();
 	}
 	
 	public Igreja(Integer id, String nome, 
-			String cnpj
+			String cnpj, String email
 			) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.cnpj = cnpj;
+		this.email = email;
 	}
 	
 	public Integer getId() {
@@ -92,14 +110,60 @@ public class Igreja {
 		this.membros = membros;
 	}
 	
-	
-	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Set<String> getTelefones() {
+		return telefones;
+	}
+
+	public void setTelefones(Set<String> telefones) {
+		this.telefones = telefones;
+	}
+
 	public EnderecoIgreja getEndereco() {
 		return endereco;
 	}
 
 	public void setEndereco(EnderecoIgreja endereco) {
 		this.endereco = endereco;
+	}
+	
+	public List<PequenoGrupo> getPgs() {
+		return pgs;
+	}
+
+	public void setPgs(List<PequenoGrupo> pgs) {
+		this.pgs = pgs;
+	}
+
+	public List<AgendaEvento> getAgendas() {
+		return agendas;
+	}
+
+	public void setAgendas(List<AgendaEvento> agendas) {
+		this.agendas = agendas;
+	}
+
+	public List<Devocional> getDevocionais() {
+		return Devocionais;
+	}
+
+	public void setDevocionais(List<Devocional> devocionais) {
+		Devocionais = devocionais;
+	}
+
+	public List<OfertaServico> getServicos() {
+		return servicos;
+	}
+
+	public void setServicos(List<OfertaServico> servicos) {
+		this.servicos = servicos;
 	}
 
 	@Override
@@ -109,8 +173,6 @@ public class Igreja {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {

@@ -7,7 +7,6 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.2.0.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.igrejadecristo</groupId>
 	<artifactId>folheto-geral</artifactId>
@@ -83,7 +82,14 @@
 			<artifactId>jjwt</artifactId>
 			<version>0.7.0</version>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+		<dependency>
+		     <groupId>org.springframework.boot</groupId>
+		     <artifactId>spring-boot-starter-thymeleaf</artifactId> 
+		</dependency>
 	</dependencies>
 
 	<build>

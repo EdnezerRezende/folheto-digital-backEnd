@@ -24,6 +24,8 @@ public class MembroDTO  implements Serializable {
 	@Email(message="E-mail inválido")
 	private String email;
 	
+	private String dataNascimento;
+	
 	public MembroDTO() {
 		super();
 	}
@@ -32,6 +34,7 @@ public class MembroDTO  implements Serializable {
 		this.id = obj.getId();
 		this.nome = obj.getNome();
 		this.email = obj.getEmail();
+		this.dataNascimento = obj.getDataNascimento().toString();
 	}
 
 	public String getNome() {
@@ -56,6 +59,14 @@ public class MembroDTO  implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(String dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
 

@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import br.com.igrejadecristo.folhetodigital.dto.MensagemDTO;
 import br.com.igrejadecristo.folhetodigital.dto.MensagemNewDTO;
+import br.com.igrejadecristo.folhetodigital.entidades.Igreja;
 import br.com.igrejadecristo.folhetodigital.entidades.Mensagem;
+import br.com.igrejadecristo.folhetodigital.respositories.IgrejaRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.MensagemRepository;
 
 @Service
@@ -18,6 +20,9 @@ public class MensagemService {
 
 	@Autowired
 	private MensagemRepository mensagemDao;
+	
+	@Autowired
+	private IgrejaRepository igrejaDao;
 	
 	public List<Mensagem> buscarTodos() {
 		List<Mensagem> mensagens = mensagemDao.findAllByOrderByDataCriado();
@@ -38,9 +43,11 @@ public class MensagemService {
 			}
 		}
 		
+		Igreja igreja = igrejaDao.findById((dto.getIgrejaId())).get();
+		
 		Mensagem mensagem = new Mensagem(dto.getId(),
 				dto.getMensagem(), 
-				dto.getAutor(), LocalDateTime.now(),  dto.getTitulo());
+				dto.getAutor(), LocalDateTime.now(),  dto.getTitulo(), igreja);
 		return mensagemDao.save(mensagem);
 	}
 	
