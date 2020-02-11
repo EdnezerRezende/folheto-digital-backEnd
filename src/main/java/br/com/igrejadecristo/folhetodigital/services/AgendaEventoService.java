@@ -47,7 +47,11 @@ public class AgendaEventoService {
 
 		Igreja igreja = igrejaDao.findById(Integer.parseInt(dto.getIdIgreja())).get();
 
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		if(!dto.getIsEvento()) {
+			dto.setDataInicio(LocalDate.now().toString());
+			dto.setDataFim(LocalDate.now().plusYears(30l).toString());
+		}
 		
 		AgendaEvento agenda = new AgendaEvento(dto.getId(), dto.getTitulo(), igreja, dto.getDiaSemanaAtividade(),
 				LocalTime.parse(dto.getHoraAtividade()), dto.getIsEvento(), dto.getDescricao(), LocalDate.parse(dto.getDataInicio(), formatter), LocalDate.parse(dto.getDataFim(), formatter) );

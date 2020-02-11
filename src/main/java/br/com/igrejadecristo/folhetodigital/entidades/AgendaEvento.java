@@ -46,10 +46,10 @@ public class AgendaEvento {
     @Column(name="TEXTO")
 	private String descricao;
 	
-	@JsonFormat(pattern="dd/MM/yyyy")
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private LocalDate dataInicio;
 	
-	@JsonFormat(pattern="dd/MM/yyyy")
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private LocalDate dataFim;
 
 	public AgendaEvento() {
