@@ -18,7 +18,7 @@ public class EmailConfig {
 	        mailSender.setPort(25);
 	          
 	        mailSender.setUsername("pic.taguatinga.app@gmail.com");
-	        mailSender.setPassword("picTaguatinga");
+	        mailSender.setPassword(System.getenv("SENHA_EMAIL"));
 	          
 	        Properties props = mailSender.getJavaMailProperties();
 	        props.put("mail.smtp.auth", "true");
