@@ -1,10 +1,14 @@
 package br.com.igrejadecristo.folhetodigital.relatorios;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 
 import br.com.igrejadecristo.folhetodigital.respositories.IgrejaRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.MensagemRepository;
@@ -22,8 +26,12 @@ public class GeraFolheto {
 	@Autowired
 	private IgrejaRepository igrejaDAO;
 	
-	public void gerar(String layout) throws JRException, SQLException, ClassNotFoundException {
-
+	@Autowired
+	private ResourceLoader resourceLoader;
+	
+	public void gerar(String layout) throws JRException, SQLException, ClassNotFoundException, IOException {
+		Resource resource = new ClassPathResource("/relatorios/folhetim.jrxml");
+//		String path = resourceLoader.getResource("classpath:/relatorios/folhetim.jrxml").getURI().getPath();
 		// gerando o jasper design
 //		JasperDesign desenho = JRXmlLoader.load(layout);
 
@@ -43,7 +51,7 @@ public class GeraFolheto {
 		//parametros.put("mensagemTitulo", mensagens.get(0).getTitulo());
 		JasperReport jr;
         JasperPrint jprint;
-		jr = JasperCompileManager.compileReport(layout);
+		jr = JasperCompileManager.compileReport(resource.getURL().getPath());
 		JasperPrint impressao = JasperFillManager.fillReport(jr, parametros);
 		// exibe o resultado
 		JasperViewer viewer = new JasperViewer(impressao, true);
@@ -52,7 +60,7 @@ public class GeraFolheto {
 
 	public static void main(String[] args) {
 		try {
-			new GeraFolheto().gerar("./relatorios/folhetim.jrxml");
+			new GeraFolheto().gerar("relatorios/folhetim.jrxml");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
