@@ -70,7 +70,7 @@ public class GeraFolheto {
 
 	public static void main(String[] args) {
 		try {
-			new GeraFolheto().gerar("relatorios/folhetim.jrxml");
+			new GeraFolheto().gerar("relatorios/folhetim_2.jrxml");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

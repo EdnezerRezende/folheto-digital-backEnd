@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="folhetim" columnCount="2" pageWidth="842" pageHeight="596" orientation="Landscape" columnWidth="401" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="87efd992-d13b-41dd-82ed-8930cb211342">
-	<property name="ireport.zoom" value="1.607691607500003"/>
-	<property name="ireport.x" value="361"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="5.550187458193635"/>
+	<property name="ireport.x" value="2153"/>
+	<property name="ireport.y" value="361"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -147,159 +147,152 @@ WHERE
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<columnHeader>
-		<band height="154" splitType="Stretch">
-			<rectangle radius="10">
-				<reportElement x="407" y="3" width="394" height="151" uuid="9d3b956e-cb02-44be-b6f8-d560f08972b0"/>
-			</rectangle>
-			<staticText>
-				<reportElement x="518" y="3" width="283" height="18" uuid="6a49c3ec-06db-4178-b8e5-19aaae2f0036"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[PRIMEIRA IGREJA DE CRISTO DE TAGUATINGA]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="1" width="104" height="17" uuid="e6ace8cd-6772-42a1-b884-89b7fb9b926c"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Agenda da Igreja]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="518" y="21" width="272" height="14" uuid="1b6a4ff0-9162-41a6-b8f1-764c31df29b3"/>
-				<textElement textAlignment="Right">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{enderecoIgreja}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="708" y="35" width="82" height="18" uuid="c3e4c32f-6543-4d32-96ee-ff7e8136a90f"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{telefoneIgreja}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="664" y="53" width="126" height="20" uuid="86a1c2fa-5d52-47b4-a95d-493b4135fc6c"/>
-				<textElement textAlignment="Right">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{siteIgreja}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="638" y="53" width="26" height="20" uuid="b1c30ef3-e43c-409a-99fd-433fc8fa76e8"/>
-				<textElement textAlignment="Right">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Site:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="625" y="73" width="39" height="15" uuid="567ab332-7855-4774-abc6-d35ef6355e32"/>
-				<textElement textAlignment="Right">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[E-mail:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="664" y="73" width="126" height="15" uuid="25663c8a-9bc6-4ca5-b704-b0d82d1c8e1c"/>
-				<textElement textAlignment="Right">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{emailIgreja}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="518" y="88" width="272" height="22" uuid="66acb5f4-b49b-4e8f-8e22-da95adfbc1a7"/>
-				<textElement textAlignment="Right" verticalAlignment="Top">
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Nossa missão: "A PIC existe para conduzir pessoas a Cristo e ajudá-las a se tornarem unicamente cristãs"]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="518" y="110" width="272" height="28" uuid="813e1ee5-5491-4b51-9023-7659750248aa"/>
-				<textElement textAlignment="Right">
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Nossa visão: "Uma igreja vibrante na celebração, amorosa na conexão e generosa na contribuição"]]></text>
-			</staticText>
-			<image>
-				<reportElement x="420" y="18" width="86" height="120" uuid="05098663-9953-4570-9134-fd437fda77a3"/>
-				<imageExpression><![CDATA["C:\\Users\\Rezende\\Documents\\igreja_Cristo\\icone_login_new-old_original.jpg"]]></imageExpression>
-			</image>
-			<staticText>
-				<reportElement x="664" y="35" width="42" height="18" uuid="46fd8896-696d-4b39-915c-7c9718ae8cc4"/>
-				<textElement textAlignment="Right">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Tel/Fax: ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="196" y="1" width="183" height="17" uuid="55c7d198-1c25-4a00-b9c9-60cc77ae9e77"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Aniversariantes da Semana]]></text>
-			</staticText>
-			<line>
-				<reportElement x="506" y="10" width="1" height="136" uuid="702f2d74-8d49-4928-832b-8751665d514b"/>
-			</line>
-			<componentElement>
-				<reportElement x="216" y="35" width="145" height="103" uuid="02d46c0a-6af9-47df-88de-c321731d5774"/>
-				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
-					<datasetRun subDataset="dataset1" uuid="02aedbbe-d4c2-464c-bcd0-271ecf0d3c72">
-						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
-					</datasetRun>
-					<jr:listContents height="103" width="145"/>
-				</jr:list>
-			</componentElement>
-		</band>
-	</columnHeader>
 	<detail>
-		<band height="274" splitType="Stretch">
+		<band height="556" splitType="Stretch">
 			<staticText>
-				<reportElement x="169" y="34" width="76" height="31" uuid="994e8615-0148-4724-9a79-b894c51b6559"/>
-				<textElement>
+				<reportElement x="12" y="171" width="379" height="31" uuid="994e8615-0148-4724-9a79-b894c51b6559"/>
+				<textElement textAlignment="Center">
 					<font size="18"/>
 				</textElement>
-				<text><![CDATA[Serviços]]></text>
+				<text><![CDATA[Valorize o Que é Nosso]]></text>
 			</staticText>
 			<rectangle radius="10">
-				<reportElement x="407" y="18" width="394" height="235" uuid="94d5e316-8a31-489d-80e9-ba75a2218c65"/>
+				<reportElement x="405" y="159" width="394" height="337" uuid="94d5e316-8a31-489d-80e9-ba75a2218c65"/>
 			</rectangle>
 			<textField>
-				<reportElement x="420" y="44" width="370" height="187" uuid="6d9b7ae7-3768-4041-bd36-e00d05b94355"/>
+				<reportElement x="421" y="185" width="370" height="291" uuid="6d9b7ae7-3768-4041-bd36-e00d05b94355"/>
 				<textElement textAlignment="Justified"/>
 				<textFieldExpression><![CDATA[$P{mensagem}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="472" y="18" width="286" height="16" uuid="28a2b612-9c14-4842-8654-2af62fecf97d"/>
+				<reportElement x="471" y="159" width="286" height="26" uuid="28a2b612-9c14-4842-8654-2af62fecf97d"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{tituloMensagem}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="690" y="233" width="100" height="20" uuid="b342eca2-c4ee-46ea-9291-b1072c2eabfd"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{autorMensagem}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="608" y="0" width="111" height="14" uuid="adc37f1b-3787-47b2-88d5-8c443c6a4fa8"/>
+				<reportElement x="615" y="145" width="111" height="14" uuid="adc37f1b-3787-47b2-88d5-8c443c6a4fa8"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{dataFolhetim}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="665" y="476" width="126" height="20" uuid="b342eca2-c4ee-46ea-9291-b1072c2eabfd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{autorMensagem}]]></textFieldExpression>
+			</textField>
 			<staticText>
-				<reportElement x="507" y="0" width="101" height="14" uuid="aa5cfce7-cba7-4772-bc9a-b720a4c185c5"/>
+				<reportElement x="514" y="145" width="101" height="14" uuid="aa5cfce7-cba7-4772-bc9a-b720a4c185c5"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Boletim Informativo, ]]></text>
 			</staticText>
+			<rectangle radius="10">
+				<reportElement x="405" y="20" width="394" height="125" uuid="bf4af007-331a-4da8-ad36-e0174717c303"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="519" y="24" width="261" height="18" uuid="76d0b2ec-beb7-42de-bcf6-5c9fa6d01acb"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRIMEIRA IGREJA DE CRISTO DE TAGUATINGA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="25" width="104" height="17" uuid="47402c22-0471-41d3-b650-48b4a04cc425"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Agenda da Igreja]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="628" y="74" width="26" height="20" uuid="ec898b74-c7cd-4ccc-9ea6-27e2c835e015"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Site:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="615" y="94" width="39" height="11" uuid="7916ba69-6891-45b1-a219-b7f46213eb0d"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[E-mail:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="654" y="94" width="126" height="11" uuid="8b9bd8d5-7eeb-4aeb-8e77-81eee5e45957"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{emailIgreja}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="641" y="105" width="260" height="16" uuid="7eff7d05-d5e7-4d64-8613-6ff1d31ff48a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph lineSpacing="Proportional" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[Nossa missão: "A PIC existe para conduzir pessoas a Cristo e ajudá-las a se tornarem unicamente cristãs"]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="519" y="121" width="260" height="16" uuid="83e29f03-4f90-4b4e-af49-db85b80ba942"/>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Nossa visão: "Uma igreja vibrante na celebração, amorosa na conexão e generosa na contribuição"]]></text>
+			</staticText>
+			<image>
+				<reportElement x="446" y="36" width="50" height="85" uuid="d3389de4-9e1d-43eb-85ef-e70f8183b483"/>
+				<imageExpression><![CDATA["C:\\Users\\Rezende\\Documents\\igreja_Cristo\\icone_login_new-old_original.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="654" y="56" width="44" height="18" uuid="dd7fef23-e606-4d76-8e32-6191f997d9ab"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tel/Fax: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="208" y="25" width="183" height="17" uuid="b31a39cf-9095-49b6-9506-d8bdabcca9cf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aniversariantes da Semana]]></text>
+			</staticText>
+			<line>
+				<reportElement x="507" y="28" width="1" height="107" uuid="9fbd3b35-1ba2-4988-a21c-eeec5f348c6a"/>
+			</line>
+			<textField>
+				<reportElement x="519" y="42" width="261" height="14" uuid="e1232e11-71f6-479a-8d4e-d5b465a30d33"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{enderecoIgreja}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="699" y="56" width="81" height="18" uuid="141f1757-7f25-47c3-8f1d-781b5371fcde"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{telefoneIgreja}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="654" y="74" width="126" height="20" uuid="82c37f1f-2502-4e1f-a724-17377a80faa8"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{siteIgreja}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="421" y="54" width="19" height="20" uuid="c195d37c-565d-4fb6-a6fd-a97c238577a9"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="421" y="80" width="60" height="41" uuid="6ac716f6-4503-4c77-bdb8-33bafb4bcf81"/>
+				<text><![CDATA[1º Igreja     de Cristo Taguatinga]]></text>
+			</staticText>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="54" splitType="Stretch"/>
-	</columnFooter>
 </jasperReport>
