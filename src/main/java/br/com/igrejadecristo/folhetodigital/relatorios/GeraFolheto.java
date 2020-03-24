@@ -33,7 +33,7 @@ public class GeraFolheto {
 	private ResourceLoader resourceLoader;
 	
 	public void gerar(String layout) throws JRException, SQLException, ClassNotFoundException, IOException {
-		Resource resource = new ClassPathResource("/relatorios/folhetim.jrxml");
+		Resource resource = new ClassPathResource("/relatorios/folhetim_2.jrxml");
 //		String path = resourceLoader.getResource("classpath:/relatorios/folhetim.jrxml").getURI().getPath();
 		// gerando o jasper design
 //		JasperDesign desenho = JRXmlLoader.load(layout);
