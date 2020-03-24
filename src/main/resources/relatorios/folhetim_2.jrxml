@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="folhetim" columnCount="2" pageWidth="842" pageHeight="596" orientation="Landscape" columnWidth="401" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="87efd992-d13b-41dd-82ed-8930cb211342">
-	<property name="ireport.zoom" value="5.550187458193635"/>
-	<property name="ireport.x" value="2153"/>
-	<property name="ireport.y" value="361"/>
+	<property name="ireport.zoom" value="0.6818181818181831"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -179,8 +179,8 @@ WHERE
 				<textFieldExpression><![CDATA[$P{dataFolhetim}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="665" y="476" width="126" height="20" uuid="b342eca2-c4ee-46ea-9291-b1072c2eabfd"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement x="421" y="476" width="370" height="20" uuid="b342eca2-c4ee-46ea-9291-b1072c2eabfd"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{autorMensagem}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -229,7 +229,7 @@ WHERE
 				<textFieldExpression><![CDATA[$P{emailIgreja}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="641" y="105" width="260" height="16" uuid="7eff7d05-d5e7-4d64-8613-6ff1d31ff48a"/>
+				<reportElement x="520" y="105" width="260" height="16" uuid="7eff7d05-d5e7-4d64-8613-6ff1d31ff48a"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="6"/>
 					<paragraph lineSpacing="Proportional" tabStopWidth="40"/>
