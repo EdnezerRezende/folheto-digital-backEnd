@@ -117,8 +117,7 @@ WHERE
      Membro.`data_nascimento` AS Membro_data_nascimento,
      Membro.`nome` AS Membro_nome
 FROM
-     `Membro` Membro
-]]>
+     `Membro` Membro]]>
 		</queryString>
 		<field name="Membro_data_nascimento" class="java.sql.Timestamp"/>
 		<field name="Membro_nome" class="java.lang.String"/>
@@ -246,7 +245,7 @@ WHERE
 			</line>
 			<componentElement>
 				<reportElement x="216" y="35" width="145" height="103" uuid="02d46c0a-6af9-47df-88de-c321731d5774"/>
-				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
 					<datasetRun subDataset="dataset1" uuid="02aedbbe-d4c2-464c-bcd0-271ecf0d3c72">
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
 					</datasetRun>
