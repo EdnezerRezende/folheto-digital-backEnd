@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="folhetim" columnCount="2" pageWidth="842" pageHeight="596" orientation="Landscape" columnWidth="401" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="87efd992-d13b-41dd-82ed-8930cb211342">
-	<property name="ireport.zoom" value="0.6818181818181831"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="folhetim" columnCount="2" printOrder="Horizontal" pageWidth="842" pageHeight="651" orientation="Landscape" columnWidth="401" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="87efd992-d13b-41dd-82ed-8930cb211342">
+	<property name="ireport.zoom" value="1.4615378250000128"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="1109"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -93,49 +93,128 @@
 			<bottomPen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
-	<subDataset name="dataset1" uuid="39f373d5-6f8f-41d6-b5c1-f228bbeff3c5">
+	<style name="table 4">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#73E6E6">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#CFE6E6">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<subDataset name="dataset1" uuid="a6ecda98-63be-4455-8190-081cdd2a5466">
 		<queryString>
-			<![CDATA[SELECT
-     Membro.`data_nascimento` AS Membro_data_nascimento,
-     Membro.`nome` AS Membro_nome
-FROM
-     `Membro` Membro
-WHERE
-     data_nascimento BETWEEN 2018 -1 -1 and 2020 -3 -3]]>
+			<![CDATA[SELECT * FROM MEMBRO membro;]]>
 		</queryString>
-		<field name="Membro_data_nascimento" class="java.sql.Timestamp"/>
-		<field name="Membro_nome" class="java.lang.String"/>
+		<field name="id" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="cpf" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="data_nascimento" class="java.sql.Timestamp">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="email" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="nome" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="senha" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="igreja_id" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
 	</subDataset>
-	<subDataset name="Table Dataset 1" uuid="2631d1c6-f33f-4015-aedd-a701281813bf">
-		<queryString>
-			<![CDATA[select m from Membro m where m.dataNascimento between 2018-01-01 and 2020-03-03]]>
-		</queryString>
-	</subDataset>
-	<subDataset name="Table Dataset 2" whenResourceMissingType="Empty" uuid="d2985fa2-c7db-44c3-a023-d3bc15e98a63">
-		<queryString>
-			<![CDATA[SELECT
-     Membro.`data_nascimento` AS Membro_data_nascimento,
-     Membro.`nome` AS Membro_nome
-FROM
-     `Membro` Membro]]>
-		</queryString>
-		<field name="Membro_data_nascimento" class="java.sql.Timestamp"/>
-		<field name="Membro_nome" class="java.lang.String"/>
-	</subDataset>
-	<subDataset name="aniversariantes" uuid="da633c69-dc16-4895-966d-934615d8bd30">
-		<queryString language="SQL">
-			<![CDATA[SELECT
-     Membro.`data_nascimento` AS Membro_data_nascimento,
-     Membro.`nome` AS Membro_nome
-FROM
-     `Membro` Membro
-WHERE
-     data_nascimento BETWEEN 2018 -1 -1 and 2020 -3 -3]]>
-		</queryString>
-		<field name="Membro_data_nascimento" class="java.sql.Timestamp"/>
-		<field name="Membro_nome" class="java.lang.String"/>
-	</subDataset>
-	<subDataset name="dataset2" uuid="e5c75b98-a692-4a4a-a6d0-8f4efa73b50f"/>
+	<subDataset name="Table Dataset 1" uuid="f7b9db48-54de-4e2f-9ba3-673c35e03079"/>
+	<subDataset name="dataset2" uuid="7535f075-4b98-4a01-8bad-478384f95fec"/>
+	<subDataset name="Table Dataset 2" uuid="75708c4b-7295-4a07-8c04-51fcd449fa44"/>
+	<subDataset name="Table Dataset 3" uuid="9cf51c77-bc6a-44b3-9db7-d941cfe07471"/>
 	<parameter name="mensagem" class="java.lang.String"/>
 	<parameter name="dataFolhetim" class="java.lang.String"/>
 	<parameter name="enderecoIgreja" class="java.lang.String"/>
@@ -144,92 +223,98 @@ WHERE
 	<parameter name="emailIgreja" class="java.lang.String"/>
 	<parameter name="tituloMensagem" class="java.lang.String"/>
 	<parameter name="autorMensagem" class="java.lang.String"/>
+	<parameter name="logo" class="java.awt.Image"/>
+	<parameter name="aniversariantes" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="missoes" class="java.lang.String"/>
+	<parameter name="textosDevocionais" class="java.lang.String"/>
+	<parameter name="carrinhoCompra" class="java.awt.Image"/>
+	<parameter name="missoesTitulo" class="java.lang.String"/>
+	<parameter name="pgsQuarta" class="java.lang.String"/>
+	<parameter name="pgsQuinta" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="556" splitType="Stretch">
+		<band height="562" splitType="Stretch">
+			<rectangle>
+				<reportElement x="12" y="245" width="379" height="310" uuid="01204596-4eac-4803-b6df-7248a42f224f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="11" y="55" width="143" height="181" uuid="3099ff0b-0303-4b84-8fcb-42d5f15864c5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="171" y="55" width="220" height="181" uuid="8051f585-c1b3-4646-b920-af02ac9cb95d"/>
+			</rectangle>
 			<staticText>
-				<reportElement x="12" y="171" width="379" height="31" uuid="994e8615-0148-4724-9a79-b894c51b6559"/>
+				<reportElement x="12" y="247" width="379" height="20" uuid="994e8615-0148-4724-9a79-b894c51b6559"/>
 				<textElement textAlignment="Center">
-					<font size="18"/>
+					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Valorize o Que é Nosso]]></text>
 			</staticText>
 			<rectangle radius="10">
-				<reportElement x="405" y="159" width="394" height="337" uuid="94d5e316-8a31-489d-80e9-ba75a2218c65"/>
+				<reportElement x="414" y="167" width="385" height="359" uuid="94d5e316-8a31-489d-80e9-ba75a2218c65"/>
 			</rectangle>
 			<textField>
-				<reportElement x="421" y="185" width="370" height="291" uuid="6d9b7ae7-3768-4041-bd36-e00d05b94355"/>
+				<reportElement x="421" y="194" width="370" height="312" uuid="6d9b7ae7-3768-4041-bd36-e00d05b94355"/>
 				<textElement textAlignment="Justified"/>
 				<textFieldExpression><![CDATA[$P{mensagem}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="471" y="159" width="286" height="26" uuid="28a2b612-9c14-4842-8654-2af62fecf97d"/>
+				<reportElement x="421" y="168" width="370" height="26" uuid="28a2b612-9c14-4842-8654-2af62fecf97d"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{tituloMensagem}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="615" y="145" width="111" height="14" uuid="adc37f1b-3787-47b2-88d5-8c443c6a4fa8"/>
-				<textElement>
+				<reportElement x="414" y="153" width="385" height="14" uuid="adc37f1b-3787-47b2-88d5-8c443c6a4fa8"/>
+				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{dataFolhetim}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Boletim Informativo, "+$P{dataFolhetim}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="421" y="476" width="370" height="20" uuid="b342eca2-c4ee-46ea-9291-b1072c2eabfd"/>
+				<reportElement x="421" y="506" width="370" height="20" uuid="b342eca2-c4ee-46ea-9291-b1072c2eabfd"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{autorMensagem}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="514" y="145" width="101" height="14" uuid="aa5cfce7-cba7-4772-bc9a-b720a4c185c5"/>
+				<reportElement x="514" y="153" width="101" height="14" uuid="aa5cfce7-cba7-4772-bc9a-b720a4c185c5"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Boletim Informativo, ]]></text>
+				<text><![CDATA[]]></text>
 			</staticText>
 			<rectangle radius="10">
-				<reportElement x="405" y="20" width="394" height="125" uuid="bf4af007-331a-4da8-ad36-e0174717c303"/>
+				<reportElement x="414" y="50" width="385" height="103" uuid="bf4af007-331a-4da8-ad36-e0174717c303"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="519" y="24" width="261" height="18" uuid="76d0b2ec-beb7-42de-bcf6-5c9fa6d01acb"/>
-				<textElement textAlignment="Center">
+				<reportElement x="519" y="54" width="261" height="18" uuid="76d0b2ec-beb7-42de-bcf6-5c9fa6d01acb"/>
+				<textElement textAlignment="Right">
 					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[PRIMEIRA IGREJA DE CRISTO DE TAGUATINGA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="12" y="25" width="104" height="17" uuid="47402c22-0471-41d3-b650-48b4a04cc425"/>
-				<textElement>
-					<font size="12" isBold="true"/>
+				<reportElement x="11" y="55" width="143" height="24" uuid="47402c22-0471-41d3-b650-48b4a04cc425"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="18" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Agenda da Igreja]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="628" y="74" width="26" height="20" uuid="ec898b74-c7cd-4ccc-9ea6-27e2c835e015"/>
-				<textElement textAlignment="Right">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Site:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="615" y="94" width="39" height="11" uuid="7916ba69-6891-45b1-a219-b7f46213eb0d"/>
-				<textElement textAlignment="Right">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[E-mail:]]></text>
-			</staticText>
 			<textField>
-				<reportElement x="654" y="94" width="126" height="11" uuid="8b9bd8d5-7eeb-4aeb-8e77-81eee5e45957"/>
+				<reportElement x="519" y="107" width="261" height="13" uuid="8b9bd8d5-7eeb-4aeb-8e77-81eee5e45957"/>
 				<textElement textAlignment="Right">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{emailIgreja}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["E-mail: "+ $P{emailIgreja}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="520" y="105" width="260" height="16" uuid="7eff7d05-d5e7-4d64-8613-6ff1d31ff48a"/>
+				<reportElement x="544" y="119" width="236" height="16" uuid="7eff7d05-d5e7-4d64-8613-6ff1d31ff48a"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="6"/>
 					<paragraph lineSpacing="Proportional" tabStopWidth="40"/>
@@ -237,62 +322,583 @@ WHERE
 				<text><![CDATA[Nossa missão: "A PIC existe para conduzir pessoas a Cristo e ajudá-las a se tornarem unicamente cristãs"]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="519" y="121" width="260" height="16" uuid="83e29f03-4f90-4b4e-af49-db85b80ba942"/>
+				<reportElement x="544" y="134" width="236" height="16" uuid="83e29f03-4f90-4b4e-af49-db85b80ba942"/>
 				<textElement textAlignment="Right">
 					<font size="6"/>
 				</textElement>
 				<text><![CDATA[Nossa visão: "Uma igreja vibrante na celebração, amorosa na conexão e generosa na contribuição"]]></text>
 			</staticText>
 			<image>
-				<reportElement x="446" y="36" width="50" height="85" uuid="d3389de4-9e1d-43eb-85ef-e70f8183b483"/>
-				<imageExpression><![CDATA["C:\\Users\\Rezende\\Documents\\igreja_Cristo\\icone_login_new-old_original.jpg"]]></imageExpression>
+				<reportElement x="446" y="60" width="50" height="85" uuid="d3389de4-9e1d-43eb-85ef-e70f8183b483"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="654" y="56" width="44" height="18" uuid="dd7fef23-e606-4d76-8e32-6191f997d9ab"/>
-				<textElement textAlignment="Right">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Tel/Fax: ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="208" y="25" width="183" height="17" uuid="b31a39cf-9095-49b6-9506-d8bdabcca9cf"/>
+				<reportElement x="171" y="55" width="220" height="41" uuid="b31a39cf-9095-49b6-9506-d8bdabcca9cf"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12" isBold="true"/>
+					<font fontName="Chiller" size="22" isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Aniversariantes da Semana]]></text>
 			</staticText>
 			<line>
-				<reportElement x="507" y="28" width="1" height="107" uuid="9fbd3b35-1ba2-4988-a21c-eeec5f348c6a"/>
+				<reportElement x="511" y="59" width="1" height="89" uuid="9fbd3b35-1ba2-4988-a21c-eeec5f348c6a"/>
 			</line>
 			<textField>
-				<reportElement x="519" y="42" width="261" height="14" uuid="e1232e11-71f6-479a-8d4e-d5b465a30d33"/>
+				<reportElement x="519" y="71" width="261" height="13" uuid="e1232e11-71f6-479a-8d4e-d5b465a30d33"/>
 				<textElement textAlignment="Right">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{enderecoIgreja}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="699" y="56" width="81" height="18" uuid="141f1757-7f25-47c3-8f1d-781b5371fcde"/>
+				<reportElement x="519" y="83" width="261" height="13" uuid="141f1757-7f25-47c3-8f1d-781b5371fcde"/>
 				<textElement textAlignment="Right">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{telefoneIgreja}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Tel/Fax: "+$P{telefoneIgreja}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="654" y="74" width="126" height="20" uuid="82c37f1f-2502-4e1f-a724-17377a80faa8"/>
+				<reportElement x="519" y="95" width="261" height="13" uuid="82c37f1f-2502-4e1f-a724-17377a80faa8"/>
 				<textElement textAlignment="Right">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{siteIgreja}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Site: "+$P{siteIgreja}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="421" y="54" width="19" height="20" uuid="c195d37c-565d-4fb6-a6fd-a97c238577a9"/>
-				<text><![CDATA[]]></text>
+				<reportElement mode="Opaque" x="421" y="106" width="50" height="27" uuid="6ac716f6-4503-4c77-bdb8-33bafb4bcf81"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1ª IGREJA DE CRISTO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="421" y="80" width="60" height="41" uuid="6ac716f6-4503-4c77-bdb8-33bafb4bcf81"/>
-				<text><![CDATA[1º Igreja     de Cristo Taguatinga]]></text>
+				<reportElement mode="Opaque" x="424" y="126" width="50" height="16" forecolor="#66FFFF" uuid="4c497535-f500-4c27-8b6b-dbca4974b2d5"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Taguatinga]]></text>
 			</staticText>
+			<frame>
+				<reportElement x="171" y="95" width="220" height="122" uuid="e395e607-8312-4c4c-8b7d-f384989f5b4a"/>
+				<textField>
+					<reportElement x="6" y="2" width="209" height="120" uuid="5e81490d-afa2-457d-86c4-dea87d596eaa"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$P{aniversariantes}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<elementGroup/>
+			<staticText>
+				<reportElement x="11" y="78" width="143" height="14" uuid="da26a6b0-8c91-4691-98fd-b5d592979804"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Domingo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="91" width="143" height="25" uuid="dbcc899a-734d-49a4-bbe3-cc41cffaf311"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Escola Dominical - 18h
+Culto de Celebração - 19h]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="115" width="143" height="15" uuid="a0e6dfb5-5114-41af-9ddf-077abdd6a40d"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Segunda-Feira]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="129" width="143" height="16" uuid="31a64bb1-c30f-451b-9d3b-f2630ad7a629"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[PG Meninas (JFG) - 19:30h]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="144" width="143" height="15" uuid="1bf7ee4d-e891-4222-9a60-3e6ab42a3a29"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quarta-Feira e Quinta-Feira]]></text>
+			</staticText>
+			<break>
+				<reportElement x="0" y="0" width="801" height="1" uuid="e9b64493-55f9-4c29-90cb-b7d83062c276"/>
+			</break>
+			<staticText>
+				<reportElement x="11" y="158" width="143" height="16" uuid="726f4200-2fc3-471d-ae4e-4d97fb4c8215"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[PG´s nas casas - 20h]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="173" width="143" height="15" uuid="0622c128-462b-4b73-93a8-50ca2e73045b"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sexta-Feira]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="187" width="143" height="16" uuid="2235c532-efe0-4f98-96d0-7acd8e63cb59"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[PG´s Meninos (BIC) - 20h]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="202" width="143" height="15" uuid="3acb7b37-8e5a-494f-aff7-7b28c046257a"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sábado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="216" width="143" height="20" uuid="a53ba993-cde5-46e9-a45e-19a45ac75009"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Culto de Jovens e Adolescentes - 20h]]></text>
+			</staticText>
+			<line>
+				<reportElement x="11" y="115" width="143" height="1" uuid="eb79a96f-42eb-428a-a3ea-7e95fbb365c6"/>
+			</line>
+			<line>
+				<reportElement x="11" y="144" width="143" height="1" uuid="179528c1-825b-4043-ac6f-9547249f259b"/>
+			</line>
+			<line>
+				<reportElement x="11" y="173" width="143" height="1" uuid="359d2b28-c5fa-49f8-ac98-1ca4c718957a"/>
+			</line>
+			<line>
+				<reportElement x="11" y="202" width="143" height="1" uuid="45e55f21-d03b-4e3f-b573-2e2aa2d6686d"/>
+			</line>
+			<line>
+				<reportElement x="11" y="78" width="143" height="1" uuid="8db26a7c-f6c3-4cb1-81b2-c1e3cf392ceb"/>
+			</line>
+			<staticText>
+				<reportElement x="12" y="265" width="76" height="31" uuid="385e327d-7778-4b05-b817-0e0077ecd8bc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Academia Maestro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="295" width="66" height="70" uuid="b8ae9daa-6d34-4bf4-b977-cc5550f1e099"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Escola de Músca
+Taguatinga Sul
+Aprenda a tocas suas canções favoritas!
+98147-1968]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="88" y="265" width="83" height="31" uuid="3cde7ccb-3739-4b65-b770-7a87db9942c2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fique bela com a Pra Maria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="98" y="296" width="66" height="69" uuid="53f1def8-804a-494b-92fd-d2947d0b2d4b"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Avon Demillus Natura
+Produtos a pronta-entrega
+98291-2987]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="265" width="114" height="31" uuid="856c41df-0e54-4cd0-98d2-284755c6a345"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Miter Top Team - Escola de lutas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="296" width="103" height="69" uuid="e23b66cd-d448-48ba-9a61-9798d6d184c9"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Judô - Jiu Jitsu - Taekwondo - Karatê - Muay Thai - Boxe - MMA - Defesa pessoal - Miter Fight Training
+3973-3030
+99963-8966]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="284" y="266" width="107" height="13" uuid="c4beec47-3c3a-4b70-974c-ebc63cec4ede"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Paulo e Saulo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="294" y="279" width="86" height="42" uuid="6382bf0b-0344-4e59-85a2-3d23f613c203"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Plano de Seguro / Seguro Auto
+Paulo Chaveiro
+98617-8886]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="364" width="100" height="18" uuid="1674674c-ae48-41d3-bd68-8d6c35570b20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ciou Baby & Kids]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="382" width="81" height="74" uuid="615b97ea-1c5c-41bc-befe-925ab682ffab"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Berçário e Educação Infantil
+QSE 18, Lt 1 - Tag Sul
+10% de desconto para membros da PIC
+3026-4880
+98173-4085]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="112" y="364" width="113" height="18" uuid="a9326541-463a-49ca-b1cd-50ec89edfd58"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Implantar Odontologia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="382" width="97" height="74" uuid="a8dbe889-1480-4e6f-b62e-cb01325212bc"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Estética Cirurgia Implante Ortodontia Periodontia Dentística Endodontia Clareamento
+3047-3929
+99800-3929]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="364" width="70" height="18" uuid="d9520993-1ee7-4ded-bb74-725ab467d470"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nails Done]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="228" y="382" width="64" height="74" uuid="a9761dd3-a34e-400b-a172-7e9f247404ea"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Café com Esmalte
+Rua 21 Norte, Lt 1, Loja 2
+Águas Claras
+3052-5266
+98221-0188]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="284" y="321" width="107" height="18" uuid="adaa27d9-a14a-40b9-9a66-affd8ee2be13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pedacinho Doce]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="295" y="337" width="81" height="63" uuid="80bbef26-dbf5-4eef-81be-35dbab1f4684"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Wesley Soares Tortas Bolos Brigadeiros Rabanadas Panetones recheados
+99951-9263
+98146-0640]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="456" width="77" height="18" uuid="bbe9760e-7e3b-463e-9d97-198b8f34fdab"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cleancar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="474" width="73" height="68" uuid="806091b9-2fda-4ce9-808f-463f3288c034"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Polimento Lavagem polimento higienização detalhamento automotivo
+99854-9700]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="456" width="81" height="38" uuid="6a18556e-7879-466d-9eb9-1535eddea19d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Máxima Fisioterapia e Reabilitação]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="493" width="81" height="62" uuid="02f84921-c35f-402c-9a67-c759ad8841d6"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Fisioterapia geral com Guiomar Martins Centro Médico Marra, Loja 10, Tag Sul
+3563-9885
+98438-422]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="199" y="456" width="81" height="38" uuid="816ccbf9-4866-4acd-8816-3d9127ea7d16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Congelados da Hilda]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="199" y="493" width="81" height="62" uuid="572d10c6-60e9-4c33-899c-392faaa05f37"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Pão de Queijo Massas Salgados em geral e as fomosas e deliciosas mini pizzas!
+98531-7187]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="292" y="400" width="99" height="30" uuid="a5a371f0-998f-4feb-adc8-965d4bbc388d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rafael Camisetas e Sublimação]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="292" y="430" width="99" height="26" uuid="7465356e-81ff-4338-9cb1-9cd2504443b1"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[99335-6609
+rafasublimabsb@gmail.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="455" width="106" height="19" uuid="877b59aa-6730-4086-962b-6a2baa74b5e8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salão da Marilda]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="302" y="474" width="80" height="52" uuid="18ef05ec-6d2d-4e15-8190-0d79573006ee"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Manicure Pedicure Corte de cabelo Depilação Tintura
+Promoção de 2ª a 4ª
+3032-8562]]></text>
+			</staticText>
+		</band>
+		<band height="611">
+			<rectangle radius="10">
+				<reportElement x="602" y="113" width="197" height="485" uuid="3ba62cb5-3084-4b90-8a39-c5f5d3c9f99b"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="412" y="55" width="179" height="285" uuid="5a9b089a-2ed8-4657-ab13-eff260479d7f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="602" y="53" width="197" height="29" uuid="9793f060-0e91-40f3-b5ea-986f9ea9a569"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="22" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Missões]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="615" y="126" width="176" height="461" uuid="98cb92b0-dde9-40de-98a1-b3a2dfeb2591"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{missoes}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="411" y="56" width="179" height="39" uuid="7c4735e1-256a-44e4-817d-0bf9e9f7830b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ANJO DO LAR:
+AGENDE O SEU HORÁRIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="419" y="97" width="166" height="47" uuid="0e252565-48d5-4803-b2fd-bd0be06608f0"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[O Pr. Anderson está se voluntariando, todas as quartas-feiras à tarde, para ajudar todos aqueles que precisam de serviços de anjo do lar, tais como:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="421" y="144" width="164" height="54" uuid="9d5b03ff-2b57-41ae-9960-c067750899d9"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[*Elétrico: trocar lâmpadas e tomadas, resistência de chuveiro, instalação de equipamentos (máquinas de lavar, exaustor, etc)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="421" y="198" width="164" height="24" uuid="c338f9b4-476a-49fa-a8e6-39c8c0fb363a"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[*Hidráulico: troca de torneira, sifão, solução em pequenos vazamentos;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="421" y="222" width="164" height="24" uuid="d8a73e6c-b003-498c-8100-624abdff556e"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[*Jardinagem: cortar grama, poda de árvores, roçar quintal, pequenos plantios;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="421" y="246" width="164" height="25" uuid="759eb08f-315d-4edc-91a6-2166546617ee"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[*Pintura: reparos em paredes, pisos e teto, portões e pequenas áreas;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="421" y="271" width="164" height="34" uuid="7652c8f1-59a8-4656-98db-d605195c50d3"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[*Organização: pendurar quadros, desmontar ou montar móveis, ajuda em mudanças;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="419" y="305" width="166" height="35" uuid="a623d551-4b09-45d2-8e59-a41275525b10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Os interessados devem fazer o agendamento na secretaria da igreja pelo telefone 3563-1865]]></text>
+			</staticText>
+			<line>
+				<reportElement x="411" y="95" width="179" height="1" uuid="b164fca3-2822-44ce-898a-2be0ff77c713"/>
+			</line>
+			<staticText>
+				<reportElement x="217" y="54" width="166" height="18" uuid="98cac55f-de13-4023-8e69-70861ff955ed"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TEXTOS DEVOCIONAIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="217" y="71" width="165" height="16" uuid="15cb57e4-04ca-4165-b294-fcba3ba5d32c"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Atenção aos textos devocionais da semana:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="217" y="87" width="165" height="121" uuid="269288ac-6172-43b0-b867-cf4b19d592cb"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{textosDevocionais}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="217" y="208" width="163" height="66" uuid="33e19173-fa90-4992-88a9-e7735298c909"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Leia e responda:
+- O que me chamou a atenção no texto?
+- O que o texto ensina sobre Deus?
+- O que o texto ensina sobre as pessoas?
+- E como vou obedecer a essa
+ passsagem?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="236" y="453" width="135" height="31" uuid="c141b8bf-a1cc-45bc-a7cc-6c76503ca950"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOAÇÕES PARA AS CESTAS BÁSICAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="236" y="484" width="134" height="30" uuid="9107a440-7849-41d3-9f30-72fd729f0f30"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Contribua com alimentos para a montagem das cestas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="236" y="511" width="134" height="20" uuid="d9dc9f09-851e-4d6d-8585-5b2d1d289e8c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Informações com a Aldaci]]></text>
+			</staticText>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="237" y="533" width="134" height="53" uuid="0e9479c8-256e-4bdd-81a6-a3a84fb4206e"/>
+				<imageExpression><![CDATA[$P{carrinhoCompra}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="602" y="82" width="197" height="31" uuid="61d2b3b6-fa2c-4762-a132-617b2da43a64"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{missoesTitulo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="59" y="54" width="118" height="29" uuid="f8eefe43-3399-44d0-bd34-dec1f5bc719c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[Espaço PG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="87" width="188" height="15" uuid="aca37ea3-b4d9-45d3-acf8-2d9458e1f156"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ENDEREÇOS DOS PG´s:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="103" width="188" height="63" uuid="0c0cfe3f-7a11-48f7-bd27-f1a5a4cf2159"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Os pequenos grupos se reúnem nas casas e têm como objetivo nos conectar a Deus e uns aos outros. São dez pontos de encontro todas as semanas e as reuniões acontecem as segundas (meninas); quartas; quintas e sextas-feiras (meninos). Participe!]]></text>
+			</staticText>
+			<line>
+				<reportElement x="220" y="438" width="160" height="1" uuid="0c4f4772-7f35-4a4e-b34d-c050d62404c4"/>
+			</line>
+			<line>
+				<reportElement x="222" y="597" width="160" height="1" uuid="a526e539-d43d-4cfc-ade8-54efbd54a168"/>
+			</line>
+			<rectangle radius="10">
+				<reportElement x="11" y="166" width="187" height="432" uuid="07695047-6600-4bd0-bb93-d7e17c88de18"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="12" y="166" width="186" height="14" uuid="29a094ec-b41e-45e5-838e-718ef52f1720"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quarta-Feira]]></text>
+			</staticText>
+			<line>
+				<reportElement x="11" y="180" width="187" height="1" uuid="689e3fe9-3d06-45df-9c6a-a7818c92bf29"/>
+			</line>
+			<textField>
+				<reportElement x="12" y="181" width="186" height="299" uuid="f1f07a99-ff65-4f5c-8b9f-f02f8fc9f984"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pgsQuarta}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="11" y="481" width="186" height="14" uuid="a3fe517f-7640-4cc6-b971-a29427965081"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quinta-Feira]]></text>
+			</staticText>
+			<line>
+				<reportElement x="11" y="495" width="187" height="1" uuid="22895805-03d1-4193-84b8-1ebdff6f425b"/>
+			</line>
+			<line>
+				<reportElement x="10" y="480" width="188" height="1" uuid="1440bd86-ed85-4b08-be04-b552647eca44"/>
+			</line>
+			<textField>
+				<reportElement x="12" y="496" width="185" height="102" uuid="0e4a65af-e96c-4cc1-8b05-cabb26ef2804"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pgsQuinta}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>
