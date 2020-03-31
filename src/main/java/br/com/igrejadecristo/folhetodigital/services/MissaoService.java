@@ -56,4 +56,10 @@ public class MissaoService {
 		
 		missaoDao.deleteById(idMissao);
 	}
+	
+	@Transactional
+	public Missao buscarMissaoPorIdIgrejaEDataCriado(Integer idIgreja, LocalDateTime dataCriado, LocalDateTime dataLimiteBusca) {
+		
+		return missaoDao.buscaMissaoPorIdIgrejaAndDataCriado(idIgreja, dataCriado, dataLimiteBusca); 
+	}
 }

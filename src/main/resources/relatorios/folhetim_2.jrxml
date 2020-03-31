@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="folhetim" columnCount="2" printOrder="Horizontal" pageWidth="842" pageHeight="651" orientation="Landscape" columnWidth="401" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="87efd992-d13b-41dd-82ed-8930cb211342">
 	<property name="ireport.zoom" value="1.4615378250000128"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="1109"/>
+	<property name="ireport.y" value="105"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -662,9 +662,9 @@ Rua 21 Norte, Lt 1, Loja 2
 				<text><![CDATA[Rafael Camisetas e Sublimação]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="292" y="430" width="99" height="26" uuid="7465356e-81ff-4338-9cb1-9cd2504443b1"/>
+				<reportElement x="294" y="430" width="97" height="26" uuid="7465356e-81ff-4338-9cb1-9cd2504443b1"/>
 				<textElement textAlignment="Center">
-					<font size="8" isBold="false" isItalic="true"/>
+					<font size="7" isBold="false" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[99335-6609
 rafasublimabsb@gmail.com]]></text>
