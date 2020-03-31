@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="folhetim" columnCount="2" pageWidth="842" pageHeight="596" orientation="Landscape" columnWidth="401" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="87efd992-d13b-41dd-82ed-8930cb211342">
+	<property name="ireport.zoom" value="1.607691607500003"/>
+	<property name="ireport.x" value="361"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#BFFFEA">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#E6FFF6">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="dataset1" uuid="39f373d5-6f8f-41d6-b5c1-f228bbeff3c5">
+		<queryString>
+			<![CDATA[SELECT
+     Membro.`data_nascimento` AS Membro_data_nascimento,
+     Membro.`nome` AS Membro_nome
+FROM
+     `Membro` Membro
+WHERE
+     data_nascimento BETWEEN 2018 -1 -1 and 2020 -3 -3]]>
+		</queryString>
+		<field name="Membro_data_nascimento" class="java.sql.Timestamp"/>
+		<field name="Membro_nome" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="Table Dataset 1" uuid="2631d1c6-f33f-4015-aedd-a701281813bf">
+		<queryString>
+			<![CDATA[select m from Membro m where m.dataNascimento between 2018-01-01 and 2020-03-03]]>
+		</queryString>
+	</subDataset>
+	<subDataset name="Table Dataset 2" whenResourceMissingType="Empty" uuid="d2985fa2-c7db-44c3-a023-d3bc15e98a63">
+		<queryString>
+			<![CDATA[SELECT
+     Membro.`data_nascimento` AS Membro_data_nascimento,
+     Membro.`nome` AS Membro_nome
+FROM
+     `Membro` Membro
+]]>
+		</queryString>
+		<field name="Membro_data_nascimento" class="java.sql.Timestamp"/>
+		<field name="Membro_nome" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="aniversariantes" uuid="da633c69-dc16-4895-966d-934615d8bd30">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     Membro.`data_nascimento` AS Membro_data_nascimento,
+     Membro.`nome` AS Membro_nome
+FROM
+     `Membro` Membro
+WHERE
+     data_nascimento BETWEEN 2018 -1 -1 and 2020 -3 -3]]>
+		</queryString>
+		<field name="Membro_data_nascimento" class="java.sql.Timestamp"/>
+		<field name="Membro_nome" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="dataset2" uuid="e5c75b98-a692-4a4a-a6d0-8f4efa73b50f"/>
+	<parameter name="mensagem" class="java.lang.String"/>
+	<parameter name="dataFolhetim" class="java.lang.String"/>
+	<parameter name="enderecoIgreja" class="java.lang.String"/>
+	<parameter name="telefoneIgreja" class="java.lang.String"/>
+	<parameter name="siteIgreja" class="java.lang.String"/>
+	<parameter name="emailIgreja" class="java.lang.String"/>
+	<parameter name="tituloMensagem" class="java.lang.String"/>
+	<parameter name="autorMensagem" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="154" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="407" y="3" width="394" height="151" uuid="9d3b956e-cb02-44be-b6f8-d560f08972b0"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="518" y="3" width="283" height="18" uuid="6a49c3ec-06db-4178-b8e5-19aaae2f0036"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRIMEIRA IGREJA DE CRISTO DE TAGUATINGA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="1" width="104" height="17" uuid="e6ace8cd-6772-42a1-b884-89b7fb9b926c"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Agenda da Igreja]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="518" y="21" width="272" height="14" uuid="1b6a4ff0-9162-41a6-b8f1-764c31df29b3"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{enderecoIgreja}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="708" y="35" width="82" height="18" uuid="c3e4c32f-6543-4d32-96ee-ff7e8136a90f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{telefoneIgreja}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="664" y="53" width="126" height="20" uuid="86a1c2fa-5d52-47b4-a95d-493b4135fc6c"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{siteIgreja}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="638" y="53" width="26" height="20" uuid="b1c30ef3-e43c-409a-99fd-433fc8fa76e8"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Site:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="625" y="73" width="39" height="15" uuid="567ab332-7855-4774-abc6-d35ef6355e32"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[E-mail:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="664" y="73" width="126" height="15" uuid="25663c8a-9bc6-4ca5-b704-b0d82d1c8e1c"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{emailIgreja}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="518" y="88" width="272" height="22" uuid="66acb5f4-b49b-4e8f-8e22-da95adfbc1a7"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Nossa missão: "A PIC existe para conduzir pessoas a Cristo e ajudá-las a se tornarem unicamente cristãs"]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="518" y="110" width="272" height="28" uuid="813e1ee5-5491-4b51-9023-7659750248aa"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Nossa visão: "Uma igreja vibrante na celebração, amorosa na conexão e generosa na contribuição"]]></text>
+			</staticText>
+			<image>
+				<reportElement x="420" y="18" width="86" height="120" uuid="05098663-9953-4570-9134-fd437fda77a3"/>
+				<imageExpression><![CDATA["C:\\Users\\Rezende\\Documents\\igreja_Cristo\\icone_login_new-old_original.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="664" y="35" width="42" height="18" uuid="46fd8896-696d-4b39-915c-7c9718ae8cc4"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tel/Fax: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="196" y="1" width="183" height="17" uuid="55c7d198-1c25-4a00-b9c9-60cc77ae9e77"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aniversariantes da Semana]]></text>
+			</staticText>
+			<line>
+				<reportElement x="506" y="10" width="1" height="136" uuid="702f2d74-8d49-4928-832b-8751665d514b"/>
+			</line>
+			<componentElement>
+				<reportElement x="216" y="35" width="145" height="103" uuid="02d46c0a-6af9-47df-88de-c321731d5774"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="dataset1" uuid="02aedbbe-d4c2-464c-bcd0-271ecf0d3c72">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="103" width="145"/>
+				</jr:list>
+			</componentElement>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="274" splitType="Stretch">
+			<staticText>
+				<reportElement x="169" y="34" width="76" height="31" uuid="994e8615-0148-4724-9a79-b894c51b6559"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Serviços]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement x="407" y="18" width="394" height="235" uuid="94d5e316-8a31-489d-80e9-ba75a2218c65"/>
+			</rectangle>
+			<textField>
+				<reportElement x="420" y="44" width="370" height="187" uuid="6d9b7ae7-3768-4041-bd36-e00d05b94355"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$P{mensagem}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="472" y="18" width="286" height="16" uuid="28a2b612-9c14-4842-8654-2af62fecf97d"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tituloMensagem}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="690" y="233" width="100" height="20" uuid="b342eca2-c4ee-46ea-9291-b1072c2eabfd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{autorMensagem}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="608" y="0" width="111" height="14" uuid="adc37f1b-3787-47b2-88d5-8c443c6a4fa8"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dataFolhetim}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="507" y="0" width="101" height="14" uuid="aa5cfce7-cba7-4772-bc9a-b720a4c185c5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Boletim Informativo, ]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="54" splitType="Stretch"/>
+	</columnFooter>
+</jasperReport>

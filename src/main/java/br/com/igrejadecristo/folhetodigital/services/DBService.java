@@ -131,7 +131,7 @@ public class DBService {
 				"Costa Neto é pastor de uma das maiores igrejas de Fortaleza, a Comunidade Cristã Videira. "
 						+ "Para se ter uma ideia, por final de semana, a igreja conta com o trabalho "
 						+ "de cerca de 2.500 voluntários.",
-				"Pra Renata Cabral", LocalDateTime.now(), "O Nosso papel: Amar e servir", igreja1);
+				"Pra Renata Cabral", LocalDateTime.now().minusDays(2), "O Nosso papel: Amar e servir", igreja1);
 
 		Mensagem mensagem2 = new Mensagem(null,
 				"Apenas mais uma mensagem para cadastrar no banco como exemplo "
@@ -144,7 +144,7 @@ public class DBService {
 				"A intolerância religiosa é resultado de um longo processo histórico, em que uma pessoa enfrenta perseguição, "
 				+ "ofensa e agressão por expor a fé em qualquer região do mundo. A intolerânci contra cristãos perseguidos costuma "
 				+ "partir de grupos extremistas, como por exemplo: Estado Islâmico, Boko Haram e Al-Shabaab.", "Pra Renata Cabral", 
-				LocalDateTime.now(), "Intolerância Religiosa", igreja1);
+				LocalDateTime.now().minusDays(2), "Intolerância Religiosa", igreja1);
 		
 		Missao missao2 = new Missao(null,
 				"A intolerância religiosa é resultado de um longo processo histórico, em que uma pessoa enfrenta perseguição, "
@@ -188,8 +188,8 @@ public class DBService {
 		agendaEventoRepository.saveAll(Arrays.asList(agenda, agenda1, evento1));
 
 		Devocional devocional1 = new Devocional(null, "Lucas 16:1-15", igreja1,
-				"Examinar as escrituras para adquirir sabedoria", LocalDate.now());
-		Devocional devocional2 = new Devocional(null, "Apocalipse 1:5-10", igreja1, "Examinar", LocalDate.now());
+				"Examinar as escrituras para adquirir sabedoria", LocalDate.now().minusDays(2));
+		Devocional devocional2 = new Devocional(null, "Apocalipse 1:5-10", igreja1, "Examinar", LocalDate.now().minusDays(2));
 		devocionalRepository.saveAll(Arrays.asList(devocional1, devocional2));
 
 		OfertaServico oferta1 = new OfertaServico(null, "Academia Maestro", igreja1,

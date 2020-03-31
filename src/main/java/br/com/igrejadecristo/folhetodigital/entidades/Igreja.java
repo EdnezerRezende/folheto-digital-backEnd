@@ -59,6 +59,10 @@ public class Igreja {
 	
 	@OneToOne(mappedBy = "igreja", cascade=CascadeType.ALL)
     private EnderecoIgreja endereco;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "igreja", cascade=CascadeType.ALL)
+    private List<Aniversariante> aniversariantes = new ArrayList<>();
 
 	@ElementCollection
     @CollectionTable(name = "TELEFONEIGREJA")
@@ -164,6 +168,30 @@ public class Igreja {
 
 	public void setServicos(List<OfertaServico> servicos) {
 		this.servicos = servicos;
+	}
+
+	public List<Mensagem> getMensagens() {
+		return mensagens;
+	}
+
+	public void setMensagens(List<Mensagem> mensagens) {
+		this.mensagens = mensagens;
+	}
+
+	public List<Missao> getMissoes() {
+		return missoes;
+	}
+
+	public void setMissoes(List<Missao> missoes) {
+		this.missoes = missoes;
+	}
+
+	public List<Aniversariante> getAniversariantes() {
+		return aniversariantes;
+	}
+
+	public void setAniversariantes(List<Aniversariante> aniversariantes) {
+		this.aniversariantes = aniversariantes;
 	}
 
 	@Override
