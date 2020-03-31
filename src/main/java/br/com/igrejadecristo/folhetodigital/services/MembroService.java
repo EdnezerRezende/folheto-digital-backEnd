@@ -26,6 +26,7 @@ import br.com.igrejadecristo.folhetodigital.dto.MembroAlteraPerfilDTO;
 import br.com.igrejadecristo.folhetodigital.dto.MembroDTO;
 import br.com.igrejadecristo.folhetodigital.dto.MembroInfoDTO;
 import br.com.igrejadecristo.folhetodigital.dto.MembroNewDTO;
+import br.com.igrejadecristo.folhetodigital.entidades.Aniversariante;
 import br.com.igrejadecristo.folhetodigital.entidades.Cidade;
 import br.com.igrejadecristo.folhetodigital.entidades.EnderecoMembro;
 import br.com.igrejadecristo.folhetodigital.entidades.Igreja;
@@ -54,6 +55,9 @@ public class MembroService {
 	@Autowired
 	private ImageService imageService;
 	
+	@Autowired
+	private AniversarianteService aniversarianteService;
+	
 	@Value("${img.prefix.membro.profile}")
 	private String prefix;
 	
@@ -76,8 +80,20 @@ public class MembroService {
 	public Membro insert(Membro obj) {
 		obj.setId(null);
 		obj = membroDao.save(obj);
+		salvarAniversariante(obj);
+		
 		enderecoRepository.saveAll(obj.getEnderecos());
 		return obj;
+	}
+
+	private void salvarAniversariante(Membro obj) {
+		Aniversariante aniversariante = new Aniversariante();
+		aniversariante.setDataNascimento(obj.getDataNascimento());
+		aniversariante.setEmail(obj.getEmail());
+		aniversariante.setNome(obj.getNome());
+		aniversariante.setIgreja(obj.getIgreja());
+		
+		aniversarianteService.salvarAniversariante(aniversariante);
 	}
 
 	public Membro update(MembroAlteraPerfilDTO obj) {

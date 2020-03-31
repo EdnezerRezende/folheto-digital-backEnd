@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="folhetim_2_subreport1" language="groovy" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="eb00f857-9823-463b-9ba1-ddd6c7e68629">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="mensagem" class="java.lang.String"/>
+	<parameter name="dataFolhetim" class="java.lang.String"/>
+	<parameter name="enderecoIgreja" class="java.lang.String"/>
+	<parameter name="telefoneIgreja" class="java.lang.String"/>
+	<parameter name="siteIgreja" class="java.lang.String"/>
+	<parameter name="emailIgreja" class="java.lang.String"/>
+	<parameter name="tituloMensagem" class="java.lang.String"/>
+	<parameter name="autorMensagem" class="java.lang.String"/>
+	<parameter name="logo" class="java.awt.Image"/>
+	<parameter name="aniversariantes" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="555" splitType="Stretch">
+			<rectangle>
+				<reportElement x="7" y="23" width="143" height="181" uuid="92e6e80e-9760-4406-b60d-3b9b927b174c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="167" y="23" width="220" height="181" uuid="4dbe99e5-bf59-41e9-bcc1-458717245887"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="410" y="135" width="385" height="359" uuid="6d6697d0-5c64-47f6-935a-5adf5e977397"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="410" y="18" width="385" height="103" uuid="ee2988ed-e131-4c22-a1fc-7ff4cc2c213d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="515" y="22" width="261" height="18" uuid="03750a95-e259-4fd4-a6d2-5d87db948975"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRIMEIRA IGREJA DE CRISTO DE TAGUATINGA]]></text>
+			</staticText>
+			<elementGroup/>
+		</band>
+	</detail>
+</jasperReport>

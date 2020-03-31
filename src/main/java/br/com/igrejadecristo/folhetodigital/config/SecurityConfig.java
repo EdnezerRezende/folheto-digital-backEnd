@@ -45,6 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/membros/**",
 			"/mensagens/**",
 			"/pgs/**",
+			"/aniversariantes/**",
+			"/boletins/**",
 			"/emails/**"
 	};
 

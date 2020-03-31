@@ -32,6 +32,11 @@ public class DevocionalService {
 		return devocionalDao.findByIgrejaId(idIgreja);
 	}
 
+	public List<Devocional> buscarPorIgrejaEDataCriacao(Integer idIgreja, LocalDate dataCriado, LocalDate dataLimiteBusca) {
+		return devocionalDao.buscaDevocionalPorIdIgrejaAndDataCriado(idIgreja, dataCriado, dataLimiteBusca);
+	}
+
+	
 	@Transactional
 	public Devocional salvar(DevocionalNewDTO dto) {
 		Boolean existe = false;

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="folhetim_2_subreport2" pageWidth="802" pageHeight="555" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isTitleNewPage="true" uuid="d0258fdf-8d65-434a-9590-a5fc76215495">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="aniversariantes" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="autorMensagem" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="50">
+			<staticText>
+				<reportElement x="45" y="6" width="726" height="40" uuid="233993c1-075f-437b-ab59-8ac2a644682b"/>
+				<box>
+					<pen lineStyle="Dotted"/>
+					<topPen lineWidth="1.25" lineStyle="Dotted"/>
+					<leftPen lineWidth="1.25" lineStyle="Dotted"/>
+					<bottomPen lineWidth="1.25" lineStyle="Dotted"/>
+					<rightPen lineWidth="1.25" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="30"/>
+				</textElement>
+				<text><![CDATA[Pagina Verso]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="527" splitType="Stretch">
+			<staticText>
+				<reportElement x="45" y="37" width="726" height="450" uuid="2739c155-1e1e-4078-a22c-07e20075baaf"/>
+				<box>
+					<pen lineStyle="Dotted"/>
+					<topPen lineWidth="1.25" lineStyle="Dotted"/>
+					<leftPen lineWidth="1.25" lineStyle="Dotted"/>
+					<bottomPen lineWidth="1.25" lineStyle="Dotted"/>
+					<rightPen lineWidth="1.25" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="160"/>
+				</textElement>
+				<text><![CDATA[Pagina Verso]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="106" y="420" width="260" height="53" uuid="c1b00c6b-8d2e-48c5-842a-3c9971d4e37e"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{autorMensagem}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
