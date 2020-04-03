@@ -50,11 +50,11 @@ public class BoletimService {
 	private GeraFolheto gerarBoletim;
 	
 	public void gerarBoletimSemanal(Integer idIgreja, HttpServletResponse response) throws ClassNotFoundException, JRException, SQLException, IOException {
-		DateTimeFormatter parser = DateTimeFormatter.ofPattern("d 'de' MMMM 'de' yyyy HH:mm");
+		DateTimeFormatter parser = DateTimeFormatter.ofPattern("d 'de' MMMM 'de' yyyy HH:mm").withLocale(new Locale("pt", "br"));
 		LocalDateTime dataHoje = LocalDateTime.now();
 
 		String dataBoletimGerado = obterDataGeracaoBoletim(dataHoje.toLocalDate());
-		LocalDateTime dataBoletimInicio = LocalDateTime.parse(dataBoletimGerado + " 23:59",parser);
+		LocalDateTime dataBoletimInicio = LocalDateTime.parse(dataBoletimGerado + " 11:59",parser);
 			
 		LocalDateTime dataLimiteBusca = LocalDateTime.parse(dataBoletimGerado + " 00:00",parser).minusDays(6);
 		
