@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="folhetim" columnCount="2" printOrder="Horizontal" pageWidth="842" pageHeight="651" orientation="Landscape" columnWidth="401" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="87efd992-d13b-41dd-82ed-8930cb211342">
 	<property name="ireport.zoom" value="1.4615378250000128"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.x" value="405"/>
+	<property name="ireport.y" value="1350"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -215,7 +215,9 @@
 	<subDataset name="dataset2" uuid="7535f075-4b98-4a01-8bad-478384f95fec"/>
 	<subDataset name="Table Dataset 2" uuid="75708c4b-7295-4a07-8c04-51fcd449fa44"/>
 	<subDataset name="Table Dataset 3" uuid="9cf51c77-bc6a-44b3-9db7-d941cfe07471"/>
-	<parameter name="mensagem" class="java.lang.String"/>
+	<parameter name="mensagem" class="java.lang.String">
+		<property name="markup" value="html"/>
+	</parameter>
 	<parameter name="dataFolhetim" class="java.lang.String"/>
 	<parameter name="enderecoIgreja" class="java.lang.String"/>
 	<parameter name="telefoneIgreja" class="java.lang.String"/>
@@ -258,13 +260,15 @@
 			<rectangle radius="10">
 				<reportElement x="414" y="167" width="385" height="359" uuid="94d5e316-8a31-489d-80e9-ba75a2218c65"/>
 			</rectangle>
-			<textField>
-				<reportElement x="421" y="194" width="370" height="312" uuid="6d9b7ae7-3768-4041-bd36-e00d05b94355"/>
-				<textElement textAlignment="Justified"/>
+			<textField pattern="">
+				<reportElement x="421" y="188" width="370" height="324" uuid="6d9b7ae7-3768-4041-bd36-e00d05b94355"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{mensagem}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="421" y="168" width="370" height="26" uuid="28a2b612-9c14-4842-8654-2af62fecf97d"/>
+				<reportElement x="421" y="168" width="370" height="20" uuid="28a2b612-9c14-4842-8654-2af62fecf97d"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -278,7 +282,7 @@
 				<textFieldExpression><![CDATA["Boletim Informativo, "+$P{dataFolhetim}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="421" y="506" width="370" height="20" uuid="b342eca2-c4ee-46ea-9291-b1072c2eabfd"/>
+				<reportElement x="421" y="512" width="370" height="13" uuid="b342eca2-c4ee-46ea-9291-b1072c2eabfd"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{autorMensagem}]]></textFieldExpression>
 			</textField>
@@ -335,7 +339,7 @@
 			<staticText>
 				<reportElement x="171" y="55" width="220" height="24" uuid="b31a39cf-9095-49b6-9506-d8bdabcca9cf"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="16" isBold="true" isUnderline="false"/>
+					<font fontName="SansSerif" size="14" isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Aniversariantes da Semana]]></text>
 			</staticText>
@@ -364,14 +368,14 @@
 				<textFieldExpression><![CDATA["Site: "+$P{siteIgreja}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="421" y="106" width="50" height="27" uuid="6ac716f6-4503-4c77-bdb8-33bafb4bcf81"/>
+				<reportElement mode="Opaque" x="419" y="106" width="50" height="27" uuid="6ac716f6-4503-4c77-bdb8-33bafb4bcf81"/>
 				<textElement textAlignment="Right">
 					<font size="8"/>
 				</textElement>
 				<text><![CDATA[1ª IGREJA DE CRISTO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="424" y="126" width="50" height="16" forecolor="#66FFFF" uuid="4c497535-f500-4c27-8b6b-dbca4974b2d5"/>
+				<reportElement mode="Opaque" x="421" y="126" width="50" height="16" forecolor="#66FFFF" uuid="4c497535-f500-4c27-8b6b-dbca4974b2d5"/>
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
@@ -701,7 +705,7 @@ Promoção de 2ª a 4ª
 				<text><![CDATA[Missões]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="615" y="126" width="176" height="461" uuid="98cb92b0-dde9-40de-98a1-b3a2dfeb2591"/>
+				<reportElement x="612" y="118" width="176" height="479" uuid="98cb92b0-dde9-40de-98a1-b3a2dfeb2591"/>
 				<textElement textAlignment="Justified" verticalAlignment="Top">
 					<font size="8"/>
 				</textElement>

@@ -148,9 +148,36 @@ public class DBService {
 		
 		
 		Mensagem mensagem1 = new Mensagem(null,
-				"Costa Neto é pastor de uma das maiores igrejas de Fortaleza, a Comunidade Cristã Videira. "
-						+ "Para se ter uma ideia, por final de semana, a igreja conta com o trabalho "
-						+ "de cerca de 2.500 voluntários.",
+				"Um dos devocionais dos PG´s da última semana foi o texto de 1 Co 3. "
+				+ "Nele, o apóstolo Paulo diz aos irmãos da igreja em Corinto qe desejava compartilhar "
+				+ "com eles coisas mais profundas mas que isso não seria possível por conta das atitudes "
+				+ "desses irmãos.<hr>\"Irmãos, quando estive com vocês, não pude lhes falar como a "
+				+ "pessoas espirituais, mas como se pertencessem a este mundo ou fossem criancinhas "
+				+ "em Cristo\" (1 Co 3.1, NVT)<hr>O interessante do texto é observar que Paulo não "
+				+ "julga a espiritualidade dos irmãos a partir dos seus dons. Ele não os chama de "
+				+ "crentes carnais porque estes não falavam em línguas ou porque não tinham discernimento "
+				+ "de espíritos. Paulo os chama de carnais porque suas atitudes não refletiam a sua "
+				+ "espiritualidade.<div>\"(...) Têm ciúme uns dos outros, discutem e brigam entre si. "
+				+ "Acaso isso não mostra que são controlados por sua natureza humana e que vivem como "
+				+ "pessoas do mundo? \" (I Co 3.3, NVT)</div><hr>Apesar de frequentarem a comunidade "
+				+ "cristã, aqueles irmãos não viviam uma vida de comunhão. Apesar fazerem parte de um "
+				+ "corpo, eles não estavam em união buscando o bem do corpo. Na continuação do texto, "
+				+ "vemos Paulo trazendo à tona o partidarismo e a divisão que havia dentro da igreja."
+				+ "<hr>\"Quando um de vocês diz:&nbsp; \"Eu sigo Paulo\", e o outro diz: \"Eu sigo Apolo\", "
+				+ "não estão agindo exatamente como as pessoas do mundo? \"&nbsp; (I Co 3.4, NVT)"
+				+ "<hr>Paulo usa palavras duras para mostrar para aqueles irmãos que o fato de eles "
+				+ "estarem na igreja não os diferenciava das pessoas do mundo se o que eles diziam crer "
+				+ "não podia ser visto em suas atitudes, ou seja, de nada adiantava que eles se "
+				+ "considerassem espirituais se sua espiritualidade não podia ser vista na vida "
+				+ "cotidiana.<hr>E isso continua valendo nos nossos dias. De nada adianta frequentarmos "
+				+ "os cultos, fazermos parte de um PG e participarmos da escola dominical se as nossas"
+				+ " atitudes não são compatíveis com o Cristo que dizemos seguir. Se nos consideramos "
+				+ "discípulos dEle, precisamos seguir os seus passos e viver como Ele viveu - "
+				+ "especialmente do lado de fora da igreja.<hr>As nossas vidas cotidianas precisam "
+				+ "refletir a vida de Cristo. Precisamos ser parecidos com Jesus no trânsito, "
+				+ "no trabalho, na escola e em casa. Precisamos demonstrar com nossas atitudes "
+				+ "que seguimos o Mestre de Nazaré. Enfim, precisamos colocar a nossa espiritualidade "
+				+ "em prática e sermos cada vez mais parecidos com Jesus.",
 				"Pra Renata Cabral", dataLimiteBusca, "O Nosso papel: Amar e servir", igreja1);
 
 		Mensagem mensagem2 = new Mensagem(null,
