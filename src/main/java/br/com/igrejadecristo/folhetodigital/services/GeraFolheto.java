@@ -1,6 +1,7 @@
 package br.com.igrejadecristo.folhetodigital.services;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -8,6 +9,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.ImageIcon;
 
@@ -28,11 +30,12 @@ import net.sf.jasperreports.engine.JasperReport;
 public class GeraFolheto {
 	
 	public void gerar(BoletimDTO boletim, HttpServletResponse response) throws JRException, SQLException, ClassNotFoundException, IOException {
-		Resource resource = new ClassPathResource("/relatorios/folhetim_2.jrxml");
-		Resource caminhoLogo = new ClassPathResource("/imagens/logo.jpg");
-		Resource caminhoCarrinho = new ClassPathResource("/imagens/carrinhocompras.jpg");
-		ImageIcon gto = new ImageIcon(caminhoLogo.getURL().getPath()); 
-		ImageIcon carrinho = new ImageIcon(caminhoCarrinho.getURL().getPath()); 
+		InputStream caminhoFolhetim = this.getClass().getResourceAsStream("/relatorios/folhetim_2.jrxml");
+		InputStream caminhoLogoInput = this.getClass().getResourceAsStream("/imagens/logo.jpg");
+		InputStream caminhoCarrinho = this.getClass().getResourceAsStream("/imagens/carrinhocompras.jpg");
+		
+		ImageIcon gto = new ImageIcon(ImageIO.read(caminhoLogoInput)); 
+		ImageIcon carrinho = new ImageIcon(ImageIO.read(caminhoCarrinho)); 
 		
 		String niver = "";
 		for(String aniversariante : boletim.getAniversariantes()){
@@ -88,7 +91,7 @@ public class GeraFolheto {
 		
 		JasperReport jr;
 		
-		jr = JasperCompileManager.compileReport(resource.getURL().getPath());
+		jr = JasperCompileManager.compileReport(caminhoFolhetim);
 		JasperPrint impressao = JasperFillManager.fillReport(jr, parametros, new JREmptyDataSource(1));
 		
 //		JRExporter exporter = new JRPdfExporter();
