@@ -76,12 +76,15 @@ public class GeraFolheto {
 		parametros.put("telefoneIgreja", telefone);
 		parametros.put("siteIgreja", "www.ictaguatinga.com.br");
 		parametros.put("emailIgreja", boletim.getIgreja().getEmail());
-		parametros.put("mensagem", boletim.getMensagem().getMensagem());
+		String mensagemSemanal = limparTagsHtml(boletim.getMensagem().getMensagem());
+		String missaoSemanal = limparTagsHtml(boletim.getMissao().getMensagem());
+		
+		parametros.put("mensagem", mensagemSemanal);
 		parametros.put("tituloMensagem", boletim.getMensagem().getTitulo());
 		parametros.put("autorMensagem", boletim.getMensagem().getAutor());
 		parametros.put("aniversariantes", niver);
 		parametros.put("carrinhoCompra", carrinho.getImage());
-		parametros.put("missoes", boletim.getMissao().getMensagem());
+		parametros.put("missoes", missaoSemanal);
 		parametros.put("missoesTitulo", boletim.getMissao().getTitulo());
 		parametros.put("textosDevocionais", devocionais);
 		parametros.put("pgsQuarta", pgsQuarta);
@@ -103,6 +106,14 @@ public class GeraFolheto {
 
 	    final OutputStream outStream = response.getOutputStream();
 	    JasperExportManager.exportReportToPdfStream(impressao, outStream);
+	}
+
+	private String limparTagsHtml(String mensage) {
+		mensage = mensage.replace("<hr>", "\n");
+		mensage = mensage.replace("<div>", "\n");
+		mensage = mensage.replace("</div>", "");
+		mensage = mensage.replace("&nbsp;", " ");
+		return mensage;
 	}
 	
 }
