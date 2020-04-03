@@ -10,8 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -47,6 +45,16 @@ public class Aniversariante {
 		this.email = email;
 		this.igreja = igreja;
 	}
+	
+	public Aniversariante(Membro membro) {
+		super();
+		this.id = membro.getId();
+		this.nome = membro.getNome();
+		this.dataNascimento = membro.getDataNascimento();
+		this.email = membro.getEmail();
+		this.igreja = membro.getIgreja();
+	}
+	
 
 	public Integer getId() {
 		return id;

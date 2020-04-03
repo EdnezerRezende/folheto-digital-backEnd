@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.igrejadecristo.folhetodigital.entidades.AgendaEvento;
+import br.com.igrejadecristo.folhetodigital.entidades.Aniversariante;
 import br.com.igrejadecristo.folhetodigital.entidades.Cidade;
 import br.com.igrejadecristo.folhetodigital.entidades.Devocional;
 import br.com.igrejadecristo.folhetodigital.entidades.EnderecoIgreja;
@@ -59,12 +61,18 @@ public class DBService {
 
 	@Autowired
 	private EnderecoPGRepository enderecoPgRepository;
+	
+	@Autowired
+	private AniversarianteService aniversarianteService;
 
 	@Autowired
 	private AgendaEventoRepository agendaEventoRepository;
 
 	@Autowired
 	private DevocionalRepository devocionalRepository;
+	
+	@Autowired
+	private BoletimService boletimService;
 
 	@Autowired
 	private OfertaServicoRepository ofertaServicoRepository;
@@ -98,11 +106,14 @@ public class DBService {
 		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3, cidadeIgreja));
 
 		igrejaRepository.saveAll(Arrays.asList(igreja1));
-
-		LocalDate dataNascimento = LocalDate.now();
-		Membro membro1 = new Membro(null, "Teste", "admin@gmail.com", "12345678978", pe.encode("1234"), igreja1, dataNascimento.minusDays(3));
-		Membro membro3 = new Membro(null, "Teste1", "membro@gmail.com", "37668105026", pe.encode("1234"), igreja1, dataNascimento.plusDays(2));
-		Membro membro2 = new Membro(null, "Teste 2", "lider@gmail.com", "78945612378", pe.encode("1234"), igreja1, dataNascimento);
+		DateTimeFormatter parser = DateTimeFormatter.ofPattern("d 'de' MMMM 'de' yyyy HH:mm");
+		LocalDateTime dataHoje = LocalDateTime.now();
+		String dataBoletimGerado = boletimService.obterDataGeracaoBoletim(dataHoje.toLocalDate());
+		LocalDateTime dataLimiteBusca = LocalDateTime.parse(dataBoletimGerado + " 00:00",parser).minusDays(6);
+		
+		Membro membro1 = new Membro(null, "Teste", "admin@gmail.com", "12345678978", pe.encode("1234"), igreja1, dataLimiteBusca.toLocalDate().minusDays(3));
+		Membro membro3 = new Membro(null, "Teste1", "membro@gmail.com", "37668105026", pe.encode("1234"), igreja1, dataLimiteBusca.toLocalDate().plusDays(2));
+		Membro membro2 = new Membro(null, "Teste 2", "lider@gmail.com", "78945612378", pe.encode("1234"), igreja1, dataLimiteBusca.toLocalDate());
 		membro1.addPerfil(Perfil.ADMIN);
 		membro2.addPerfil(Perfil.LIDER);
 
@@ -126,12 +137,21 @@ public class DBService {
 		membro3.getEnderecos().addAll(Arrays.asList(e5));
 
 		membroRepository.saveAll(Arrays.asList(membro1, membro2, membro3));
-
+		
+		Aniversariante aniversariante1 = new Aniversariante(membro1);
+		Aniversariante aniversariante2 = new Aniversariante(membro2);
+		Aniversariante aniversariante3 = new Aniversariante(membro3);
+		aniversarianteService.salvarAniversariante(aniversariante1);
+		aniversarianteService.salvarAniversariante(aniversariante2);
+		aniversarianteService.salvarAniversariante(aniversariante3);
+		
+		
+		
 		Mensagem mensagem1 = new Mensagem(null,
 				"Costa Neto é pastor de uma das maiores igrejas de Fortaleza, a Comunidade Cristã Videira. "
 						+ "Para se ter uma ideia, por final de semana, a igreja conta com o trabalho "
 						+ "de cerca de 2.500 voluntários.",
-				"Pra Renata Cabral", LocalDateTime.now().minusDays(2), "O Nosso papel: Amar e servir", igreja1);
+				"Pra Renata Cabral", dataLimiteBusca, "O Nosso papel: Amar e servir", igreja1);
 
 		Mensagem mensagem2 = new Mensagem(null,
 				"Apenas mais uma mensagem para cadastrar no banco como exemplo "
@@ -144,7 +164,7 @@ public class DBService {
 				"A intolerância religiosa é resultado de um longo processo histórico, em que uma pessoa enfrenta perseguição, "
 				+ "ofensa e agressão por expor a fé em qualquer região do mundo. A intolerânci contra cristãos perseguidos costuma "
 				+ "partir de grupos extremistas, como por exemplo: Estado Islâmico, Boko Haram e Al-Shabaab.", "Pra Renata Cabral", 
-				LocalDateTime.now().minusDays(2), "Intolerância Religiosa", igreja1);
+				dataLimiteBusca, "Intolerância Religiosa", igreja1);
 		
 		Missao missao2 = new Missao(null,
 				"A intolerância religiosa é resultado de um longo processo histórico, em que uma pessoa enfrenta perseguição, "
@@ -188,8 +208,8 @@ public class DBService {
 		agendaEventoRepository.saveAll(Arrays.asList(agenda, agenda1, evento1));
 
 		Devocional devocional1 = new Devocional(null, "Lucas 16:1-15", igreja1,
-				"Examinar as escrituras para adquirir sabedoria", LocalDate.now().minusDays(2));
-		Devocional devocional2 = new Devocional(null, "Apocalipse 1:5-10", igreja1, "Examinar", LocalDate.now().minusDays(2));
+				"Examinar as escrituras para adquirir sabedoria", dataLimiteBusca.toLocalDate());
+		Devocional devocional2 = new Devocional(null, "Apocalipse 1:5-10", igreja1, "Examinar", dataLimiteBusca.toLocalDate());
 		devocionalRepository.saveAll(Arrays.asList(devocional1, devocional2));
 
 		OfertaServico oferta1 = new OfertaServico(null, "Academia Maestro", igreja1,

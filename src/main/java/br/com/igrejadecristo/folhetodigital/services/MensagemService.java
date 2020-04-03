@@ -12,7 +12,6 @@ import br.com.igrejadecristo.folhetodigital.dto.MensagemDTO;
 import br.com.igrejadecristo.folhetodigital.dto.MensagemNewDTO;
 import br.com.igrejadecristo.folhetodigital.entidades.Igreja;
 import br.com.igrejadecristo.folhetodigital.entidades.Mensagem;
-import br.com.igrejadecristo.folhetodigital.entidades.PequenoGrupo;
 import br.com.igrejadecristo.folhetodigital.respositories.IgrejaRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.MensagemRepository;
 import br.com.igrejadecristo.folhetodigital.services.exceptions.ObjectNotFoundException;
