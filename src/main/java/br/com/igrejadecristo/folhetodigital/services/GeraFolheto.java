@@ -13,8 +13,6 @@ import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.ImageIcon;
 
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import br.com.igrejadecristo.folhetodigital.dto.BoletimDTO;
@@ -92,6 +90,7 @@ public class GeraFolheto {
 		JasperReport jr;
 		
 		jr = JasperCompileManager.compileReport(caminhoFolhetim);
+		jr.setProperty("net.sf.jasperreports.default.font.name", "Arial Narrow");
 		JasperPrint impressao = JasperFillManager.fillReport(jr, parametros, new JREmptyDataSource(1));
 		
 //		JRExporter exporter = new JRPdfExporter();
