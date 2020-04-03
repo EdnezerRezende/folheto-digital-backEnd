@@ -103,7 +103,7 @@ public class DBServiceProd {
 		igrejaRepository.saveAll(Arrays.asList(igreja1));
 
 		LocalDate dataNascimento = LocalDate.now();
-		Membro membro1 = new Membro(null, "Administrador", "admin@gmail.com", "12345678978", pe.encode("pic123"),
+		Membro membro1 = new Membro(null, "Administrador", "pic.taguatinga.app@gmail.com", "12345678978", pe.encode("picTaguatinga"),
 				igreja1, dataNascimento.minusDays(3));
 		membro1.addPerfil(Perfil.ADMIN);
 

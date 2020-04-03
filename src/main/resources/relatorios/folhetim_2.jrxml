@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="folhetim" columnCount="2" printOrder="Horizontal" pageWidth="842" pageHeight="651" orientation="Landscape" columnWidth="401" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="87efd992-d13b-41dd-82ed-8930cb211342">
 	<property name="ireport.zoom" value="1.4615378250000128"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="105"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -302,7 +302,7 @@
 			<staticText>
 				<reportElement x="11" y="55" width="143" height="24" uuid="47402c22-0471-41d3-b650-48b4a04cc425"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial Narrow" size="18" isBold="true"/>
+					<font fontName="SansSerif" size="18" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Agenda da Igreja]]></text>
 			</staticText>
@@ -333,9 +333,9 @@
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="171" y="55" width="220" height="41" uuid="b31a39cf-9095-49b6-9506-d8bdabcca9cf"/>
+				<reportElement x="171" y="55" width="220" height="24" uuid="b31a39cf-9095-49b6-9506-d8bdabcca9cf"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Chiller" size="22" isBold="true" isUnderline="false"/>
+					<font fontName="SansSerif" size="16" isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Aniversariantes da Semana]]></text>
 			</staticText>
@@ -378,9 +378,9 @@
 				<text><![CDATA[Taguatinga]]></text>
 			</staticText>
 			<frame>
-				<reportElement x="171" y="95" width="220" height="122" uuid="e395e607-8312-4c4c-8b7d-f384989f5b4a"/>
+				<reportElement x="171" y="79" width="220" height="138" uuid="e395e607-8312-4c4c-8b7d-f384989f5b4a"/>
 				<textField>
-					<reportElement x="6" y="2" width="209" height="120" uuid="5e81490d-afa2-457d-86c4-dea87d596eaa"/>
+					<reportElement x="6" y="0" width="209" height="137" uuid="5e81490d-afa2-457d-86c4-dea87d596eaa"/>
 					<textElement textAlignment="Center"/>
 					<textFieldExpression><![CDATA[$P{aniversariantes}]]></textFieldExpression>
 				</textField>
