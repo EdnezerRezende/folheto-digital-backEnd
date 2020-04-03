@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="folhetim" columnCount="2" printOrder="Horizontal" pageWidth="842" pageHeight="651" orientation="Landscape" columnWidth="401" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="87efd992-d13b-41dd-82ed-8930cb211342">
 	<property name="ireport.zoom" value="1.4615378250000128"/>
 	<property name="ireport.x" value="405"/>
-	<property name="ireport.y" value="1350"/>
+	<property name="ireport.y" value="928"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -695,7 +695,7 @@ Promoção de 2ª a 4ª
 				<reportElement x="602" y="113" width="197" height="485" uuid="3ba62cb5-3084-4b90-8a39-c5f5d3c9f99b"/>
 			</rectangle>
 			<rectangle radius="10">
-				<reportElement x="412" y="55" width="179" height="285" uuid="5a9b089a-2ed8-4657-ab13-eff260479d7f"/>
+				<reportElement x="412" y="55" width="179" height="273" uuid="5a9b089a-2ed8-4657-ab13-eff260479d7f"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="602" y="53" width="197" height="29" uuid="9793f060-0e91-40f3-b5ea-986f9ea9a569"/>
@@ -727,42 +727,42 @@ AGENDE O SEU HORÁRIO]]></text>
 				<text><![CDATA[O Pr. Anderson está se voluntariando, todas as quartas-feiras à tarde, para ajudar todos aqueles que precisam de serviços de anjo do lar, tais como:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="421" y="144" width="164" height="54" uuid="9d5b03ff-2b57-41ae-9960-c067750899d9"/>
+				<reportElement x="421" y="144" width="164" height="42" uuid="9d5b03ff-2b57-41ae-9960-c067750899d9"/>
 				<textElement textAlignment="Justified" verticalAlignment="Top">
 					<font size="8" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[*Elétrico: trocar lâmpadas e tomadas, resistência de chuveiro, instalação de equipamentos (máquinas de lavar, exaustor, etc)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="421" y="198" width="164" height="24" uuid="c338f9b4-476a-49fa-a8e6-39c8c0fb363a"/>
+				<reportElement x="421" y="186" width="164" height="24" uuid="c338f9b4-476a-49fa-a8e6-39c8c0fb363a"/>
 				<textElement textAlignment="Justified">
 					<font size="8" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[*Hidráulico: troca de torneira, sifão, solução em pequenos vazamentos;]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="421" y="222" width="164" height="24" uuid="d8a73e6c-b003-498c-8100-624abdff556e"/>
+				<reportElement x="421" y="210" width="164" height="24" uuid="d8a73e6c-b003-498c-8100-624abdff556e"/>
 				<textElement textAlignment="Justified">
 					<font size="8" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[*Jardinagem: cortar grama, poda de árvores, roçar quintal, pequenos plantios;]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="421" y="246" width="164" height="25" uuid="759eb08f-315d-4edc-91a6-2166546617ee"/>
+				<reportElement x="421" y="234" width="164" height="25" uuid="759eb08f-315d-4edc-91a6-2166546617ee"/>
 				<textElement textAlignment="Justified">
 					<font size="8" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[*Pintura: reparos em paredes, pisos e teto, portões e pequenas áreas;]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="421" y="271" width="164" height="34" uuid="7652c8f1-59a8-4656-98db-d605195c50d3"/>
+				<reportElement x="421" y="259" width="164" height="34" uuid="7652c8f1-59a8-4656-98db-d605195c50d3"/>
 				<textElement textAlignment="Justified">
 					<font size="8" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[*Organização: pendurar quadros, desmontar ou montar móveis, ajuda em mudanças;]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="419" y="305" width="166" height="35" uuid="a623d551-4b09-45d2-8e59-a41275525b10"/>
+				<reportElement x="419" y="293" width="166" height="35" uuid="a623d551-4b09-45d2-8e59-a41275525b10"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true" isItalic="false" isUnderline="true"/>
 				</textElement>
