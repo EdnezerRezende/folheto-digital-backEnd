@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -153,7 +154,7 @@ public class BoletimService {
 	}
 	
 	public String obterDataGeracaoBoletim(LocalDate dataHoje) {
-		DateTimeFormatter parser = DateTimeFormatter.ofPattern("d 'de' MMMM 'de' yyyy");
+		DateTimeFormatter parser = DateTimeFormatter.ofPattern("d 'de' MMMM 'de' yyyy").withLocale(new Locale("pt", "br"));
 		
 		DayOfWeek dayOfWeek = dataHoje.getDayOfWeek();
 		
