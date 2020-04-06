@@ -54,9 +54,9 @@ public class BoletimService {
 		LocalDateTime dataHoje = LocalDateTime.now();
 
 		String dataBoletimGerado = obterDataGeracaoBoletim(dataHoje.toLocalDate());
-		LocalDateTime dataBoletimInicio = LocalDateTime.parse(dataBoletimGerado + " 11:59",parser);
+		LocalDateTime dataBoletimInicio = LocalDateTime.parse(dataBoletimGerado + " 00:00",parser);
 			
-		LocalDateTime dataLimiteBusca = LocalDateTime.parse(dataBoletimGerado + " 00:00",parser).minusDays(6);
+		LocalDateTime dataLimiteBusca = LocalDateTime.parse(dataBoletimGerado + " 11:59",parser).plusDays(6);
 		
 		BoletimDTO boletim = new BoletimDTO();
 		
@@ -112,7 +112,7 @@ public class BoletimService {
 	private void preencherAniversariantes(Integer idIgreja, LocalDateTime dataHoje, LocalDateTime dataLimiteBusca,
 			BoletimDTO boletim) {
 		List<Aniversariante> aniversariantes = aniversarianteService.buscarAniversariantesPorIgrejaEDataNascimento(idIgreja, 
-				dataLimiteBusca.toLocalDate(), dataHoje.toLocalDate());
+				 dataHoje.toLocalDate(), dataLimiteBusca.toLocalDate());
 		List<String> aniversariantesString = new ArrayList<>();
 		for(Aniversariante aniversariante: aniversariantes) {
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM");
@@ -123,7 +123,7 @@ public class BoletimService {
 
 	private void preencherTextosDevocionais(Integer idIgreja, LocalDateTime dataHoje, LocalDateTime dataLimiteBusca,
 			BoletimDTO boletim) {
-		List<Devocional> devocionais = devocionalService.buscarPorIgrejaEDataCriacao(idIgreja, dataLimiteBusca.toLocalDate(), dataHoje.toLocalDate());
+		List<Devocional> devocionais = devocionalService.buscarPorIgrejaEDataCriacao(idIgreja, dataHoje.toLocalDate(), dataLimiteBusca.toLocalDate());
 		
 		if(devocionais == null) {
 			throw new ObjectNotFoundException("Não Existe devocionais. Necessário cadastrar para este período. " + Devocional.class.getName());
@@ -146,7 +146,7 @@ public class BoletimService {
 
 	private void preencherMissao(LocalDateTime dataHoje, LocalDateTime dataLimiteBusca, BoletimDTO boletim,
 			IgrejaInfoDTO igreja) {
-		Missao missao = missaoService.buscarMissaoPorIdIgrejaEDataCriado(igreja.getId(), dataLimiteBusca, dataHoje );
+		Missao missao = missaoService.buscarMissaoPorIdIgrejaEDataCriado(igreja.getId(), dataHoje, dataLimiteBusca );
 		if(missao == null) {
 			throw new ObjectNotFoundException("Não Existe texto de Missão. Necessário cadastrar para este período. " + Missao.class.getName());
 		}
