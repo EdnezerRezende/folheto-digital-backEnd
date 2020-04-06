@@ -61,10 +61,10 @@ public class MensagemService {
 	
 	@Transactional
 	public Mensagem buscarMensagemPorIdIgrejaEDataCriado(Integer idIgreja, LocalDateTime dataCriado, LocalDateTime dataLimiteBusca) {
-		Mensagem mensagem = mensagemDao.buscaMensagemPorIdIgrejaAndDataCriado(idIgreja, dataLimiteBusca, dataCriado);
+		Mensagem mensagem = mensagemDao.buscaMensagemPorIdIgrejaAndDataCriado(idIgreja, dataCriado, dataLimiteBusca );
 		if(mensagem == null) {
 			throw new ObjectNotFoundException("Não Existe Mensagem. Necessário cadastrar. " + Mensagem.class.getName());
 		}
-		return mensagemDao.buscaMensagemPorIdIgrejaAndDataCriado(idIgreja, dataLimiteBusca, dataCriado); 
+		return mensagem; 
 	}
 }

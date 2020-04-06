@@ -1,6 +1,8 @@
 package br.com.igrejadecristo.folhetodigital.services;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
@@ -45,8 +47,37 @@ public class AniversarianteService {
 	
 	@Transactional
 	public List<Aniversariante> buscarAniversariantesPorIdIgreja(Integer idIgreja){
+		LocalDateTime dataHoje = LocalDateTime.now();
+
+		LocalDate dataBoletimGerado = obterDataGeracaoBoletim(dataHoje.toLocalDate());
+			
+		LocalDate dataLimiteBusca = dataBoletimGerado.plusDays(6);
 		
-		return aniversarianteRepository.findByIgrejaId(idIgreja); 
+		return buscarAniversariantesPorIgrejaEDataNascimento(idIgreja, 
+				dataBoletimGerado, dataLimiteBusca);
+	}
+	
+	public LocalDate obterDataGeracaoBoletim(LocalDate dataDomingo) {
+		DayOfWeek dayOfWeek = dataDomingo.getDayOfWeek();
+		
+		return validarEObterDataDomingo(dataDomingo, dayOfWeek);
+	}
+	
+	private LocalDate validarEObterDataDomingo(LocalDate dataHoje, DayOfWeek dayOfWeek) {
+		if(dayOfWeek== DayOfWeek.MONDAY) {
+			dataHoje = LocalDate.now().minusDays(1);
+		} else if(dayOfWeek== DayOfWeek.TUESDAY) {
+			dataHoje = dataHoje.minusDays(2);
+		} else if(dayOfWeek== DayOfWeek.WEDNESDAY) {
+			dataHoje = dataHoje.minusDays(3);
+		} else if(dayOfWeek== DayOfWeek.THURSDAY) {
+			dataHoje = dataHoje.minusDays(4);
+		} else if(dayOfWeek== DayOfWeek.FRIDAY) {
+			dataHoje = dataHoje.minusDays(5);
+		} else if(dayOfWeek== DayOfWeek.SATURDAY) {
+			dataHoje = dataHoje.minusDays(6);
+		}
+		return dataHoje;
 	}
 	
 	@Transactional
