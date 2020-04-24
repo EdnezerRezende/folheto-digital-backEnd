@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -34,6 +35,9 @@ public class Devocional {
 	
 	@JsonFormat(pattern="dd/MM/yyyy")
 	private LocalDate dataCriacao;
+	
+	@Transient
+	private Boolean isAtual = false;
 
 	public Devocional() {
 		super();
@@ -86,6 +90,14 @@ public class Devocional {
 
 	public void setDataCriacao(LocalDate dataCriacao) {
 		this.dataCriacao = dataCriacao;
+	}
+
+	public Boolean getIsAtual() {
+		return isAtual;
+	}
+
+	public void setIsAtual(Boolean isAtual) {
+		this.isAtual = isAtual;
 	}
 
 	@Override
