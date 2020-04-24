@@ -1,8 +1,10 @@
 package br.com.igrejadecristo.folhetodigital.services;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 
 import javax.transaction.Transactional;
 
@@ -14,6 +16,7 @@ import br.com.igrejadecristo.folhetodigital.entidades.Devocional;
 import br.com.igrejadecristo.folhetodigital.entidades.Igreja;
 import br.com.igrejadecristo.folhetodigital.respositories.DevocionalRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.IgrejaRepository;
+import br.com.igrejadecristo.folhetodigital.util.DataUtil;
 
 @Service
 public class DevocionalService {
@@ -29,7 +32,25 @@ public class DevocionalService {
 	}
 
 	public List<Devocional> buscarPorIgreja(Integer idIgreja) {
-		return devocionalDao.findByIgrejaId(idIgreja);
+		DateTimeFormatter parser = DateTimeFormatter.ofPattern("d 'de' MMMM 'de' yyyy HH:mm").withLocale(new Locale("pt", "br"));
+		LocalDateTime dataHoje = LocalDateTime.now();
+
+		String dataBoletimGerado = DataUtil.obterDataGeracaoBoletim(dataHoje.toLocalDate());
+		LocalDateTime dataInicio = LocalDateTime.parse(dataBoletimGerado + " 00:00",parser);
+			
+		LocalDateTime dataFim = LocalDateTime.parse(dataBoletimGerado + " 11:59",parser).plusDays(6);
+		
+		List<Devocional> devocionais = devocionalDao.findByIgrejaId(idIgreja);
+		devocionais.stream().forEach(devocional ->{ 
+				if(!devocional.getDataCriacao().isBefore(dataInicio.toLocalDate()) && 
+						!devocional.getDataCriacao().isAfter(dataFim.toLocalDate())) {
+					devocional.setIsAtual(true);
+				}
+			}
+		);
+		
+		
+		return devocionais;
 	}
 
 	public List<Devocional> buscarPorIgrejaEDataCriacao(Integer idIgreja, LocalDate dataCriado, LocalDate dataLimiteBusca) {
