@@ -23,6 +23,7 @@ import br.com.igrejadecristo.folhetodigital.entidades.Devocional;
 import br.com.igrejadecristo.folhetodigital.entidades.Missao;
 import br.com.igrejadecristo.folhetodigital.entidades.PequenoGrupo;
 import br.com.igrejadecristo.folhetodigital.services.exceptions.ObjectNotFoundException;
+import br.com.igrejadecristo.folhetodigital.util.DataUtil;
 import net.sf.jasperreports.engine.JRException;
 
 @Service
@@ -53,7 +54,7 @@ public class BoletimService {
 		DateTimeFormatter parser = DateTimeFormatter.ofPattern("d 'de' MMMM 'de' yyyy HH:mm").withLocale(new Locale("pt", "br"));
 		LocalDateTime dataHoje = LocalDateTime.now();
 
-		String dataBoletimGerado = obterDataGeracaoBoletim(dataHoje.toLocalDate());
+		String dataBoletimGerado = DataUtil.obterDataGeracaoBoletim(dataHoje.toLocalDate());
 		LocalDateTime dataBoletimInicio = LocalDateTime.parse(dataBoletimGerado + " 00:00",parser);
 			
 		LocalDateTime dataLimiteBusca = LocalDateTime.parse(dataBoletimGerado + " 11:59",parser).plusDays(6);
