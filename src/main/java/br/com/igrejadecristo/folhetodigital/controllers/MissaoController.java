@@ -32,7 +32,7 @@ public class MissaoController {
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<MissaoDTO>> findAll() {
 		List<Missao> list = missaoService.buscarTodos();
-		List<MissaoDTO> listDto = list.stream().map(obj -> new MissaoDTO(obj)).collect(Collectors.toList());  
+		List<MissaoDTO> listDto = list.stream().map(obj -> new MissaoDTO(obj)).sorted().collect(Collectors.toList());  
 		return ResponseEntity.ok().body(listDto);
 	}
 	

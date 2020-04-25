@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import br.com.igrejadecristo.folhetodigital.dto.PgNewDTO;
 import br.com.igrejadecristo.folhetodigital.entidades.Igreja;
 import br.com.igrejadecristo.folhetodigital.entidades.PequenoGrupo;
+import br.com.igrejadecristo.folhetodigital.respositories.EnderecoPGRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.IgrejaRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.PequenoGrupoRepository;
 
@@ -39,6 +40,9 @@ public class PGService {
 	@Value("${img.profile.size}")
 	private Integer size;
 	
+	@Autowired
+	private EnderecoPGRepository enderecoPGRepository;
+	
 	public List<PequenoGrupo> buscarTodos() {
 		return pgDao.findAllByOrderByDiaSemanaAtividade();
 	}
@@ -58,8 +62,8 @@ public class PGService {
 				throw new RuntimeException("Ocorreu um erro, PG não existe no sistema!");
 			}
 		}else {
-			existe = pgDao.existsByLiderAndResponsavelCasaAndDiaSemanaAtividadeAndHoraAtividade(dto.getLider(), dto.getResponsavelCasa(), dto.getDiaSemanaAtividade(), dto.getHoraAtividade());
-			if (!existe) {
+			existe = pgDao.existsByLiderAndResponsavelCasaAndDiaSemanaAtividade(dto.getLider(), dto.getResponsavelCasa(), dto.getDiaSemanaAtividade());
+			if (existe) {
 				throw new RuntimeException("Ocorreu um erro, PG já existe no sistema!");
 			}
 		}
@@ -68,6 +72,10 @@ public class PGService {
 		
 		PequenoGrupo pg = new PequenoGrupo(dto.getId(), dto.getResponsavelCasa(),
 				dto.getLider(), igreja,  dto.getDiaSemanaAtividade(), LocalTime.parse(dto.getHoraAtividade()));
+		pgDao.save(pg);
+		
+		
+		enderecoPGRepository.save(dto.getEndereco());
 		pg.setEndereco(dto.getEndereco());
 		
 		return pgDao.save(pg);
