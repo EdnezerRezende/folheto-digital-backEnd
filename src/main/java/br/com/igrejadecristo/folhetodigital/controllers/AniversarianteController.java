@@ -29,7 +29,7 @@ public class AniversarianteController {
 	@Autowired
 	private AniversarianteService aniversarianteService;
 	
-	@PreAuthorize("hasAnyRole('ADMIN','MEMBRO')") 
+	@PreAuthorize("hasAnyRole('MEMBRO')") 
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> buscaPorId(@PathVariable Integer id){
 		Aniversariante aniversariante = aniversarianteService.buscar(id);
@@ -37,6 +37,7 @@ public class AniversarianteController {
 		return ResponseEntity.ok(aniversariante);
 	}
 
+	@PreAuthorize("hasAnyRole('ADMIN','LIDER')") 
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody AniversarianteNewDTO objDto) {
 		Aniversariante obj = aniversarianteService.fromDTO(objDto);
@@ -46,6 +47,7 @@ public class AniversarianteController {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@PreAuthorize("hasAnyRole('ADMIN','LIDER')") 
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> updateAniversariante(@RequestBody AniversarianteAlteraDTO objDto,@PathVariable Integer id) {
 		aniversarianteService.updateDados(objDto, id);
@@ -59,7 +61,7 @@ public class AniversarianteController {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@PreAuthorize("hasAnyRole('ADMIN','LIDER')") 
+	@PreAuthorize("hasAnyRole('MEMBRO')") 
 	@RequestMapping(value="/igreja/{idIgreja}", method=RequestMethod.GET)
 	public ResponseEntity<List<AniversarianteInfoDTO>> findAll(@PathVariable Integer idIgreja) {
 		List<Aniversariante> list = aniversarianteService.buscarAniversariantesPorIdIgreja(idIgreja);
