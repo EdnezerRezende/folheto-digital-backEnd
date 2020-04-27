@@ -37,6 +37,7 @@ import br.com.igrejadecristo.folhetodigital.respositories.MensagemRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.MissaoRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.OfertaServicoRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.PequenoGrupoRepository;
+import br.com.igrejadecristo.folhetodigital.util.DataUtil;
 
 @Service
 public class DBService {
@@ -108,7 +109,7 @@ public class DBService {
 		igrejaRepository.saveAll(Arrays.asList(igreja1));
 		DateTimeFormatter parser = DateTimeFormatter.ofPattern("d 'de' MMMM 'de' yyyy HH:mm");
 		LocalDateTime dataHoje = LocalDateTime.now();
-		String dataBoletimGerado = boletimService.obterDataGeracaoBoletim(dataHoje.toLocalDate());
+		String dataBoletimGerado = DataUtil.obterDataGeracaoBoletim(dataHoje.toLocalDate());
 		LocalDateTime dataLimiteBusca = LocalDateTime.parse(dataBoletimGerado + " 00:00",parser).plusDays(6);
 		
 		Membro membro1 = new Membro(null, "Teste", "admin@gmail.com", "12345678978", pe.encode("1234"), igreja1, dataLimiteBusca.toLocalDate().minusDays(3));
@@ -148,42 +149,67 @@ public class DBService {
 		
 		
 		Mensagem mensagem1 = new Mensagem(null,
-				"Um dos devocionais dos PG´s da última semana foi o texto de 1 Co 3. "
-				+ "Nele, o apóstolo Paulo diz aos irmãos da igreja em Corinto qe desejava compartilhar "
-				+ "com eles coisas mais profundas mas que isso não seria possível por conta das atitudes "
-				+ "desses irmãos.<hr>\"Irmãos, quando estive com vocês, não pude lhes falar como a "
-				+ "pessoas espirituais, mas como se pertencessem a este mundo ou fossem criancinhas "
-				+ "em Cristo\" (1 Co 3.1, NVT)<hr>O interessante do texto é observar que Paulo não "
-				+ "julga a espiritualidade dos irmãos a partir dos seus dons. Ele não os chama de "
-				+ "crentes carnais porque estes não falavam em línguas ou porque não tinham discernimento "
-				+ "de espíritos. Paulo os chama de carnais porque suas atitudes não refletiam a sua "
-				+ "espiritualidade.<div>\"(...) Têm ciúme uns dos outros, discutem e brigam entre si. "
-				+ "Acaso isso não mostra que são controlados por sua natureza humana e que vivem como "
-				+ "pessoas do mundo? \" (I Co 3.3, NVT)</div><hr>Apesar de frequentarem a comunidade "
-				+ "cristã, aqueles irmãos não viviam uma vida de comunhão. Apesar fazerem parte de um "
-				+ "corpo, eles não estavam em união buscando o bem do corpo. Na continuação do texto, "
-				+ "vemos Paulo trazendo à tona o partidarismo e a divisão que havia dentro da igreja."
-				+ "<hr>\"Quando um de vocês diz:&nbsp; \"Eu sigo Paulo\", e o outro diz: \"Eu sigo Apolo\", "
-				+ "não estão agindo exatamente como as pessoas do mundo? \"&nbsp; (I Co 3.4, NVT)"
-				+ "<hr>Paulo usa palavras duras para mostrar para aqueles irmãos que o fato de eles "
-				+ "estarem na igreja não os diferenciava das pessoas do mundo se o que eles diziam crer "
-				+ "não podia ser visto em suas atitudes, ou seja, de nada adiantava que eles se "
-				+ "considerassem espirituais se sua espiritualidade não podia ser vista na vida "
-				+ "cotidiana.<hr>E isso continua valendo nos nossos dias. De nada adianta frequentarmos "
-				+ "os cultos, fazermos parte de um PG e participarmos da escola dominical se as nossas"
-				+ " atitudes não são compatíveis com o Cristo que dizemos seguir. Se nos consideramos "
-				+ "discípulos dEle, precisamos seguir os seus passos e viver como Ele viveu - "
-				+ "especialmente do lado de fora da igreja.<hr>As nossas vidas cotidianas precisam "
-				+ "refletir a vida de Cristo. Precisamos ser parecidos com Jesus no trânsito, "
-				+ "no trabalho, na escola e em casa. Precisamos demonstrar com nossas atitudes "
-				+ "que seguimos o Mestre de Nazaré. Enfim, precisamos colocar a nossa espiritualidade "
-				+ "em prática e sermos cada vez mais parecidos com Jesus.",
+				"<div style=\"text-align: justify;\"><span style=\"color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit; font-weight: inherit;\">As estrelas servem de orientação para os\r\n" + 
+				" viajantes há séculos. Navegantes baseiam-se\r\n" + 
+				" na posição delas para traçarem suas rotas e\r\n" + 
+				" para ajustá-las. Montanhistas, corredores e\r\n" + 
+				" outros atletas que praticam esportes em meio à\r\n" + 
+				" natureza fazem o mesmo. Numa noite escura,\r\n" + 
+				" são os pontos brilhantes que apontam o\r\n" + 
+				" caminho para aqueles que olham para elas.&nbsp;</span></div><div style=\"text-align: justify;\"><span style=\"color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit; font-weight: inherit;\"><br></span></div><div style=\"text-align: justify;\"><span style=\"color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit; font-weight: inherit;\">Na Bíblia, as estrelas têm também um papel\r\n" + 
+				" importante. Deus usou os astros no céu para\r\n" + 
+				" dizer a Abraão que sua descendência seria\r\n" + 
+				" numerosa. Por sua vez, os reis magos ficaram\r\n" + 
+				" sabendo do nascimento de Jesus e uma estrela\r\n" + 
+				" os guiou até onde o menino e seus pais\r\n" + 
+				" estavam. Nos dois casos citados, as estrelas\r\n" + 
+				" tiveram um papel de orientação. Para Abraão,\r\n" + 
+				" foram um lembrete que orientou a sua fé. Para\r\n" + 
+				" os magos, os direcionou diretamente até onde\r\n" + 
+				" havia nascido o Salvador.&nbsp;</span></div><div style=\"text-align: justify;\"><span style=\"color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit; font-weight: inherit;\"><br></span></div><div style=\"text-align: justify;\"><span style=\"color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit; font-weight: inherit;\">Em Filipenses 2.15, Paulo nos encoraja a brilhar\r\n" + 
+				" como estrelas no céu em meio a um mundo\r\n" + 
+				" desinteressado de Deus. Ou seja, em meio a\r\n" + 
+				" um mundo de escuridão, a nossa luz precisa\r\n" + 
+				" brilhar para orientar, direcionar e apontar para\r\n" + 
+				" Cristo.&nbsp;</span></div><div style=\"text-align: justify;\"><span style=\"color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit; font-weight: inherit;\"><br></span></div><div style=\"text-align: justify;\"><span style=\"color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit; font-weight: inherit;\">E como podemos fazer isso? Vivendo e\r\n" + 
+				" frutificando como filhos da luz. Em Efésios 5.9\r\n" + 
+				" lemos que “o fruto da luz consiste em toda\r\n" + 
+				" bondade, justiça e verdade”. Ou seja, quando\r\n" + 
+				" os que nos cercam buscarem a bondade, a\r\n" + 
+				" justiça e a verdade, eles precisam olhar para as\r\n" + 
+				"  nossas vidas para encontrarem isso.</span><br></div><div style=\"text-align: justify;\"><br></div><div style=\"text-align: justify;\">O mundo carece de referenciais e, muitas\r\n" + 
+				" vezes, os procuram nos lugares errados.\r\n" + 
+				" Elege artistas de TV, influenciadores digitais,\r\n" + 
+				" participantes de reality shows, atletas e\r\n" + 
+				" políticos como as suas fontes de bondade,\r\n" + 
+				" justiça e verdade. Porém, como estrelas\r\n" + 
+				" artificiais, como falsos astros, esses\r\n" + 
+				" referenciais acabam confundindo os que os\r\n" + 
+				" seguem e se mostram pouco eficazes. Ao\r\n" + 
+				" invés de direcionarem à fonte de toda luz,\r\n" + 
+				" acabam confundindo e levando a outros\r\n" + 
+				" caminhos que não o de Cristo.&nbsp;</div><div style=\"text-align: justify;\"><br></div><div style=\"text-align: justify;\">Como cristãos, somos chamados a ser e\r\n" + 
+				" fazer diferença. Em tempos de crise, como\r\n" + 
+				" os que temos vivido, precisamos nos lembrar\r\n" + 
+				" que cabe a nós sermos os verdadeiros\r\n" + 
+				" referenciais. A nossa vida precisa exalar\r\n" + 
+				" bondade em tudo o que fizermos. Os nossos\r\n" + 
+				" atos precisam ser fonte de justiça. E a\r\n" + 
+				" verdade permear cada escolha, cada\r\n" + 
+				" palavra, cada sentimento e ação.&nbsp;</div><div style=\"text-align: justify;\"><br></div><div style=\"text-align: justify;\">Precisamos ser aqueles que brilham e\r\n" + 
+				" trazem esperança. Aqueles que apontam\r\n" + 
+				" para um futuro onde cada lágrima será\r\n" + 
+				" enxugada. Aqueles que direcionam para a\r\n" + 
+				" paz que excede todo entendimento e para a\r\n" + 
+				" Verdade que liberta!&nbsp;</div><div style=\"text-align: justify;\"><br></div><div style=\"text-align: justify;\">Como estrelas no meio da escuridão, que\r\n" + 
+				" possamos brilhar a luz de Cristo que há em\r\n" + 
+				" nós!&nbsp;</div>",
 				"Pra Renata Cabral", dataLimiteBusca, "O Nosso papel: Amar e servir", igreja1);
 
 		Mensagem mensagem2 = new Mensagem(null,
 				"Apenas mais uma mensagem para cadastrar no banco como exemplo "
 						+ "Não deve ser considerado, apenas a título de exemplo ",
-				"Teste de nova", LocalDateTime.now(), "Mensagem de Teste, Exemplo", igreja1);
+				"Teste de nova", dataLimiteBusca.plusDays(5), "Mensagem de Teste, Exemplo", igreja1);
 
 		mensagemRepository.saveAll(Arrays.asList(mensagem1, mensagem2));
 
@@ -191,13 +217,65 @@ public class DBService {
 				"A intolerância religiosa é resultado de um longo processo histórico, em que uma pessoa enfrenta perseguição, "
 				+ "ofensa e agressão por expor a fé em qualquer região do mundo. A intolerânci contra cristãos perseguidos costuma "
 				+ "partir de grupos extremistas, como por exemplo: Estado Islâmico, Boko Haram e Al-Shabaab.", "Pra Renata Cabral", 
-				dataLimiteBusca, "Intolerância Religiosa", igreja1);
+				dataLimiteBusca.plusDays(5), "Intolerância Religiosa", igreja1);
 		
 		Missao missao2 = new Missao(null,
-				"A intolerância religiosa é resultado de um longo processo histórico, em que uma pessoa enfrenta perseguição, "
-				+ "ofensa e agressão por expor a fé em qualquer região do mundo. A intolerânci contra cristãos perseguidos costuma "
-				+ "partir de grupos extremistas, como por exemplo: Estado Islâmico, Boko Haram e Al-Shabaab.", "Pra Renata Cabral",
-				LocalDateTime.now(), "Intolerância Religiosa 2", igreja1);
+				"<div style=\"text-align: justify;\"><span style=\"color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit; font-weight: inherit;\">As estrelas servem de orientação para os\r\n" + 
+				" viajantes há séculos. Navegantes baseiam-se\r\n" + 
+				" na posição delas para traçarem suas rotas e\r\n" + 
+				" para ajustá-las. Montanhistas, corredores e\r\n" + 
+				" outros atletas que praticam esportes em meio à\r\n" + 
+				" natureza fazem o mesmo. Numa noite escura,\r\n" + 
+				" são os pontos brilhantes que apontam o\r\n" + 
+				" caminho para aqueles que olham para elas.&nbsp;</span></div><div style=\"text-align: justify;\"><span style=\"color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit; font-weight: inherit;\"><br></span></div><div style=\"text-align: justify;\"><span style=\"color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit; font-weight: inherit;\">Na Bíblia, as estrelas têm também um papel\r\n" + 
+				" importante. Deus usou os astros no céu para\r\n" + 
+				" dizer a Abraão que sua descendência seria\r\n" + 
+				" numerosa. Por sua vez, os reis magos ficaram\r\n" + 
+				" sabendo do nascimento de Jesus e uma estrela\r\n" + 
+				" os guiou até onde o menino e seus pais\r\n" + 
+				" estavam. Nos dois casos citados, as estrelas\r\n" + 
+				" tiveram um papel de orientação. Para Abraão,\r\n" + 
+				" foram um lembrete que orientou a sua fé. Para\r\n" + 
+				" os magos, os direcionou diretamente até onde\r\n" + 
+				" havia nascido o Salvador.&nbsp;</span></div><div style=\"text-align: justify;\"><span style=\"color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit; font-weight: inherit;\"><br></span></div><div style=\"text-align: justify;\"><span style=\"color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit; font-weight: inherit;\">Em Filipenses 2.15, Paulo nos encoraja a brilhar\r\n" + 
+				" como estrelas no céu em meio a um mundo\r\n" + 
+				" desinteressado de Deus. Ou seja, em meio a\r\n" + 
+				" um mundo de escuridão, a nossa luz precisa\r\n" + 
+				" brilhar para orientar, direcionar e apontar para\r\n" + 
+				" Cristo.&nbsp;</span></div><div style=\"text-align: justify;\"><span style=\"color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit; font-weight: inherit;\"><br></span></div><div style=\"text-align: justify;\"><span style=\"color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-ligatures: inherit; font-variant-caps: inherit; font-weight: inherit;\">E como podemos fazer isso? Vivendo e\r\n" + 
+				" frutificando como filhos da luz. Em Efésios 5.9\r\n" + 
+				" lemos que “o fruto da luz consiste em toda\r\n" + 
+				" bondade, justiça e verdade”. Ou seja, quando\r\n" + 
+				" os que nos cercam buscarem a bondade, a\r\n" + 
+				" justiça e a verdade, eles precisam olhar para as\r\n" + 
+				"  nossas vidas para encontrarem isso.</span><br></div><div style=\"text-align: justify;\"><br></div><div style=\"text-align: justify;\">O mundo carece de referenciais e, muitas\r\n" + 
+				" vezes, os procuram nos lugares errados.\r\n" + 
+				" Elege artistas de TV, influenciadores digitais,\r\n" + 
+				" participantes de reality shows, atletas e\r\n" + 
+				" políticos como as suas fontes de bondade,\r\n" + 
+				" justiça e verdade. Porém, como estrelas\r\n" + 
+				" artificiais, como falsos astros, esses\r\n" + 
+				" referenciais acabam confundindo os que os\r\n" + 
+				" seguem e se mostram pouco eficazes. Ao\r\n" + 
+				" invés de direcionarem à fonte de toda luz,\r\n" + 
+				" acabam confundindo e levando a outros\r\n" + 
+				" caminhos que não o de Cristo.&nbsp;</div><div style=\"text-align: justify;\"><br></div><div style=\"text-align: justify;\">Como cristãos, somos chamados a ser e\r\n" + 
+				" fazer diferença. Em tempos de crise, como\r\n" + 
+				" os que temos vivido, precisamos nos lembrar\r\n" + 
+				" que cabe a nós sermos os verdadeiros\r\n" + 
+				" referenciais. A nossa vida precisa exalar\r\n" + 
+				" bondade em tudo o que fizermos. Os nossos\r\n" + 
+				" atos precisam ser fonte de justiça. E a\r\n" + 
+				" verdade permear cada escolha, cada\r\n" + 
+				" palavra, cada sentimento e ação.&nbsp;</div><div style=\"text-align: justify;\"><br></div><div style=\"text-align: justify;\">Precisamos ser aqueles que brilham e\r\n" + 
+				" trazem esperança. Aqueles que apontam\r\n" + 
+				" para um futuro onde cada lágrima será\r\n" + 
+				" enxugada. Aqueles que direcionam para a\r\n" + 
+				" paz que excede todo entendimento e para a\r\n" + 
+				" Verdade que liberta!&nbsp;</div><div style=\"text-align: justify;\"><br></div><div style=\"text-align: justify;\">Como estrelas no meio da escuridão, que\r\n" + 
+				" possamos brilhar a luz de Cristo que há em\r\n" + 
+				" nós!&nbsp;</div>", "Pra Renata Cabral",
+				dataLimiteBusca, "Intolerância Religiosa 2", igreja1);
 
 		missaoRepository.saveAll(Arrays.asList(missao1, missao2));
 
