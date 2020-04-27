@@ -96,11 +96,6 @@ public class GeraFolheto {
 		jr.setProperty("net.sf.jasperreports.default.font.name", "Arial Narrow");
 		JasperPrint impressao = JasperFillManager.fillReport(jr, parametros, new JREmptyDataSource(1));
 		
-//		JRExporter exporter = new JRPdfExporter();
-//		exporter.setParameter(JRExporterParameter.JASPER_PRINT, impressao);
-//		exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, new FileOutputStream("boletim_semanal_"+ LocalDate.now().toString()+".pdf"));
-//		exporter.exportReport();
-		
 		response.setContentType("application/x-pdf");
 	    response.setHeader("Content-disposition", "inline; filename=boletim_semanal_"+LocalDate.now().toString()+".pdf");
 
@@ -109,10 +104,13 @@ public class GeraFolheto {
 	}
 
 	private String limparTagsHtml(String mensage) {
-		mensage = mensage.replace("<hr>", "\n");
-		mensage = mensage.replace("<div>", "\n");
-		mensage = mensage.replace("</div>", "");
-		mensage = mensage.replace("&nbsp;", " ");
+		mensage = mensage.replaceAll("&nbsp;", " ");
+		mensage = mensage.replaceAll("<br>", ":BR:");
+		mensage = mensage.replaceAll("\\<.*?>","");
+		mensage = mensage.replaceAll("  ", " ");
+		mensage = mensage.replaceAll("\r\n", " ");
+		mensage = mensage.replaceAll(":BR:", "\r\n");
+		
 		return mensage;
 	}
 	
