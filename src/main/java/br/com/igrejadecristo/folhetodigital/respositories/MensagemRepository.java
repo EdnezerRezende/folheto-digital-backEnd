@@ -15,7 +15,7 @@ import br.com.igrejadecristo.folhetodigital.entidades.Mensagem;
 @Repository
 public interface MensagemRepository extends JpaRepository<Mensagem, Integer>{
 	@Transactional(readOnly=true)
-	public List<Mensagem> findAllByOrderByDataCriado();
+	public List<Mensagem> findAllByOrderByDataCriadoDesc();
 	
 	@Transactional(readOnly=true)
 	@Query(value = "select m from Mensagem m where m.igreja.id = :idIgreja and m.dataCriado between :dataCriado and :dataLimiteBusca")

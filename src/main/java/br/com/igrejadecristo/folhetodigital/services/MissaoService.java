@@ -25,7 +25,7 @@ public class MissaoService {
 	private IgrejaRepository igrejaDao;
 	
 	public List<Missao> buscarTodos() {
-		List<Missao> missoes = missaoDao.findAllByOrderByDataCriado();
+		List<Missao> missoes = missaoDao.findAllByOrderByDataCriadoDesc();
 		return missoes;
 	}
 	

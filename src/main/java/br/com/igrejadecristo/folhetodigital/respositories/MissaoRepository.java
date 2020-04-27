@@ -15,7 +15,7 @@ import br.com.igrejadecristo.folhetodigital.entidades.Missao;
 @Repository
 public interface MissaoRepository extends JpaRepository<Missao, Integer>{
 	@Transactional(readOnly=true)
-	public List<Missao> findAllByOrderByDataCriado();
+	public List<Missao> findAllByOrderByDataCriadoDesc();
 	
 	@Transactional(readOnly=true)
 	@Query(value = "select m from Missao m where m.igreja.id = :idIgreja and m.dataCriado between :dataCriado and :dataLimiteBusca")
