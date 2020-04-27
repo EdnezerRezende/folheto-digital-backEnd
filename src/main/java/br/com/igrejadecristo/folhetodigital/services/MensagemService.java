@@ -26,7 +26,7 @@ public class MensagemService {
 	private IgrejaRepository igrejaDao;
 	
 	public List<Mensagem> buscarTodos() {
-		List<Mensagem> mensagens = mensagemDao.findAllByOrderByDataCriado();
+		List<Mensagem> mensagens = mensagemDao.findAllByOrderByDataCriadoDesc();
 		return mensagens;
 	}
 	
