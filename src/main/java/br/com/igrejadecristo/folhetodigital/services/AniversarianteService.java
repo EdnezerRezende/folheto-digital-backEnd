@@ -82,7 +82,7 @@ public class AniversarianteService {
 	
 	@Transactional
 	public List<Aniversariante> buscarAniversariantesPorIgrejaEDataNascimento(Integer idIgreja, LocalDate dataInicio, LocalDate dataFim){
-		return aniversarianteRepository.buscaAniversariantesPorIdIgrejaAndDataCriado(idIgreja, dataInicio.getDayOfMonth(), dataInicio.getMonthValue(), dataFim.getDayOfMonth(), dataFim.getMonthValue());
+		return aniversarianteRepository.buscaAniversariantesPorIdIgrejaAndDataCriado(idIgreja, dataInicio.minusYears(100), dataFim);
 	}
 
 	public void delete(Integer id) {
