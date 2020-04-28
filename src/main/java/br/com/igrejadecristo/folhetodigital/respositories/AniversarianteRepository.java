@@ -18,8 +18,8 @@ public interface AniversarianteRepository extends JpaRepository<Aniversariante, 
 	public List<Aniversariante> findByIgrejaId(Integer idIgreja);
 
 	@Query(value = "select a from Aniversariante a where a.igreja.id = :idIgreja and"
-			+ " day(a.dataNascimento) >= :diaInicio and month(a.dataNascimento) >= :mesInicio "
-			+ " and day(a.dataNascimento) <= :diaFim and month(a.dataNascimento) <= :mesFim ")
+			+ " (day(a.dataNascimento) >= :diaInicio and month(a.dataNascimento) >= :mesInicio )"
+			+ " or (day(a.dataNascimento) <= :diaFim and month(a.dataNascimento) <= :mesFim )")
 	public List<Aniversariante> buscaAniversariantesPorIdIgrejaAndDataCriado(@Param("idIgreja") Integer idIgreja, 
 			@Param("diaInicio") Integer diaInicio,
 			@Param("mesInicio") Integer mesInicio,
