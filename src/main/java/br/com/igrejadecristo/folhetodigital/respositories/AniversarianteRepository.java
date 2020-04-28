@@ -1,7 +1,6 @@
 package br.com.igrejadecristo.folhetodigital.respositories;
 
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,10 +17,11 @@ public interface AniversarianteRepository extends JpaRepository<Aniversariante, 
 	@Transactional(readOnly=true)
 	public List<Aniversariante> findByIgrejaId(Integer idIgreja);
 
-	@Query(value = "select a from Aniversariante a where a.igreja.id = :idIgreja and"
-			+ " a.dataNascimento between :dataInicio and :dataFim ")
+	@Query(value = "select a from Aniversariante a where a.igreja.id = :idIgreja and" 
+			+ " DATE_FORMAT(a.dataNascimento, '%m %d') between :dataInicio and :dataFim")
 	public List<Aniversariante> buscaAniversariantesPorIdIgrejaAndDataCriado(@Param("idIgreja") Integer idIgreja, 
-			@Param("dataInicio") LocalDate  dataInicio,
-			@Param("dataFim") LocalDate  dataFim
+			@Param("dataInicio") String dataInicio,
+			@Param("dataFim") String dataFim
 			);
+	
 }
