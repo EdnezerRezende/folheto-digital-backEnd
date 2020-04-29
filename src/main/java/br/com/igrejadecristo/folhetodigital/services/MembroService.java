@@ -139,7 +139,7 @@ public class MembroService {
 
 	public List<Membro> findAll(Integer idIgreja) {
 
-		return membroDao.findByIgrejaId(idIgreja);
+		return membroDao.findByIgrejaIdOrderByNome(idIgreja);
 	}
 
 	public MembroInfoDTO findByEmail(String email) {

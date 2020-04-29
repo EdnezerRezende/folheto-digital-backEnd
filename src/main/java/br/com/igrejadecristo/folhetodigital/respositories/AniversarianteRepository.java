@@ -18,7 +18,7 @@ public interface AniversarianteRepository extends JpaRepository<Aniversariante, 
 	public List<Aniversariante> findByIgrejaId(Integer idIgreja);
 
 	@Query(value = "select a from Aniversariante a where a.igreja.id = :idIgreja and" 
-			+ " DATE_FORMAT(a.dataNascimento, '%m %d') between :dataInicio and :dataFim")
+			+ " DATE_FORMAT(a.dataNascimento, '%m %d') between :dataInicio and :dataFim order by a.nome")
 	public List<Aniversariante> buscaAniversariantesPorIdIgrejaAndDataCriado(@Param("idIgreja") Integer idIgreja, 
 			@Param("dataInicio") String dataInicio,
 			@Param("dataFim") String dataFim
