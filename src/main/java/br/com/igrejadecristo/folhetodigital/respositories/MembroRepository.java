@@ -19,10 +19,10 @@ public interface MembroRepository extends JpaRepository<Membro, Integer>{
 	public Membro findByEmail(String email);
 	
 	@Transactional(readOnly=true)
-	public List<Membro> findByIgrejaId(Integer idIgreja);
+	public List<Membro> findByIgrejaIdOrderByNome(Integer idIgreja);
 	
 	@Transactional(readOnly=true)
-	@Query(value = "select m from Membro m where m.dataNascimento between :dataInicial and :dataFinal")
+	@Query(value = "select m from Membro m where m.dataNascimento between :dataInicial and :dataFinal order by m.nome ")
 	public List<Membro> buscaMembrosPorDataInicioEFim(@Param("dataInicial") LocalDate dataInicial, @Param("dataFinal") LocalDate dataFinal);
 	
 }
