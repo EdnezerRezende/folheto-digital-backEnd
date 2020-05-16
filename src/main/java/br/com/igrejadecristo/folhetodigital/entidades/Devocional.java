@@ -2,16 +2,15 @@ package br.com.igrejadecristo.folhetodigital.entidades;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -23,12 +22,12 @@ public class Devocional {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
     
-	private String referencia;
+	@OneToOne(cascade=CascadeType.ALL)
+	private Referencia referencia;
 	
 	@JsonIgnore
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.DETACH)
     @JoinColumn(name="igreja_id")
-	@Cascade(value = CascadeType.DETACH)
     private Igreja igreja;
 	
 	private String descricao;
@@ -36,20 +35,26 @@ public class Devocional {
 	@JsonFormat(pattern="dd/MM/yyyy")
 	private LocalDate dataCriacao;
 	
+	private String textoReferencia;
+	
 	@Transient
 	private Boolean isAtual = false;
+	
+	@Transient
+	private Boolean isLido = false;
 
 	public Devocional() {
 		super();
 	}
-	
-	public Devocional(Integer id, String referencia, Igreja igreja, String descricao, LocalDate dataCriacao) {
+
+	public Devocional(Integer id, Referencia referencia, Igreja igreja, String descricao, LocalDate dataCriacao, String textoReferencia) {
 		super();
 		this.id = id;
 		this.referencia = referencia;
 		this.igreja = igreja;
 		this.descricao = descricao;
 		this.dataCriacao = dataCriacao;
+		this.textoReferencia = textoReferencia;
 	}
 
 	public Integer getId() {
@@ -60,11 +65,11 @@ public class Devocional {
 		this.id = id;
 	}
 
-	public String getReferencia() {
+	public Referencia getReferencia() {
 		return referencia;
 	}
 
-	public void setReferencia(String referencia) {
+	public void setReferencia(Referencia referencia) {
 		this.referencia = referencia;
 	}
 
@@ -98,6 +103,22 @@ public class Devocional {
 
 	public void setIsAtual(Boolean isAtual) {
 		this.isAtual = isAtual;
+	}
+
+	public String getTextoReferencia() {
+		return textoReferencia;
+	}
+
+	public void setTextoReferencia(String textoReferencia) {
+		this.textoReferencia = textoReferencia;
+	}
+	
+	public Boolean getIsLido() {
+		return isLido;
+	}
+
+	public void setIsLido(Boolean isLido) {
+		this.isLido = isLido;
 	}
 
 	@Override
