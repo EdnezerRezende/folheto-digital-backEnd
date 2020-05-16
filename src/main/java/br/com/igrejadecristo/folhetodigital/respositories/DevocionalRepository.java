@@ -21,9 +21,6 @@ public interface DevocionalRepository extends JpaRepository<Devocional, Integer>
 	@Transactional(readOnly=true)
 	public List<Devocional> findAllByOrderByDataCriacaoDesc();
 	
-	@Transactional(readOnly=true)
-	public Boolean existsByReferencia(String referencia);
-	
 	@Query(value = "select d from Devocional d where d.igreja.id = :idIgreja and d.dataCriacao between :dataCriado and :dataLimiteBusca")
 	public List<Devocional> buscaDevocionalPorIdIgrejaAndDataCriado(@Param("idIgreja") Integer idIgreja, 
 			@Param("dataCriado") LocalDate dataCriado,

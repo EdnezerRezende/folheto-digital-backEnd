@@ -60,6 +60,9 @@ public class Membro {
 	@ElementCollection
     @CollectionTable(name = "TELEFONE")
     private Set<String> telefones = new HashSet<>();
+	
+	@OneToMany(mappedBy = "membro", cascade=CascadeType.ALL)
+    private List<DevocionalComentario> comentarios = new ArrayList<>();
 
 	public Membro() {
 		addPerfil(Perfil.MEMBRO);
@@ -165,6 +168,14 @@ public class Membro {
 
 	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+
+	public List<DevocionalComentario> getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(List<DevocionalComentario> comentarios) {
+		this.comentarios = comentarios;
 	}
 
 	@Override

@@ -33,4 +33,13 @@ public class DataUtil {
 		}
 		return dataHoje;
 	}
+	
+	public static LocalDate converterStringParaLocalDate(String data) {
+		return LocalDate.parse(data);
+	}
+	
+	public static LocalDate converterStringParaLocalDateFormatado(String data) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		return LocalDate.parse(data, formatter);
+	}
 }
