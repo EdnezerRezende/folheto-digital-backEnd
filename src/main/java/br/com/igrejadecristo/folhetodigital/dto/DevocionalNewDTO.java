@@ -11,8 +11,7 @@ public class DevocionalNewDTO implements Serializable {
 
 	private Integer id;
 
-	@NotEmpty(message = "Preenchimento obrigatório")
-	private String referencia;
+	private ReferenciaDTO referencia;
 
 	@NotEmpty(message = "Preenchimento obrigatório")
 	private String idIgreja;
@@ -22,12 +21,14 @@ public class DevocionalNewDTO implements Serializable {
 
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private String dataCriacao;
-
+	
+	private String textoReferencia;
+	
 	public DevocionalNewDTO() {
 		super();
 	}
 
-	public DevocionalNewDTO(Integer id, @NotEmpty(message = "Preenchimento obrigatório") String referencia,
+	public DevocionalNewDTO(Integer id, @NotEmpty(message = "Preenchimento obrigatório") ReferenciaDTO referencia,
 			@NotEmpty(message = "Preenchimento obrigatório") String idIgreja,
 			@NotEmpty(message = "Preenchimento obrigatório") String descricao, String dataCriacao) {
 		super();
@@ -46,11 +47,11 @@ public class DevocionalNewDTO implements Serializable {
 		this.id = id;
 	}
 
-	public String getReferencia() {
+	public ReferenciaDTO getReferencia() {
 		return referencia;
 	}
 
-	public void setReferencia(String referencia) {
+	public void setReferencia(ReferenciaDTO referencia) {
 		this.referencia = referencia;
 	}
 
@@ -76,6 +77,14 @@ public class DevocionalNewDTO implements Serializable {
 
 	public void setDataCriacao(String dataCriacao) {
 		this.dataCriacao = dataCriacao;
+	}
+
+	public String getTextoReferencia() {
+		return textoReferencia;
+	}
+
+	public void setTextoReferencia(String textoReferencia) {
+		this.textoReferencia = textoReferencia;
 	}
 
 }
