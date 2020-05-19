@@ -50,6 +50,20 @@ public class DevocionalComentarioService {
 		
 		DevocionalComentario comentario = new DevocionalComentario(dto, referencia, membro);
 		
+		
+		if (comentario.getChamouAtencao() == null) {
+			comentario.setChamouAtencao("");
+		}
+		if (comentario.getoQueAprendi() == null) {
+			comentario.setoQueAprendi("");
+		}
+		if (comentario.getSobreDeus() == null) {
+			comentario.setSobreDeus("");
+		}
+		if (comentario.getSobreHumanidade() != null) {
+			comentario.setSobreHumanidade("");
+		}
+		
 		comentario.setChamouAtencao(base64.encodeAsString(comentario.getChamouAtencao().getBytes()));
 		comentario.setoQueAprendi(base64.encodeAsString(comentario.getoQueAprendi().getBytes()));
 		comentario.setSobreDeus(base64.encodeAsString(comentario.getSobreDeus().getBytes()));
