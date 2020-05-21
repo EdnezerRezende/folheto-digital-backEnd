@@ -32,19 +32,19 @@ public class DevocionalComentario {
 	private Referencia referencia;
 	
 	@Lob @Basic(fetch=FetchType.LAZY)
-    @Column(name="CHAMOUATENCAO")
+    @Column(name="CHAMOU_ATENCAO")
 	private String chamouAtencao;
 	
 	@Lob @Basic(fetch=FetchType.LAZY)
-    @Column(name="SOBREDEUS")
+    @Column(name="SOBRE_DEUS")
 	private String sobreDeus;
 	
 	@Lob @Basic(fetch=FetchType.LAZY)
-    @Column(name="SOBREHUMANIDADE")
+    @Column(name="SOBRE_HUMANIDADE")
 	private String sobreHumanidade;
 	
 	@Lob @Basic(fetch=FetchType.LAZY)
-    @Column(name="OQUEAPRENDI")
+    @Column(name="O_QUE_APRENDI")
 	private String oQueAprendi;
 
 	@JsonFormat(pattern="dd/MM/yyyy")
@@ -126,11 +126,11 @@ public class DevocionalComentario {
 		this.sobreHumanidade = sobreHumanidade;
 	}
 
-	public String getOQueAprendi() {
+	public String getoQueAprendi() {
 		return oQueAprendi;
 	}
 
-	public void setOQueAprendi(String oQueAprendi) {
+	public void setoQueAprendi(String oQueAprendi) {
 		this.oQueAprendi = oQueAprendi;
 	}
 
