@@ -2,11 +2,15 @@ package br.com.igrejadecristo.folhetodigital.entidades;
 
 import java.time.LocalDate;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -27,12 +31,20 @@ public class DevocionalComentario {
     @JoinColumn(name="referencia_id")
 	private Referencia referencia;
 	
+	@Lob @Basic(fetch=FetchType.LAZY)
+    @Column(name="CHAMOU_ATENCAO")
 	private String chamouAtencao;
 	
+	@Lob @Basic(fetch=FetchType.LAZY)
+    @Column(name="SOBRE_DEUS")
 	private String sobreDeus;
 	
+	@Lob @Basic(fetch=FetchType.LAZY)
+    @Column(name="SOBRE_HUMANIDADE")
 	private String sobreHumanidade;
 	
+	@Lob @Basic(fetch=FetchType.LAZY)
+    @Column(name="O_QUE_APRENDI")
 	private String oQueAprendi;
 
 	@JsonFormat(pattern="dd/MM/yyyy")
