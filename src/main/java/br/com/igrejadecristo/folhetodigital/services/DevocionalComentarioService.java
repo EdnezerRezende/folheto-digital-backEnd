@@ -34,8 +34,8 @@ public class DevocionalComentarioService {
 			if (comentario.getChamouAtencao() != null) {
 				comentario.setChamouAtencao(new String(base64.decode(comentario.getChamouAtencao())));
 			}
-			if (comentario.getoQueAprendi() != null) {
-				comentario.setoQueAprendi(new String(base64.decode(comentario.getoQueAprendi())));
+			if (comentario.getOQueAprendi() != null) {
+				comentario.setOQueAprendi(new String(base64.decode(comentario.getOQueAprendi())));
 			}
 			if (comentario.getSobreDeus() != null) {
 				comentario.setSobreDeus(new String(base64.decode(comentario.getSobreDeus())));
@@ -67,8 +67,8 @@ public class DevocionalComentarioService {
 		if (comentario.getChamouAtencao() != null) {
 			comentario.setChamouAtencao(base64.encodeAsString(comentario.getChamouAtencao().getBytes()));
 		}
-		if (comentario.getoQueAprendi() != null) {
-			comentario.setoQueAprendi(base64.encodeAsString(comentario.getoQueAprendi().getBytes()));
+		if (comentario.getOQueAprendi() != null) {
+			comentario.setOQueAprendi(base64.encodeAsString(comentario.getOQueAprendi().getBytes()));
 		}
 		if (comentario.getSobreDeus() != null) {
 			comentario.setSobreDeus(base64.encodeAsString(comentario.getSobreDeus().getBytes()));

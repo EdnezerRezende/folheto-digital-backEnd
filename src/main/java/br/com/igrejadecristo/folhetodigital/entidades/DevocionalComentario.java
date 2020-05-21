@@ -2,11 +2,15 @@ package br.com.igrejadecristo.folhetodigital.entidades;
 
 import java.time.LocalDate;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -27,12 +31,20 @@ public class DevocionalComentario {
     @JoinColumn(name="referencia_id")
 	private Referencia referencia;
 	
+	@Lob @Basic(fetch=FetchType.LAZY)
+    @Column(name="CHAMOUATENCAO")
 	private String chamouAtencao;
 	
+	@Lob @Basic(fetch=FetchType.LAZY)
+    @Column(name="SOBREDEUS")
 	private String sobreDeus;
 	
+	@Lob @Basic(fetch=FetchType.LAZY)
+    @Column(name="SOBREHUMANIDADE")
 	private String sobreHumanidade;
 	
+	@Lob @Basic(fetch=FetchType.LAZY)
+    @Column(name="OQUEAPRENDI")
 	private String oQueAprendi;
 
 	@JsonFormat(pattern="dd/MM/yyyy")
@@ -114,11 +126,11 @@ public class DevocionalComentario {
 		this.sobreHumanidade = sobreHumanidade;
 	}
 
-	public String getoQueAprendi() {
+	public String getOQueAprendi() {
 		return oQueAprendi;
 	}
 
-	public void setoQueAprendi(String oQueAprendi) {
+	public void setOQueAprendi(String oQueAprendi) {
 		this.oQueAprendi = oQueAprendi;
 	}
 
