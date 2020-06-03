@@ -60,6 +60,7 @@ public class DevocionalComentarioService {
 		
 		DevocionalComentario comentario = new DevocionalComentario(dto, referencia, membro);
 		
+		
 		if (comentarioAtual != null ) {
 			deletar(comentarioAtual.getId());
 		}
@@ -84,5 +85,6 @@ public class DevocionalComentarioService {
 	public void deletar(Integer id) {
 		DevocionalComentario comentario = devocionalComentarioDao.findById(id).get();
 		comentario.setIsDeletado(Boolean.TRUE);
+		devocionalComentarioDao.saveAndFlush(comentario);
 	}
 }
