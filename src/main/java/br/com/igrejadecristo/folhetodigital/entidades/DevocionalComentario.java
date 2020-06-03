@@ -84,6 +84,7 @@ public class DevocionalComentario {
 		this.sobreHumanidade = dto.getSobreHumanidade();
 		this.oQueAprendi = dto.getoQueAprendi();
 		this.dataCriacao = dto.getDataCriacao() != null ? DataUtil.converterStringParaLocalDateFormatado(dto.getDataCriacao()):LocalDate.now();
+		this.isDeletado = Boolean.FALSE;
 	}
 	
 		

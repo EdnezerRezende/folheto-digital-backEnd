@@ -57,6 +57,7 @@ public class Devocional {
 		this.descricao = descricao;
 		this.dataCriacao = dataCriacao;
 		this.textoReferencia = textoReferencia;
+		this.isDeletado = Boolean.FALSE;
 	}
 
 	public Integer getId() {
