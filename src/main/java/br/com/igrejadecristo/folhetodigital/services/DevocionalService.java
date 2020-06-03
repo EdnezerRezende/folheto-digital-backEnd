@@ -43,7 +43,7 @@ public class DevocionalService {
 	private DevocionalComentarioRepository devocionalComentarioDao;
 	
 	public List<Devocional> buscarTodos() {
-		return devocionalDao.findAllByOrderByDataCriacaoDesc();
+		return devocionalDao.findAllByIsDeletadoOrderByDataCriacaoDesc(Boolean.FALSE);
 	}
 
 	public List<Devocional> buscarPorIgreja(Integer idIgreja, Integer idMembro ) {
@@ -55,7 +55,7 @@ public class DevocionalService {
 			
 		LocalDateTime dataFim = LocalDateTime.parse(dataBoletimGerado + " 11:59",parser).plusDays(6);
 
-		List<Devocional> devocionais = devocionalDao.findByIgrejaId(idIgreja);
+		List<Devocional> devocionais = devocionalDao.findByIgrejaIdAndIsDeletado(idIgreja, Boolean.FALSE);
 
 		if(devocionais.size()>0) {
 		}
@@ -65,7 +65,7 @@ public class DevocionalService {
 						!devocional.getDataCriacao().isAfter(dataFim.toLocalDate())) {
 					devocional.setIsAtual(true);
 				}
-				devocional.setIsLido(devocionalComentarioDao.existsByMembroIdAndReferenciaId(idMembro, devocional.getReferencia().getId()));
+				devocional.setIsLido(devocionalComentarioDao.existsByMembroIdAndReferenciaIdAndIsDeletado(idMembro, devocional.getReferencia().getId(), Boolean.FALSE));
 			}
 		);
 		
@@ -74,7 +74,7 @@ public class DevocionalService {
 	}
 
 	public List<Devocional> buscarPorIgrejaEDataCriacao(Integer idIgreja, LocalDate dataCriado, LocalDate dataLimiteBusca) {
-		return devocionalDao.buscaDevocionalPorIdIgrejaAndDataCriado(idIgreja, dataCriado, dataLimiteBusca);
+		return devocionalDao.buscaDevocionalPorIdIgrejaAndDataCriado(idIgreja, Boolean.FALSE, dataCriado, dataLimiteBusca);
 	}
 
 	
@@ -109,6 +109,8 @@ public class DevocionalService {
 	}
 
 	public void deletar(Integer id) {
-		devocionalDao.deleteById(id);
+		Devocional devocional = devocionalDao.findById(id).get();
+		devocional.setIsDeletado(Boolean.TRUE);
+		devocionalDao.saveAndFlush(devocional);
 	}
 }

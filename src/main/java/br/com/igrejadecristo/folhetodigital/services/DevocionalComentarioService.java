@@ -29,7 +29,7 @@ public class DevocionalComentarioService {
 	Base64 base64 = new Base64();
 	
 	public DevocionalComentario buscarPorReferenciaEMembro(Integer idMembro, Integer IdReferencia) {
-		DevocionalComentario comentario = devocionalComentarioDao.findByMembroIdAndReferenciaId(idMembro, IdReferencia);
+		DevocionalComentario comentario = devocionalComentarioDao.findByMembroIdAndReferenciaIdAndIsDeletado(idMembro, IdReferencia, Boolean.FALSE);
 		if(comentario != null) {
 			if (comentario.getChamouAtencao() != null) {
 				comentario.setChamouAtencao(new String(base64.decode(comentario.getChamouAtencao())));
@@ -56,7 +56,7 @@ public class DevocionalComentarioService {
 		
 		Membro membro = membroRepository.findById(dto.getIdMembro()).get();
 		
-		DevocionalComentario comentarioAtual = devocionalComentarioDao.findByMembroIdAndReferenciaId(dto.getIdMembro(), dto.getReferencia());
+		DevocionalComentario comentarioAtual = devocionalComentarioDao.findByMembroIdAndReferenciaIdAndIsDeletado(dto.getIdMembro(), dto.getReferencia(), Boolean.FALSE);
 		
 		DevocionalComentario comentario = new DevocionalComentario(dto, referencia, membro);
 		
@@ -82,6 +82,7 @@ public class DevocionalComentarioService {
 	}
 
 	public void deletar(Integer id) {
-		devocionalComentarioDao.deleteById(id);
+		DevocionalComentario comentario = devocionalComentarioDao.findById(id).get();
+		comentario.setIsDeletado(Boolean.TRUE);
 	}
 }

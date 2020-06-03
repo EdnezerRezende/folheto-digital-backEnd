@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import br.com.igrejadecristo.folhetodigital.dto.NewPasswordDTO;
 import br.com.igrejadecristo.folhetodigital.entidades.Membro;
 import br.com.igrejadecristo.folhetodigital.respositories.MembroRepository;
 import br.com.igrejadecristo.folhetodigital.services.exceptions.ObjectNotFoundException;
@@ -37,6 +38,18 @@ public class AuthService {
 		
 		membroRepository.save(membro);
 //		emailService.sendNewPasswordEmail(membro, newPass);
+	}
+	
+	public void trocaSenha(NewPasswordDTO dto) {
+		
+		Membro membro = membroRepository.findByEmail(dto.getEmail());
+		if (membro == null) {
+			throw new ObjectNotFoundException("Email não encontrado");
+		}
+		
+		membro.setSenha(pe.encode(dto.getPassword()));
+		
+		membroRepository.save(membro);
 	}
 
 	private String newPassword() {
