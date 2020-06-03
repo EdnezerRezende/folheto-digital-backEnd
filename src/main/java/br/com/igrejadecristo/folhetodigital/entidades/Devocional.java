@@ -42,6 +42,8 @@ public class Devocional {
 	
 	@Transient
 	private Boolean isLido = false;
+	
+	private Boolean isDeletado;
 
 	public Devocional() {
 		super();
@@ -119,6 +121,15 @@ public class Devocional {
 
 	public void setIsLido(Boolean isLido) {
 		this.isLido = isLido;
+	}
+	
+
+	public Boolean getIsDeletado() {
+		return isDeletado;
+	}
+
+	public void setIsDeletado(Boolean isDeletado) {
+		this.isDeletado = isDeletado;
 	}
 
 	@Override

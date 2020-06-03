@@ -49,6 +49,8 @@ public class DevocionalComentario {
 
 	@JsonFormat(pattern="dd/MM/yyyy")
 	private LocalDate dataCriacao;
+	
+	private Boolean isDeletado;
 
     @JsonIgnore
     @ManyToOne
@@ -148,6 +150,15 @@ public class DevocionalComentario {
 
 	public void setMembro(Membro membro) {
 		this.membro = membro;
+	}
+	
+
+	public Boolean getIsDeletado() {
+		return isDeletado;
+	}
+
+	public void setIsDeletado(Boolean isDeletado) {
+		this.isDeletado = isDeletado;
 	}
 
 	@Override

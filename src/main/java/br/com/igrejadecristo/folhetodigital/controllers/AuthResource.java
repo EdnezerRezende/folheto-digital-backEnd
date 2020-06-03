@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.igrejadecristo.folhetodigital.dto.EmailDTO;
+import br.com.igrejadecristo.folhetodigital.dto.NewPasswordDTO;
 import br.com.igrejadecristo.folhetodigital.security.JWTUtil;
 import br.com.igrejadecristo.folhetodigital.security.UserSS;
 import br.com.igrejadecristo.folhetodigital.services.AuthService;
@@ -39,6 +40,12 @@ public class AuthResource {
 	@RequestMapping(value = "/forgot", method = RequestMethod.POST)
 	public ResponseEntity<Void> forgot(@Valid @RequestBody EmailDTO objDto) {
 		service.sendNewPassword(objDto.getEmail());
+		return ResponseEntity.noContent().build();
+	}
+	
+	@RequestMapping(value = "/forgot/newPassword", method = RequestMethod.POST)
+	public ResponseEntity<Void> forgotNewPassword(@Valid @RequestBody NewPasswordDTO objDto) {
+		service.trocaSenha(objDto);
 		return ResponseEntity.noContent().build();
 	}
 }

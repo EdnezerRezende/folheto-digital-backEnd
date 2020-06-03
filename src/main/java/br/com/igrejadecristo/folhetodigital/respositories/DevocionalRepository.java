@@ -16,13 +16,14 @@ import br.com.igrejadecristo.folhetodigital.entidades.Devocional;
 public interface DevocionalRepository extends JpaRepository<Devocional, Integer>{
 	
 	@Transactional(readOnly=true)
-	public List<Devocional> findByIgrejaId(Integer idIgreja);
+	public List<Devocional> findByIgrejaIdAndIsDeletado(Integer idIgreja, Boolean isDeletado);
 	
 	@Transactional(readOnly=true)
-	public List<Devocional> findAllByOrderByDataCriacaoDesc();
+	public List<Devocional> findAllByIsDeletadoOrderByDataCriacaoDesc(Boolean isDeletado);
 	
-	@Query(value = "select d from Devocional d where d.igreja.id = :idIgreja and d.dataCriacao between :dataCriado and :dataLimiteBusca")
+	@Query(value = "select d from Devocional d where d.igreja.id = :idIgreja and d.dataCriacao between :dataCriado and :dataLimiteBusca and d.isDeletado = :isDeletado")
 	public List<Devocional> buscaDevocionalPorIdIgrejaAndDataCriado(@Param("idIgreja") Integer idIgreja, 
+			@Param("isDeletado") Boolean isDeletado,
 			@Param("dataCriado") LocalDate dataCriado,
 			@Param("dataLimiteBusca") LocalDate dataLimiteBusca);
 }

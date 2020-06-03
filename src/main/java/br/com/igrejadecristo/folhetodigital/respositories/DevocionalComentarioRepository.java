@@ -9,6 +9,7 @@ import br.com.igrejadecristo.folhetodigital.entidades.DevocionalComentario;
 @Repository
 public interface DevocionalComentarioRepository extends JpaRepository<DevocionalComentario, Integer>{
 	
-	public DevocionalComentario findByMembroIdAndReferenciaId(Integer idMembro, Integer IdReferencia);
-	public Boolean existsByMembroIdAndReferenciaId(Integer idMembro, Integer IdReferencia);
+	public DevocionalComentario findByMembroIdAndReferenciaIdAndIsDeletado(Integer idMembro, Integer IdReferencia, Boolean isDeletado);
+	public Boolean existsByMembroIdAndReferenciaIdAndIsDeletado(Integer idMembro, Integer IdReferencia, Boolean isDeletado);
+	
 }
