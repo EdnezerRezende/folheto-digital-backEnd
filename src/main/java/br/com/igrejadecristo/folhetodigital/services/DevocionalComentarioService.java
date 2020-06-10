@@ -62,9 +62,10 @@ public class DevocionalComentarioService {
 		
 		
 		if (comentarioAtual != null ) {
-			deletar(comentarioAtual.getId());
+			devocionalComentarioDao.deleteById(comentarioAtual.getId());
 		}
-		
+
+		comentario.setId(null);
 		if (comentario.getChamouAtencao() != null) {
 			comentario.setChamouAtencao(base64.encodeAsString(comentario.getChamouAtencao().getBytes()));
 		}
