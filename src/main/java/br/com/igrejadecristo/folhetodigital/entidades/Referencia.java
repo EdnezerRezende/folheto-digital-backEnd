@@ -34,7 +34,7 @@ public class Referencia implements Serializable {
 	private List<Versiculo> verses;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "referencia", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "referencia")
 	private List<DevocionalComentario> comentarios;
 
 	public Referencia() {

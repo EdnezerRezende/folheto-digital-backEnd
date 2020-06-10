@@ -57,9 +57,6 @@ public class DevocionalService {
 
 		List<Devocional> devocionais = devocionalDao.findByIgrejaIdAndIsDeletado(idIgreja, Boolean.FALSE);
 
-		if(devocionais.size()>0) {
-		}
-
 		devocionais.stream().forEach(devocional ->{ 
 				if(!devocional.getDataCriacao().isBefore(dataInicio.toLocalDate()) && 
 						!devocional.getDataCriacao().isAfter(dataFim.toLocalDate())) {
