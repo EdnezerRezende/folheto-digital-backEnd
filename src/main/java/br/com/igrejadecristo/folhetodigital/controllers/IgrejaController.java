@@ -30,7 +30,7 @@ public class IgrejaController {
 		return ResponseEntity.ok().body(listDto);
 	}
 	
-	@PreAuthorize("hasAnyRole('MEMBRO')") 
+	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')") 
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)
 	public ResponseEntity<IgrejaInfoDTO> findById(@PathVariable Integer id) {
 		

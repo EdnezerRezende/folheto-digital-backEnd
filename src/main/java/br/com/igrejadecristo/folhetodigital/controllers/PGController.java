@@ -28,13 +28,13 @@ public class PGController {
 	@Autowired
 	private PGService pgService;
 	
-	@PreAuthorize("hasAnyRole('ADMIN','MEMBRO')") 
+	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')") 
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<PequenoGrupo>> findAll() {
 		return ResponseEntity.ok().body(pgService.buscarTodos());
 	}
 	
-	@PreAuthorize("hasAnyRole('ADMIN','MEMBRO')") 
+	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')") 
 	@RequestMapping(value="/igreja/{idIgreja}", method = RequestMethod.GET)
 	public ResponseEntity<List<PequenoGrupo>> findPorIgreja(@PathVariable Integer idIgreja) {
 		return ResponseEntity.ok().body(pgService.buscarPorIgreja(idIgreja));

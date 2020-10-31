@@ -2,6 +2,7 @@ package br.com.igrejadecristo.folhetodigital.util;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
@@ -15,6 +16,13 @@ public class DataUtil {
 		dataHoje = validarEObterDataDomingo(dataHoje, dayOfWeek);
 		
 		return dataHoje.format(parser);
+	}
+	
+	public static LocalDate obterDataInicialBoletimSemana() {
+		DateTimeFormatter parser = DateTimeFormatter.ofPattern("d 'de' MMMM 'de' yyyy").withLocale(new Locale("pt", "br"));
+		String dataBoletimString = obterDataGeracaoBoletim(LocalDate.now());
+		
+		return LocalDate.parse(dataBoletimString,parser); 
 	}
 	
 	private static LocalDate validarEObterDataDomingo(LocalDate dataHoje, DayOfWeek dayOfWeek) {

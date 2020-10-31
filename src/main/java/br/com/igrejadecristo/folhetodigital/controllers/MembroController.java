@@ -34,7 +34,7 @@ public class MembroController {
 	@Autowired
 	private MembroService membroService;
 	
-	@PreAuthorize("hasAnyRole('ADMIN','MEMBRO')") 
+	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')") 
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> buscaPorId(@PathVariable Integer id){
 		Membro membro = membroService.buscar(id);
@@ -42,7 +42,7 @@ public class MembroController {
 		return ResponseEntity.ok(membro);
 	}
 
-	@PreAuthorize("hasAnyRole('ADMIN','MEMBRO')") 
+	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')") 
 	@RequestMapping(value="/email", method=RequestMethod.GET)
 	public ResponseEntity<MembroInfoDTO> find(@RequestParam(value="value") String email) {
 		MembroInfoDTO obj = membroService.findByEmail(email);
@@ -98,7 +98,7 @@ public class MembroController {
 		return ResponseEntity.ok().body(listDto);
 	}	
 	
-	@PreAuthorize("hasAnyRole('MEMBRO')") 
+	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')") 
 	@RequestMapping(value="/aniversariantes/{idIgreja}", method=RequestMethod.GET)
 	public ResponseEntity<List<MembroDTO>> buscarTodosAniversariantes(@PathVariable Integer idIgreja) {
 		List<Membro> list = membroService.findAllMembrosByDataNascimento(idIgreja);

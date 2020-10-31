@@ -18,7 +18,7 @@ public class EmailController {
 	@Autowired
 	private ContatoService contatoService;
 	
-	@PreAuthorize("hasAnyRole('MEMBRO')") 
+	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')") 
 	@RequestMapping(path="/contato", method = RequestMethod.POST)
 	public ResponseEntity<Void> enviarContato(@RequestBody ContatoDTO dto) {
 		contatoService.enviarContato(dto);

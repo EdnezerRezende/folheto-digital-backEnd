@@ -50,6 +50,8 @@ public class AuthService {
 		membro.setSenha(pe.encode(dto.getPassword()));
 		
 		membroRepository.save(membro);
+		
+		emailService.sendNewPasswordEmail(membro, dto.getPassword());
 	}
 
 	private String newPassword() {

@@ -293,14 +293,14 @@ public class DBService {
 		pgRepository.saveAll(Arrays.asList(pg1, pg2, pg3));
 
 		AgendaEvento agenda = new AgendaEvento(null, "Escola Bíblica", igreja1, "Domingo", LocalTime.of(18, 00), false,
-				"Escola bíblica para aprender sobre a Palavra de Deus", null, null);
+				"Escola bíblica para aprender sobre a Palavra de Deus", null, null, "urldoEvento");
 
 		AgendaEvento agenda1 = new AgendaEvento(null, "Culto de Celebração", igreja1, "Domingo", LocalTime.of(19, 00),
-				false, "Culto de Louvor e adoração a Deus", null, null);
+				false, "Culto de Louvor e adoração a Deus", null, null, "urldoEvento");
 
 		AgendaEvento evento1 = new AgendaEvento(null, "Convenção Nacional", igreja1, "", LocalTime.of(19, 30), true,
 				"Vem ai a convernção Nacional das igrejas de Cristo. O evento, que acontece de 25 a 27 de outubro em Goiânia, contará com a presença do Pr. Carlinhos Queiroz e do cantor Thiago Grulha. Já fizemos algumas reservas no Umuarama Hotel. Para garantir a sua vaga, converse com o Pr. Gerson o quanto antes",
-				LocalDate.of(2019, 10, 25), LocalDate.of(2019, 10, 27));
+				LocalDate.of(2019, 10, 25), LocalDate.of(2019, 10, 27), "urldoEvento");
 
 		agendaEventoRepository.saveAll(Arrays.asList(agenda, agenda1, evento1));
 

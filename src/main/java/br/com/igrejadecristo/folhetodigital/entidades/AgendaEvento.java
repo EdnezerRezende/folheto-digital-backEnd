@@ -46,6 +46,8 @@ public class AgendaEvento {
     @Column(name="TEXTO")
 	private String descricao;
 	
+	private String link;
+	
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private LocalDate dataInicio;
 	
@@ -57,7 +59,7 @@ public class AgendaEvento {
 	}
 	
 	public AgendaEvento(Integer id, String titulo, Igreja igreja, String diaSemanaAtividade, LocalTime horaAtividade,
-			Boolean isEvento, String descricao, LocalDate dataInicio, LocalDate dataFim) {
+			Boolean isEvento, String descricao, LocalDate dataInicio, LocalDate dataFim, String link) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
@@ -68,6 +70,7 @@ public class AgendaEvento {
 		this.descricao = descricao;
 		this.dataInicio = dataInicio;
 		this.dataFim = dataFim;
+		this.link = link;
 	}
 
 	public Integer getId() {
@@ -140,6 +143,14 @@ public class AgendaEvento {
 
 	public void setIsEvento(Boolean isEvento) {
 		this.isEvento = isEvento;
+	}
+
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
 	}
 
 	@Override
