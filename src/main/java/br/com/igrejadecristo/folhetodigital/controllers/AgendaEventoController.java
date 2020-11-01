@@ -26,7 +26,7 @@ public class AgendaEventoController {
 	@Autowired
 	private AgendaEventoService agendaEventoService;
 	
-	@PreAuthorize("hasAnyRole(''MEMBRO','VISITANTE')") 
+	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')") 
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<AgendaEvento>> findAll() {
 		return ResponseEntity.ok().body(agendaEventoService.buscarTodos());

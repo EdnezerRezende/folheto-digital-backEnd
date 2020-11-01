@@ -107,13 +107,17 @@ public class DBService {
 		Membro membro1 = new Membro(null, "Teste", "admin@gmail.com", "12345678978", pe.encode("1234"), igreja1, dataLimiteBusca.toLocalDate().minusDays(3));
 		Membro membro3 = new Membro(null, "Teste1", "membro@gmail.com", "37668105026", pe.encode("1234"), igreja1, dataLimiteBusca.toLocalDate().plusDays(2));
 		Membro membro2 = new Membro(null, "Teste 2", "lider@gmail.com", "78945612378", pe.encode("1234"), igreja1, dataLimiteBusca.toLocalDate());
+		
+		Membro membro4 = new Membro(null, "Visitante", "visitante@gmail.com", "37668105026", pe.encode("12345678"), igreja1, dataLimiteBusca.toLocalDate().plusDays(2));
+		
 		membro1.addPerfil(Perfil.ADMIN);
 		membro2.addPerfil(Perfil.LIDER);
-
+		membro4.addPerfil(Perfil.VISITANTE);
 		membro1.getTelefones().addAll(Arrays.asList("6127363323", "6193838393"));
 		membro2.getTelefones().addAll(Arrays.asList("6193883321", "6134252625"));
 		membro3.getTelefones().addAll(Arrays.asList("6145645789", "6155688977"));
-
+		membro4.getTelefones().addAll(Arrays.asList("6145645789", "6155688977"));
+		
 		EnderecoMembro e1 = new EnderecoMembro(null, "Rua Flores", "300", "Apto 303", "Jardim", "38220834", membro1,
 				c1);
 		EnderecoMembro e2 = new EnderecoMembro(null, "Avenida Matos", "105", "Sala 800", "Centro", "38777012", membro1,
@@ -128,8 +132,9 @@ public class DBService {
 		membro1.getEnderecos().addAll(Arrays.asList(e1, e2));
 		membro2.getEnderecos().addAll(Arrays.asList(e3, e4));
 		membro3.getEnderecos().addAll(Arrays.asList(e5));
+		membro4.getEnderecos().addAll(Arrays.asList(e5));
 
-		membroRepository.saveAll(Arrays.asList(membro1, membro2, membro3));
+		membroRepository.saveAll(Arrays.asList(membro1, membro2, membro3, membro4));
 		
 		Aniversariante aniversariante1 = new Aniversariante(membro1);
 		Aniversariante aniversariante2 = new Aniversariante(membro2);
