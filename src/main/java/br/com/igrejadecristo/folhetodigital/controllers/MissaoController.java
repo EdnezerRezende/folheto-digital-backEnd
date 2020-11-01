@@ -28,7 +28,7 @@ public class MissaoController {
 	@Autowired
 	private MissaoService missaoService;
 	
-	@PreAuthorize("hasAnyRole('ADMIN','MEMBRO')") 
+	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')") 
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<MissaoDTO>> findAll() {
 		List<Missao> list = missaoService.buscarTodos();

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:remove="all">Contato</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<h1> <span th:text="${membro.nome}">, geramos uma nova senha para você, segue abaixo a solicitação</h1>
+		<p>
+			Nova Senha: <span th:text="${senha}" ></span>
+		</p>
+		
+	</div>
+</body>
+</html>

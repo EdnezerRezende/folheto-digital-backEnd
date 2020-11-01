@@ -26,4 +26,9 @@ public interface DevocionalRepository extends JpaRepository<Devocional, Integer>
 			@Param("isDeletado") Boolean isDeletado,
 			@Param("dataCriado") LocalDate dataCriado,
 			@Param("dataLimiteBusca") LocalDate dataLimiteBusca);
+	
+	@Query(value = "select d from Devocional d where d.igreja.id = :idIgreja and d.dataCriacao < :dataCriado and d.isDeletado = :isDeletado")
+	public List<Devocional> buscaDevocionalAntigosPorIdIgrejaAndDataCriado(@Param("idIgreja") Integer idIgreja, 
+			@Param("isDeletado") Boolean isDeletado,
+			@Param("dataCriado") LocalDate dataCriado);
 }

@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import br.com.igrejadecristo.folhetodigital.entidades.AgendaEvento;
 import br.com.igrejadecristo.folhetodigital.entidades.Aniversariante;
 import br.com.igrejadecristo.folhetodigital.entidades.Cidade;
-import br.com.igrejadecristo.folhetodigital.entidades.Devocional;
 import br.com.igrejadecristo.folhetodigital.entidades.EnderecoIgreja;
 import br.com.igrejadecristo.folhetodigital.entidades.EnderecoMembro;
 import br.com.igrejadecristo.folhetodigital.entidades.EnderecoPG;
@@ -28,7 +27,6 @@ import br.com.igrejadecristo.folhetodigital.entidades.PequenoGrupo;
 import br.com.igrejadecristo.folhetodigital.entidades.enums.Perfil;
 import br.com.igrejadecristo.folhetodigital.respositories.AgendaEventoRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.CidadeRepository;
-import br.com.igrejadecristo.folhetodigital.respositories.DevocionalRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.EnderecoPGRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.EstadoRepository;
 import br.com.igrejadecristo.folhetodigital.respositories.IgrejaRepository;
@@ -70,12 +68,6 @@ public class DBService {
 	private AgendaEventoRepository agendaEventoRepository;
 
 	@Autowired
-	private DevocionalRepository devocionalRepository;
-	
-	@Autowired
-	private BoletimService boletimService;
-
-	@Autowired
 	private OfertaServicoRepository ofertaServicoRepository;
 
 	@Autowired
@@ -115,13 +107,17 @@ public class DBService {
 		Membro membro1 = new Membro(null, "Teste", "admin@gmail.com", "12345678978", pe.encode("1234"), igreja1, dataLimiteBusca.toLocalDate().minusDays(3));
 		Membro membro3 = new Membro(null, "Teste1", "membro@gmail.com", "37668105026", pe.encode("1234"), igreja1, dataLimiteBusca.toLocalDate().plusDays(2));
 		Membro membro2 = new Membro(null, "Teste 2", "lider@gmail.com", "78945612378", pe.encode("1234"), igreja1, dataLimiteBusca.toLocalDate());
+		
+		Membro membro4 = new Membro(null, "Visitante", "visitante@gmail.com", "37668105026", pe.encode("12345678"), igreja1, dataLimiteBusca.toLocalDate().plusDays(2));
+		
 		membro1.addPerfil(Perfil.ADMIN);
 		membro2.addPerfil(Perfil.LIDER);
-
+		membro4.addPerfil(Perfil.VISITANTE);
 		membro1.getTelefones().addAll(Arrays.asList("6127363323", "6193838393"));
 		membro2.getTelefones().addAll(Arrays.asList("6193883321", "6134252625"));
 		membro3.getTelefones().addAll(Arrays.asList("6145645789", "6155688977"));
-
+		membro4.getTelefones().addAll(Arrays.asList("6145645789", "6155688977"));
+		
 		EnderecoMembro e1 = new EnderecoMembro(null, "Rua Flores", "300", "Apto 303", "Jardim", "38220834", membro1,
 				c1);
 		EnderecoMembro e2 = new EnderecoMembro(null, "Avenida Matos", "105", "Sala 800", "Centro", "38777012", membro1,
@@ -136,8 +132,9 @@ public class DBService {
 		membro1.getEnderecos().addAll(Arrays.asList(e1, e2));
 		membro2.getEnderecos().addAll(Arrays.asList(e3, e4));
 		membro3.getEnderecos().addAll(Arrays.asList(e5));
+		membro4.getEnderecos().addAll(Arrays.asList(e5));
 
-		membroRepository.saveAll(Arrays.asList(membro1, membro2, membro3));
+		membroRepository.saveAll(Arrays.asList(membro1, membro2, membro3, membro4));
 		
 		Aniversariante aniversariante1 = new Aniversariante(membro1);
 		Aniversariante aniversariante2 = new Aniversariante(membro2);
@@ -301,14 +298,14 @@ public class DBService {
 		pgRepository.saveAll(Arrays.asList(pg1, pg2, pg3));
 
 		AgendaEvento agenda = new AgendaEvento(null, "Escola Bíblica", igreja1, "Domingo", LocalTime.of(18, 00), false,
-				"Escola bíblica para aprender sobre a Palavra de Deus", null, null);
+				"Escola bíblica para aprender sobre a Palavra de Deus", null, null, "urldoEvento");
 
 		AgendaEvento agenda1 = new AgendaEvento(null, "Culto de Celebração", igreja1, "Domingo", LocalTime.of(19, 00),
-				false, "Culto de Louvor e adoração a Deus", null, null);
+				false, "Culto de Louvor e adoração a Deus", null, null, "urldoEvento");
 
 		AgendaEvento evento1 = new AgendaEvento(null, "Convenção Nacional", igreja1, "", LocalTime.of(19, 30), true,
 				"Vem ai a convernção Nacional das igrejas de Cristo. O evento, que acontece de 25 a 27 de outubro em Goiânia, contará com a presença do Pr. Carlinhos Queiroz e do cantor Thiago Grulha. Já fizemos algumas reservas no Umuarama Hotel. Para garantir a sua vaga, converse com o Pr. Gerson o quanto antes",
-				LocalDate.of(2019, 10, 25), LocalDate.of(2019, 10, 27));
+				LocalDate.of(2019, 10, 25), LocalDate.of(2019, 10, 27), "urldoEvento");
 
 		agendaEventoRepository.saveAll(Arrays.asList(agenda, agenda1, evento1));
 

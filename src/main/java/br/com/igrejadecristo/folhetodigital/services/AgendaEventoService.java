@@ -54,7 +54,7 @@ public class AgendaEventoService {
 		}
 		
 		AgendaEvento agenda = new AgendaEvento(dto.getId(), dto.getTitulo(), igreja, dto.getDiaSemanaAtividade(),
-				LocalTime.parse(dto.getHoraAtividade()), dto.getIsEvento(), dto.getDescricao(), LocalDate.parse(dto.getDataInicio(), formatter), LocalDate.parse(dto.getDataFim(), formatter) );
+				LocalTime.parse(dto.getHoraAtividade()), dto.getIsEvento(), dto.getDescricao(), LocalDate.parse(dto.getDataInicio(), formatter), LocalDate.parse(dto.getDataFim(), formatter), dto.getLink());
 
 		return agendaEventoDao.save(agenda);
 	}

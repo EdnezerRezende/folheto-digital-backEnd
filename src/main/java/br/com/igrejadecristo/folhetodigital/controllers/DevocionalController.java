@@ -26,16 +26,22 @@ public class DevocionalController {
 	@Autowired
 	private DevocionalService devocionalService;
 	
-	@PreAuthorize("hasAnyRole('ADMIN','MEMBRO')") 
+	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')") 
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<Devocional>> findAll() {
 		return ResponseEntity.ok().body(devocionalService.buscarTodos());
 	}
 	
-	@PreAuthorize("hasAnyRole('ADMIN','MEMBRO')") 
+	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')") 
 	@RequestMapping(value="/igreja/{idIgreja}/{idMembro}", method = RequestMethod.GET)
 	public ResponseEntity<List<Devocional>> findPorIgreja(@PathVariable Integer idIgreja,@PathVariable Integer idMembro) {
 		return ResponseEntity.ok().body(devocionalService.buscarPorIgreja(idIgreja, idMembro));
+	}
+	
+	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')") 
+	@RequestMapping(value="/antigos/igreja/{idIgreja}/{idMembro}", method = RequestMethod.GET)
+	public ResponseEntity<List<Devocional>> findDevocionaisAntigosPorIgreja(@PathVariable Integer idIgreja,@PathVariable Integer idMembro) {
+		return ResponseEntity.ok().body(devocionalService.buscarDevocionaisAntigosPorIgreja(idIgreja, idMembro));
 	}
 	
 	@PreAuthorize("hasAnyRole('ADMIN','LIDER','PASTOR')") 
