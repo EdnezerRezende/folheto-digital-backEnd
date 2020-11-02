@@ -5,7 +5,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -112,7 +116,11 @@ public class DBService {
 		
 		membro1.addPerfil(Perfil.ADMIN);
 		membro2.addPerfil(Perfil.LIDER);
-		membro4.addPerfil(Perfil.VISITANTE);
+		
+		Set<Perfil> perfis = new HashSet<>();
+		perfis.add(Perfil.VISITANTE);
+		membro4.setPerfis(perfis);
+
 		membro1.getTelefones().addAll(Arrays.asList("6127363323", "6193838393"));
 		membro2.getTelefones().addAll(Arrays.asList("6193883321", "6134252625"));
 		membro3.getTelefones().addAll(Arrays.asList("6145645789", "6155688977"));
