@@ -25,7 +25,7 @@ public class DevocionalComentarioController {
 	@Autowired
 	private DevocionalComentarioService devocionalComentarioService;
 	
-	@PreAuthorize("hasAnyRole('MEMBRO')") 
+	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')") 
 	@RequestMapping(path="/{idMembro}/{idReferencia}", method=RequestMethod.GET)
 	public ResponseEntity<DevocionalComentario> findByReferenciaIdAndMembro(@PathVariable Integer idMembro, @PathVariable Integer idReferencia) {
 		return ResponseEntity.ok().body(devocionalComentarioService.buscarPorReferenciaEMembro(idMembro, idReferencia));

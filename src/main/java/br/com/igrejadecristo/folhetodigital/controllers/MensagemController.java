@@ -28,7 +28,7 @@ public class MensagemController {
 	@Autowired
 	private MensagemService mensagemService;
 	
-	@PreAuthorize("hasAnyRole('ADMIN','MEMBRO')") 
+	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')") 
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<MensagemDTO>> findAll() {
 		List<Mensagem> list = mensagemService.buscarTodos();

@@ -38,15 +38,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private JWTUtil jwtUtil;
 	
 	private static final String[] PUBLIC_MATCHERS_GET = {
-			"/eventosAgendas/**",
-			"/devocionais/**",
 			"/estados/**",
 			"/igrejas/**",
-			"/membros/**",
-			"/mensagens/**",
-			"/pgs/**",
-			"/aniversariantes/**",
-			"/boletins/**",
 			"/emails/**"
 	};
 

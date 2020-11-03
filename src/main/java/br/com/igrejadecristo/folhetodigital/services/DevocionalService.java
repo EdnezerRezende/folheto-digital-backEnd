@@ -47,45 +47,40 @@ public class DevocionalService {
 	}
 
 	public List<Devocional> buscarPorIgreja(Integer idIgreja, Integer idMembro ) {
-		DateTimeFormatter parser = DateTimeFormatter.ofPattern("d 'de' MMMM 'de' yyyy HH:mm").withLocale(new Locale("pt", "br"));
-		LocalDateTime dataHoje = LocalDateTime.now();
-
-		String dataBoletimGerado = DataUtil.obterDataGeracaoBoletim(dataHoje.toLocalDate());
-		LocalDateTime dataInicio = LocalDateTime.parse(dataBoletimGerado + " 00:00",parser);
+		LocalDate dataInicio = DataUtil.obterDataInicialBoletimSemana();
 			
-		LocalDateTime dataFim = LocalDateTime.parse(dataBoletimGerado + " 11:59",parser).plusDays(6);
+		LocalDate dataFim = dataInicio.plusDays(6);
 
-		List<Devocional> devocionais = devocionalDao.findByIgrejaIdAndIsDeletado(idIgreja, Boolean.FALSE);
+		List<Devocional> devocionais = buscarPorIgrejaEDataCriacao(idIgreja, dataInicio, dataFim);
+		
+		verificarDevocionalLido(idMembro, devocionais);
+		
+		return devocionais;
+	}
+	
+	public List<Devocional> buscarDevocionaisAntigosPorIgreja(Integer idIgreja, Integer idMembro ) {
+		LocalDate dataInicio = DataUtil.obterDataInicialBoletimSemana();
+			
+		List<Devocional> devocionais = devocionalDao.buscaDevocionalAntigosPorIdIgrejaAndDataCriado(idIgreja, Boolean.FALSE, dataInicio);
 
+		verificarDevocionalLido(idMembro, devocionais);
+		
+		return devocionais;
+	}
+
+	private void verificarDevocionalLido(Integer idMembro, List<Devocional> devocionais) {
 		devocionais.stream().forEach(devocional ->{ 
-				if(!devocional.getDataCriacao().isBefore(dataInicio.toLocalDate()) && 
-						!devocional.getDataCriacao().isAfter(dataFim.toLocalDate())) {
-					devocional.setIsAtual(true);
-				}
 				devocional.setIsLido(devocionalComentarioDao.existsByMembroIdAndReferenciaIdAndIsDeletado(idMembro, devocional.getReferencia().getId(), Boolean.FALSE));
 			}
 		);
-		
-		
-		return devocionais;
 	}
 
 	public List<Devocional> buscarPorIgrejaEDataCriacao(Integer idIgreja, LocalDate dataCriado, LocalDate dataLimiteBusca) {
 		return devocionalDao.buscaDevocionalPorIdIgrejaAndDataCriado(idIgreja, Boolean.FALSE, dataCriado, dataLimiteBusca);
 	}
-
 	
 	@Transactional
 	public Devocional salvar(DevocionalNewDTO dto) {
-//		Boolean existe = false;
-//
-//		if (dto.getId() == null) {
-//			existe = devocionalDao.existsByReferenciaId(dto.getReferencia().getId());
-//
-//			if (existe) {
-//				throw new RuntimeException("Ocorreu um erro, já existe o Devocional com essa referencia no sistema!");
-//			}
-//		}
 		Referencia referencia = new Referencia(dto.getReferencia());
 		referencia = referenciaRepository.save(referencia);
 

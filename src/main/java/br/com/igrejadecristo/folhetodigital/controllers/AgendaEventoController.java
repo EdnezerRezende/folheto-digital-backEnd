@@ -26,13 +26,13 @@ public class AgendaEventoController {
 	@Autowired
 	private AgendaEventoService agendaEventoService;
 	
-	@PreAuthorize("hasAnyRole('ADMIN','MEMBRO')") 
+	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')") 
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<AgendaEvento>> findAll() {
 		return ResponseEntity.ok().body(agendaEventoService.buscarTodos());
 	}
 	
-	@PreAuthorize("hasAnyRole('ADMIN','MEMBRO')") 
+	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')") 
 	@RequestMapping(value="/igreja/{idIgreja}", method = RequestMethod.GET)
 	public ResponseEntity<List<AgendaEvento>> findPorIgreja(@PathVariable Integer idIgreja) {
 		return ResponseEntity.ok().body(agendaEventoService.buscarPorIgreja(idIgreja));

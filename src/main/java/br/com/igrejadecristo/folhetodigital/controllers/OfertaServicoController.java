@@ -27,13 +27,13 @@ public class OfertaServicoController {
 	@Autowired
 	private OfertaServicoService ofertaServicoService;
 	
-	@PreAuthorize("hasAnyRole('ADMIN','MEMBRO')") 
+	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')") 
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<OfertaServicoDTO>> findAll() {
 		return ResponseEntity.ok().body(ofertaServicoService.buscarTodos());
 	}
 	
-	@PreAuthorize("hasAnyRole('ADMIN','MEMBRO')") 
+	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')") 
 	@RequestMapping(value="/igreja/{idIgreja}", method = RequestMethod.GET)
 	public ResponseEntity<List<OfertaServico>> findPorIgreja(@PathVariable Integer idIgreja) {
 		return ResponseEntity.ok().body(ofertaServicoService.buscarPorIgreja(idIgreja));

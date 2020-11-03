@@ -6,7 +6,8 @@ public enum Perfil {
 	ADMIN(1, "ROLE_ADMIN"),
 	PASTOR(2, "ROLE_PASTOR"),
 	MEMBRO(3, "ROLE_MEMBRO"),
-	LIDER(4, "ROLE_LIDER");
+	LIDER(4, "ROLE_LIDER"),
+	VISITANTE(5, "ROLE_VISITANTE");
 	
 	private int cod;
 	private String descricao;
