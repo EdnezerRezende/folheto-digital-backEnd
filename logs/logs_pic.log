@@ -1,0 +1,313 @@
+17-03-2022 12:14:37.089  INFO NBBV033071 --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.1.2.Final
+17-03-2022 12:14:37.120  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Starting FolhetoApplication using Java 11.0.11 on NBBV033071 with PID 12332 (C:\backEnd\target\classes started by erezende in C:\backEnd)
+17-03-2022 12:14:37.125  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : The following 1 profile is active: "dev"
+17-03-2022 12:14:38.772  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17-03-2022 12:14:38.959  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 175 ms. Found 16 JPA repository interfaces.
+17-03-2022 12:14:40.232  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8082 (http)
+17-03-2022 12:14:40.246  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8082"]
+17-03-2022 12:14:40.247  INFO NBBV033071 --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+17-03-2022 12:14:40.247  INFO NBBV033071 --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.58]
+17-03-2022 12:14:40.591  INFO NBBV033071 --- [           main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+17-03-2022 12:14:40.592  INFO NBBV033071 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3387 ms
+17-03-2022 12:14:41.053  INFO NBBV033071 --- [           main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+17-03-2022 12:14:41.127  INFO NBBV033071 --- [           main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.5.Final
+17-03-2022 12:14:41.355  INFO NBBV033071 --- [           main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+17-03-2022 12:14:41.540  WARN NBBV033071 --- [           main] c.z.h.HikariConfig                       : HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+17-03-2022 12:14:41.541  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+17-03-2022 12:14:41.785  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+17-03-2022 12:14:41.803  INFO NBBV033071 --- [           main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+17-03-2022 12:14:57.050  INFO NBBV033071 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+17-03-2022 12:14:57.068  INFO NBBV033071 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+17-03-2022 12:14:58.147  WARN NBBV033071 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17-03-2022 12:14:59.599  INFO NBBV033071 --- [           main] o.s.s.w.DefaultSecurityFilterChain       : Will not secure any request
+17-03-2022 12:15:02.585  INFO NBBV033071 --- [           main] o.s.b.a.e.w.EndpointLinksResolver        : Exposing 13 endpoint(s) beneath base path '/actuator'
+17-03-2022 12:15:02.642  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8082"]
+17-03-2022 12:15:02.678  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8082 (http) with context path ''
+17-03-2022 12:15:02.695  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Started FolhetoApplication in 26.031 seconds (JVM running for 27.857)
+17-03-2022 12:15:02.874  INFO NBBV033071 --- [nio-8082-exec-2] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+17-03-2022 12:15:02.874  INFO NBBV033071 --- [nio-8082-exec-2] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+17-03-2022 12:15:02.879  INFO NBBV033071 --- [nio-8082-exec-2] o.s.w.s.DispatcherServlet                : Completed initialization in 4 ms
+17-03-2022 12:15:03.135  INFO NBBV033071 --- [gistrationTask1] d.c.b.a.c.r.ApplicationRegistrator       : Application registered itself as e89358908831
+17-03-2022 15:06:41.407  INFO NBBV033071 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+17-03-2022 15:06:42.398  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+17-03-2022 15:06:42.469  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+17-03-2022 15:07:25.059  INFO NBBV033071 --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.1.2.Final
+17-03-2022 15:07:25.253  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Starting FolhetoApplication using Java 11.0.11 on NBBV033071 with PID 2552 (C:\backEnd\target\classes started by erezende in C:\backEnd)
+17-03-2022 15:07:25.265  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : The following 1 profile is active: "dev"
+17-03-2022 15:07:30.615  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17-03-2022 15:07:30.884  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 253 ms. Found 16 JPA repository interfaces.
+17-03-2022 15:07:35.795  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8082 (http)
+17-03-2022 15:07:35.904  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8082"]
+17-03-2022 15:07:35.905  INFO NBBV033071 --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+17-03-2022 15:07:35.905  INFO NBBV033071 --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.58]
+17-03-2022 15:07:36.389  INFO NBBV033071 --- [           main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+17-03-2022 15:07:36.389  INFO NBBV033071 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 10929 ms
+17-03-2022 15:07:37.133  INFO NBBV033071 --- [           main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+17-03-2022 15:07:37.708  INFO NBBV033071 --- [           main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.5.Final
+17-03-2022 15:07:38.474  INFO NBBV033071 --- [           main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+17-03-2022 15:07:38.851  WARN NBBV033071 --- [           main] c.z.h.HikariConfig                       : HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+17-03-2022 15:07:38.852  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+17-03-2022 15:07:39.431  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+17-03-2022 15:07:39.464  INFO NBBV033071 --- [           main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+17-03-2022 15:07:54.662  INFO NBBV033071 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+17-03-2022 15:07:54.674  INFO NBBV033071 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+17-03-2022 15:07:55.981  WARN NBBV033071 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17-03-2022 15:07:57.871  INFO NBBV033071 --- [           main] o.s.s.w.DefaultSecurityFilterChain       : Will not secure any request
+17-03-2022 15:08:01.638  INFO NBBV033071 --- [           main] o.s.b.a.e.w.EndpointLinksResolver        : Exposing 13 endpoint(s) beneath base path '/actuator'
+17-03-2022 15:08:01.729  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8082"]
+17-03-2022 15:08:01.772  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8082 (http) with context path ''
+17-03-2022 15:08:01.800  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Started FolhetoApplication in 37.67 seconds (JVM running for 40.264)
+17-03-2022 15:08:02.897  INFO NBBV033071 --- [nio-8082-exec-2] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+17-03-2022 15:08:02.898  INFO NBBV033071 --- [nio-8082-exec-2] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+17-03-2022 15:08:02.899  INFO NBBV033071 --- [nio-8082-exec-2] o.s.w.s.DispatcherServlet                : Completed initialization in 1 ms
+17-03-2022 15:08:01.810 ERROR NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Oops! We have an Error. OK
+17-03-2022 15:08:04.337 FATAL NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Damn! Fatal error. Please fix me.
+17-03-2022 15:08:09.556  INFO NBBV033071 --- [gistrationTask1] d.c.b.a.c.r.ApplicationRegistrator       : Application registered itself as e89358908831
+17-03-2022 15:33:35.571  INFO NBBV033071 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+17-03-2022 15:33:35.597  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+17-03-2022 15:33:35.601  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+17-03-2022 15:35:42.048  INFO NBBV033071 --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.1.2.Final
+17-03-2022 15:35:42.076  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Starting FolhetoApplication using Java 11.0.11 on NBBV033071 with PID 18720 (C:\backEnd\target\classes started by erezende in C:\backEnd)
+17-03-2022 15:35:42.080  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : The following 1 profile is active: "dev"
+17-03-2022 15:35:43.813  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17-03-2022 15:35:43.981  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 158 ms. Found 16 JPA repository interfaces.
+17-03-2022 15:35:45.258  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8082 (http)
+17-03-2022 15:35:45.274  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8082"]
+17-03-2022 15:35:45.274  INFO NBBV033071 --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+17-03-2022 15:35:45.275  INFO NBBV033071 --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.58]
+17-03-2022 15:35:45.593  INFO NBBV033071 --- [           main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+17-03-2022 15:35:45.594  INFO NBBV033071 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3439 ms
+17-03-2022 15:35:46.026  INFO NBBV033071 --- [           main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+17-03-2022 15:35:46.105  INFO NBBV033071 --- [           main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.5.Final
+17-03-2022 15:35:46.354  INFO NBBV033071 --- [           main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+17-03-2022 15:35:46.524  WARN NBBV033071 --- [           main] c.z.h.HikariConfig                       : HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+17-03-2022 15:35:46.524  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+17-03-2022 15:35:46.805  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+17-03-2022 15:35:46.830  INFO NBBV033071 --- [           main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+17-03-2022 15:35:48.281  INFO NBBV033071 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+17-03-2022 15:35:48.290  INFO NBBV033071 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+17-03-2022 15:35:49.622  WARN NBBV033071 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17-03-2022 15:35:51.456  INFO NBBV033071 --- [           main] o.s.s.w.DefaultSecurityFilterChain       : Will not secure any request
+17-03-2022 15:35:57.180  INFO NBBV033071 --- [           main] o.s.b.a.e.w.EndpointLinksResolver        : Exposing 13 endpoint(s) beneath base path '/actuator'
+17-03-2022 15:35:57.256  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8082"]
+17-03-2022 15:35:57.300  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8082 (http) with context path ''
+17-03-2022 15:35:57.329  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Started FolhetoApplication in 15.748 seconds (JVM running for 17.866)
+17-03-2022 15:35:57.343 ERROR NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Oops! We have an Error. OK
+17-03-2022 15:36:00.002 FATAL NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Damn! Fatal error. Please fix me.
+17-03-2022 15:36:01.935  INFO NBBV033071 --- [gistrationTask1] d.c.b.a.c.r.ApplicationRegistrator       : Application registered itself as e89358908831
+17-03-2022 15:36:01.985  INFO NBBV033071 --- [nio-8082-exec-2] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+17-03-2022 15:36:01.985  INFO NBBV033071 --- [nio-8082-exec-2] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+17-03-2022 15:36:01.988  INFO NBBV033071 --- [nio-8082-exec-2] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
+17-03-2022 15:36:47.973  INFO NBBV033071 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+17-03-2022 15:36:47.975  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+17-03-2022 15:36:47.979  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+17-03-2022 15:36:54.200  INFO NBBV033071 --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.1.2.Final
+17-03-2022 15:36:54.226  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Starting FolhetoApplication using Java 11.0.11 on NBBV033071 with PID 24020 (C:\backEnd\target\classes started by erezende in C:\backEnd)
+17-03-2022 15:36:54.230  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : The following 1 profile is active: "dev"
+17-03-2022 15:36:56.197  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17-03-2022 15:36:56.373  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 164 ms. Found 16 JPA repository interfaces.
+17-03-2022 15:36:57.649  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8082 (http)
+17-03-2022 15:36:57.660  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8082"]
+17-03-2022 15:36:57.661  INFO NBBV033071 --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+17-03-2022 15:36:57.661  INFO NBBV033071 --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.58]
+17-03-2022 15:36:58.146  INFO NBBV033071 --- [           main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+17-03-2022 15:36:58.147  INFO NBBV033071 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3835 ms
+17-03-2022 15:36:58.656  INFO NBBV033071 --- [           main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+17-03-2022 15:36:58.761  INFO NBBV033071 --- [           main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.5.Final
+17-03-2022 15:36:59.046  INFO NBBV033071 --- [           main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+17-03-2022 15:36:59.267  WARN NBBV033071 --- [           main] c.z.h.HikariConfig                       : HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+17-03-2022 15:36:59.268  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+17-03-2022 15:36:59.556  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+17-03-2022 15:36:59.583  INFO NBBV033071 --- [           main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+17-03-2022 15:37:01.171  INFO NBBV033071 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+17-03-2022 15:37:01.188  INFO NBBV033071 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+17-03-2022 15:37:02.969  WARN NBBV033071 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17-03-2022 15:37:05.139  INFO NBBV033071 --- [           main] o.s.s.w.DefaultSecurityFilterChain       : Will not secure any request
+17-03-2022 15:37:09.110  INFO NBBV033071 --- [           main] o.s.b.a.e.w.EndpointLinksResolver        : Exposing 13 endpoint(s) beneath base path '/actuator'
+17-03-2022 15:37:09.217  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8082"]
+17-03-2022 15:37:09.259  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8082 (http) with context path ''
+17-03-2022 15:37:09.286  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Started FolhetoApplication in 15.524 seconds (JVM running for 18.499)
+17-03-2022 15:37:09.299 ERROR NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Oops! We have an Error. OK
+17-03-2022 15:37:16.837  INFO NBBV033071 --- [nio-8082-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+17-03-2022 15:37:16.838  INFO NBBV033071 --- [nio-8082-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+17-03-2022 15:37:16.840  INFO NBBV033071 --- [nio-8082-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
+17-03-2022 15:37:14.840 FATAL NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Damn! Fatal error. Please fix me.
+17-03-2022 15:37:18.297  INFO NBBV033071 --- [gistrationTask1] d.c.b.a.c.r.ApplicationRegistrator       : Application registered itself as e89358908831
+17-03-2022 15:41:07.119  INFO NBBV033071 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+17-03-2022 15:41:07.121  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+17-03-2022 15:41:07.126  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+17-03-2022 15:41:11.966  INFO NBBV033071 --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.1.2.Final
+17-03-2022 15:41:11.992  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Starting FolhetoApplication using Java 11.0.11 on NBBV033071 with PID 17172 (C:\backEnd\target\classes started by erezende in C:\backEnd)
+17-03-2022 15:41:11.996  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : The following 1 profile is active: "dev"
+17-03-2022 15:41:14.159  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17-03-2022 15:41:14.338  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 167 ms. Found 16 JPA repository interfaces.
+17-03-2022 15:41:15.692  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8082 (http)
+17-03-2022 15:41:15.706  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8082"]
+17-03-2022 15:41:15.707  INFO NBBV033071 --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+17-03-2022 15:41:15.707  INFO NBBV033071 --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.58]
+17-03-2022 15:41:16.021  INFO NBBV033071 --- [           main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+17-03-2022 15:41:16.022  INFO NBBV033071 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3955 ms
+17-03-2022 15:41:16.483  INFO NBBV033071 --- [           main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+17-03-2022 15:41:16.564  INFO NBBV033071 --- [           main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.5.Final
+17-03-2022 15:41:16.788  INFO NBBV033071 --- [           main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+17-03-2022 15:41:16.948  WARN NBBV033071 --- [           main] c.z.h.HikariConfig                       : HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+17-03-2022 15:41:16.949  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+17-03-2022 15:41:17.180  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+17-03-2022 15:41:17.203  INFO NBBV033071 --- [           main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+17-03-2022 15:41:18.679  INFO NBBV033071 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+17-03-2022 15:41:18.692  INFO NBBV033071 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+17-03-2022 15:41:20.195  WARN NBBV033071 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17-03-2022 15:41:21.827  INFO NBBV033071 --- [           main] o.s.s.w.DefaultSecurityFilterChain       : Will not secure any request
+17-03-2022 15:41:25.565  INFO NBBV033071 --- [           main] o.s.b.a.e.w.EndpointLinksResolver        : Exposing 13 endpoint(s) beneath base path '/actuator'
+17-03-2022 15:41:25.625  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8082"]
+17-03-2022 15:41:25.690  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8082 (http) with context path ''
+17-03-2022 15:41:25.711  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Started FolhetoApplication in 14.214 seconds (JVM running for 16.18)
+17-03-2022 15:41:25.720 ERROR NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Oops! We have an Error. OK
+17-03-2022 15:41:28.579 FATAL NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Damn! Fatal error. Please fix me.
+17-03-2022 15:41:32.367  INFO NBBV033071 --- [gistrationTask1] d.c.b.a.c.r.ApplicationRegistrator       : Application registered itself as e89358908831
+17-03-2022 15:41:32.432  INFO NBBV033071 --- [nio-8082-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+17-03-2022 15:41:32.433  INFO NBBV033071 --- [nio-8082-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+17-03-2022 15:41:32.435  INFO NBBV033071 --- [nio-8082-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
+17-03-2022 15:43:31.115  INFO NBBV033071 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+17-03-2022 15:43:31.117  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+17-03-2022 15:43:31.121  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+17-03-2022 15:43:35.344  INFO NBBV033071 --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.1.2.Final
+17-03-2022 15:43:35.375  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Starting FolhetoApplication using Java 11.0.11 on NBBV033071 with PID 16324 (C:\backEnd\target\classes started by erezende in C:\backEnd)
+17-03-2022 15:43:35.380  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : The following 1 profile is active: "dev"
+17-03-2022 15:43:37.077  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17-03-2022 15:43:37.260  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 171 ms. Found 16 JPA repository interfaces.
+17-03-2022 15:43:38.559  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8082 (http)
+17-03-2022 15:43:38.578  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8082"]
+17-03-2022 15:43:38.579  INFO NBBV033071 --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+17-03-2022 15:43:38.580  INFO NBBV033071 --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.58]
+17-03-2022 15:43:38.959  INFO NBBV033071 --- [           main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+17-03-2022 15:43:38.959  INFO NBBV033071 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3495 ms
+17-03-2022 15:43:39.391  INFO NBBV033071 --- [           main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+17-03-2022 15:43:39.469  INFO NBBV033071 --- [           main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.5.Final
+17-03-2022 15:43:39.695  INFO NBBV033071 --- [           main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+17-03-2022 15:43:39.861  WARN NBBV033071 --- [           main] c.z.h.HikariConfig                       : HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+17-03-2022 15:43:39.862  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+17-03-2022 15:43:40.121  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+17-03-2022 15:43:40.142  INFO NBBV033071 --- [           main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+17-03-2022 15:43:41.409  INFO NBBV033071 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+17-03-2022 15:43:41.421  INFO NBBV033071 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+17-03-2022 15:43:42.581  WARN NBBV033071 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17-03-2022 15:43:44.594  INFO NBBV033071 --- [           main] o.s.s.w.DefaultSecurityFilterChain       : Will not secure any request
+17-03-2022 15:43:47.815  INFO NBBV033071 --- [           main] o.s.b.a.e.w.EndpointLinksResolver        : Exposing 13 endpoint(s) beneath base path '/actuator'
+17-03-2022 15:43:47.878  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8082"]
+17-03-2022 15:43:47.912  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8082 (http) with context path ''
+17-03-2022 15:43:47.929  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Started FolhetoApplication in 13.013 seconds (JVM running for 14.942)
+17-03-2022 15:43:48.332  INFO NBBV033071 --- [nio-8082-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+17-03-2022 15:43:48.333  INFO NBBV033071 --- [nio-8082-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+17-03-2022 15:43:48.335  INFO NBBV033071 --- [nio-8082-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
+17-03-2022 15:43:47.938 ERROR NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Oops! We have an Error. OK
+17-03-2022 15:43:50.579 FATAL NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Damn! Fatal error. Please fix me.
+17-03-2022 15:43:53.072  INFO NBBV033071 --- [gistrationTask1] d.c.b.a.c.r.ApplicationRegistrator       : Application registered itself as e89358908831
+17-03-2022 15:51:40.580  INFO NBBV033071 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+17-03-2022 15:51:40.582  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+17-03-2022 15:51:40.584  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+17-03-2022 15:51:45.100  INFO NBBV033071 --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.1.2.Final
+17-03-2022 15:51:45.139  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Starting FolhetoApplication using Java 11.0.11 on NBBV033071 with PID 24008 (C:\backEnd\target\classes started by erezende in C:\backEnd)
+17-03-2022 15:51:45.143  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : The following 1 profile is active: "dev"
+17-03-2022 15:51:46.925  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17-03-2022 15:51:47.105  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 169 ms. Found 16 JPA repository interfaces.
+17-03-2022 15:51:48.353  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8082 (http)
+17-03-2022 15:51:48.368  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8082"]
+17-03-2022 15:51:48.368  INFO NBBV033071 --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+17-03-2022 15:51:48.369  INFO NBBV033071 --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.58]
+17-03-2022 15:51:48.725  INFO NBBV033071 --- [           main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+17-03-2022 15:51:48.725  INFO NBBV033071 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3492 ms
+17-03-2022 15:51:49.201  INFO NBBV033071 --- [           main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+17-03-2022 15:51:49.283  INFO NBBV033071 --- [           main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.5.Final
+17-03-2022 15:51:49.540  INFO NBBV033071 --- [           main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+17-03-2022 15:51:49.741  WARN NBBV033071 --- [           main] c.z.h.HikariConfig                       : HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+17-03-2022 15:51:49.741  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+17-03-2022 15:51:49.947  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+17-03-2022 15:51:49.970  INFO NBBV033071 --- [           main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+17-03-2022 15:51:51.386  INFO NBBV033071 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+17-03-2022 15:51:51.398  INFO NBBV033071 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+17-03-2022 15:51:52.589  WARN NBBV033071 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17-03-2022 15:51:54.254  INFO NBBV033071 --- [           main] o.s.s.w.DefaultSecurityFilterChain       : Will not secure any request
+17-03-2022 15:51:57.029  INFO NBBV033071 --- [           main] o.s.b.a.e.w.EndpointLinksResolver        : Exposing 13 endpoint(s) beneath base path '/actuator'
+17-03-2022 15:51:57.102  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8082"]
+17-03-2022 15:51:57.136  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8082 (http) with context path ''
+17-03-2022 15:51:57.156  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Started FolhetoApplication in 12.806 seconds (JVM running for 14.757)
+17-03-2022 15:52:02.832  INFO NBBV033071 --- [nio-8082-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+17-03-2022 15:52:02.833  INFO NBBV033071 --- [nio-8082-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+17-03-2022 15:52:02.835  INFO NBBV033071 --- [nio-8082-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
+17-03-2022 15:51:57.166 ERROR NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Oops! We have an Error. OK
+17-03-2022 15:52:03.300 FATAL NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Damn! Fatal error. Please fix me.
+17-03-2022 15:52:06.702  INFO NBBV033071 --- [gistrationTask1] d.c.b.a.c.r.ApplicationRegistrator       : Application registered itself as e89358908831
+17-03-2022 15:52:30.929  INFO NBBV033071 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+17-03-2022 15:52:30.932  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+17-03-2022 15:52:30.937  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+17-03-2022 15:52:35.157  INFO NBBV033071 --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.1.2.Final
+17-03-2022 15:52:35.195  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Starting FolhetoApplication using Java 11.0.11 on NBBV033071 with PID 22224 (C:\backEnd\target\classes started by erezende in C:\backEnd)
+17-03-2022 15:52:35.199  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : The following 1 profile is active: "dev"
+17-03-2022 15:52:36.973  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17-03-2022 15:52:37.165  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 179 ms. Found 16 JPA repository interfaces.
+17-03-2022 15:52:38.452  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8082 (http)
+17-03-2022 15:52:38.469  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8082"]
+17-03-2022 15:52:38.471  INFO NBBV033071 --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+17-03-2022 15:52:38.471  INFO NBBV033071 --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.58]
+17-03-2022 15:52:38.795  INFO NBBV033071 --- [           main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+17-03-2022 15:52:38.796  INFO NBBV033071 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3515 ms
+17-03-2022 15:52:39.211  INFO NBBV033071 --- [           main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+17-03-2022 15:52:39.289  INFO NBBV033071 --- [           main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.5.Final
+17-03-2022 15:52:39.548  INFO NBBV033071 --- [           main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+17-03-2022 15:52:39.748  WARN NBBV033071 --- [           main] c.z.h.HikariConfig                       : HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+17-03-2022 15:52:39.749  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+17-03-2022 15:52:40.009  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+17-03-2022 15:52:40.031  INFO NBBV033071 --- [           main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+17-03-2022 15:52:41.384  INFO NBBV033071 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+17-03-2022 15:52:41.401  INFO NBBV033071 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+17-03-2022 15:52:42.644  WARN NBBV033071 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17-03-2022 15:52:44.174  INFO NBBV033071 --- [           main] o.s.s.w.DefaultSecurityFilterChain       : Will not secure any request
+17-03-2022 15:52:46.942  INFO NBBV033071 --- [           main] o.s.b.a.e.w.EndpointLinksResolver        : Exposing 13 endpoint(s) beneath base path '/actuator'
+17-03-2022 15:52:47.001  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8082"]
+17-03-2022 15:52:47.036  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8082 (http) with context path ''
+17-03-2022 15:52:47.055  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Started FolhetoApplication in 12.365 seconds (JVM running for 14.175)
+17-03-2022 15:52:47.064 ERROR NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Oops! We have an Error. OK
+17-03-2022 15:52:47.064 FATAL NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Damn! Fatal error. Please fix me.
+17-03-2022 15:52:47.292  INFO NBBV033071 --- [nio-8082-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+17-03-2022 15:52:47.292  INFO NBBV033071 --- [nio-8082-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+17-03-2022 15:52:47.294  INFO NBBV033071 --- [nio-8082-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
+17-03-2022 15:52:47.306  INFO NBBV033071 --- [gistrationTask1] d.c.b.a.c.r.ApplicationRegistrator       : Application registered itself as e89358908831
+17-03-2022 15:53:31.924  INFO NBBV033071 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+17-03-2022 15:53:31.925  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+17-03-2022 15:53:31.928  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+17-03-2022 15:53:37.366  INFO NBBV033071 --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.1.2.Final
+17-03-2022 15:53:37.400  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Starting FolhetoApplication using Java 11.0.11 on NBBV033071 with PID 5124 (C:\backEnd\target\classes started by erezende in C:\backEnd)
+17-03-2022 15:53:37.404  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : The following 1 profile is active: "dev"
+17-03-2022 15:53:39.085  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+17-03-2022 15:53:39.258  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 163 ms. Found 16 JPA repository interfaces.
+17-03-2022 15:53:40.606  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8082 (http)
+17-03-2022 15:53:40.622  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8082"]
+17-03-2022 15:53:40.623  INFO NBBV033071 --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+17-03-2022 15:53:40.623  INFO NBBV033071 --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.58]
+17-03-2022 15:53:40.968  INFO NBBV033071 --- [           main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+17-03-2022 15:53:40.969  INFO NBBV033071 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3495 ms
+17-03-2022 15:53:41.437  INFO NBBV033071 --- [           main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+17-03-2022 15:53:41.536  INFO NBBV033071 --- [           main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.5.Final
+17-03-2022 15:53:41.788  INFO NBBV033071 --- [           main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+17-03-2022 15:53:41.966  WARN NBBV033071 --- [           main] c.z.h.HikariConfig                       : HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+17-03-2022 15:53:41.967  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+17-03-2022 15:53:42.193  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+17-03-2022 15:53:42.217  INFO NBBV033071 --- [           main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+17-03-2022 15:53:43.689  INFO NBBV033071 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+17-03-2022 15:53:43.701  INFO NBBV033071 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+17-03-2022 15:53:45.310  WARN NBBV033071 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+17-03-2022 15:53:47.425  INFO NBBV033071 --- [           main] o.s.s.w.DefaultSecurityFilterChain       : Will not secure any request
+17-03-2022 15:53:51.118  INFO NBBV033071 --- [           main] o.s.b.a.e.w.EndpointLinksResolver        : Exposing 13 endpoint(s) beneath base path '/actuator'
+17-03-2022 15:53:51.236  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8082"]
+17-03-2022 15:53:51.277  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8082 (http) with context path ''
+17-03-2022 15:53:51.301  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Started FolhetoApplication in 14.414 seconds (JVM running for 16.318)
+17-03-2022 15:53:51.313 ERROR NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Oops! We have an Error. OK
+17-03-2022 15:53:55.429 FATAL NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Damn! Fatal error. Please fix me.
+17-03-2022 15:53:59.133  INFO NBBV033071 --- [gistrationTask1] d.c.b.a.c.r.ApplicationRegistrator       : Application registered itself as e89358908831
+17-03-2022 15:53:59.193  INFO NBBV033071 --- [nio-8082-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+17-03-2022 15:53:59.194  INFO NBBV033071 --- [nio-8082-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+17-03-2022 15:53:59.196  INFO NBBV033071 --- [nio-8082-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
+17-03-2022 15:57:03.333  INFO NBBV033071 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+17-03-2022 15:57:03.335  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+17-03-2022 15:57:03.339  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
