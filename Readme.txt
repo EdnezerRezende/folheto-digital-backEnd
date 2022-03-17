@@ -4,8 +4,9 @@ Aplicativo voltado para disponibilização de informações de devocionais, pala
 
 Configurações Necessárias:
     Variavéis de ambiente:
-        - S3_KEY=AKIASLNJVCWDLUKRUKPN;
-        - S3_SECRET=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;
+        (Capturar esses valores do Heroku)
+        - S3_KEY=;
+        - S3_SECRET=;
         - SENHA_EMAIL=picTaguatinga
 
     Ter banco Mysql disponível na máquina;
