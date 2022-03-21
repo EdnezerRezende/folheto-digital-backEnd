@@ -5,11 +5,12 @@ import java.io.Serializable;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
+import br.com.pic.folheto.entidades.MenssagemEmail;
 import br.com.pic.folheto.services.validation.MembroUpdate;
 import org.hibernate.validator.constraints.Length;
 
 @MembroUpdate
-public class ContatoDTO  implements Serializable {
+public class ContatoDTO  implements Serializable, MenssagemEmail {
 	private static final long serialVersionUID = 1L;
 	
 	@NotEmpty(message="Preenchimento obrigatório")
@@ -31,6 +32,8 @@ public class ContatoDTO  implements Serializable {
 	
 	@NotEmpty(message="Preenchimento obrigatório")
 	private String to;
+
+	public ContatoDTO(){}
 
 	public ContatoDTO(
 			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 5, max = 120, message = "O tamanho deve ser entre 5 e 120 caracteres") String nome,

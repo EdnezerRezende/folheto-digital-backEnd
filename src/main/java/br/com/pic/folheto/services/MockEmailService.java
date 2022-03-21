@@ -18,6 +18,7 @@ public class MockEmailService extends AbstractEmailService {
 
 	@Override
 	public void sendEmailHtml(MimeMessage msg) {
+		LOG.info("Send Email New Password: ");
 		LOG.info(msg.toString());
 
 	}

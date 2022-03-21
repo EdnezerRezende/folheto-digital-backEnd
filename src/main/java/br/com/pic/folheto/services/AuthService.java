@@ -3,12 +3,15 @@ package br.com.pic.folheto.services;
 
 import br.com.pic.folheto.dto.NewPasswordDTO;
 import br.com.pic.folheto.entidades.Membro;
+import br.com.pic.folheto.filas.converters.EmailMessageConverter;
 import br.com.pic.folheto.respositories.MembroRepository;
 import br.com.pic.folheto.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.jms.JMSException;
 import java.util.Random;
 
 @Service
@@ -22,10 +25,19 @@ public class AuthService {
 	
 	@Autowired
 	private EmailService emailService;
-	
+
+	@Autowired
+	private JmsMessagingTemplate jmsMessagingTemplate;
+
+	@Autowired
+	private EmailMessageConverter contatoMessageConverter;
+
 	private Random rand = new Random();
-	
-	public void sendNewPassword(final String email) {
+
+	public AuthService() {
+	}
+
+	public void sendNewPassword(final String email) throws JMSException {
 		
 		final Membro membro = membroRepository.findByEmail(email);
 		if (membro == null) {
@@ -36,14 +48,15 @@ public class AuthService {
 		salvarEEnviarSenhaGerada(membro, newPass);
 	}
 
-	private void salvarEEnviarSenhaGerada(final Membro membro, final String newPass) {
+	private void salvarEEnviarSenhaGerada(final Membro membro, final String newPass) throws JMSException {
 		membro.setSenha(pe.encode(newPass));
 
 		membroRepository.save(membro);
-		emailService.sendNewPasswordEmail(membro, newPass);
+
+		this.jmsMessagingTemplate.convertAndSend("queueNewPasswordEmail", membro);
 	}
 
-	public void trocaSenha(final NewPasswordDTO dto) {
+	public void trocaSenha(final NewPasswordDTO dto) throws JMSException {
 		
 		final Membro membro = membroRepository.findByEmail(dto.getEmail());
 		if (membro == null) {

@@ -1,9 +1,11 @@
 package br.com.pic.folheto.controllers;
 
 
+import javax.jms.JMSException;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import br.com.pic.folheto.controllers.exceptions.ControllerExceptionHandler;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,14 +45,22 @@ public class AuthResource {
 	@RequestMapping(value = "/forgot", method = RequestMethod.POST)
 	@Operation(summary = "Forgot", security = @SecurityRequirement(name = "bearerAuth"))
 	public ResponseEntity<Void> forgot(@Valid @RequestBody EmailDTO objDto) {
-		service.sendNewPassword(objDto.getEmail());
+		try {
+			service.sendNewPassword(objDto.getEmail());
+		} catch (JMSException e) {
+			new ControllerExceptionHandler();
+		}
 		return ResponseEntity.noContent().build();
 	}
 	
 	@RequestMapping(value = "/forgot/newPassword", method = RequestMethod.POST)
 	@Operation(summary = "New Password", security = @SecurityRequirement(name = "bearerAuth"))
 	public ResponseEntity<Void> forgotNewPassword(@Valid @RequestBody NewPasswordDTO objDto) {
-		service.trocaSenha(objDto);
+		try {
+			service.trocaSenha(objDto);
+		} catch (JMSException e) {
+			e.printStackTrace();
+		}
 		return ResponseEntity.noContent().build();
 	}
 }

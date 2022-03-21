@@ -112,13 +112,13 @@ public abstract class AbstractEmailService implements EmailService {
 	}
 	
 	
-	public void sendNewPasswordEmail(Membro membro, String senha) {
+	public void sendNewPasswordEmail(Membro membro) {
 		MimeMessage mm;
 		try {
-			mm = prepareMimeMessageFromMembro(membro, senha);
+			mm = prepareMimeMessageFromMembro(membro, membro.getSenha());
 			sendEmailHtml(mm);
 		} catch (MessagingException e) {
-			sendNewPassWord(membro, senha);
+			sendNewPassWord(membro, membro.getSenha());
 		}
 	}
 }

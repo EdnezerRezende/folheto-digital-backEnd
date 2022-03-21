@@ -15,7 +15,7 @@ public interface EmailService {
 
 	void sendContatoHtml(ContatoDTO contato);
 	
-	void sendNewPasswordEmail(Membro membro, String newPassWord);
+	void sendNewPasswordEmail(Membro membro);
 	
 	void sendNewPassWord(Membro membro, String senha);
 	
