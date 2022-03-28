@@ -34,17 +34,22 @@ public class MissaoController {
 	@Operation(summary = "Buscar todas as missões", security = @SecurityRequirement(name = "bearerAuth"))
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<MissaoDTO>> findAll() {
-		List<Missao> list = missaoService.buscarTodos();
-		List<MissaoDTO> listDto = list.stream().map(obj -> new MissaoDTO(obj)).collect(Collectors.toList());  
+		final List<Missao> list = missaoService.buscarTodos();
+		final List<MissaoDTO> listDto = list.stream().map(obj -> MissaoDTO.builder()
+				.id(obj.getId())
+				.titulo(obj.getTitulo())
+				.mensagem(obj.getMensagem())
+				.autor(obj.getAutor())
+				.build()).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDto);
 	}
 	
 	@PreAuthorize("hasAnyRole('ADMIN','LIDER','PASTOR')")
 	@Operation(summary = "Salvar missão", security = @SecurityRequirement(name = "bearerAuth"))
 	@RequestMapping( method = RequestMethod.POST)
-	public ResponseEntity<Void> saveMissao(@Valid @RequestBody MissaoNewDTO dto) {
-		Missao obj = missaoService.salvarMissao(dto);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+	public ResponseEntity<Void> saveMissao(@Valid @RequestBody final MissaoNewDTO dto) {
+		final Missao obj = missaoService.salvarMissao(dto);
+		final URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
@@ -52,7 +57,7 @@ public class MissaoController {
 	@PreAuthorize("hasAnyRole('ADMIN','LIDER','PASTOR')")
 	@Operation(summary = "Deletar missão", security = @SecurityRequirement(name = "bearerAuth"))
 	@RequestMapping(path="/{idMissao}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> deletaMissao(@PathVariable Integer idMissao) {
+	public ResponseEntity<Void> deletaMissao(@PathVariable final Integer idMissao) {
 		missaoService.deletarMissao(idMissao);
 		return ResponseEntity.noContent().build();
 	}

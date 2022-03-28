@@ -33,16 +33,23 @@ public class EstadoController {
 	@RequestMapping(method=RequestMethod.GET)
 	@Operation(summary = "Buscar todos os estados", security = @SecurityRequirement(name = "bearerAuth"))
 	public ResponseEntity<List<EstadoDTO>> findAll() {
-		List<Estado> list = estadoService.buscarTodos();
-		List<EstadoDTO> listDto = list.stream().map(obj -> new EstadoDTO(obj)).collect(Collectors.toList());  
+		final List<Estado> list = estadoService.buscarTodos();
+		final List<EstadoDTO> listDto = list.stream().map(obj -> EstadoDTO.builder()
+				.id(obj.getId())
+				.nome(obj.getNome())
+				.build()).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDto);
 	}
 	
 	@RequestMapping(value="/{estadoId}/cidades", method = RequestMethod.GET)
 	@Operation(summary = "Buscar todos as cidades", security = @SecurityRequirement(name = "bearerAuth"))
-	public ResponseEntity<List<CidadeDTO>> findAll(@PathVariable Integer estadoId) {
-		List<Cidade> list = cidadeService.findByEstado(estadoId);
-		List<CidadeDTO> listDto = list.stream().map(obj -> new CidadeDTO(obj)).collect(Collectors.toList());  
+	public ResponseEntity<List<CidadeDTO>> findAll(@PathVariable final Integer estadoId) {
+		final List<Cidade> list = cidadeService.findByEstado(estadoId);
+		final List<CidadeDTO> listDto = list.stream().map(obj ->
+				CidadeDTO.builder()
+						.id(obj.getId())
+						.nome(obj.getNome())
+						.build()).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDto);
 	}
 }

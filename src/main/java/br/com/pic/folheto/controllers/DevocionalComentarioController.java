@@ -30,16 +30,16 @@ public class DevocionalComentarioController {
 	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')")
 	@Operation(summary = "Buscar comentários por referencia e membro", security = @SecurityRequirement(name = "bearerAuth"))
 	@RequestMapping(path="/{idMembro}/{idReferencia}", method=RequestMethod.GET)
-	public ResponseEntity<DevocionalComentario> findByReferenciaIdAndMembro(@PathVariable Integer idMembro, @PathVariable Integer idReferencia) {
+	public ResponseEntity<DevocionalComentario> findByReferenciaIdAndMembro(@PathVariable final Integer idMembro, @PathVariable final Integer idReferencia) {
 		return ResponseEntity.ok().body(devocionalComentarioService.buscarPorReferenciaEMembro(idMembro, idReferencia));
 	}
 	
 	@PreAuthorize("hasAnyRole('MEMBRO')")
 	@Operation(summary = "Salvar comentários", security = @SecurityRequirement(name = "bearerAuth"))
 	@RequestMapping( method = RequestMethod.POST)
-	public ResponseEntity<Void> save(@Valid @RequestBody DevocionalComentarioNewDTO dto) {
-		DevocionalComentario obj = devocionalComentarioService.salvar(dto);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+	public ResponseEntity<Void> save(@Valid @RequestBody final DevocionalComentarioNewDTO dto) {
+		final DevocionalComentario obj = devocionalComentarioService.salvar(dto);
+		final URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
@@ -47,7 +47,7 @@ public class DevocionalComentarioController {
 	@PreAuthorize("hasAnyRole('MEMBRO')")
 	@Operation(summary = "Deletar comentário", security = @SecurityRequirement(name = "bearerAuth"))
 	@RequestMapping(path="/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> delete(@PathVariable Integer id) {
+	public ResponseEntity<Void> delete(@PathVariable final Integer id) {
 		devocionalComentarioService.deletar(id);
 		return ResponseEntity.noContent().build();
 	}

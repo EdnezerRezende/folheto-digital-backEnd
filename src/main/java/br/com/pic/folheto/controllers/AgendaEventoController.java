@@ -40,8 +40,8 @@ public class AgendaEventoController {
 	@Operation(summary = "Salvar uma agenda", security = @SecurityRequirement(name = "bearerAuth"))
 	@RequestMapping( method = RequestMethod.POST)
 	public ResponseEntity<Void> save(final @Valid @RequestBody AgendaEventoNewDTO dto) {
-		AgendaEvento obj = agendaEventoService.salvar(dto);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+		final AgendaEvento obj = agendaEventoService.salvar(dto);
+		final URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}

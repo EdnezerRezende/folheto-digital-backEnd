@@ -26,7 +26,7 @@ public class BoletimController {
 	
 	@RequestMapping(value="/semanal/{idIgreja}", method = RequestMethod.GET)
 	@Operation(summary = "Gerar Boletim semanal", security = @SecurityRequirement(name = "bearerAuth"))
-	public ResponseEntity<Void> buscaPorId(@PathVariable Integer idIgreja, HttpServletResponse response){
+	public ResponseEntity<Void> buscaPorId(@PathVariable final Integer idIgreja, final HttpServletResponse response){
 		try {
 			boletimService.gerarBoletimSemanal(idIgreja, response);
 		} catch (ClassNotFoundException e) {

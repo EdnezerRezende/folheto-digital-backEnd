@@ -40,16 +40,16 @@ public class PGController {
 	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')")
 	@Operation(summary = "Buscar todos Pg´s por id da igreja", security = @SecurityRequirement(name = "bearerAuth"))
 	@RequestMapping(value="/igreja/{idIgreja}", method = RequestMethod.GET)
-	public ResponseEntity<List<PequenoGrupo>> findPorIgreja(@PathVariable Integer idIgreja) {
+	public ResponseEntity<List<PequenoGrupo>> findPorIgreja(@PathVariable final Integer idIgreja) {
 		return ResponseEntity.ok().body(pgService.buscarPorIgreja(idIgreja));
 	}
 	
 	@PreAuthorize("hasAnyRole('ADMIN','LIDER','PASTOR')")
 	@Operation(summary = "Salvar PG", security = @SecurityRequirement(name = "bearerAuth"))
 	@RequestMapping( method = RequestMethod.POST)
-	public ResponseEntity<Void> save(@Valid @RequestBody PgNewDTO dto) {
-		PequenoGrupo obj = pgService.salvar(dto);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+	public ResponseEntity<Void> save(@Valid @RequestBody final PgNewDTO dto) {
+		final PequenoGrupo obj = pgService.salvar(dto);
+		final URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
@@ -57,7 +57,7 @@ public class PGController {
 	@PreAuthorize("hasAnyRole('ADMIN','LIDER','PASTOR')")
 	@Operation(summary = "Deletar Pg por id", security = @SecurityRequirement(name = "bearerAuth"))
 	@RequestMapping(path="/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> delete(@PathVariable Integer id) {
+	public ResponseEntity<Void> delete(@PathVariable final Integer id) {
 		pgService.deletar(id);
 		return ResponseEntity.noContent().build();
 	}
@@ -65,9 +65,9 @@ public class PGController {
 	@PreAuthorize("hasAnyRole('ADMIN','LIDER','PASTOR')")
 	@Operation(summary = "Atualizar foto de perfil do PG", security = @SecurityRequirement(name = "bearerAuth"))
 	@RequestMapping(value="/picture/{idPg}", method=RequestMethod.POST)
-	public ResponseEntity<Void> uploadProfilePicture(@RequestParam(name="file") MultipartFile file,
+	public ResponseEntity<Void> uploadProfilePicture(@RequestParam(name="file") final MultipartFile file,
 			@PathVariable Integer idPg) {
-		URI uri = pgService.uploadProfilePicture(file, idPg);
+		final URI uri = pgService.uploadProfilePicture(file, idPg);
 		return ResponseEntity.created(uri).build();
 	}
 	

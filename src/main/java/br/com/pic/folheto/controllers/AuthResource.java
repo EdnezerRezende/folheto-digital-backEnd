@@ -34,9 +34,9 @@ public class AuthResource {
 	
 	@RequestMapping(value = "/refresh_token", method = RequestMethod.POST)
 	@Operation(summary = "Refresh Token", security = @SecurityRequirement(name = "bearerAuth"))
-	public ResponseEntity<Void> refreshToken(HttpServletResponse response) {
-		UserSS user = UserService.authenticated();
-		String token = jwtUtil.generateToken(user.getUsername(), user.getAuthorities());
+	public ResponseEntity<Void> refreshToken(final HttpServletResponse response) {
+		final UserSS user = UserService.authenticated();
+		final String token = jwtUtil.generateToken(user.getUsername(), user.getAuthorities());
 		response.addHeader("Authorization", "Bearer " + token);
 		response.addHeader("access-control-expose-headers", "Authorization");
 		return ResponseEntity.noContent().build();
@@ -44,7 +44,7 @@ public class AuthResource {
 	
 	@RequestMapping(value = "/forgot", method = RequestMethod.POST)
 	@Operation(summary = "Forgot", security = @SecurityRequirement(name = "bearerAuth"))
-	public ResponseEntity<Void> forgot(@Valid @RequestBody EmailDTO objDto) {
+	public ResponseEntity<Void> forgot(@Valid @RequestBody final EmailDTO objDto) {
 		try {
 			service.sendNewPassword(objDto.getEmail());
 		} catch (JMSException e) {
@@ -55,7 +55,7 @@ public class AuthResource {
 	
 	@RequestMapping(value = "/forgot/newPassword", method = RequestMethod.POST)
 	@Operation(summary = "New Password", security = @SecurityRequirement(name = "bearerAuth"))
-	public ResponseEntity<Void> forgotNewPassword(@Valid @RequestBody NewPasswordDTO objDto) {
+	public ResponseEntity<Void> forgotNewPassword(@Valid @RequestBody final NewPasswordDTO objDto) {
 		try {
 			service.trocaSenha(objDto);
 		} catch (JMSException e) {

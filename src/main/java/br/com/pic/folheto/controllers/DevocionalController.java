@@ -38,23 +38,23 @@ public class DevocionalController {
 	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')")
 	@Operation(summary = "Buscar devocionais por semana", security = @SecurityRequirement(name = "bearerAuth"))
 	@RequestMapping(value="/igreja/{idIgreja}/{idMembro}", method = RequestMethod.GET)
-	public ResponseEntity<List<Devocional>> findPorIgreja(@PathVariable Integer idIgreja,@PathVariable Integer idMembro) {
+	public ResponseEntity<List<Devocional>> findPorIgreja(@PathVariable final Integer idIgreja,@PathVariable final Integer idMembro) {
 		return ResponseEntity.ok().body(devocionalService.buscarPorIgreja(idIgreja, idMembro));
 	}
 	
 	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')")
 	@Operation(summary = "Buscar devocional antigos por igreja", security = @SecurityRequirement(name = "bearerAuth"))
 	@RequestMapping(value="/antigos/igreja/{idIgreja}/{idMembro}", method = RequestMethod.GET)
-	public ResponseEntity<List<Devocional>> findDevocionaisAntigosPorIgreja(@PathVariable Integer idIgreja,@PathVariable Integer idMembro) {
+	public ResponseEntity<List<Devocional>> findDevocionaisAntigosPorIgreja(@PathVariable final Integer idIgreja,@PathVariable final Integer idMembro) {
 		return ResponseEntity.ok().body(devocionalService.buscarDevocionaisAntigosPorIgreja(idIgreja, idMembro));
 	}
 	
 	@PreAuthorize("hasAnyRole('ADMIN','LIDER','PASTOR')")
 	@Operation(summary = "Salvar devocional", security = @SecurityRequirement(name = "bearerAuth"))
 	@RequestMapping( method = RequestMethod.POST)
-	public ResponseEntity<Void> save(@Valid @RequestBody DevocionalNewDTO dto) {
-		Devocional obj = devocionalService.salvar(dto);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+	public ResponseEntity<Void> save(@Valid @RequestBody final DevocionalNewDTO dto) {
+		final Devocional obj = devocionalService.salvar(dto);
+		final URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
@@ -62,7 +62,7 @@ public class DevocionalController {
 	@PreAuthorize("hasAnyRole('ADMIN','LIDER','PASTOR')")
 	@Operation(summary = "Delete devocional", security = @SecurityRequirement(name = "bearerAuth"))
 	@RequestMapping(path="/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> delete(@PathVariable Integer id) {
+	public ResponseEntity<Void> delete(@PathVariable final Integer id) {
 		devocionalService.deletar(id);
 		return ResponseEntity.noContent().build();
 	}

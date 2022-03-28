@@ -22,7 +22,7 @@ public class EmailController {
 	@PreAuthorize("hasAnyRole('MEMBRO','VISITANTE')")
 	@Operation(summary = "Enviar email de contato", security = @SecurityRequirement(name = "bearerAuth"))
 	@RequestMapping(path="/contato", method = RequestMethod.POST)
-	public ResponseEntity<Void> enviarContato(@RequestBody ContatoDTO dto) {
+	public ResponseEntity<Void> enviarContato(@RequestBody final ContatoDTO dto) {
 		contatoService.enviarContato(dto);
 		return ResponseEntity.ok().build();
 	}

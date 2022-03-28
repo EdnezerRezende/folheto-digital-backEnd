@@ -34,17 +34,22 @@ public class MensagemController {
 	@Operation(summary = "Buscar todas as mensagens", security = @SecurityRequirement(name = "bearerAuth"))
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<MensagemDTO>> findAll() {
-		List<Mensagem> list = mensagemService.buscarTodos();
-		List<MensagemDTO> listDto = list.stream().map(obj -> new MensagemDTO(obj)).collect(Collectors.toList());  
+		final List<Mensagem> list = mensagemService.buscarTodos();
+		final List<MensagemDTO> listDto = list.stream().map(obj -> MensagemDTO.builder()
+				.id(obj.getId())
+				.titulo(obj.getTitulo())
+				.mensagem(obj.getMensagem())
+				.autor(obj.getAutor())
+				.build()).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDto);
 	}
 	
 	@PreAuthorize("hasAnyRole('ADMIN','LIDER','PASTOR')")
 	@Operation(summary = "Salvar mensagem", security = @SecurityRequirement(name = "bearerAuth"))
 	@RequestMapping( method = RequestMethod.POST)
-	public ResponseEntity<Void> saveMensagem(@Valid @RequestBody MensagemNewDTO dto) {
-		Mensagem obj = mensagemService.salvarMensagem(dto);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+	public ResponseEntity<Void> saveMensagem(@Valid @RequestBody final MensagemNewDTO dto) {
+		final Mensagem obj = mensagemService.salvarMensagem(dto);
+		final URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
@@ -52,7 +57,7 @@ public class MensagemController {
 	@PreAuthorize("hasAnyRole('ADMIN','LIDER','PASTOR')")
 	@Operation(summary = "Deletar mensagem", security = @SecurityRequirement(name = "bearerAuth"))
 	@RequestMapping(path="/{idMensagem}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> deletaMensagem(@PathVariable Integer idMensagem) {
+	public ResponseEntity<Void> deletaMensagem(@PathVariable final Integer idMensagem) {
 		mensagemService.deletarMensagem(idMensagem);
 		return ResponseEntity.noContent().build();
 	}
