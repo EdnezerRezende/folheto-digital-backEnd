@@ -4,6 +4,7 @@ import br.com.pic.folheto.dto.DevocionalComentarioNewDTO;
 import br.com.pic.folheto.util.DataUtil;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,7 @@ import java.time.LocalDate;
 @Data
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class DevocionalComentario {
 
 	@Id

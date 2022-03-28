@@ -1,6 +1,7 @@
 package br.com.pic.folheto.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ import java.util.Set;
 @Data
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class OfertaServicoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -27,6 +29,7 @@ public class OfertaServicoDTO implements Serializable {
 	@NotEmpty(message = "Preenchimento obrigatório")
 	private String descricao;
 
+	@Builder.Default
 	private Set<String> telefones = new HashSet<>();
 
 	private String emailServico;

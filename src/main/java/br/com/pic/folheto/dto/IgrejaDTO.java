@@ -3,6 +3,7 @@ package br.com.pic.folheto.dto;
 import br.com.pic.folheto.entidades.EnderecoIgreja;
 import br.com.pic.folheto.entidades.Igreja;
 import br.com.pic.folheto.entidades.Membro;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ import java.util.List;
 @Data
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class IgrejaDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 

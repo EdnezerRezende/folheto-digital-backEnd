@@ -26,7 +26,8 @@ public class IgrejaInfoDTO implements Serializable {
 	private String email;
 	
 	private EnderecoIgreja endereco;
-	
+
+	@Builder.Default
 	private Set<String> telefones = new HashSet<>();
 
 }

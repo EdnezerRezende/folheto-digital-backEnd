@@ -2,6 +2,7 @@ package br.com.pic.folheto.entidades;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 @Data
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class Devocional {
 
 	@Id
@@ -35,9 +37,11 @@ public class Devocional {
 	private String textoReferencia;
 	
 	@Transient
+	@Builder.Default
 	private Boolean isAtual = false;
 	
 	@Transient
+	@Builder.Default
 	private Boolean isLido = false;
 	
 	private Boolean isDeletado;

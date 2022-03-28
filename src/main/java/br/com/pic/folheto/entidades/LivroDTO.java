@@ -1,5 +1,6 @@
 package br.com.pic.folheto.entidades;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,7 @@ import javax.persistence.ManyToOne;
 @Data
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class LivroDTO {
 	
 	@ManyToOne

@@ -3,8 +3,7 @@ package br.com.pic.folheto.entidades;
 import br.com.pic.folheto.entidades.enums.Perfil;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -18,6 +17,7 @@ import java.util.stream.Collectors;
 @Entity
 @Data
 @Builder
+@AllArgsConstructor
 public class Membro implements Serializable, MenssagemEmail{
 
 	@Id
@@ -39,9 +39,11 @@ public class Membro implements Serializable, MenssagemEmail{
 	
 	@ElementCollection(fetch=FetchType.EAGER)
 	@CollectionTable(name="PERFIS")
+	@Singular("perfis")
 	private Set<Integer> perfis = new HashSet<>();
 	
 	@OneToMany(mappedBy = "membro", cascade=CascadeType.PERSIST)
+	@Builder.Default
     private List<EnderecoMembro> enderecos = new ArrayList<>();
 	
     @JsonIgnore
@@ -51,9 +53,11 @@ public class Membro implements Serializable, MenssagemEmail{
 
 	@ElementCollection
     @CollectionTable(name = "TELEFONE")
+	@Builder.Default
     private Set<String> telefones = new HashSet<>();
 	
 	@OneToMany(mappedBy = "membro", cascade=CascadeType.ALL)
+	@Builder.Default
     private List<DevocionalComentario> comentarios = new ArrayList<>();
 
 	public Membro() {
