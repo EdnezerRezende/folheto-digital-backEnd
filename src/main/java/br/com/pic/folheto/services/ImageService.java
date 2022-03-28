@@ -1,26 +1,25 @@
 package br.com.pic.folheto.services;
 
 
-import java.awt.Color;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
-import javax.imageio.ImageIO;
-
 import br.com.pic.folheto.services.exceptions.FileException;
 import org.apache.commons.io.FilenameUtils;
 import org.imgscalr.Scalr;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 @Service
 public class ImageService {
 
-	public BufferedImage getJpgImageFromFile(MultipartFile uploadedFile) {
-		String ext = FilenameUtils.getExtension(uploadedFile.getOriginalFilename());
+	public BufferedImage getJpgImageFromFile(final MultipartFile uploadedFile) {
+		final String ext = FilenameUtils.getExtension(uploadedFile.getOriginalFilename());
 		if (!"png".equals(ext) && !"jpg".equals(ext)) {
 			throw new FileException("Somente imagens PNG e JPG são permitidas");
 		}
@@ -36,16 +35,16 @@ public class ImageService {
 		}
 	}
 
-	public BufferedImage pngToJpg(BufferedImage img) {
-		BufferedImage jpgImage = new BufferedImage(img.getWidth(), img.getHeight(),
+	public BufferedImage pngToJpg(final BufferedImage img) {
+		final BufferedImage jpgImage = new BufferedImage(img.getWidth(), img.getHeight(),
 				BufferedImage.TYPE_INT_RGB);
 		jpgImage.createGraphics().drawImage(img, 0, 0, Color.WHITE, null);
 		return jpgImage;
 	}
 	
-	public InputStream getInputStream(BufferedImage img, String extension) {
+	public InputStream getInputStream(final BufferedImage img,final String extension) {
 		try {
-			ByteArrayOutputStream os = new ByteArrayOutputStream();
+			final ByteArrayOutputStream os = new ByteArrayOutputStream();
 			ImageIO.write(img, extension, os);
 			return new ByteArrayInputStream(os.toByteArray());
 		} catch (IOException e) {
@@ -53,8 +52,8 @@ public class ImageService {
 		}
 	}
 	
-	public BufferedImage cropSquare(BufferedImage sourceImg) {
-		int min = (sourceImg.getHeight() <= sourceImg.getWidth()) ? sourceImg.getHeight() : sourceImg.getWidth();
+	public BufferedImage cropSquare(final BufferedImage sourceImg) {
+		final int min = (sourceImg.getHeight() <= sourceImg.getWidth()) ? sourceImg.getHeight() : sourceImg.getWidth();
 		return Scalr.crop(
 			sourceImg, 
 			(sourceImg.getWidth()/2) - (min/2), 
@@ -63,7 +62,7 @@ public class ImageService {
 			min);		
 	}
 	
-	public BufferedImage resize(BufferedImage sourceImg, int size) {
+	public BufferedImage resize(final BufferedImage sourceImg,final int size) {
 		return Scalr.resize(sourceImg, Scalr.Method.ULTRA_QUALITY, size);
 	}
 }

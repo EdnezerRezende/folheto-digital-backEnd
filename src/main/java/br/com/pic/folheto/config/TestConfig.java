@@ -3,7 +3,7 @@ package br.com.pic.folheto.config;
 import java.text.ParseException;
 
 import br.com.pic.folheto.services.DBService;
-import br.com.pic.folheto.services.EmailService;
+import br.com.pic.folheto.services.interfaces.EmailInterfaceService;
 import br.com.pic.folheto.services.MockEmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +24,7 @@ public class TestConfig {
 	}
 	
 	@Bean
-	public EmailService emailService() {
+	public EmailInterfaceService emailService() {
 		return new MockEmailService();
 	}
 }

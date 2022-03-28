@@ -14,8 +14,14 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@Builder
+@NoArgsConstructor
 public class Versiculo  implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -34,70 +40,4 @@ public class Versiculo  implements Serializable {
     @JoinColumn(name="referencia_id")
 	private Referencia referencia;
 	
-	public Versiculo() {
-		super();
-	}
-	
-	public Versiculo(Integer number, String text) {
-		super();
-		this.number = number;
-		this.text = text;
-	}
-	public Integer getNumber() {
-		return number;
-	}
-	public void setNumber(Integer number) {
-		this.number = number;
-	}
-	public String getText() {
-		return text;
-	}
-	public void setText(String text) {
-		this.text = text;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public Referencia getReferencia() {
-		return referencia;
-	}
-
-	public void setReferencia(Referencia referencia) {
-		this.referencia = referencia;
-	}
-
-	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Versiculo other = (Versiculo) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
-	
-	
-
 }

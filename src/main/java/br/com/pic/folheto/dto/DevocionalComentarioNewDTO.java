@@ -1,11 +1,16 @@
 package br.com.pic.folheto.dto;
 
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
+@Data
+@Builder
+@NoArgsConstructor
 public class DevocionalComentarioNewDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -26,10 +31,6 @@ public class DevocionalComentarioNewDTO implements Serializable {
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private String dataCriacao;
 
-	public DevocionalComentarioNewDTO() {
-		super();
-	}
-
 	public DevocionalComentarioNewDTO(Integer id,
 			@NotEmpty(message = "Preenchimento obrigatório") Integer referencia, String chamouAtencao,
 			String sobreDeus, String sobreHumanidade, String oQueAprendi, String dataCriacao, Integer idMembro) {
@@ -44,68 +45,5 @@ public class DevocionalComentarioNewDTO implements Serializable {
 		this.idMembro = idMembro;
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getChamouAtencao() {
-		return chamouAtencao;
-	}
-
-	public void setChamouAtencao(String chamouAtencao) {
-		this.chamouAtencao = chamouAtencao;
-	}
-
-	public String getSobreDeus() {
-		return sobreDeus;
-	}
-
-	public void setSobreDeus(String sobreDeus) {
-		this.sobreDeus = sobreDeus;
-	}
-
-	public String getSobreHumanidade() {
-		return sobreHumanidade;
-	}
-
-	public void setSobreHumanidade(String sobreHumanidade) {
-		this.sobreHumanidade = sobreHumanidade;
-	}
-
-	public String getoQueAprendi() {
-		return oQueAprendi;
-	}
-
-	public void setoQueAprendi(String oQueAprendi) {
-		this.oQueAprendi = oQueAprendi;
-	}
-
-	public String getDataCriacao() {
-		return dataCriacao;
-	}
-
-	public void setDataCriacao(String dataCriacao) {
-		this.dataCriacao = dataCriacao;
-	}
-
-	public Integer getReferencia() {
-		return referencia;
-	}
-
-	public void setReferencia(Integer referencia) {
-		this.referencia = referencia;
-	}
-
-	public Integer getIdMembro() {
-		return idMembro;
-	}
-
-	public void setIdMembro(Integer idMembro) {
-		this.idMembro = idMembro;
-	}
 	
 }

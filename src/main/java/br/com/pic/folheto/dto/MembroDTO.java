@@ -1,16 +1,19 @@
 package br.com.pic.folheto.dto;
 
-import java.io.Serializable;
+import br.com.pic.folheto.services.validation.MembroUpdate;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-
-import br.com.pic.folheto.services.validation.MembroUpdate;
-import org.hibernate.validator.constraints.Length;
-
-import br.com.pic.folheto.entidades.Membro;
+import java.io.Serializable;
 
 @MembroUpdate
+@Data
+@Builder
+@NoArgsConstructor
 public class MembroDTO  implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -25,49 +28,5 @@ public class MembroDTO  implements Serializable {
 	private String email;
 	
 	private String dataNascimento;
-	
-	public MembroDTO() {
-		super();
-	}
-	
-	public MembroDTO(Membro obj) {
-		this.id = obj.getId();
-		this.nome = obj.getNome();
-		this.email = obj.getEmail();
-		this.dataNascimento = obj.getDataNascimento().toString();
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(String dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
-
 
 }

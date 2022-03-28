@@ -20,7 +20,7 @@ public class ContatoService {
 	@Autowired
 	private Queue queue;
 
-	public void enviarContato(ContatoDTO contato) {
+	public void enviarContato(final ContatoDTO contato) {
 		this.jmsMessagingTemplate.convertAndSend(this.queue, contato);
 	}
 }

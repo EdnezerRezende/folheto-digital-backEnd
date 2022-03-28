@@ -1,12 +1,11 @@
 package br.com.pic.folheto.services;
 
-import java.util.List;
-
+import br.com.pic.folheto.entidades.Estado;
 import br.com.pic.folheto.respositories.EstadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.pic.folheto.entidades.Estado;
+import java.util.List;
 
 @Service
 public class EstadoService {

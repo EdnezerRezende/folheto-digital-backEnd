@@ -18,11 +18,17 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	private MembroRepository repo;
 	
 	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		Membro membro = repo.findByEmail(email);
+	public UserDetails loadUserByUsername(final String email) throws UsernameNotFoundException {
+		final Membro membro = repo.findByEmail(email);
 		if (membro == null) {
 			throw new UsernameNotFoundException(email);
 		}
-		return new UserSS(membro.getId(), membro.getEmail(), membro.getSenha(), membro.getPerfis());
+
+		return UserSS.builder()
+				.id(membro.getId())
+				.email(membro.getEmail())
+				.senha(membro.getSenha())
+				.authorities(UserSS.setAuthorities(membro.getPerfis()))
+				.build();
 	}
 }

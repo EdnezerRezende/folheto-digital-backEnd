@@ -1,13 +1,16 @@
 package br.com.pic.folheto.dto;
 
-import java.io.Serializable;
-
-import javax.validation.constraints.NotEmpty;
-
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
-import br.com.pic.folheto.entidades.Mensagem;
+import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
 
+@Data
+@Builder
+@NoArgsConstructor
 public class MensagemNewDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -23,64 +26,5 @@ public class MensagemNewDTO implements Serializable {
 	private String titulo;
 	
 	private Integer igrejaId;
-	
-	public MensagemNewDTO() {
-		super();
-	}
 
-	public MensagemNewDTO(Integer id, String mensagem, String autor,  String titulo) {
-		super();
-		this.id = id;
-		this.mensagem = mensagem;
-		this.autor = autor;
-		this.titulo = titulo;
-	}
-	
-	public MensagemNewDTO(Mensagem mensagem) {
-		super();
-		this.id = mensagem.getId();
-		this.mensagem = mensagem.getMensagem();
-		this.autor = mensagem.getAutor();
-		this.titulo = mensagem.getTitulo();
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getMensagem() {
-		return mensagem;
-	}
-
-	public void setMensagem(String mensagem) {
-		this.mensagem = mensagem;
-	}
-
-	public String getAutor() {
-		return autor;
-	}
-
-	public void setAutor(String autor) {
-		this.autor = autor;
-	}
-
-	public String getTitulo() {
-		return titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-	
-	public Integer getIgrejaId() {
-		return igrejaId;
-	}
-
-	public void setIgrejaId(Integer igrejaId) {
-		this.igrejaId = igrejaId;
-	}
 }

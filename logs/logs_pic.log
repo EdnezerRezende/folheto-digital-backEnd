@@ -2247,3 +2247,645 @@ Caused by: java.lang.IllegalStateException: Shutdown in progress
 21-03-2022 14:21:25.799  INFO NBBV033071 --- [nio-8082-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
 21-03-2022 14:21:25.802  INFO NBBV033071 --- [nio-8082-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 3 ms
 21-03-2022 14:21:47.389  INFO NBBV033071 --- [nio-8082-exec-1] b.c.p.f.f.c.EmailMessageConverter        : outbound json='{"id":1,"nome":"Teste","email":"admin@gmail.com","cpf":"12345678978","dataNascimento":"16/03/2022","perfis":["MEMBRO","ADMIN"],"enderecos":[{"id":1,"logradouro":"Rua Flores","numero":"300","complemento":"Apto 303","bairro":"Jardim","cep":"38220834","cidade":{"id":1,"nome":"Uberlândia","estado":{"id":1,"nome":"Minas Gerais","uf":"MG"}}},{"id":2,"logradouro":"Avenida Matos","numero":"105","complemento":"Sala 800","bairro":"Centro","cep":"38777012","cidade":{"id":2,"nome":"São Paulo","estado":{"id":2,"nome":"São Paulo","uf":"SP"}}}],"telefones":["6127363323","6193838393"],"comentarios":[]}'
+21-03-2022 14:23:53.674  INFO NBBV033071 --- [nio-8082-exec-3] b.c.p.f.f.c.EmailMessageConverter        : outbound json='{"nome":"Ednezer","email":"godoirezende@gmail.com","telefone":"982819541","assunto":"Teste Por mensageria","mensagem":"Teste de envio de contato por mensageria","to":"pic.taguatinga.app@gmail.com"}'
+21-03-2022 14:23:55.664  INFO NBBV033071 --- [ntContainer#0-1] b.c.p.f.f.c.EmailMessageConverter        : inbound json='{"nome":"Ednezer","email":"godoirezende@gmail.com","telefone":"982819541","assunto":"Teste Por mensageria","mensagem":"Teste de envio de contato por mensageria","to":"pic.taguatinga.app@gmail.com"}'
+21-03-2022 14:25:14.288  INFO NBBV033071 --- [nio-8082-exec-5] b.c.p.f.f.c.EmailMessageConverter        : outbound json='{"id":1,"nome":"Teste","email":"admin@gmail.com","cpf":"12345678978","dataNascimento":"16/03/2022","perfis":["MEMBRO","ADMIN"],"enderecos":[{"id":1,"logradouro":"Rua Flores","numero":"300","complemento":"Apto 303","bairro":"Jardim","cep":"38220834","cidade":{"id":1,"nome":"Uberlândia","estado":{"id":1,"nome":"Minas Gerais","uf":"MG"}}},{"id":2,"logradouro":"Avenida Matos","numero":"105","complemento":"Sala 800","bairro":"Centro","cep":"38777012","cidade":{"id":2,"nome":"São Paulo","estado":{"id":2,"nome":"São Paulo","uf":"SP"}}}],"telefones":["6127363323","6193838393"],"comentarios":[]}'
+21-03-2022 14:26:27.429  INFO NBBV033071 --- [nio-8082-exec-6] b.c.p.f.f.c.EmailMessageConverter        : outbound json='{"id":1,"nome":"Teste","email":"admin@gmail.com","cpf":"12345678978","dataNascimento":"16/03/2022","perfis":["MEMBRO","ADMIN"],"enderecos":[{"id":1,"logradouro":"Rua Flores","numero":"300","complemento":"Apto 303","bairro":"Jardim","cep":"38220834","cidade":{"id":1,"nome":"Uberlândia","estado":{"id":1,"nome":"Minas Gerais","uf":"MG"}}},{"id":2,"logradouro":"Avenida Matos","numero":"105","complemento":"Sala 800","bairro":"Centro","cep":"38777012","cidade":{"id":2,"nome":"São Paulo","estado":{"id":2,"nome":"São Paulo","uf":"SP"}}}],"telefones":["6127363323","6193838393"],"comentarios":[]}'
+21-03-2022 16:41:48.781  INFO NBBV033071 --- [nio-8082-exec-1] b.c.p.f.f.c.EmailMessageConverter        : outbound json='{"nome":"Ednezer","email":"godoirezende@gmail.com","telefone":"982819541","assunto":"Teste Por mensageria","mensagem":"Teste de envio de contato por mensageria","to":"pic.taguatinga.app@gmail.com"}'
+21-03-2022 16:41:48.791  INFO NBBV033071 --- [ntContainer#0-1] b.c.p.f.f.c.EmailMessageConverter        : inbound json='{"nome":"Ednezer","email":"godoirezende@gmail.com","telefone":"982819541","assunto":"Teste Por mensageria","mensagem":"Teste de envio de contato por mensageria","to":"pic.taguatinga.app@gmail.com"}'
+21-03-2022 16:41:50.165  WARN NBBV033071 --- [ntContainer#0-1] o.s.j.l.DefaultMessageListenerContainer  : Execution of JMS message listener failed, and no ErrorHandler has been set.
+org.springframework.jms.listener.adapter.ListenerExecutionFailedException: Listener method 'public void br.com.pic.folheto.filas.ListernerEmail.receive(br.com.pic.folheto.entidades.MenssagemEmail)' threw exception; nested exception is org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. Learn more at
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor z26-20020a9d62da000000b005b23f5488cdsm7613186otk.52 - gsmtp
+
+	at org.springframework.jms.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:122)
+	at org.springframework.jms.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:77)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:736)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:696)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:674)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.doReceiveAndExecute(AbstractPollingMessageListenerContainer.java:331)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.receiveAndExecute(AbstractPollingMessageListenerContainer.java:270)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.invokeListener(DefaultMessageListenerContainer.java:1237)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.executeOngoingLoop(DefaultMessageListenerContainer.java:1227)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.run(DefaultMessageListenerContainer.java:1120)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. Learn more at
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor z26-20020a9d62da000000b005b23f5488cdsm7613186otk.52 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:440)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:361)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:356)
+	at br.com.pic.folheto.services.SmtpEmailService.sendEmailHtml(SmtpEmailService.java:29)
+	at br.com.pic.folheto.services.AbstractEmailService.sendContatoHtml(AbstractEmailService.java:85)
+	at br.com.pic.folheto.filas.ListernerEmail.receive(ListernerEmail.java:23)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:169)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:119)
+	at org.springframework.jms.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:114)
+	... 10 more
+Caused by: javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. Learn more at
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor z26-20020a9d62da000000b005b23f5488cdsm7613186otk.52 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:947)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:858)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:762)
+	at javax.mail.Service.connect(Service.java:342)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:518)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:437)
+	... 22 more
+21-03-2022 16:41:51.167  INFO NBBV033071 --- [ntContainer#0-1] b.c.p.f.f.c.EmailMessageConverter        : inbound json='{"nome":"Ednezer","email":"godoirezende@gmail.com","telefone":"982819541","assunto":"Teste Por mensageria","mensagem":"Teste de envio de contato por mensageria","to":"pic.taguatinga.app@gmail.com"}'
+21-03-2022 16:41:53.539  WARN NBBV033071 --- [ntContainer#0-1] o.s.j.l.DefaultMessageListenerContainer  : Execution of JMS message listener failed, and no ErrorHandler has been set.
+org.springframework.jms.listener.adapter.ListenerExecutionFailedException: Listener method 'public void br.com.pic.folheto.filas.ListernerEmail.receive(br.com.pic.folheto.entidades.MenssagemEmail)' threw exception; nested exception is org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. Learn more at
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor eq37-20020a056870a92500b000c6699dad62sm7279773oab.41 - gsmtp
+
+	at org.springframework.jms.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:122)
+	at org.springframework.jms.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:77)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:736)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:696)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:674)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.doReceiveAndExecute(AbstractPollingMessageListenerContainer.java:331)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.receiveAndExecute(AbstractPollingMessageListenerContainer.java:270)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.invokeListener(DefaultMessageListenerContainer.java:1237)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.executeOngoingLoop(DefaultMessageListenerContainer.java:1227)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.run(DefaultMessageListenerContainer.java:1120)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. Learn more at
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor eq37-20020a056870a92500b000c6699dad62sm7279773oab.41 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:440)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:361)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:356)
+	at br.com.pic.folheto.services.SmtpEmailService.sendEmailHtml(SmtpEmailService.java:29)
+	at br.com.pic.folheto.services.AbstractEmailService.sendContatoHtml(AbstractEmailService.java:85)
+	at br.com.pic.folheto.filas.ListernerEmail.receive(ListernerEmail.java:23)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:169)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:119)
+	at org.springframework.jms.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:114)
+	... 10 more
+Caused by: javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. Learn more at
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor eq37-20020a056870a92500b000c6699dad62sm7279773oab.41 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:947)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:858)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:762)
+	at javax.mail.Service.connect(Service.java:342)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:518)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:437)
+	... 22 more
+21-03-2022 16:41:54.549  INFO NBBV033071 --- [ntContainer#0-1] b.c.p.f.f.c.EmailMessageConverter        : inbound json='{"nome":"Ednezer","email":"godoirezende@gmail.com","telefone":"982819541","assunto":"Teste Por mensageria","mensagem":"Teste de envio de contato por mensageria","to":"pic.taguatinga.app@gmail.com"}'
+21-03-2022 16:41:55.878  WARN NBBV033071 --- [ntContainer#0-1] o.s.j.l.DefaultMessageListenerContainer  : Execution of JMS message listener failed, and no ErrorHandler has been set.
+org.springframework.jms.listener.adapter.ListenerExecutionFailedException: Listener method 'public void br.com.pic.folheto.filas.ListernerEmail.receive(br.com.pic.folheto.entidades.MenssagemEmail)' threw exception; nested exception is org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. Learn more at
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor c9-20020a4a8ec9000000b0032438ba79b0sm7066280ool.0 - gsmtp
+
+	at org.springframework.jms.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:122)
+	at org.springframework.jms.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:77)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:736)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:696)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:674)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.doReceiveAndExecute(AbstractPollingMessageListenerContainer.java:331)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.receiveAndExecute(AbstractPollingMessageListenerContainer.java:270)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.invokeListener(DefaultMessageListenerContainer.java:1237)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.executeOngoingLoop(DefaultMessageListenerContainer.java:1227)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.run(DefaultMessageListenerContainer.java:1120)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. Learn more at
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor c9-20020a4a8ec9000000b0032438ba79b0sm7066280ool.0 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:440)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:361)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:356)
+	at br.com.pic.folheto.services.SmtpEmailService.sendEmailHtml(SmtpEmailService.java:29)
+	at br.com.pic.folheto.services.AbstractEmailService.sendContatoHtml(AbstractEmailService.java:85)
+	at br.com.pic.folheto.filas.ListernerEmail.receive(ListernerEmail.java:23)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:169)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:119)
+	at org.springframework.jms.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:114)
+	... 10 more
+Caused by: javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. Learn more at
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor c9-20020a4a8ec9000000b0032438ba79b0sm7066280ool.0 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:947)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:858)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:762)
+	at javax.mail.Service.connect(Service.java:342)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:518)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:437)
+	... 22 more
+21-03-2022 16:41:56.880  INFO NBBV033071 --- [ntContainer#0-1] b.c.p.f.f.c.EmailMessageConverter        : inbound json='{"nome":"Ednezer","email":"godoirezende@gmail.com","telefone":"982819541","assunto":"Teste Por mensageria","mensagem":"Teste de envio de contato por mensageria","to":"pic.taguatinga.app@gmail.com"}'
+21-03-2022 16:41:58.404  WARN NBBV033071 --- [ntContainer#0-1] o.s.j.l.DefaultMessageListenerContainer  : Execution of JMS message listener failed, and no ErrorHandler has been set.
+org.springframework.jms.listener.adapter.ListenerExecutionFailedException: Listener method 'public void br.com.pic.folheto.filas.ListernerEmail.receive(br.com.pic.folheto.entidades.MenssagemEmail)' threw exception; nested exception is org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. Learn more at
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor 96-20020a9d0469000000b005c959dd643csm7783883otc.3 - gsmtp
+
+	at org.springframework.jms.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:122)
+	at org.springframework.jms.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:77)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:736)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:696)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:674)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.doReceiveAndExecute(AbstractPollingMessageListenerContainer.java:331)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.receiveAndExecute(AbstractPollingMessageListenerContainer.java:270)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.invokeListener(DefaultMessageListenerContainer.java:1237)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.executeOngoingLoop(DefaultMessageListenerContainer.java:1227)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.run(DefaultMessageListenerContainer.java:1120)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. Learn more at
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor 96-20020a9d0469000000b005c959dd643csm7783883otc.3 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:440)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:361)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:356)
+	at br.com.pic.folheto.services.SmtpEmailService.sendEmailHtml(SmtpEmailService.java:29)
+	at br.com.pic.folheto.services.AbstractEmailService.sendContatoHtml(AbstractEmailService.java:85)
+	at br.com.pic.folheto.filas.ListernerEmail.receive(ListernerEmail.java:23)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:169)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:119)
+	at org.springframework.jms.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:114)
+	... 10 more
+Caused by: javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. Learn more at
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor 96-20020a9d0469000000b005c959dd643csm7783883otc.3 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:947)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:858)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:762)
+	at javax.mail.Service.connect(Service.java:342)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:518)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:437)
+	... 22 more
+21-03-2022 16:41:59.413  INFO NBBV033071 --- [ntContainer#0-1] b.c.p.f.f.c.EmailMessageConverter        : inbound json='{"nome":"Ednezer","email":"godoirezende@gmail.com","telefone":"982819541","assunto":"Teste Por mensageria","mensagem":"Teste de envio de contato por mensageria","to":"pic.taguatinga.app@gmail.com"}'
+21-03-2022 16:42:00.811  WARN NBBV033071 --- [ntContainer#0-1] o.s.j.l.DefaultMessageListenerContainer  : Execution of JMS message listener failed, and no ErrorHandler has been set.
+org.springframework.jms.listener.adapter.ListenerExecutionFailedException: Listener method 'public void br.com.pic.folheto.filas.ListernerEmail.receive(br.com.pic.folheto.entidades.MenssagemEmail)' threw exception; nested exception is org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. Learn more at
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor m3-20020a4ae3c3000000b00320d7c78b01sm6965786oov.20 - gsmtp
+
+	at org.springframework.jms.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:122)
+	at org.springframework.jms.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:77)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:736)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:696)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:674)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.doReceiveAndExecute(AbstractPollingMessageListenerContainer.java:331)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.receiveAndExecute(AbstractPollingMessageListenerContainer.java:270)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.invokeListener(DefaultMessageListenerContainer.java:1237)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.executeOngoingLoop(DefaultMessageListenerContainer.java:1227)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.run(DefaultMessageListenerContainer.java:1120)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. Learn more at
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor m3-20020a4ae3c3000000b00320d7c78b01sm6965786oov.20 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:440)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:361)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:356)
+	at br.com.pic.folheto.services.SmtpEmailService.sendEmailHtml(SmtpEmailService.java:29)
+	at br.com.pic.folheto.services.AbstractEmailService.sendContatoHtml(AbstractEmailService.java:85)
+	at br.com.pic.folheto.filas.ListernerEmail.receive(ListernerEmail.java:23)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:169)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:119)
+	at org.springframework.jms.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:114)
+	... 10 more
+Caused by: javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. Learn more at
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor m3-20020a4ae3c3000000b00320d7c78b01sm6965786oov.20 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:947)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:858)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:762)
+	at javax.mail.Service.connect(Service.java:342)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:518)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:437)
+	... 22 more
+21-03-2022 16:42:01.821  INFO NBBV033071 --- [ntContainer#0-1] b.c.p.f.f.c.EmailMessageConverter        : inbound json='{"nome":"Ednezer","email":"godoirezende@gmail.com","telefone":"982819541","assunto":"Teste Por mensageria","mensagem":"Teste de envio de contato por mensageria","to":"pic.taguatinga.app@gmail.com"}'
+21-03-2022 16:42:03.966  WARN NBBV033071 --- [ntContainer#0-1] o.s.j.l.DefaultMessageListenerContainer  : Execution of JMS message listener failed, and no ErrorHandler has been set.
+org.springframework.jms.listener.adapter.ListenerExecutionFailedException: Listener method 'public void br.com.pic.folheto.filas.ListernerEmail.receive(br.com.pic.folheto.entidades.MenssagemEmail)' threw exception; nested exception is org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. Learn more at
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor u139-20020acaab91000000b002ecb2639985sm7752002oie.20 - gsmtp
+
+	at org.springframework.jms.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:122)
+	at org.springframework.jms.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:77)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:736)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:696)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:674)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.doReceiveAndExecute(AbstractPollingMessageListenerContainer.java:331)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.receiveAndExecute(AbstractPollingMessageListenerContainer.java:270)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.invokeListener(DefaultMessageListenerContainer.java:1237)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.executeOngoingLoop(DefaultMessageListenerContainer.java:1227)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.run(DefaultMessageListenerContainer.java:1120)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. Learn more at
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor u139-20020acaab91000000b002ecb2639985sm7752002oie.20 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:440)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:361)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:356)
+	at br.com.pic.folheto.services.SmtpEmailService.sendEmailHtml(SmtpEmailService.java:29)
+	at br.com.pic.folheto.services.AbstractEmailService.sendContatoHtml(AbstractEmailService.java:85)
+	at br.com.pic.folheto.filas.ListernerEmail.receive(ListernerEmail.java:23)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:169)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:119)
+	at org.springframework.jms.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:114)
+	... 10 more
+Caused by: javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. Learn more at
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor u139-20020acaab91000000b002ecb2639985sm7752002oie.20 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:947)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:858)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:762)
+	at javax.mail.Service.connect(Service.java:342)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:518)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:437)
+	... 22 more
+21-03-2022 16:42:04.971  INFO NBBV033071 --- [ntContainer#0-1] b.c.p.f.f.c.EmailMessageConverter        : inbound json='{"nome":"Ednezer","email":"godoirezende@gmail.com","telefone":"982819541","assunto":"Teste Por mensageria","mensagem":"Teste de envio de contato por mensageria","to":"pic.taguatinga.app@gmail.com"}'
+21-03-2022 16:42:06.452  WARN NBBV033071 --- [ntContainer#0-1] o.s.j.l.DefaultMessageListenerContainer  : Execution of JMS message listener failed, and no ErrorHandler has been set.
+org.springframework.jms.listener.adapter.ListenerExecutionFailedException: Listener method 'public void br.com.pic.folheto.filas.ListernerEmail.receive(br.com.pic.folheto.entidades.MenssagemEmail)' threw exception; nested exception is org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. Learn more at
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor c26-20020a4ae25a000000b0031c268c5436sm7138884oot.16 - gsmtp
+
+	at org.springframework.jms.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:122)
+	at org.springframework.jms.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:77)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:736)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:696)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:674)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.doReceiveAndExecute(AbstractPollingMessageListenerContainer.java:331)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.receiveAndExecute(AbstractPollingMessageListenerContainer.java:270)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.invokeListener(DefaultMessageListenerContainer.java:1237)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.executeOngoingLoop(DefaultMessageListenerContainer.java:1227)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.run(DefaultMessageListenerContainer.java:1120)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. Learn more at
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor c26-20020a4ae25a000000b0031c268c5436sm7138884oot.16 - gsmtp
+
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:440)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:361)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:356)
+	at br.com.pic.folheto.services.SmtpEmailService.sendEmailHtml(SmtpEmailService.java:29)
+	at br.com.pic.folheto.services.AbstractEmailService.sendContatoHtml(AbstractEmailService.java:85)
+	at br.com.pic.folheto.filas.ListernerEmail.receive(ListernerEmail.java:23)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:169)
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:119)
+	at org.springframework.jms.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:114)
+	... 10 more
+Caused by: javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. Learn more at
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor c26-20020a4ae25a000000b0031c268c5436sm7138884oot.16 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:947)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:858)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:762)
+	at javax.mail.Service.connect(Service.java:342)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:518)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:437)
+	... 22 more
+21-03-2022 16:50:17.984  INFO NBBV033071 --- [MQ ShutdownHook] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-63679-1647882621497-0:1) is shutting down
+21-03-2022 16:50:18.102  INFO NBBV033071 --- [m://localhost#0] o.s.j.c.CachingConnectionFactory         : Encountered a JMSException - resetting the underlying JMS Connection
+javax.jms.JMSException: peer (vm://localhost#1) stopped.
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:56)
+	at org.apache.activemq.ActiveMQConnection.onAsyncException(ActiveMQConnection.java:1973)
+	at org.apache.activemq.ActiveMQConnection.onException(ActiveMQConnection.java:1992)
+	at org.apache.activemq.transport.TransportFilter.onException(TransportFilter.java:114)
+	at org.apache.activemq.transport.ResponseCorrelator.onException(ResponseCorrelator.java:126)
+	at org.apache.activemq.transport.TransportFilter.onException(TransportFilter.java:114)
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:233)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1199)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1165)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://localhost#1) stopped.
+	... 9 more
+21-03-2022 16:50:18.131  INFO NBBV033071 --- [MQ ShutdownHook] o.a.a.b.TransportConnector               : Connector vm://localhost stopped
+21-03-2022 16:50:18.133  WARN NBBV033071 --- [m://localhost#0] o.s.j.c.CachingConnectionFactory         : Could not close shared JMS Connection
+javax.jms.JMSException: Disposed due to prior exception
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:80)
+	at org.apache.activemq.ActiveMQConnection.syncSendPacket(ActiveMQConnection.java:1423)
+	at org.apache.activemq.ActiveMQConnection.close(ActiveMQConnection.java:691)
+	at org.springframework.jms.connection.SingleConnectionFactory.closeConnection(SingleConnectionFactory.java:502)
+	at org.springframework.jms.connection.SingleConnectionFactory.resetConnection(SingleConnectionFactory.java:390)
+	at org.springframework.jms.connection.CachingConnectionFactory.resetConnection(CachingConnectionFactory.java:223)
+	at org.springframework.jms.connection.SingleConnectionFactory.onException(SingleConnectionFactory.java:368)
+	at org.springframework.jms.connection.SingleConnectionFactory$AggregatedExceptionListener.onException(SingleConnectionFactory.java:716)
+	at org.apache.activemq.ActiveMQConnection$5.run(ActiveMQConnection.java:1980)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: Disposed due to prior exception
+	at org.apache.activemq.transport.ResponseCorrelator.onException(ResponseCorrelator.java:125)
+	at org.apache.activemq.transport.TransportFilter.onException(TransportFilter.java:114)
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:233)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1199)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1165)
+	... 3 more
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://localhost#1) stopped.
+	... 9 more
+21-03-2022 16:50:18.213  INFO NBBV033071 --- [MQ ShutdownHook] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-63679-1647882621497-0:1) uptime 2 hours 39 minutes
+21-03-2022 16:50:18.213  INFO NBBV033071 --- [MQ ShutdownHook] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-63679-1647882621497-0:1) is shutdown
+21-03-2022 16:50:18.584  INFO NBBV033071 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+21-03-2022 16:50:18.611  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+21-03-2022 16:50:18.614  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+21-03-2022 16:50:37.517  INFO NBBV033071 --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.1.2.Final
+21-03-2022 16:50:37.556  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Starting FolhetoApplication using Java 11.0.11 on NBBV033071 with PID 10776 (C:\backEnd\target\classes started by erezende in C:\backEnd)
+21-03-2022 16:50:37.562  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : The following 1 profile is active: "dev"
+21-03-2022 16:50:40.609  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21-03-2022 16:50:40.937  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 315 ms. Found 16 JPA repository interfaces.
+21-03-2022 16:50:43.569  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8082 (http)
+21-03-2022 16:50:43.583  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8082"]
+21-03-2022 16:50:43.583  INFO NBBV033071 --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+21-03-2022 16:50:43.584  INFO NBBV033071 --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.58]
+21-03-2022 16:50:43.985  INFO NBBV033071 --- [           main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+21-03-2022 16:50:43.985  INFO NBBV033071 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6322 ms
+21-03-2022 16:50:44.586  INFO NBBV033071 --- [           main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+21-03-2022 16:50:45.047  INFO NBBV033071 --- [           main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.5.Final
+21-03-2022 16:50:45.513  INFO NBBV033071 --- [           main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+21-03-2022 16:50:45.767  WARN NBBV033071 --- [           main] c.z.h.HikariConfig                       : HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+21-03-2022 16:50:45.768  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+21-03-2022 16:50:46.059  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+21-03-2022 16:50:46.124  INFO NBBV033071 --- [           main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+21-03-2022 16:50:47.750  INFO NBBV033071 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+21-03-2022 16:50:47.759  INFO NBBV033071 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+21-03-2022 16:50:49.887  WARN NBBV033071 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+21-03-2022 16:50:52.645  INFO NBBV033071 --- [           main] o.s.s.w.DefaultSecurityFilterChain       : Will not secure any request
+21-03-2022 16:50:57.385  INFO NBBV033071 --- [           main] o.s.b.a.e.w.EndpointLinksResolver        : Exposing 13 endpoint(s) beneath base path '/actuator'
+21-03-2022 16:50:57.632  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8082"]
+21-03-2022 16:50:57.673  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8082 (http) with context path ''
+21-03-2022 16:50:58.500  INFO NBBV033071 --- [           main] o.a.a.b.BrokerService                    : Loaded the Bouncy Castle security provider at position: 14
+21-03-2022 16:50:58.574  INFO NBBV033071 --- [           main] o.a.a.b.BrokerService                    : Using Persistence Adapter: MemoryPersistenceAdapter
+21-03-2022 16:50:58.740  INFO NBBV033071 --- [           main] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-51931-1647892258591-0:1) is starting
+21-03-2022 16:50:58.748  INFO NBBV033071 --- [           main] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-51931-1647892258591-0:1) started
+21-03-2022 16:50:58.748  INFO NBBV033071 --- [           main] o.a.a.b.BrokerService                    : For help or more information please see: http://activemq.apache.org
+21-03-2022 16:50:58.782  INFO NBBV033071 --- [           main] o.a.a.b.TransportConnector               : Connector vm://localhost started
+21-03-2022 16:50:58.845  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Started FolhetoApplication in 21.893 seconds (JVM running for 24.944)
+21-03-2022 16:51:03.454  WARN NBBV033071 --- [gistrationTask1] d.c.b.a.c.r.ApplicationRegistrator       : Failed to register application as Application(name=spring-boot-application, managementUrl=http://host.docker.internal:8082/actuator, healthUrl=http://host.docker.internal:8082/actuator/health, serviceUrl=http://host.docker.internal:8082/) at spring-boot-admin ([http://localhost:8081/instances]): I/O error on POST request for "http://localhost:8081/instances": Connect to localhost:8081 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect; nested exception is org.apache.http.conn.HttpHostConnectException: Connect to localhost:8081 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect. Further attempts are logged on DEBUG level
+21-03-2022 16:53:29.858  INFO NBBV033071 --- [nio-8082-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+21-03-2022 16:53:29.858  INFO NBBV033071 --- [nio-8082-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+21-03-2022 16:53:29.861  INFO NBBV033071 --- [nio-8082-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 3 ms
+21-03-2022 16:53:30.786  INFO NBBV033071 --- [nio-8082-exec-1] b.c.p.f.f.c.EmailMessageConverter        : outbound json='{"nome":"Ednezer","email":"godoirezende@gmail.com","telefone":"982819541","assunto":"Teste Por mensageria","mensagem":"Teste de envio de contato por mensageria","to":"pic.taguatinga.app@gmail.com"}'
+21-03-2022 16:53:30.808  INFO NBBV033071 --- [ntContainer#0-1] b.c.p.f.f.c.EmailMessageConverter        : inbound json='{"nome":"Ednezer","email":"godoirezende@gmail.com","telefone":"982819541","assunto":"Teste Por mensageria","mensagem":"Teste de envio de contato por mensageria","to":"pic.taguatinga.app@gmail.com"}'
+21-03-2022 17:06:53.019  INFO NBBV033071 --- [MQ ShutdownHook] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-51931-1647892258591-0:1) is shutting down
+21-03-2022 17:06:53.023  INFO NBBV033071 --- [m://localhost#0] o.s.j.c.CachingConnectionFactory         : Encountered a JMSException - resetting the underlying JMS Connection
+javax.jms.JMSException: peer (vm://localhost#1) stopped.
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:56)
+	at org.apache.activemq.ActiveMQConnection.onAsyncException(ActiveMQConnection.java:1973)
+	at org.apache.activemq.ActiveMQConnection.onException(ActiveMQConnection.java:1992)
+	at org.apache.activemq.transport.TransportFilter.onException(TransportFilter.java:114)
+	at org.apache.activemq.transport.ResponseCorrelator.onException(ResponseCorrelator.java:126)
+	at org.apache.activemq.transport.TransportFilter.onException(TransportFilter.java:114)
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:233)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1199)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1165)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://localhost#1) stopped.
+	... 9 more
+21-03-2022 17:06:53.029  INFO NBBV033071 --- [MQ ShutdownHook] o.a.a.b.TransportConnector               : Connector vm://localhost stopped
+21-03-2022 17:06:53.029  WARN NBBV033071 --- [m://localhost#0] o.s.j.c.CachingConnectionFactory         : Could not close shared JMS Connection
+javax.jms.JMSException: Disposed due to prior exception
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:80)
+	at org.apache.activemq.ActiveMQConnection.syncSendPacket(ActiveMQConnection.java:1423)
+	at org.apache.activemq.ActiveMQConnection.close(ActiveMQConnection.java:691)
+	at org.springframework.jms.connection.SingleConnectionFactory.closeConnection(SingleConnectionFactory.java:502)
+	at org.springframework.jms.connection.SingleConnectionFactory.resetConnection(SingleConnectionFactory.java:390)
+	at org.springframework.jms.connection.CachingConnectionFactory.resetConnection(CachingConnectionFactory.java:223)
+	at org.springframework.jms.connection.SingleConnectionFactory.onException(SingleConnectionFactory.java:368)
+	at org.springframework.jms.connection.SingleConnectionFactory$AggregatedExceptionListener.onException(SingleConnectionFactory.java:716)
+	at org.apache.activemq.ActiveMQConnection$5.run(ActiveMQConnection.java:1980)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: Disposed due to prior exception
+	at org.apache.activemq.transport.ResponseCorrelator.onException(ResponseCorrelator.java:125)
+	at org.apache.activemq.transport.TransportFilter.onException(TransportFilter.java:114)
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:233)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1199)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1165)
+	... 3 more
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://localhost#1) stopped.
+	... 9 more
+21-03-2022 17:06:53.035  INFO NBBV033071 --- [MQ ShutdownHook] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-51931-1647892258591-0:1) uptime 15 minutes
+21-03-2022 17:06:53.035  INFO NBBV033071 --- [MQ ShutdownHook] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-51931-1647892258591-0:1) is shutdown
+21-03-2022 17:06:53.214  INFO NBBV033071 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+21-03-2022 17:06:53.216  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+21-03-2022 17:06:53.219  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+21-03-2022 17:07:03.336  INFO NBBV033071 --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.1.2.Final
+21-03-2022 17:07:03.369  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Starting FolhetoApplication using Java 11.0.11 on NBBV033071 with PID 24468 (C:\backEnd\target\classes started by erezende in C:\backEnd)
+21-03-2022 17:07:03.373  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : The following 1 profile is active: "dev"
+21-03-2022 17:07:05.037  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21-03-2022 17:07:05.214  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 165 ms. Found 16 JPA repository interfaces.
+21-03-2022 17:07:06.426  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8082 (http)
+21-03-2022 17:07:06.442  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8082"]
+21-03-2022 17:07:06.443  INFO NBBV033071 --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+21-03-2022 17:07:06.444  INFO NBBV033071 --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.58]
+21-03-2022 17:07:06.983  INFO NBBV033071 --- [           main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+21-03-2022 17:07:06.984  INFO NBBV033071 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3515 ms
+21-03-2022 17:07:07.428  INFO NBBV033071 --- [           main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+21-03-2022 17:07:07.508  INFO NBBV033071 --- [           main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.5.Final
+21-03-2022 17:07:07.722  INFO NBBV033071 --- [           main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+21-03-2022 17:07:07.862  WARN NBBV033071 --- [           main] c.z.h.HikariConfig                       : HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+21-03-2022 17:07:07.863  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+21-03-2022 17:07:08.101  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+21-03-2022 17:07:08.123  INFO NBBV033071 --- [           main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+21-03-2022 17:07:09.382  INFO NBBV033071 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+21-03-2022 17:07:09.397  INFO NBBV033071 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+21-03-2022 17:07:10.557  WARN NBBV033071 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+21-03-2022 17:07:12.139  INFO NBBV033071 --- [           main] o.s.s.w.DefaultSecurityFilterChain       : Will not secure any request
+21-03-2022 17:07:15.117  INFO NBBV033071 --- [           main] o.s.b.a.e.w.EndpointLinksResolver        : Exposing 13 endpoint(s) beneath base path '/actuator'
+21-03-2022 17:07:15.191  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8082"]
+21-03-2022 17:07:15.224  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8082 (http) with context path ''
+21-03-2022 17:07:15.786  INFO NBBV033071 --- [           main] o.a.a.b.BrokerService                    : Loaded the Bouncy Castle security provider at position: 14
+21-03-2022 17:07:15.827  INFO NBBV033071 --- [           main] o.a.a.b.BrokerService                    : Using Persistence Adapter: MemoryPersistenceAdapter
+21-03-2022 17:07:15.993  INFO NBBV033071 --- [           main] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-53968-1647893235847-0:1) is starting
+21-03-2022 17:07:16.000  INFO NBBV033071 --- [           main] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-53968-1647893235847-0:1) started
+21-03-2022 17:07:16.000  INFO NBBV033071 --- [           main] o.a.a.b.BrokerService                    : For help or more information please see: http://activemq.apache.org
+21-03-2022 17:07:16.034  INFO NBBV033071 --- [           main] o.a.a.b.TransportConnector               : Connector vm://localhost started
+21-03-2022 17:07:16.094  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Started FolhetoApplication in 13.213 seconds (JVM running for 15.139)
+21-03-2022 17:07:16.104 ERROR NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Foi um erro proposital
+21-03-2022 17:07:22.195  WARN NBBV033071 --- [gistrationTask1] d.c.b.a.c.r.ApplicationRegistrator       : Failed to register application as Application(name=spring-boot-application, managementUrl=http://host.docker.internal:8082/actuator, healthUrl=http://host.docker.internal:8082/actuator/health, serviceUrl=http://host.docker.internal:8082/) at spring-boot-admin ([http://localhost:8081/instances]): I/O error on POST request for "http://localhost:8081/instances": Connect to localhost:8081 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect; nested exception is org.apache.http.conn.HttpHostConnectException: Connect to localhost:8081 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect. Further attempts are logged on DEBUG level
+21-03-2022 17:09:54.124  INFO NBBV033071 --- [MQ ShutdownHook] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-53968-1647893235847-0:1) is shutting down
+21-03-2022 17:09:54.127  INFO NBBV033071 --- [m://localhost#0] o.s.j.c.CachingConnectionFactory         : Encountered a JMSException - resetting the underlying JMS Connection
+javax.jms.JMSException: peer (vm://localhost#1) stopped.
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:56)
+	at org.apache.activemq.ActiveMQConnection.onAsyncException(ActiveMQConnection.java:1973)
+	at org.apache.activemq.ActiveMQConnection.onException(ActiveMQConnection.java:1992)
+	at org.apache.activemq.transport.TransportFilter.onException(TransportFilter.java:114)
+	at org.apache.activemq.transport.ResponseCorrelator.onException(ResponseCorrelator.java:126)
+	at org.apache.activemq.transport.TransportFilter.onException(TransportFilter.java:114)
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:233)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1199)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1165)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://localhost#1) stopped.
+	... 9 more
+21-03-2022 17:09:54.133  INFO NBBV033071 --- [MQ ShutdownHook] o.a.a.b.TransportConnector               : Connector vm://localhost stopped
+21-03-2022 17:09:54.133  WARN NBBV033071 --- [m://localhost#0] o.s.j.c.CachingConnectionFactory         : Could not close shared JMS Connection
+javax.jms.JMSException: Disposed due to prior exception
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:80)
+	at org.apache.activemq.ActiveMQConnection.syncSendPacket(ActiveMQConnection.java:1423)
+	at org.apache.activemq.ActiveMQConnection.close(ActiveMQConnection.java:691)
+	at org.springframework.jms.connection.SingleConnectionFactory.closeConnection(SingleConnectionFactory.java:502)
+	at org.springframework.jms.connection.SingleConnectionFactory.resetConnection(SingleConnectionFactory.java:390)
+	at org.springframework.jms.connection.CachingConnectionFactory.resetConnection(CachingConnectionFactory.java:223)
+	at org.springframework.jms.connection.SingleConnectionFactory.onException(SingleConnectionFactory.java:368)
+	at org.springframework.jms.connection.SingleConnectionFactory$AggregatedExceptionListener.onException(SingleConnectionFactory.java:716)
+	at org.apache.activemq.ActiveMQConnection$5.run(ActiveMQConnection.java:1980)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: Disposed due to prior exception
+	at org.apache.activemq.transport.ResponseCorrelator.onException(ResponseCorrelator.java:125)
+	at org.apache.activemq.transport.TransportFilter.onException(TransportFilter.java:114)
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:233)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1199)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1165)
+	... 3 more
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://localhost#1) stopped.
+	... 9 more
+21-03-2022 17:09:54.139  INFO NBBV033071 --- [MQ ShutdownHook] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-53968-1647893235847-0:1) uptime 2 minutes
+21-03-2022 17:09:54.139  INFO NBBV033071 --- [MQ ShutdownHook] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-53968-1647893235847-0:1) is shutdown
+21-03-2022 17:09:54.352  INFO NBBV033071 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+21-03-2022 17:09:54.354  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+21-03-2022 17:09:54.359  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+21-03-2022 17:09:59.156  INFO NBBV033071 --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.1.2.Final
+21-03-2022 17:09:59.193  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Starting FolhetoApplication using Java 11.0.11 on NBBV033071 with PID 19668 (C:\backEnd\target\classes started by erezende in C:\backEnd)
+21-03-2022 17:09:59.197  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : The following 1 profile is active: "dev"
+21-03-2022 17:10:00.898  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+21-03-2022 17:10:01.080  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 171 ms. Found 16 JPA repository interfaces.
+21-03-2022 17:10:02.514  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8082 (http)
+21-03-2022 17:10:02.529  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8082"]
+21-03-2022 17:10:02.530  INFO NBBV033071 --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+21-03-2022 17:10:02.530  INFO NBBV033071 --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.58]
+21-03-2022 17:10:02.859  INFO NBBV033071 --- [           main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+21-03-2022 17:10:02.859  INFO NBBV033071 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3565 ms
+21-03-2022 17:10:03.586  INFO NBBV033071 --- [           main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+21-03-2022 17:10:03.824  INFO NBBV033071 --- [           main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.5.Final
+21-03-2022 17:10:04.082  INFO NBBV033071 --- [           main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+21-03-2022 17:10:04.254  WARN NBBV033071 --- [           main] c.z.h.HikariConfig                       : HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+21-03-2022 17:10:04.254  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+21-03-2022 17:10:04.505  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+21-03-2022 17:10:04.529  INFO NBBV033071 --- [           main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+21-03-2022 17:10:05.892  INFO NBBV033071 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+21-03-2022 17:10:05.905  INFO NBBV033071 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+21-03-2022 17:10:07.136  WARN NBBV033071 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+21-03-2022 17:10:08.764  INFO NBBV033071 --- [           main] o.s.s.w.DefaultSecurityFilterChain       : Will not secure any request
+21-03-2022 17:10:11.917  INFO NBBV033071 --- [           main] o.s.b.a.e.w.EndpointLinksResolver        : Exposing 13 endpoint(s) beneath base path '/actuator'
+21-03-2022 17:10:12.007  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8082"]
+21-03-2022 17:10:12.041  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8082 (http) with context path ''
+21-03-2022 17:10:12.575  INFO NBBV033071 --- [           main] o.a.a.b.BrokerService                    : Loaded the Bouncy Castle security provider at position: 14
+21-03-2022 17:10:12.614  INFO NBBV033071 --- [           main] o.a.a.b.BrokerService                    : Using Persistence Adapter: MemoryPersistenceAdapter
+21-03-2022 17:10:12.776  INFO NBBV033071 --- [           main] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-54342-1647893412632-0:1) is starting
+21-03-2022 17:10:12.783  INFO NBBV033071 --- [           main] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-54342-1647893412632-0:1) started
+21-03-2022 17:10:12.783  INFO NBBV033071 --- [           main] o.a.a.b.BrokerService                    : For help or more information please see: http://activemq.apache.org
+21-03-2022 17:10:12.871  INFO NBBV033071 --- [           main] o.a.a.b.TransportConnector               : Connector vm://localhost started
+21-03-2022 17:10:12.942  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Started FolhetoApplication in 14.354 seconds (JVM running for 16.02)
+21-03-2022 17:10:12.952 ERROR NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Foi um erro proposital
+21-03-2022 17:10:20.223  WARN NBBV033071 --- [gistrationTask1] d.c.b.a.c.r.ApplicationRegistrator       : Failed to register application as Application(name=spring-boot-application, managementUrl=http://host.docker.internal:8082/actuator, healthUrl=http://host.docker.internal:8082/actuator/health, serviceUrl=http://host.docker.internal:8082/) at spring-boot-admin ([http://localhost:8081/instances]): I/O error on POST request for "http://localhost:8081/instances": Connect to localhost:8081 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect; nested exception is org.apache.http.conn.HttpHostConnectException: Connect to localhost:8081 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect. Further attempts are logged on DEBUG level
+21-03-2022 17:12:00.512  INFO NBBV033071 --- [nio-8082-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+21-03-2022 17:12:00.512  INFO NBBV033071 --- [nio-8082-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+21-03-2022 17:12:00.514  INFO NBBV033071 --- [nio-8082-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 1 ms
+21-03-2022 17:12:00.792  INFO NBBV033071 --- [nio-8082-exec-1] b.c.p.f.f.c.EmailMessageConverter        : outbound json='{"nome":"Ednezer","email":"godoirezende@gmail.com","telefone":"982819541","assunto":"Teste Por mensageria","mensagem":"Teste de envio de contato por mensageria","to":"pic.taguatinga.app@gmail.com"}'
+21-03-2022 17:12:00.803  INFO NBBV033071 --- [ntContainer#0-1] b.c.p.f.f.c.EmailMessageConverter        : inbound json='{"nome":"Ednezer","email":"godoirezende@gmail.com","telefone":"982819541","assunto":"Teste Por mensageria","mensagem":"Teste de envio de contato por mensageria","to":"pic.taguatinga.app@gmail.com"}'
+21-03-2022 19:08:39.161  INFO NBBV033071 --- [MQ ShutdownHook] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-54342-1647893412632-0:1) is shutting down
+21-03-2022 19:08:39.224  INFO NBBV033071 --- [m://localhost#0] o.s.j.c.CachingConnectionFactory         : Encountered a JMSException - resetting the underlying JMS Connection
+javax.jms.JMSException: peer (vm://localhost#1) stopped.
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:56)
+	at org.apache.activemq.ActiveMQConnection.onAsyncException(ActiveMQConnection.java:1973)
+	at org.apache.activemq.ActiveMQConnection.onException(ActiveMQConnection.java:1992)
+	at org.apache.activemq.transport.TransportFilter.onException(TransportFilter.java:114)
+	at org.apache.activemq.transport.ResponseCorrelator.onException(ResponseCorrelator.java:126)
+	at org.apache.activemq.transport.TransportFilter.onException(TransportFilter.java:114)
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:233)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1199)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1165)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://localhost#1) stopped.
+	... 9 more
+21-03-2022 19:08:39.260  INFO NBBV033071 --- [ntContainer#0-1] o.s.j.c.CachingConnectionFactory         : Encountered a JMSException - resetting the underlying JMS Connection
+javax.jms.IllegalStateException: The Session is closed
+	at org.apache.activemq.ActiveMQSession.checkClosed(ActiveMQSession.java:772)
+	at org.apache.activemq.ActiveMQSession.getTransacted(ActiveMQSession.java:541)
+	at jdk.internal.reflect.GeneratedMethodAccessor146.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.jms.connection.CachingConnectionFactory$CachedSessionInvocationHandler.invoke(CachingConnectionFactory.java:401)
+	at com.sun.proxy.$Proxy223.getTransacted(Unknown Source)
+	at org.springframework.jms.listener.AbstractMessageListenerContainer.commitIfNecessary(AbstractMessageListenerContainer.java:772)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.doReceiveAndExecute(AbstractPollingMessageListenerContainer.java:363)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.receiveAndExecute(AbstractPollingMessageListenerContainer.java:270)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.invokeListener(DefaultMessageListenerContainer.java:1237)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.executeOngoingLoop(DefaultMessageListenerContainer.java:1227)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.run(DefaultMessageListenerContainer.java:1120)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+21-03-2022 19:08:39.356  INFO NBBV033071 --- [MQ ShutdownHook] o.a.a.b.TransportConnector               : Connector vm://localhost stopped
+21-03-2022 19:08:39.357  WARN NBBV033071 --- [m://localhost#0] o.s.j.c.CachingConnectionFactory         : Could not close shared JMS Connection
+javax.jms.JMSException: Disposed due to prior exception
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:80)
+	at org.apache.activemq.ActiveMQConnection.syncSendPacket(ActiveMQConnection.java:1423)
+	at org.apache.activemq.ActiveMQConnection.close(ActiveMQConnection.java:691)
+	at org.springframework.jms.connection.SingleConnectionFactory.closeConnection(SingleConnectionFactory.java:502)
+	at org.springframework.jms.connection.SingleConnectionFactory.resetConnection(SingleConnectionFactory.java:390)
+	at org.springframework.jms.connection.CachingConnectionFactory.resetConnection(CachingConnectionFactory.java:223)
+	at org.springframework.jms.connection.SingleConnectionFactory.onException(SingleConnectionFactory.java:368)
+	at org.springframework.jms.connection.SingleConnectionFactory$AggregatedExceptionListener.onException(SingleConnectionFactory.java:716)
+	at org.apache.activemq.ActiveMQConnection$5.run(ActiveMQConnection.java:1980)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: Disposed due to prior exception
+	at org.apache.activemq.transport.ResponseCorrelator.onException(ResponseCorrelator.java:125)
+	at org.apache.activemq.transport.TransportFilter.onException(TransportFilter.java:114)
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:233)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1199)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1165)
+	... 3 more
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://localhost#1) stopped.
+	... 9 more
+21-03-2022 19:08:39.358  WARN NBBV033071 --- [ntContainer#0-1] o.s.j.l.DefaultMessageListenerContainer  : Setup of JMS message listener invoker failed for destination 'queueEmail' - trying to recover. Cause: The Session is closed
+21-03-2022 19:08:39.420  INFO NBBV033071 --- [MQ ShutdownHook] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-54342-1647893412632-0:1) uptime 1 hour 58 minutes
+21-03-2022 19:08:39.420  INFO NBBV033071 --- [MQ ShutdownHook] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-54342-1647893412632-0:1) is shutdown
+21-03-2022 19:08:39.655  INFO NBBV033071 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+21-03-2022 19:08:39.707  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+21-03-2022 19:08:39.714  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.

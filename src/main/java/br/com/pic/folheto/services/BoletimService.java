@@ -1,30 +1,26 @@
 package br.com.pic.folheto.services;
 
+import br.com.pic.folheto.dto.BoletimDTO;
+import br.com.pic.folheto.dto.IgrejaInfoDTO;
+import br.com.pic.folheto.dto.MissaoDTO;
+import br.com.pic.folheto.entidades.Aniversariante;
+import br.com.pic.folheto.entidades.Devocional;
+import br.com.pic.folheto.entidades.Missao;
+import br.com.pic.folheto.entidades.PequenoGrupo;
+import br.com.pic.folheto.services.exceptions.ObjectNotFoundException;
+import br.com.pic.folheto.util.DataUtil;
+import net.sf.jasperreports.engine.JRException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
-import javax.servlet.http.HttpServletResponse;
-
-import br.com.pic.folheto.entidades.Aniversariante;
-import br.com.pic.folheto.services.exceptions.ObjectNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import br.com.pic.folheto.dto.BoletimDTO;
-import br.com.pic.folheto.dto.IgrejaInfoDTO;
-import br.com.pic.folheto.dto.MissaoDTO;
-import br.com.pic.folheto.entidades.Devocional;
-import br.com.pic.folheto.entidades.Missao;
-import br.com.pic.folheto.entidades.PequenoGrupo;
-import br.com.pic.folheto.util.DataUtil;
-import net.sf.jasperreports.engine.JRException;
 
 @Service
 public class BoletimService {
@@ -50,18 +46,18 @@ public class BoletimService {
 	@Autowired
 	private GeraFolheto gerarBoletim;
 	
-	public void gerarBoletimSemanal(Integer idIgreja, HttpServletResponse response) throws ClassNotFoundException, JRException, SQLException, IOException {
-		DateTimeFormatter parser = DateTimeFormatter.ofPattern("d 'de' MMMM 'de' yyyy HH:mm").withLocale(new Locale("pt", "br"));
-		LocalDateTime dataHoje = LocalDateTime.now();
+	public void gerarBoletimSemanal(final Integer idIgreja, final HttpServletResponse response) throws ClassNotFoundException, JRException, SQLException, IOException {
+		final DateTimeFormatter parser = DateTimeFormatter.ofPattern("d 'de' MMMM 'de' yyyy HH:mm").withLocale(new Locale("pt", "br"));
+		final LocalDateTime dataHoje = LocalDateTime.now();
 
-		String dataBoletimGerado = DataUtil.obterDataGeracaoBoletim(dataHoje.toLocalDate());
-		LocalDateTime dataBoletimInicio = LocalDateTime.parse(dataBoletimGerado + " 00:00",parser);
+		final String dataBoletimGerado = DataUtil.obterDataGeracaoBoletim(dataHoje.toLocalDate());
+		final LocalDateTime dataBoletimInicio = DataUtil.converterStringLocalDateTime(dataBoletimGerado + " 00:00","d 'de' MMMM 'de' yyyy HH:mm");
 			
-		LocalDateTime dataLimiteBusca = LocalDateTime.parse(dataBoletimGerado + " 11:59",parser).plusDays(6);
+		final LocalDateTime dataLimiteBusca = DataUtil.converterStringLocalDateTime(dataBoletimGerado + " 11:59","d 'de' MMMM 'de' yyyy HH:mm").plusDays(6);
 		
-		BoletimDTO boletim = new BoletimDTO();
-		
-		IgrejaInfoDTO igreja = preencherIgreja(idIgreja, boletim);
+		final BoletimDTO boletim = BoletimDTO.builder().build();
+
+		final IgrejaInfoDTO igreja = preencherIgreja(idIgreja, boletim);
 		
 		boletim.setDataBoletim(dataBoletimGerado);
 		
@@ -79,16 +75,16 @@ public class BoletimService {
 		
 	}
 
-	private void preencherPgs(Integer idIgreja, BoletimDTO boletim) {
-		List<PequenoGrupo> pgs = pgService.buscarPorIgreja(idIgreja);
+	private void preencherPgs(final Integer idIgreja, final BoletimDTO boletim) {
+		final List<PequenoGrupo> pgs = pgService.buscarPorIgreja(idIgreja);
 		if(pgs == null) {
 			throw new ObjectNotFoundException("Não Existem PG´s. Necessário cadastrar. " + PequenoGrupo.class.getName());
 		}
 		
-		List<String> pgsQuartaValores = new ArrayList<>();
-		List<String> pgsQuintaValores = new ArrayList<>();
+		final List<String> pgsQuartaValores = new ArrayList<>();
+		final List<String> pgsQuintaValores = new ArrayList<>();
 		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH");
+		final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH");
 		
 		for(PequenoGrupo pg: pgs) {
 			if(pg.getDiaSemanaAtividade().equals("Quarta-Feira")) {
@@ -110,28 +106,29 @@ public class BoletimService {
 		
 	}
 
-	private void preencherAniversariantes(Integer idIgreja, LocalDateTime dataHoje, LocalDateTime dataLimiteBusca,
-			BoletimDTO boletim) {
-		List<Aniversariante> aniversariantes = aniversarianteService.buscarAniversariantesPorIgrejaEDataNascimento(idIgreja,
+	private void preencherAniversariantes(final Integer idIgreja, final LocalDateTime dataHoje, final LocalDateTime dataLimiteBusca,
+		final BoletimDTO boletim) {
+		final List<Aniversariante> aniversariantes = aniversarianteService.buscarAniversariantesPorIgrejaEDataNascimento(idIgreja,
 				 dataHoje.toLocalDate(), dataLimiteBusca.toLocalDate());
-		List<String> aniversariantesString = new ArrayList<>();
+		final List<String> aniversariantesString = new ArrayList<>();
 		for(Aniversariante aniversariante: aniversariantes) {
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM");
+			final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM");
 			aniversariantesString.add(aniversariante.getDataNascimento().format(formatter) +" - "+ aniversariante.getNome());
 		}
 		boletim.setAniversariantes(aniversariantesString);
 	}
 
-	private void preencherTextosDevocionais(Integer idIgreja, LocalDateTime dataHoje, LocalDateTime dataLimiteBusca,
-			BoletimDTO boletim) {
-		List<Devocional> devocionais = devocionalService.buscarPorIgrejaEDataCriacao(idIgreja, dataHoje.toLocalDate(), dataLimiteBusca.toLocalDate());
+	private void preencherTextosDevocionais(final Integer idIgreja,final LocalDateTime dataHoje,final LocalDateTime dataLimiteBusca,
+			final BoletimDTO boletim) {
+		final List<Devocional> devocionais = devocionalService.buscarPorIgrejaEDataCriacao(idIgreja, dataHoje.toLocalDate(), dataLimiteBusca.toLocalDate());
 		
 		if(devocionais == null) {
 			throw new ObjectNotFoundException("Não Existe devocionais. Necessário cadastrar para este período. " + Devocional.class.getName());
 		}
 		
-		List<String> devocionaisString = new ArrayList<>();
+		final List<String> devocionaisString = new ArrayList<>();
 		int numeracao = 1;
+
 		for(Devocional devocional: devocionais) {
 			devocionaisString.add(numeracao + ") " + devocional.getReferencia() + " - " + devocional.getDescricao());
 			numeracao++;
@@ -139,45 +136,27 @@ public class BoletimService {
 		boletim.setTextosDevocionais(devocionaisString);
 	}
 
-	private IgrejaInfoDTO preencherIgreja(Integer idIgreja, BoletimDTO boletim) {
-		IgrejaInfoDTO igreja = igrejaService.findById(idIgreja);
+	private IgrejaInfoDTO preencherIgreja(final Integer idIgreja,final BoletimDTO boletim) {
+		final IgrejaInfoDTO igreja = igrejaService.findById(idIgreja);
 		boletim.setIgreja(igreja);
 		return igreja;
 	}
 
-	private void preencherMissao(LocalDateTime dataHoje, LocalDateTime dataLimiteBusca, BoletimDTO boletim,
-			IgrejaInfoDTO igreja) {
-		Missao missao = missaoService.buscarMissaoPorIdIgrejaEDataCriado(igreja.getId(), dataHoje, dataLimiteBusca );
+	private void preencherMissao(final LocalDateTime dataHoje,final LocalDateTime dataLimiteBusca, final BoletimDTO boletim,
+			final IgrejaInfoDTO igreja) {
+		final Missao missao = missaoService.buscarMissaoPorIdIgrejaEDataCriado(igreja.getId(), dataHoje, dataLimiteBusca );
+
 		if(missao == null) {
 			throw new ObjectNotFoundException("Não Existe texto de Missão. Necessário cadastrar para este período. " + Missao.class.getName());
 		}
-		boletim.setMissao(new MissaoDTO(missao));
-	}
-	
-	public String obterDataGeracaoBoletim(LocalDate dataHoje) {
-		DateTimeFormatter parser = DateTimeFormatter.ofPattern("d 'de' MMMM 'de' yyyy").withLocale(new Locale("pt", "br"));
-		
-		DayOfWeek dayOfWeek = dataHoje.getDayOfWeek();
-		
-		dataHoje = validarEObterDataDomingo(dataHoje, dayOfWeek);
-		
-		return dataHoje.format(parser);
+
+		boletim.setMissao(MissaoDTO.builder()
+				.id(missao.getId())
+				.mensagem(missao.getMensagem())
+				.autor(missao.getAutor())
+				.titulo(missao.getTitulo())
+				.build());
 	}
 
-	private LocalDate validarEObterDataDomingo(LocalDate dataHoje, DayOfWeek dayOfWeek) {
-		if(dayOfWeek== DayOfWeek.MONDAY) {
-			dataHoje = LocalDate.now().minusDays(1);
-		} else if(dayOfWeek== DayOfWeek.TUESDAY) {
-			dataHoje = dataHoje.minusDays(2);
-		} else if(dayOfWeek== DayOfWeek.WEDNESDAY) {
-			dataHoje = dataHoje.minusDays(3);
-		} else if(dayOfWeek== DayOfWeek.THURSDAY) {
-			dataHoje = dataHoje.minusDays(4);
-		} else if(dayOfWeek== DayOfWeek.FRIDAY) {
-			dataHoje = dataHoje.minusDays(5);
-		} else if(dayOfWeek== DayOfWeek.SATURDAY) {
-			dataHoje = dataHoje.minusDays(6);
-		}
-		return dataHoje;
-	}
+
 }

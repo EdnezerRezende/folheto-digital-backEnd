@@ -1,9 +1,14 @@
 package br.com.pic.folheto.dto;
 
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 
-import br.com.pic.folheto.entidades.Estado;
-
+@Data
+@Builder
+@NoArgsConstructor
 public class EstadoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -11,38 +16,4 @@ public class EstadoDTO implements Serializable {
 	
 	private String nome;
 
-	
-	public EstadoDTO() {
-	}
-
-	public EstadoDTO(Integer id, String nome) {
-		super();
-		this.id = id;
-		this.nome = nome;
-	}
-	
-
-	public EstadoDTO(Estado estado) {
-		super();
-		this.id = estado.getId();
-		this.nome = estado.getNome();
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
-	
 }

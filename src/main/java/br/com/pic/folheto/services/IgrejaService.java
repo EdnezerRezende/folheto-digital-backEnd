@@ -19,10 +19,17 @@ public class IgrejaService {
 		return igrejaDao.findAllByOrderByNome();
 	}
 	
-	public IgrejaInfoDTO findById(Integer id) {
-		Igreja igreja = igrejaDao.findById(id).get();
-		
-		return new IgrejaInfoDTO(igreja);
+	public IgrejaInfoDTO findById(final Integer id) {
+		final Igreja igreja = igrejaDao.findById(id).get();
+
+		return IgrejaInfoDTO.builder()
+				.id(igreja.getId())
+				.cnpj(igreja.getCnpj())
+				.email(igreja.getEmail())
+				.endereco(igreja.getEndereco())
+				.nome(igreja.getNome())
+				.telefones(igreja.getTelefones())
+				.build();
 	}
 	
 	

@@ -2,7 +2,7 @@ package br.com.pic.folheto.config;
 
 import java.text.ParseException;
 
-import br.com.pic.folheto.services.EmailService;
+import br.com.pic.folheto.services.interfaces.EmailInterfaceService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,7 +27,7 @@ public class ProdConfig {
 	}
 	
 	@Bean
-	public EmailService emailService() {
+	public EmailInterfaceService emailService() {
 		return new SmtpEmailService();
 	}
 	

@@ -1,24 +1,22 @@
 package br.com.pic.folheto.services;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-
-import javax.transaction.Transactional;
-
-import br.com.pic.folheto.respositories.AgendaEventoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import br.com.pic.folheto.dto.AgendaEventoNewDTO;
 import br.com.pic.folheto.entidades.AgendaEvento;
 import br.com.pic.folheto.entidades.Igreja;
+import br.com.pic.folheto.respositories.AgendaEventoRepository;
 import br.com.pic.folheto.respositories.IgrejaRepository;
+import br.com.pic.folheto.util.DataUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class AgendaEventoService {
 
+	public static final long YEARS_TO_ADD = 30L;
 	@Autowired
 	private AgendaEventoRepository agendaEventoDao;
 
@@ -29,13 +27,13 @@ public class AgendaEventoService {
 		return agendaEventoDao.findAllByOrderByDiaSemanaAtividade();
 	}
 
-	public List<AgendaEvento> buscarPorIgreja(Integer idIgreja) {
+	public List<AgendaEvento> buscarPorIgreja(final Integer idIgreja) {
 		return agendaEventoDao.findByIgrejaId(idIgreja);
 	}
 
 	@Transactional
-	public AgendaEvento salvar(AgendaEventoNewDTO dto) {
-		Boolean existe = false;
+	public AgendaEvento salvar(final AgendaEventoNewDTO dto) {
+		Boolean existe;
 
 		if (dto.getId() == null) {
 			existe = agendaEventoDao.existsByTituloAndDiaSemanaAtividade(dto.getTitulo(), dto.getDiaSemanaAtividade());
@@ -45,21 +43,28 @@ public class AgendaEventoService {
 			}
 		}
 
-		Igreja igreja = igrejaDao.findById(Integer.parseInt(dto.getIdIgreja())).get();
+		final Igreja igreja = igrejaDao.findById(Integer.parseInt(dto.getIdIgreja())).get();
 
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		if(!dto.getIsEvento()) {
 			dto.setDataInicio(LocalDate.now().toString());
-			dto.setDataFim(LocalDate.now().plusYears(30l).toString());
+			dto.setDataFim(LocalDate.now().plusYears(YEARS_TO_ADD).toString());
 		}
 		
-		AgendaEvento agenda = new AgendaEvento(dto.getId(), dto.getTitulo(), igreja, dto.getDiaSemanaAtividade(),
-				LocalTime.parse(dto.getHoraAtividade()), dto.getIsEvento(), dto.getDescricao(), LocalDate.parse(dto.getDataInicio(), formatter), LocalDate.parse(dto.getDataFim(), formatter), dto.getLink());
-
-		return agendaEventoDao.save(agenda);
+		return agendaEventoDao.save(AgendaEvento.builder()
+				.id(dto.getId())
+				.titulo(dto.getTitulo())
+				.igreja(igreja)
+				.diaSemanaAtividade(dto.getDiaSemanaAtividade())
+				.horaAtividade(DataUtil.converterStringParaLocalTimeFormatado(dto.getHoraAtividade()))
+				.isEvento(dto.getIsEvento())
+				.descricao(dto.getDescricao())
+				.dataInicio(DataUtil.converterStringLocalDate(dto.getDataInicio(), "yyyy-MM-dd"))
+				.dataFim(DataUtil.converterStringLocalDate(dto.getDataFim(), "yyyy-MM-dd"))
+				.link(dto.getLink())
+				.build());
 	}
 
-	public void deletar(Integer id) {
+	public void deletar(final Integer id) {
 		agendaEventoDao.deleteById(id);
 	}
 }

@@ -1,9 +1,14 @@
 package br.com.pic.folheto.dto;
 
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 
-import br.com.pic.folheto.entidades.Cidade;
-
+@Data
+@Builder
+@NoArgsConstructor
 public class CidadeDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -11,37 +16,5 @@ public class CidadeDTO implements Serializable {
 	
 	private String nome;
 
-	
-	public CidadeDTO() {
-	}
 
-	public CidadeDTO(Integer id, String nome) {
-		super();
-		this.id = id;
-		this.nome = nome;
-	}
-	
-	public CidadeDTO(Cidade estado) {
-		super();
-		this.id = estado.getId();
-		this.nome = estado.getNome();
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
-	
 }

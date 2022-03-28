@@ -1,21 +1,19 @@
 package br.com.pic.folheto.services;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.transaction.Transactional;
-
-import br.com.pic.folheto.respositories.OfertaServicoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import br.com.pic.folheto.dto.OfertaServicoDTO;
 import br.com.pic.folheto.dto.OfertaServicoNewDTO;
 import br.com.pic.folheto.entidades.Igreja;
 import br.com.pic.folheto.entidades.OfertaServico;
 import br.com.pic.folheto.respositories.IgrejaRepository;
+import br.com.pic.folheto.respositories.OfertaServicoRepository;
+import br.com.pic.folheto.util.DataUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class OfertaServicoService {
@@ -27,13 +25,12 @@ public class OfertaServicoService {
 	private IgrejaRepository igrejaDao;
 
 	public List<OfertaServicoDTO> buscarTodos() {
-		List<OfertaServico> resultado = ofertaServicoDao.findAllByOrderByDataCriacaoDesc();
-		List<OfertaServicoDTO> dto = new ArrayList<>();
+		final List<OfertaServico> resultado = ofertaServicoDao.findAllByOrderByDataCriacaoDesc();
+		final List<OfertaServicoDTO> dto = new ArrayList<>();
 		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		resultado.stream().forEach(oferta -> {
 			OfertaServicoDTO ofertaDto = new OfertaServicoDTO();
-			ofertaDto.setDataCriacao(oferta.getDataCriacao().format(formatter));
+			ofertaDto.setDataCriacao(DataUtil.converterLocalDateForStringWithFormatter(oferta.getDataCriacao(), "dd/MM/yyyy"));
 			ofertaDto.setDescricao(oferta.getDescricao());
 			ofertaDto.setEmailServico(oferta.getEmailServico());
 			ofertaDto.setEndereco(oferta.getEndereco());
@@ -48,24 +45,32 @@ public class OfertaServicoService {
 		return dto;
 	}
 
-	public List<OfertaServico> buscarPorIgreja(Integer idIgreja) {
+	public List<OfertaServico> buscarPorIgreja(final Integer idIgreja) {
 		return ofertaServicoDao.findByIgrejaId(idIgreja);
 	}
 
 	@Transactional
-	public OfertaServico salvar(OfertaServicoNewDTO dto) {
-		Igreja igreja = igrejaDao.findById(Integer.parseInt(dto.getIdIgreja())).get();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		
-		OfertaServico servico = new OfertaServico(dto.getId(), dto.getNome() ,igreja, dto.getDescricao() ,
-				dto.getEmailServico(), dto.getInstagram(), dto.getFacebook(), dto.getEndereco(),
-				dto.getDataCriacao() != null ? LocalDate.parse(dto.getDataCriacao(),formatter):LocalDate.now());
+	public OfertaServico salvar(final OfertaServicoNewDTO dto) {
+		final Igreja igreja = igrejaDao.findById(Integer.parseInt(dto.getIdIgreja())).get();
 
-		servico.getTelefones().addAll(dto.getTelefones());
-		return ofertaServicoDao.save(servico);
+		final LocalDate dataCriacao = dto.getDataCriacao() != null ?
+				DataUtil.converterStringLocalDate(dto.getDataCriacao(), "dd/MM/yyyy")
+				: LocalDate.now();
+
+		return ofertaServicoDao.save(OfertaServico.builder()
+				.id(dto.getId())
+				.nome(dto.getNome())
+				.igreja(igreja)
+				.descricao(dto.getDescricao())
+				.emailServico(dto.getEmailServico())
+				.instagram(dto.getInstagram())
+				.endereco(dto.getEndereco())
+				.dataCriacao(dataCriacao)
+				.telefones(dto.getTelefones())
+				.build());
 	}
 
-	public void deletar(Integer id) {
+	public void deletar(final Integer id) {
 		ofertaServicoDao.deleteById(id);
 	}
 }

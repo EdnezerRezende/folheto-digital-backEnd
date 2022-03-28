@@ -18,9 +18,8 @@ public class S3Config {
 	
 	@Bean
 	public AmazonS3 s3client() {
-		BasicAWSCredentials awsCred = new BasicAWSCredentials(System.getenv("S3_KEY"), System.getenv("S3_SECRET"));
-		AmazonS3 s3client = AmazonS3ClientBuilder.standard().withRegion(Regions.fromName(region))
-							.withCredentials(new AWSStaticCredentialsProvider(awsCred)).build();
-		return s3client;
+		final BasicAWSCredentials awsCred = new BasicAWSCredentials(System.getenv("S3_KEY"), System.getenv("S3_SECRET"));
+		return AmazonS3ClientBuilder.standard().withRegion(Regions.fromName(region))
+				.withCredentials(new AWSStaticCredentialsProvider(awsCred)).build();
 	}
 }

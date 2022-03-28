@@ -25,12 +25,12 @@ import javax.jms.Queue;
 public class FolhetoApplication implements ApplicationRunner {
 	private static final Logger logger = LogManager.getLogger(FolhetoApplication.class);
 
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		SpringApplication.run(FolhetoApplication.class, args);
 	}
 
 	@Override
-	public void run(ApplicationArguments args) throws Exception {
+	public void run(final ApplicationArguments args) throws Exception {
 	}
 
 	@Bean

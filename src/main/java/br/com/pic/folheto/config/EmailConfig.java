@@ -11,7 +11,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 public class EmailConfig {
 
 	 @Bean
-	    public JavaMailSender getJavaMailSender() 
+	public JavaMailSender getJavaMailSender()
 	    {
 	        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 	        mailSender.setHost("smtp.gmail.com");
@@ -26,7 +26,7 @@ public class EmailConfig {
 	        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 	        props.put("mail.transport.protocol", "smtp");
 	        props.put("mail.smtp.starttls.enable", "true");
-	        props.put("mail.debug", "true");
+	        props.put("mail.debug", System.getenv("DEBUG_EMAIL"));
 	          
 
 	        return mailSender;

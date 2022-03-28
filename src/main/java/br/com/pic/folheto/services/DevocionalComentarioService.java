@@ -26,39 +26,43 @@ public class DevocionalComentarioService {
 	@Autowired
 	private MembroRepository membroRepository;
 
-	Base64 base64 = new Base64();
+	final Base64 base64 = new Base64();
 	
-	public DevocionalComentario buscarPorReferenciaEMembro(Integer idMembro, Integer IdReferencia) {
-		DevocionalComentario comentario = devocionalComentarioDao.findByMembroIdAndReferenciaIdAndIsDeletado(idMembro, IdReferencia, Boolean.FALSE);
+	public DevocionalComentario buscarPorReferenciaEMembro(final Integer idMembro, final Integer IdReferencia) {
+		final DevocionalComentario comentario = devocionalComentarioDao.findByMembroIdAndReferenciaIdAndIsDeletado(idMembro, IdReferencia, Boolean.FALSE);
 		if(comentario != null) {
-			if (comentario.getChamouAtencao() != null) {
-				comentario.setChamouAtencao(new String(base64.decode(comentario.getChamouAtencao())));
-			}
-			if (comentario.getoQueAprendi() != null) {
-				comentario.setoQueAprendi(new String(base64.decode(comentario.getoQueAprendi())));
-			}
-			if (comentario.getSobreDeus() != null) {
-				comentario.setSobreDeus(new String(base64.decode(comentario.getSobreDeus())));
-			}
-			if (comentario.getSobreHumanidade() != null) {
-				comentario.setSobreHumanidade(new String(base64.decode(comentario.getSobreHumanidade())));
-			}
-			
+			desicriptografarComentario(comentario);
+
 		}
 		
 		return comentario;
 	}
 
-	@Transactional
-	public DevocionalComentario salvar(DevocionalComentarioNewDTO dto) {
+	private void desicriptografarComentario(final DevocionalComentario comentario) {
+		if (comentario.getChamouAtencao() != null) {
+			comentario.setChamouAtencao(new String(base64.decode(comentario.getChamouAtencao())));
+		}
+		if (comentario.getOQueAprendi() != null) {
+			comentario.setOQueAprendi(new String(base64.decode(comentario.getOQueAprendi())));
+		}
+		if (comentario.getSobreDeus() != null) {
+			comentario.setSobreDeus(new String(base64.decode(comentario.getSobreDeus())));
+		}
+		if (comentario.getSobreHumanidade() != null) {
+			comentario.setSobreHumanidade(new String(base64.decode(comentario.getSobreHumanidade())));
+		}
+	}
 
-		Referencia referencia = referenciaRepository.findById(dto.getReferencia()).get();
+	@Transactional
+	public DevocionalComentario salvar(final DevocionalComentarioNewDTO dto) {
+
+		final Referencia referencia = referenciaRepository.findById(dto.getReferencia()).get();
 		
-		Membro membro = membroRepository.findById(dto.getIdMembro()).get();
+		final Membro membro = membroRepository.findById(dto.getIdMembro()).get();
 		
-		DevocionalComentario comentarioAtual = devocionalComentarioDao.findByMembroIdAndReferenciaIdAndIsDeletado(dto.getIdMembro(), dto.getReferencia(), Boolean.FALSE);
+		final DevocionalComentario comentarioAtual = devocionalComentarioDao.findByMembroIdAndReferenciaIdAndIsDeletado(dto.getIdMembro(), dto.getReferencia(), Boolean.FALSE);
 		
-		DevocionalComentario comentario = new DevocionalComentario(dto, referencia, membro);
+		final DevocionalComentario comentario = new DevocionalComentario(dto, referencia, membro);
 		
 		
 		if (comentarioAtual != null ) {
@@ -66,11 +70,19 @@ public class DevocionalComentarioService {
 		}
 
 		comentario.setId(null);
+		criptografarComentario(comentario);
+
+		return devocionalComentarioDao.save(comentario);
+	}
+
+	private void criptografarComentario(final DevocionalComentario comentario) {
+
+
 		if (comentario.getChamouAtencao() != null) {
 			comentario.setChamouAtencao(base64.encodeAsString(comentario.getChamouAtencao().getBytes()));
 		}
-		if (comentario.getoQueAprendi() != null) {
-			comentario.setoQueAprendi(base64.encodeAsString(comentario.getoQueAprendi().getBytes()));
+		if (comentario.getOQueAprendi() != null) {
+			comentario.setOQueAprendi(base64.encodeAsString(comentario.getOQueAprendi().getBytes()));
 		}
 		if (comentario.getSobreDeus() != null) {
 			comentario.setSobreDeus(base64.encodeAsString(comentario.getSobreDeus().getBytes()));
@@ -78,14 +90,9 @@ public class DevocionalComentarioService {
 		if (comentario.getSobreHumanidade() != null) {
 			comentario.setSobreHumanidade(base64.encodeAsString(comentario.getSobreHumanidade().getBytes()));
 		}
-		
-		
-		return devocionalComentarioDao.save(comentario);
 	}
 
-	public void deletar(Integer id) {
-		DevocionalComentario comentario = devocionalComentarioDao.findById(id).get();
-		comentario.setIsDeletado(Boolean.TRUE);
-		devocionalComentarioDao.saveAndFlush(comentario);
+	public void deletar(final Integer id) {
+		devocionalComentarioDao.deleteById(id);
 	}
 }

@@ -6,6 +6,7 @@ import br.com.pic.folheto.entidades.Membro;
 import br.com.pic.folheto.filas.converters.EmailMessageConverter;
 import br.com.pic.folheto.respositories.MembroRepository;
 import br.com.pic.folheto.services.exceptions.ObjectNotFoundException;
+import br.com.pic.folheto.services.interfaces.EmailInterfaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -24,7 +25,7 @@ public class AuthService {
 	private BCryptPasswordEncoder pe;
 	
 	@Autowired
-	private EmailService emailService;
+	private EmailInterfaceService emailService;
 
 	@Autowired
 	private JmsMessagingTemplate jmsMessagingTemplate;
@@ -53,7 +54,7 @@ public class AuthService {
 
 		membroRepository.save(membro);
 
-		this.jmsMessagingTemplate.convertAndSend("queueNewPasswordEmail", membro);
+		this.jmsMessagingTemplate.convertAndSend("queueEmail", membro);
 	}
 
 	public void trocaSenha(final NewPasswordDTO dto) throws JMSException {

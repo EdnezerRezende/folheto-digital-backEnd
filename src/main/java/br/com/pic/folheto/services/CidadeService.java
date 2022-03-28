@@ -14,7 +14,7 @@ public class CidadeService {
 	@Autowired
 	private CidadeRepository cidadeDao;
 	
-	public List<Cidade> findByEstado(Integer estadoId) {
+	public List<Cidade> findByEstado(final Integer estadoId) {
 		return cidadeDao.findCidades(estadoId);
 	}
 	

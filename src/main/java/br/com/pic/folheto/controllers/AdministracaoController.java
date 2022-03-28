@@ -29,12 +29,12 @@ public class AdministracaoController {
 		final byte[] arquivo = Files.readAllBytes( Paths.get("./logs/logs_pic.log") );
 
 		final String labelFile = "Log_PIC_"+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy_HH:mm:ss")) + ".txt";
-		HttpHeaders httpHeaders = new HttpHeaders();
+		final HttpHeaders httpHeaders = new HttpHeaders();
 
 		httpHeaders.add("content-disposition", "attachment;filename=" +labelFile);
 		httpHeaders.add("content-type", "text/plain");
 
-		HttpEntity<byte[]> entity = new HttpEntity<byte[]>( arquivo, httpHeaders);
+		final HttpEntity<byte[]> entity = new HttpEntity<byte[]>( arquivo, httpHeaders);
 
 		return ResponseEntity.ok().headers(httpHeaders).body(entity.getBody());
 	}

@@ -1,13 +1,19 @@
 package br.com.pic.folheto.entidades;
 
-import java.io.Serializable;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity
+@Data
+@Builder
+@NoArgsConstructor
 public class Abreviacao  implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -18,26 +24,5 @@ public class Abreviacao  implements Serializable {
 	private String pt;
 	private String en;
 	
-	public Abreviacao() {
-		super();
-	}
-	public Abreviacao(String pt, String en) {
-		super();
-		this.pt = pt;
-		this.en = en;
-	}
-	public String getPt() {
-		return pt;
-	}
-	public void setPt(String pt) {
-		this.pt = pt;
-	}
-	public String getEn() {
-		return en;
-	}
-	public void setEn(String en) {
-		this.en = en;
-	}
-	
-	
+
 }

@@ -3,7 +3,7 @@ package br.com.pic.folheto.filas;
 import br.com.pic.folheto.dto.ContatoDTO;
 import br.com.pic.folheto.entidades.Membro;
 import br.com.pic.folheto.entidades.MenssagemEmail;
-import br.com.pic.folheto.services.EmailService;
+import br.com.pic.folheto.services.interfaces.EmailInterfaceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ public class ListernerEmail {
     private static final Logger LOG = LoggerFactory.getLogger(ListernerEmail.class);
 
     @Autowired
-    private EmailService emailService;
+    private EmailInterfaceService emailService;
 
 
     @JmsListener(destination = "queueEmail")

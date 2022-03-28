@@ -32,7 +32,7 @@
               smtpProtocol="smtps"
               smtpSSL="true"
               smtpUsername="pic.taguatinga.app@gmail.com"
-              smtpPassword="picTaguatinga"
+              smtpPassword="${env:SENHA_EMAIL}"
               bufferSize="1">
             <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout>

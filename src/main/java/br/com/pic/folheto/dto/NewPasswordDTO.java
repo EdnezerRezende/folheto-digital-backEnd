@@ -1,12 +1,17 @@
 package br.com.pic.folheto.dto;
 
 
-import java.io.Serializable;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
 
-
+@Data
+@Builder
+@NoArgsConstructor
 public class NewPasswordDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -16,25 +21,5 @@ public class NewPasswordDTO implements Serializable {
 	
 	@NotEmpty(message="Preenchimento obrigatório")
 	private String password;
-	
-	public NewPasswordDTO() {
-	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	
 }

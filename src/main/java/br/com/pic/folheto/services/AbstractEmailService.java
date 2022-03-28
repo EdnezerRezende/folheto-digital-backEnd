@@ -4,6 +4,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 import br.com.pic.folheto.dto.ContatoDTO;
+import br.com.pic.folheto.services.interfaces.EmailInterfaceService;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,7 +17,7 @@ import org.thymeleaf.context.Context;
 
 import br.com.pic.folheto.entidades.Membro;
 
-public abstract class AbstractEmailService implements EmailService {
+public abstract class AbstractEmailService implements EmailInterfaceService {
 	@Value("${default.sender}")
 	private String sender;
 	
@@ -30,19 +31,19 @@ public abstract class AbstractEmailService implements EmailService {
 	private BCryptPasswordEncoder pe;
 	
 	@Override
-	public void sendContato(ContatoDTO contato) {
-		SimpleMailMessage sm = prepareSimpleMailMessageFromContato(contato);
+	public void sendContato(final ContatoDTO contato) {
+		final SimpleMailMessage sm = prepareSimpleMailMessageFromContato(contato);
 		sendEmail(sm);
 	}
 	
 	@Override
-	public void sendNewPassWord(Membro membro, String senha) {
-		SimpleMailMessage sm = prepareSimpleMailMessageFromMembro(membro, senha);
+	public void sendNewPassWord(final Membro membro,final String senha) {
+		final SimpleMailMessage sm = prepareSimpleMailMessageFromMembro(membro, senha);
 		sendEmail(sm);
 	}
 
-	protected SimpleMailMessage prepareSimpleMailMessageFromContato(ContatoDTO contato) {
-		SimpleMailMessage sm = new SimpleMailMessage();
+	protected SimpleMailMessage prepareSimpleMailMessageFromContato(final ContatoDTO contato) {
+		final SimpleMailMessage sm = new SimpleMailMessage();
 		sm.setTo(contato.getTo());
 		sm.setCc(contato.getEmail());
 		sm.setFrom(sender);
@@ -52,8 +53,8 @@ public abstract class AbstractEmailService implements EmailService {
 		return sm;
 	}
 	
-	protected SimpleMailMessage prepareSimpleMailMessageFromMembro(Membro membro, String senha) {
-		SimpleMailMessage sm = new SimpleMailMessage();
+	protected SimpleMailMessage prepareSimpleMailMessageFromMembro(final Membro membro, final String senha) {
+		final SimpleMailMessage sm = new SimpleMailMessage();
 		sm.setTo(membro.getEmail());
 		sm.setFrom(sender);
 		sm.setSubject("PIC Boletim - Gerar nova Senha");
@@ -62,15 +63,15 @@ public abstract class AbstractEmailService implements EmailService {
 		return sm;
 	}
 	
-	protected String htmlFromTemplateContato(ContatoDTO obj) {
-		Context context = new Context();
+	protected String htmlFromTemplateContato(final ContatoDTO obj) {
+		final Context context = new Context();
 		context.setVariable("membro", obj);
 		return templateEngine.process("email/envioContato", context);
 		
 	}
 	
-	protected String htmlFromTemplateRecuperacaoSenha(Membro obj, String senha) {
-		Context context = new Context();
+	protected String htmlFromTemplateRecuperacaoSenha(final Membro obj, final String senha) {
+		final Context context = new Context();
 		context.setVariable("membro", obj);
 		context.setVariable("senha", senha);
 		return templateEngine.process("email/envioSenhaEmail", context);
@@ -78,8 +79,8 @@ public abstract class AbstractEmailService implements EmailService {
 	}
 	
 	@Override
-	public void sendContatoHtml(ContatoDTO contato) {
-		MimeMessage mm;
+	public void sendContatoHtml(final ContatoDTO contato) {
+		final MimeMessage mm;
 		try {
 			mm = prepareMimeMessageFromContato(contato);
 			sendEmailHtml(mm);
@@ -88,9 +89,9 @@ public abstract class AbstractEmailService implements EmailService {
 		}
 	}
 
-	protected MimeMessage prepareMimeMessageFromContato(ContatoDTO contato) throws MessagingException {
-		MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-		MimeMessageHelper mmh = new MimeMessageHelper(mimeMessage, true);
+	protected MimeMessage prepareMimeMessageFromContato(final ContatoDTO contato) throws MessagingException {
+		final MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+		final MimeMessageHelper mmh = new MimeMessageHelper(mimeMessage, true);
 		mmh.setTo(contato.getTo());
 		mmh.setCc(contato.getEmail());
 		mmh.setFrom(sender);
@@ -100,9 +101,9 @@ public abstract class AbstractEmailService implements EmailService {
 		return mimeMessage;
 	}
 	
-	protected MimeMessage prepareMimeMessageFromMembro(Membro membro, String senha) throws MessagingException {
-		MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-		MimeMessageHelper mmh = new MimeMessageHelper(mimeMessage, true);
+	protected MimeMessage prepareMimeMessageFromMembro(final Membro membro,final String senha) throws MessagingException {
+		final MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+		final MimeMessageHelper mmh = new MimeMessageHelper(mimeMessage, true);
 		mmh.setTo(membro.getEmail());
 		mmh.setFrom(sender);
 		mmh.setSubject("PIC Boletim - Gerar nova Senha");
@@ -112,8 +113,8 @@ public abstract class AbstractEmailService implements EmailService {
 	}
 	
 	
-	public void sendNewPasswordEmail(Membro membro) {
-		MimeMessage mm;
+	public void sendNewPasswordEmail(final Membro membro) {
+		final MimeMessage mm;
 		try {
 			mm = prepareMimeMessageFromMembro(membro, membro.getSenha());
 			sendEmailHtml(mm);

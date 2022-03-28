@@ -1,5 +1,12 @@
 package br.com.pic.folheto.services;
 
+import br.com.pic.folheto.dto.BoletimDTO;
+import net.sf.jasperreports.engine.*;
+import org.springframework.stereotype.Service;
+
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletResponse;
+import javax.swing.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -9,31 +16,16 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import javax.imageio.ImageIO;
-import javax.servlet.http.HttpServletResponse;
-import javax.swing.ImageIcon;
-
-import org.springframework.stereotype.Service;
-
-import br.com.pic.folheto.dto.BoletimDTO;
-import net.sf.jasperreports.engine.JREmptyDataSource;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-
 @Service
 public class GeraFolheto {
 	
-	public void gerar(BoletimDTO boletim, HttpServletResponse response) throws JRException, SQLException, ClassNotFoundException, IOException {
-		InputStream caminhoFolhetim = this.getClass().getResourceAsStream("/relatorios/folhetim_2.jrxml");
-		InputStream caminhoLogoInput = this.getClass().getResourceAsStream("/imagens/logo.jpg");
-		InputStream caminhoCarrinho = this.getClass().getResourceAsStream("/imagens/carrinhocompras.jpg");
+	public void gerar(final BoletimDTO boletim, final HttpServletResponse response) throws JRException, SQLException, ClassNotFoundException, IOException {
+		final InputStream caminhoFolhetim = this.getClass().getResourceAsStream("/relatorios/folhetim_2.jrxml");
+		final InputStream caminhoLogoInput = this.getClass().getResourceAsStream("/imagens/logo.jpg");
+		final InputStream caminhoCarrinho = this.getClass().getResourceAsStream("/imagens/carrinhocompras.jpg");
 		
-		ImageIcon gto = new ImageIcon(ImageIO.read(caminhoLogoInput)); 
-		ImageIcon carrinho = new ImageIcon(ImageIO.read(caminhoCarrinho)); 
+		final ImageIcon gto = new ImageIcon(ImageIO.read(caminhoLogoInput));
+		final ImageIcon carrinho = new ImageIcon(ImageIO.read(caminhoCarrinho));
 		
 		String niver = "";
 		for(String aniversariante : boletim.getAniversariantes()){
@@ -55,18 +47,18 @@ public class GeraFolheto {
 			pgsQuinta += pg+"\n\n";
 		}
 		
-		Map<String, Object> parametros = new HashMap<String, Object>(); 
+		final Map<String, Object> parametros = new HashMap<String, Object>();
 		parametros.put("logo", gto.getImage());
 		parametros.put("dataFolhetim", boletim.getDataBoletim()+ " - Ano XVIII");
 		
-		String enderecoIgreja = boletim.getIgreja().getEndereco().getLogradouro() + 
+		final String enderecoIgreja = boletim.getIgreja().getEndereco().getLogradouro() +
 			" CEP: " +boletim.getIgreja().getEndereco().getCep() +" "+
 			boletim.getIgreja().getEndereco().getCidade().getNome();
 		
 		parametros.put("enderecoIgreja", enderecoIgreja);
 		
 		
-		 Iterator<String> telefonesAsIterator = boletim.getIgreja().getTelefones().iterator();
+		 final Iterator<String> telefonesAsIterator = boletim.getIgreja().getTelefones().iterator();
 		 String telefone = "";
          while (telefonesAsIterator.hasNext()){
         	 	String registro = telefonesAsIterator.next();
@@ -76,8 +68,9 @@ public class GeraFolheto {
 		parametros.put("telefoneIgreja", telefone);
 		parametros.put("siteIgreja", "www.ictaguatinga.com.br");
 		parametros.put("emailIgreja", boletim.getIgreja().getEmail());
-		String mensagemSemanal = limparTagsHtml(boletim.getMensagem().getMensagem());
-		String missaoSemanal = limparTagsHtml(boletim.getMissao().getMensagem());
+
+		final String mensagemSemanal = limparTagsHtml(boletim.getMensagem().getMensagem());
+		final String missaoSemanal = limparTagsHtml(boletim.getMissao().getMensagem());
 		
 		parametros.put("mensagem", mensagemSemanal);
 		parametros.put("tituloMensagem", boletim.getMensagem().getTitulo());
@@ -94,7 +87,7 @@ public class GeraFolheto {
 		
 		jr = JasperCompileManager.compileReport(caminhoFolhetim);
 		jr.setProperty("net.sf.jasperreports.default.font.name", "Arial Narrow");
-		JasperPrint impressao = JasperFillManager.fillReport(jr, parametros, new JREmptyDataSource(1));
+		final JasperPrint impressao = JasperFillManager.fillReport(jr, parametros, new JREmptyDataSource(1));
 		
 		response.setContentType("application/x-pdf");
 	    response.setHeader("Content-disposition", "inline; filename=boletim_semanal_"+LocalDate.now().toString()+".pdf");
