@@ -19,7 +19,7 @@ public interface MensagemRepository extends JpaRepository<Mensagem, Integer>{
 	
 	@Transactional(readOnly=true)
 	@Query(value = "select m from Mensagem m where m.igreja.id = :idIgreja and m.dataCriado between :dataCriado and :dataLimiteBusca")
-	public Mensagem buscaMensagemPorIdIgrejaAndDataCriado(@Param("idIgreja") Integer idIgreja, 
+	public List<Mensagem> buscaMensagemPorIdIgrejaAndDataCriado(@Param("idIgreja") Integer idIgreja,
 			@Param("dataCriado") LocalDateTime dataCriado,
 			@Param("dataLimiteBusca") LocalDateTime dataLimiteBusca);
 }

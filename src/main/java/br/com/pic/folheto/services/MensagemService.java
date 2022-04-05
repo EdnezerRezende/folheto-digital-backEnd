@@ -67,10 +67,10 @@ public class MensagemService {
 	
 	
 	@Transactional
-	public Mensagem buscarMensagemPorIdIgrejaEDataCriado(final Integer idIgreja,
+	public List<Mensagem> buscarMensagemPorIdIgrejaEDataCriado(final Integer idIgreja,
 														 final LocalDateTime dataCriado,
 														 final LocalDateTime dataLimiteBusca) {
-		final Mensagem mensagem = mensagemDao.buscaMensagemPorIdIgrejaAndDataCriado(idIgreja, dataCriado, dataLimiteBusca );
+		final List<Mensagem> mensagem = mensagemDao.buscaMensagemPorIdIgrejaAndDataCriado(idIgreja, dataCriado, dataLimiteBusca );
 		if(mensagem == null) {
 			throw new ObjectNotFoundException("Não Existe Mensagem. Necessário cadastrar. " + Mensagem.class.getName());
 		}

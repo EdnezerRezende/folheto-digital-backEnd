@@ -21,6 +21,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 @Service
 public class BoletimService {
@@ -55,11 +56,11 @@ public class BoletimService {
 			
 		final LocalDateTime dataLimiteBusca = DataUtil.converterStringLocalDateTime(dataBoletimGerado + " 11:59","d 'de' MMMM 'de' yyyy HH:mm").plusDays(6);
 		
-		final BoletimDTO boletim = BoletimDTO.builder().build();
+		final BoletimDTO boletim = BoletimDTO.builder()
+				.dataBoletim(dataBoletimGerado)
+				.build();
 
 		final IgrejaInfoDTO igreja = preencherIgreja(idIgreja, boletim);
-		
-		boletim.setDataBoletim(dataBoletimGerado);
 		
 		preencherMissao(dataBoletimInicio, dataLimiteBusca, boletim, igreja);
 		
@@ -144,18 +145,21 @@ public class BoletimService {
 
 	private void preencherMissao(final LocalDateTime dataHoje,final LocalDateTime dataLimiteBusca, final BoletimDTO boletim,
 			final IgrejaInfoDTO igreja) {
-		final Missao missao = missaoService.buscarMissaoPorIdIgrejaEDataCriado(igreja.getId(), dataHoje, dataLimiteBusca );
+		final List<Missao> missoes = missaoService.buscarMissaoPorIdIgrejaEDataCriado(igreja.getId(), dataHoje, dataLimiteBusca );
 
-		if(missao == null) {
+		if(missoes.size() == 0) {
 			throw new ObjectNotFoundException("Não Existe texto de Missão. Necessário cadastrar para este período. " + Missao.class.getName());
 		}
 
-		boletim.setMissao(MissaoDTO.builder()
-				.id(missao.getId())
-				.mensagem(missao.getMensagem())
-				.autor(missao.getAutor())
-				.titulo(missao.getTitulo())
-				.build());
+		boletim.setMissao(missoes.stream().map(missao ->
+			MissaoDTO.builder()
+					.id(missao.getId())
+					.mensagem(missao.getMensagem())
+					.autor(missao.getAutor())
+					.titulo(missao.getTitulo())
+					.build()
+		).collect(Collectors.toList()));
+
 	}
 
 

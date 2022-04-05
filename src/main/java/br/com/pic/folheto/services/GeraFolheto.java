@@ -69,16 +69,17 @@ public class GeraFolheto {
 		parametros.put("siteIgreja", "www.ictaguatinga.com.br");
 		parametros.put("emailIgreja", boletim.getIgreja().getEmail());
 
-		final String mensagemSemanal = limparTagsHtml(boletim.getMensagem().getMensagem());
-		final String missaoSemanal = limparTagsHtml(boletim.getMissao().getMensagem());
-		
+		final String mensagemSemanal = limparTagsHtml(boletim.getMensagem().get(0).getMensagem());
+//		final String missaoSemanal = boletim.getMissao().stream().map(missao -> limparTagsHtml(missao.getMensagem())).collect(Collectors.toList());
+		final String missaoSemanal = limparTagsHtml(boletim.getMissao().get(0).getMensagem());
+
 		parametros.put("mensagem", mensagemSemanal);
-		parametros.put("tituloMensagem", boletim.getMensagem().getTitulo());
-		parametros.put("autorMensagem", boletim.getMensagem().getAutor());
+		parametros.put("tituloMensagem", boletim.getMensagem().get(0).getTitulo());
+		parametros.put("autorMensagem", boletim.getMensagem().get(0).getAutor());
 		parametros.put("aniversariantes", niver);
 		parametros.put("carrinhoCompra", carrinho.getImage());
 		parametros.put("missoes", missaoSemanal);
-		parametros.put("missoesTitulo", boletim.getMissao().getTitulo());
+		parametros.put("missoesTitulo", boletim.getMissao().get(0).getTitulo());
 		parametros.put("textosDevocionais", devocionais);
 		parametros.put("pgsQuarta", pgsQuarta);
 		parametros.put("pgsQuinta", pgsQuinta);
@@ -89,8 +90,8 @@ public class GeraFolheto {
 		jr.setProperty("net.sf.jasperreports.default.font.name", "Arial Narrow");
 		final JasperPrint impressao = JasperFillManager.fillReport(jr, parametros, new JREmptyDataSource(1));
 		
-		response.setContentType("application/x-pdf");
-	    response.setHeader("Content-disposition", "inline; filename=boletim_semanal_"+LocalDate.now().toString()+".pdf");
+		response.setContentType("application/pdf");
+	    response.setHeader("Content-disposition", "attachment;filename=boletim_semanal_"+LocalDate.now().toString()+".pdf");
 
 	    final OutputStream outStream = response.getOutputStream();
 	    JasperExportManager.exportReportToPdfStream(impressao, outStream);

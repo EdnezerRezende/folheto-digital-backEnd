@@ -39,7 +39,7 @@ public class BoletimController {
 			e.printStackTrace();
 		}
 		
-		return ResponseEntity.noContent().build();
+		return ResponseEntity.ok().build();
 	}
 
 }

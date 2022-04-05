@@ -28,8 +28,8 @@ public class BoletimDTO implements Serializable {
 	
 	private List<String> pgsQuintaValores;
 	
-	private MissaoDTO missao;
+	private List<MissaoDTO> missao;
 	
-	private Mensagem mensagem;
+	private List<Mensagem> mensagem;
 
 }

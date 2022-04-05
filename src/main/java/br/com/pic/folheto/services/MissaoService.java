@@ -64,7 +64,7 @@ public class MissaoService {
 	}
 	
 	@Transactional
-	public Missao buscarMissaoPorIdIgrejaEDataCriado(final Integer idIgreja, final LocalDateTime dataCriado,final LocalDateTime dataLimiteBusca) {
+	public List<Missao> buscarMissaoPorIdIgrejaEDataCriado(final Integer idIgreja, final LocalDateTime dataCriado,final LocalDateTime dataLimiteBusca) {
 		return missaoDao.buscaMissaoPorIdIgrejaAndDataCriado(idIgreja, dataCriado, dataLimiteBusca);
 	}
 }
