@@ -65,7 +65,7 @@ public class DataUtil {
 
 
 	public static LocalDateTime converterStringLocalDateTime(final String data, final String formato){
-		final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(formato);
+		final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(formato).withLocale(new Locale("pt", "br"));
 		return LocalDateTime.parse(data, formatter);
 	}
 

@@ -48,7 +48,6 @@ public class BoletimService {
 	private GeraFolheto gerarBoletim;
 	
 	public void gerarBoletimSemanal(final Integer idIgreja, final HttpServletResponse response) throws ClassNotFoundException, JRException, SQLException, IOException {
-		final DateTimeFormatter parser = DateTimeFormatter.ofPattern("d 'de' MMMM 'de' yyyy HH:mm").withLocale(new Locale("pt", "br"));
 		final LocalDateTime dataHoje = LocalDateTime.now();
 
 		final String dataBoletimGerado = DataUtil.obterDataGeracaoBoletim(dataHoje.toLocalDate());
