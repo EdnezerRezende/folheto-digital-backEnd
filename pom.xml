@@ -282,6 +282,7 @@
 									<directory>target</directory>
 									<excludes>
 										<exclude>*.war</exclude>
+										<exclude>target/dependecy/webapp-runner.jar</exclude>
 									</excludes>
 								</fileset>
 
