@@ -240,8 +240,8 @@
 								<artifactItem>
 									<groupId>com.github.jsimone</groupId>
 									<artifactId>webapp-runner</artifactId>
-									<version>7.0.57.2</version>
-									<destFileName>webapp-   runner.jar</destFileName>
+									<version>8.5.11.3</version>
+									<destFileName>webapp-runner.jar</destFileName>
 								</artifactItem>
 							</artifactItems>
 						</configuration>
@@ -249,6 +249,7 @@
 				</executions>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>3.0.0</version>
 				<executions>
