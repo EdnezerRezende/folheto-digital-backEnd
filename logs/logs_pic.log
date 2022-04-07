@@ -1,0 +1,102 @@
+07-04-2022 09:54:24.781  INFO NBBV033071 --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.1.2.Final
+07-04-2022 09:54:24.820  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Starting FolhetoApplication using Java 11.0.11 on NBBV033071 with PID 25136 (C:\backEnd\target\classes started by erezende in C:\backEnd)
+07-04-2022 09:54:24.826  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : The following 1 profile is active: "dev"
+07-04-2022 09:54:29.785  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+07-04-2022 09:54:30.261  INFO NBBV033071 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 465 ms. Found 16 JPA repository interfaces.
+07-04-2022 09:54:32.412  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8082 (http)
+07-04-2022 09:54:32.428  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8082"]
+07-04-2022 09:54:32.429  INFO NBBV033071 --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+07-04-2022 09:54:32.429  INFO NBBV033071 --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.58]
+07-04-2022 09:54:32.881  INFO NBBV033071 --- [           main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+07-04-2022 09:54:32.881  INFO NBBV033071 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 7917 ms
+07-04-2022 09:54:33.935  INFO NBBV033071 --- [           main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+07-04-2022 09:54:35.142  INFO NBBV033071 --- [           main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.5.Final
+07-04-2022 09:54:35.558  INFO NBBV033071 --- [           main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+07-04-2022 09:54:35.827  WARN NBBV033071 --- [           main] c.z.h.HikariConfig                       : HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+07-04-2022 09:54:35.827  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+07-04-2022 09:54:37.086  INFO NBBV033071 --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+07-04-2022 09:54:37.127  INFO NBBV033071 --- [           main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+07-04-2022 09:54:38.745  INFO NBBV033071 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+07-04-2022 09:54:38.755  INFO NBBV033071 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+07-04-2022 09:54:40.229  WARN NBBV033071 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+07-04-2022 09:54:44.550  INFO NBBV033071 --- [           main] o.s.s.w.DefaultSecurityFilterChain       : Will not secure any request
+07-04-2022 09:54:48.014  INFO NBBV033071 --- [           main] o.s.b.a.e.w.EndpointLinksResolver        : Exposing 13 endpoint(s) beneath base path '/actuator'
+07-04-2022 09:54:48.097  INFO NBBV033071 --- [           main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8082"]
+07-04-2022 09:54:48.132  INFO NBBV033071 --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8082 (http) with context path ''
+07-04-2022 09:54:50.188  INFO NBBV033071 --- [           main] o.a.a.b.BrokerService                    : Loaded the Bouncy Castle security provider at position: 14
+07-04-2022 09:54:50.338  INFO NBBV033071 --- [           main] o.a.a.b.BrokerService                    : Using Persistence Adapter: MemoryPersistenceAdapter
+07-04-2022 09:54:50.764  INFO NBBV033071 --- [           main] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-50258-1649336090361-0:1) is starting
+07-04-2022 09:54:50.770  INFO NBBV033071 --- [           main] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-50258-1649336090361-0:1) started
+07-04-2022 09:54:50.770  INFO NBBV033071 --- [           main] o.a.a.b.BrokerService                    : For help or more information please see: http://activemq.apache.org
+07-04-2022 09:54:50.795  INFO NBBV033071 --- [           main] o.a.a.b.TransportConnector               : Connector vm://localhost started
+07-04-2022 09:54:50.886  INFO NBBV033071 --- [           main] b.c.p.f.FolhetoApplication               : Started FolhetoApplication in 26.752 seconds (JVM running for 34.865)
+07-04-2022 09:54:56.140  WARN NBBV033071 --- [gistrationTask1] d.c.b.a.c.r.ApplicationRegistrator       : Failed to register application as Application(name=spring-boot-application, managementUrl=http://NBBV033071.BRQ.COM:8082/actuator, healthUrl=http://NBBV033071.BRQ.COM:8082/actuator/health, serviceUrl=http://NBBV033071.BRQ.COM:8082/) at spring-boot-admin ([http://localhost:8081/instances]): I/O error on POST request for "http://localhost:8081/instances": Connect to localhost:8081 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect; nested exception is org.apache.http.conn.HttpHostConnectException: Connect to localhost:8081 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect. Further attempts are logged on DEBUG level
+07-04-2022 10:03:47.836  INFO NBBV033071 --- [nio-8082-exec-2] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+07-04-2022 10:03:47.836  INFO NBBV033071 --- [nio-8082-exec-2] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+07-04-2022 10:03:47.839  INFO NBBV033071 --- [nio-8082-exec-2] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
+07-04-2022 10:03:52.276  INFO NBBV033071 --- [nio-8082-exec-6] o.s.a.AbstractOpenApiResource            : Init duration for springdoc-openapi is: 751 ms
+07-04-2022 11:19:59.711  INFO NBBV033071 --- [MQ ShutdownHook] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-50258-1649336090361-0:1) is shutting down
+07-04-2022 11:20:01.510  INFO NBBV033071 --- [m://localhost#0] o.s.j.c.CachingConnectionFactory         : Encountered a JMSException - resetting the underlying JMS Connection
+javax.jms.JMSException: peer (vm://localhost#1) stopped.
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:56)
+	at org.apache.activemq.ActiveMQConnection.onAsyncException(ActiveMQConnection.java:1973)
+	at org.apache.activemq.ActiveMQConnection.onException(ActiveMQConnection.java:1992)
+	at org.apache.activemq.transport.TransportFilter.onException(TransportFilter.java:114)
+	at org.apache.activemq.transport.ResponseCorrelator.onException(ResponseCorrelator.java:126)
+	at org.apache.activemq.transport.TransportFilter.onException(TransportFilter.java:114)
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:233)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1199)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1165)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://localhost#1) stopped.
+	... 9 more
+07-04-2022 11:20:02.162  INFO NBBV033071 --- [ntContainer#0-1] o.s.j.c.CachingConnectionFactory         : Encountered a JMSException - resetting the underlying JMS Connection
+javax.jms.IllegalStateException: The Consumer is closed
+	at org.apache.activemq.ActiveMQMessageConsumer.checkClosed(ActiveMQMessageConsumer.java:898)
+	at org.apache.activemq.ActiveMQMessageConsumer.receive(ActiveMQMessageConsumer.java:653)
+	at org.springframework.jms.support.destination.JmsDestinationAccessor.receiveFromConsumer(JmsDestinationAccessor.java:132)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.receiveMessage(AbstractPollingMessageListenerContainer.java:431)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.doReceiveAndExecute(AbstractPollingMessageListenerContainer.java:316)
+	at org.springframework.jms.listener.AbstractPollingMessageListenerContainer.receiveAndExecute(AbstractPollingMessageListenerContainer.java:270)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.invokeListener(DefaultMessageListenerContainer.java:1237)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.executeOngoingLoop(DefaultMessageListenerContainer.java:1227)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker.run(DefaultMessageListenerContainer.java:1120)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+07-04-2022 11:20:03.896  INFO NBBV033071 --- [MQ ShutdownHook] o.a.a.b.TransportConnector               : Connector vm://localhost stopped
+07-04-2022 11:20:04.723  INFO NBBV033071 --- [MQ ShutdownHook] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-50258-1649336090361-0:1) uptime 1 hour 25 minutes
+07-04-2022 11:20:04.723  WARN NBBV033071 --- [m://localhost#0] o.s.j.c.CachingConnectionFactory         : Could not close shared JMS Connection
+javax.jms.JMSException: Disposed due to prior exception
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:80)
+	at org.apache.activemq.ActiveMQConnection.syncSendPacket(ActiveMQConnection.java:1423)
+	at org.apache.activemq.ActiveMQConnection.close(ActiveMQConnection.java:691)
+	at org.springframework.jms.connection.SingleConnectionFactory.closeConnection(SingleConnectionFactory.java:502)
+	at org.springframework.jms.connection.SingleConnectionFactory.resetConnection(SingleConnectionFactory.java:390)
+	at org.springframework.jms.connection.CachingConnectionFactory.resetConnection(CachingConnectionFactory.java:223)
+	at org.springframework.jms.connection.SingleConnectionFactory.onException(SingleConnectionFactory.java:368)
+	at org.springframework.jms.connection.SingleConnectionFactory$AggregatedExceptionListener.onException(SingleConnectionFactory.java:716)
+	at org.apache.activemq.ActiveMQConnection$5.run(ActiveMQConnection.java:1980)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: Disposed due to prior exception
+	at org.apache.activemq.transport.ResponseCorrelator.onException(ResponseCorrelator.java:125)
+	at org.apache.activemq.transport.TransportFilter.onException(TransportFilter.java:114)
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:233)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:72)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1199)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1165)
+	... 3 more
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://localhost#1) stopped.
+	... 9 more
+07-04-2022 11:20:45.250  INFO NBBV033071 --- [MQ ShutdownHook] o.a.a.b.BrokerService                    : Apache ActiveMQ 5.16.4 (localhost, ID:NBBV033071-50258-1649336090361-0:1) is shutdown
+07-04-2022 11:20:45.264  WARN NBBV033071 --- [ntContainer#0-1] o.s.j.l.DefaultMessageListenerContainer  : Setup of JMS message listener invoker failed for destination 'queueEmail' - trying to recover. Cause: The Consumer is closed
+07-04-2022 11:20:50.879  INFO NBBV033071 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+07-04-2022 11:20:52.736  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+07-04-2022 11:20:53.060  INFO NBBV033071 --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
