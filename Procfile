@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -Dspring.profiles.active=prod $JAVA_OPTS -jar target/dependency/webapp-runner.jar  target/*.war -DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector
+web: java -Dserver.port=$PORT -Dspring.profiles.active=prod $JAVA_OPTS -DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector -jar target/dependency/webapp-runner.jar --port $PORT target/*.war
