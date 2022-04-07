@@ -260,32 +260,13 @@
 							<excludeDefaultDirectories>true</excludeDefaultDirectories>
 							<filesets>
 								<fileset>
-									<directory>target/dependency/*.jar</directory>
-								</fileset>
-							</filesets>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-clean-plugin</artifactId>
-				<version>3.0.0</version>
-				<executions>
-					<execution>
-						<id>clean-jar-artifacts</id>
-						<phase>install</phase>
-						<goals><goal>clean</goal></goals>
-						<configuration>
-							<excludeDefaultDirectories>true</excludeDefaultDirectories>
-							<filesets>
-								<fileset>
 									<directory>target</directory>
+
 									<excludes>
+										<exclude>dependency/*.jar</exclude>
 										<exclude>*.war</exclude>
-										<exclude>target/dependency/webapp-runner.jar</exclude>
 									</excludes>
 								</fileset>
-
 							</filesets>
 						</configuration>
 					</execution>
